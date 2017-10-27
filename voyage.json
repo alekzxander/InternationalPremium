@@ -1,0 +1,195 @@
+/* 1 */
+{
+    "_id" : ObjectId("59e6e07142c9e1942b62c295"),
+    "name" : "Etats Unis d'Amerique",
+    "dateA" : "13 Janvier 2018",
+    "dateR" : "29 janvier 2018",
+    "sejour" : "16 jours",
+    "preview" : "Un voyage aux Etats-Unis, c’est d’abord découvrir New York, capitale culturelle de la côte Est, ville bouillonnante sans cesse renouvelée. ",
+    "text" : "Un voyage aux Etats-Unis, c’est d’abord découvrir New York, capitale culturelle de la côte Est, ville bouillonnante sans cesse renouvelée. Fruit de la diversité culturelle et ethnique, les Etats-Unis restent le pays du contraste et du paradoxe",
+    "img" : "newYork.jpg",
+    "lieuxTableau" : [ 
+        {
+            "lieuxAVisiterImg" : "californie.jpeg",
+            "lieuxAVisiterTitre" : "l'Univeritéde Californie,Los Angele",
+            "lieuxAVisiter" : "Une des vingt premiere université de l'Amerique, UCLA est la mère de l'internet lorque en 1969, une transmition APRANET est envoyée du campus à San Francisco Menlon Park."
+        }, 
+        {
+            "lieuxAVisiterImg" : "yorkUniv.jpeg",
+            "lieuxAVisiterTitre" : "l'Université de New York",
+            "lieuxAVisiter" : "l'Université de New York fondée en 1831 NYU est un université privée de recherches.Basé au coeur de New York, à Manhattan, son Alumi inclus les présidents, inventeur, les PDG de 500 grand entreprise et des astronautes"
+        }, 
+        {
+            "lieuxAVisiterImg" : "columbia.jpeg",
+            "lieuxAVisiterTitre" : "L'Université de Columbia",
+            "lieuxAVisiter" : "L'Université de Columbia. Fondée en 1754, elle est l'un des plus anciens établisement suprérieur aux Etats- Unis et fait partie du groupe del'Ivy League regroupant les huits univertiqtée les plus ancienne et les plu célèbres dy pays. le 18eme université du monde, elle est dans les 10 premiere université de l'Amerique. Barack Obama est son Alumni ainsi que beaucoup d'auters célèbres personnages ."
+        }, 
+        {
+            "lieuxAVisiterImg" : "ibm.jpeg",
+            "lieuxAVisiterTitre" : "IBM",
+            "lieuxAVisiter" : "IBM International Business Machines Corporation, connue sous l'abrévation IBM , est une société multinationale américaine présente dans les domaine du matériel informatique, du loficiel et des services informatique dans plus de 170 pays. On lui prête le surnom de Big Blue en reference au bleu sombre, couleur longtemps associée a l'entreprise."
+        }, 
+        {
+            "lieuxAVisiterImg" : "marvel.jpeg",
+            "lieuxAVisiterTitre" : "Marvel's Comics",
+            "lieuxAVisiter" : "Marvel's Comics. Plus communément appelé Marvel's comics ou Marvel, est une subdivision de Marvel Entreprise et l'une des principales maison d'édition américaines de bande dessinées appelées comc books. En 2009, The walt Disney Compagny rachéte Marvel Entrainement pour 4 miliards de dollars (soit 2.8 miliards d'euros.)"
+        }, 
+        {
+            "lieuxAVisiterImg" : "centuryFox.jpeg",
+            "lieuxAVisiterTitre" : "20TH Century Fox",
+            "lieuxAVisiter" : "20TH Century Fox. 20th Century Fox Film Coporation ou 20th Century Fox (anciennement Twentieth Century-Fox Film Coporation) est l'une des plus grandes sociétés de production cinématographique. Le siège du studio hollywoodien est situé à Century City, un quatier de Los Angelesà l'ouest de Beverly Hills,en Californie et jouxte un studio de production Fox Studios."
+        }, 
+        {
+            "lieuxAVisiterImg" : "liberty.jpeg",
+            "lieuxAVisiterTitre" : "La statue de la Libert",
+            "lieuxAVisiter" : "La statue de la Liberté. Elle est l'un des monuments les plus célèbres des Etats-Unis. Cette statue momumentale est située à New York, sur l'ile Liberty Island, au sud de Manhattan. Elle fut construite en France et offerte par le peuple francais, en signe d'amitié entre les deux nations, pour célèbrer le centenaire de la Déclaration d'indépendance américaine."
+        }, 
+        {
+            "lieuxAVisiterImg" : "banlieu.jpeg",
+            "lieuxAVisiterTitre" : "Les banlieues de Los Angeles",
+            "lieuxAVisiter" : "Les banlieues de Los Angeles. L'attraction en Californie est souvent associé à l'industrie du film glamour. Le signe du Hollywood, Hollywood boulevard, le walk of fame et le théâtre chinois peut compléter 2jour de visite et si on as de la chance rencontre deuxou trois stars."
+        }
+    ]
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("59e6e3e3616911883064eb5a"),
+    "name" : "Londres",
+    "dateA" : "13 fevrier 2018",
+    "dateR" : "04 mars 2018",
+    "sejour" : "30jours",
+    "preview" : "La chance de voir quelques universitées qu'on trouve dans les listes de meilleurs écoles du monde comme le UCL, Univerité de Cambrige, l'université d'Oxford, et bien d'autres...",
+    "text" : "La chance de voir quelques universitées qu'on trouve dans les listes de meilleurs coles du monde comme le UCL, Univerité de Cambrige, l'université d'Oxford, et bien d'autres...",
+    "img" : "london.jpg",
+    "lieuxTableau" : [ 
+        {
+            "lieuxAVisiterImg" : "cambridge.jpeg",
+            "lieuxAVisiterTitre" : "l'Universtié de Cambrige",
+            "lieuxAVisiter" : "Etant la 5 eme meilleure université du monde, ele a été fondé en 1209, la mettant dans l'une des plus ancienne au monde.Aujourd'hui , il a plus de 16,000 étudiants."
+        }, 
+        {
+            "lieuxAVisiterImg" : "oxford.jpeg",
+            "lieuxAVisiterTitre" : "L'Universtiéd'Oxford",
+            "lieuxAVisiter" : "La plus ancienne université dans le monde Anglo-Saxon, l'université d'Oxford a produit beaucoup d'anciens élèves a succès,composant 30 Leaders international, 27 Premier Minitres, 50 gagnants de prix nobel, ainsi que d'autres personnages reconnues comme Stephen Hawking"
+        }, 
+        {
+            "lieuxAVisiterImg" : "college.jpeg",
+            "lieuxAVisiterTitre" : "Univerité College de Londres.",
+            "lieuxAVisiter" : "Pendant 3 ans de suite, l'UCL est la premiere université de Londres.Grace a sa nationalité dans ces campus, il se prénomme 'L'université Global' avec plus de 15 500 de ces 38 900 étudiants venants de l'exterieur du Royaume-Unis."
+        }, 
+        {
+            "lieuxAVisiterImg" : "hsbc.jpeg",
+            "lieuxAVisiterTitre" : "HSBC Hongkong and Shangai Banking Corpoation",
+            "lieuxAVisiter" : "Avec leurs branches dans plusieurs pays du mondel'entreprise emploie plus de 260 000 employées et sa valeur en 2015 était de 531 bilions de dollars"
+        }, 
+        {
+            "lieuxAVisiterImg" : "unilever.jpeg",
+            "lieuxAVisiterTitre" : "Unilever",
+            "lieuxAVisiter" : "L'entreprise a été fondée en 1930 après une immersion entre le beurre allemand et la magarine avec un producteur savon anglais.Producteur de 'Axe, Lipton, Rexona, Dove, Knorr'. l'Entreprise a en total 400 marques aujourd'hui 170 000 employées dans le monde,l'entreprisea eu un profit de 505 bilion de dollers en 2015."
+        }, 
+        {
+            "lieuxAVisiterImg" : "btbritish.jpeg",
+            "lieuxAVisiterTitre" : "BTBritish Telecominication group",
+            "lieuxAVisiter" : "BT Group opère dans plus de 170 pays globalement avec plus de 88 500 employées. Avec un revenu de 17.8 bilions de pound et 3.7 bilions de profit il est l'une des entreprise les plus reconnues et respectées dans le monde de télécommunication"
+        }, 
+        {
+            "lieuxAVisiterImg" : "warner.jpeg",
+            "lieuxAVisiterTitre" : "Warner Bros Studio",
+            "lieuxAVisiter" : "Venez vivre un journée magique dans les coulisses dans films de Harry Potter aux studios de la Warner Bros. Ainsi que d'auters lieux de tournage, les plateaux, les costumes et les accessoires utilises dans les films."
+        }, 
+        {
+            "lieuxAVisiterImg" : "buckingham.jpeg",
+            "lieuxAVisiterTitre" : "le Plais de Buckingham",
+            "lieuxAVisiter" : "Derrière sa façade impressionante se cachent quelques 750 pièces, certaines d'entre elles servent de salles de réception pour les grandes occasions. Buckingham est aussi le site où la Relève de la Garde est la plus populaire de toutes les résidences royales."
+        }, 
+        {
+            "lieuxAVisiterImg" : "londonEyes.jpeg",
+            "lieuxAVisiterTitre" : "le London eyes.",
+            "lieuxAVisiter" : "Ouvert au public depuis mars 2000, le London Eye, aussi connu sous le nom de la grande roue du millénaire, est l'une des attractions payantes les plus fréquentées du Royaume-Uni.La raison est évidentes : avec ses vues à 360 degrès depuis les 32 cabines, le London Eye vous offre ce que beaucoup considerent comme le plus panorama de Londres."
+        }
+    ]
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("59e6e6a8616911883064ebce"),
+    "name" : "Chine",
+    "dateA" : "10 mars 2018",
+    "dateR" : "20 mars 2018",
+    "sejour" : " 20 jours",
+    "preview" : "La Chine le pays du Mandarin et des dragons",
+    "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "img" : "chine.jpg"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("59e6ea8f616911883064ec77"),
+    "name" : "Afrique du Sud",
+    "dateA" : "12 Janvier 2018",
+    "dateR" : "19 Fevrier 2018",
+    "sejour" : "25 jours",
+    "preview" : "Pays aux mille facette et terre de contraste et d'aventure c'est la destination idéale pour les amoureux de la nature et des animaux... Sagéographie est tout simplement execptionelle. Entre les grand espaces, montagnes déserts, parcs nationaux, réserve naturelles et plage de rêve, l'Afrique du Sud offre une grande diversité de paysage d'une beauté sans pareille",
+    "text" : "Pays aux mille facette et terre de contraste et d'aventure,c'est la destination idéale pour les amoureux de la nature et des animaux... Sagéographie est tout simplement execptionelle. Entre les grand espaces, montagnes déserts, parcs nationaux, réserve naturelles et plage de rêve, l'Afrique du Sud offre une grande diversité de paysage d'une beauté sans pareille",
+    "img" : "africa.jpg",
+    "lieuxTableau" : [ 
+        {
+            "lieuxAVisiterImg" : "cap.jpeg",
+            "lieuxAVisiterTitre" : "l'Université du Cap",
+            "lieuxAVisiter" : "L'université du Cap 'en anglais, University of Cape Town UCT. Une université publique sud-africaine, située dans la provence du Cap-Occidental. Elle est la plus ancienne université de ce pays, fondée en 1829 sous le nom de South African college."
+        }, 
+        {
+            "lieuxAVisiterImg" : "witwatersrand.jpeg",
+            "lieuxAVisiterTitre" : "l'Univerité de Witwatersrand Johannesburg",
+            "lieuxAVisiter" : "l'Univerité est surnommée 'Wits' mais se pronomce'vits'.Elle est la plus importante et prestigieuse université d'Afrique du Sud.Université de langue anglaise, elle avais la particularité durant la période d'apartheid d'accueillir également   des étudiants noirs en limité.Elle fut la premiere université à être déségréguée."
+        }, 
+        {
+            "lieuxAVisiterImg" : "grahamstown.jpeg",
+            "lieuxAVisiterTitre" : "l'Université Rhodes Grahamstown.",
+            "lieuxAVisiter" : "l'Université Rhodes Grahamstown. Son nom est un hommage à Cécil Rhodes, homme d'affaires, ancien premier misnitre de la Colonie du Cap et fondateur de la Rhodésie"
+        }, 
+        {
+            "lieuxAVisiterImg" : "sasol.jpeg",
+            "lieuxAVisiterTitre" : "Sasol Limited Johannesburg,",
+            "lieuxAVisiter" : "Sasol est une entreprise de l'industrie chimique, spécialisée dans la transfomation de charbon et de gar naturel en hydrocarbures liquides selon le procédé Fischer-Tropsh. C'est la deuxieme entresprise d'Afrique du Sud Derrière Old Mutual et la troisieme entreprise"
+        }, 
+        {
+            "lieuxAVisiterImg" : "shoprite.jpeg",
+            "lieuxAVisiterTitre" : "Shoprite Group",
+            "lieuxAVisiter" : "Elle est la plus grande chaîne de magasins en Afriqueavec plus de 1000 supermarchés Shoprite Hyper dans 18 pays à travers l'Afrique et les îles de l'océan Indien."
+        }, 
+        {
+            "lieuxAVisiterImg" : "mtn.jpeg",
+            "lieuxAVisiterTitre" : "MTN Group",
+            "lieuxAVisiter" : "Une multinationale sud-africaine qui exerce dans les domaines des télécommunications. Elle a été fondée en 1994 et est présente dans 22 pays."
+        }, 
+        {
+            "lieuxAVisiterImg" : "montage.jpeg",
+            "lieuxAVisiterTitre" : "Montage de la Table ",
+            "lieuxAVisiter" : "Son nom provient de sa forme qui, de loin resemble aussi plate que le dessus d'une table. Lorsque les nuages q'y accrochent, on dit que la 'nappe' est mise. Elle se trouve au nord de la péninsule du Cap qui est elle même terminée au sud par le capt de Bonne-Esperance."
+        }, 
+        {
+            "lieuxAVisiterImg" : "robben.jpeg",
+            "lieuxAVisiterTitre" : "Robben island",
+            "lieuxAVisiter" : "Son nom 'd'iles aux phoques' provient du fais qu il y a un grand nombre de ces manimifères dans les eaux entourant l'ile. Robben island a été utilisée comme prison, léprosie, hôpital psychiatrique e poste militaire de défence. Au XXeme siècle, les opposants noirs au régile d'apartheid, condamnés à de longues peines, y furent internés dont natament trois futur présidents sud-africain ' Nelson Mandela, Kgalema Motlanthe et Jacob Zuma'."
+        }, 
+        {
+            "lieuxAVisiterImg" : "kruger.jpeg",
+            "lieuxAVisiterTitre" : "Park National Kruger",
+            "lieuxAVisiter" : "les parcs nationaux et réserves privées sont nombreux mais le meilleur endroit pour partir à la recherche des grand fauves est le parc Kruuger. En effet, situé au Nord Est du pays, grand comme la Bretagne, il est doté d'une fauve impressionnante et vous êtes alors quasi certains d'apercevoir les animeaux les plus emblématiques de l'Afrique"
+        }
+    ]
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("59e6ec1f616911883064ecd2"),
+    "name" : "Monaco",
+    "dateA" : "12 Avril 2018",
+    "dateR" : "22 Avril 2018",
+    "sejour" : "10 jours",
+    "preview" : "Monaco, 35 degres a l'ombre",
+    "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "img" : "monaco.jpg"
+}

@@ -1,0 +1,596 @@
+  /* ==================== MENU =================== */
+
+  body {
+      position: relative;
+      overflow-x: hidden;
+      background: #F1EEEE;
+  }
+
+  body,
+  html {
+      height: 100%;
+  }
+
+  .nav .open>a,
+  .nav .open>a:hover,
+  .nav .open>a:focus {
+      background-color: transparent;
+  }
+  /*-------------------------------*/
+  /*           Wrappers            */
+  /*-------------------------------*/
+
+  #wrapper {
+      padding-left: 0;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      margin: 0 auto;
+      padding: 0 auto;
+  }
+
+  #wrapper.toggled {
+      padding-left: 220px;
+  }
+
+  #sidebar-wrapper {
+      z-index: 1000;
+      left: 220px;
+      width: 0;
+      height: 160px;
+      margin-left: -220px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #1a1a1a;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+  }
+
+  #sidebar-wrapper::-webkit-scrollbar {
+      display: none;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+      width: 220px;
+  }
+
+  #page-content-wrapper {
+      width: 100%;
+      padding-top: 70px;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+      position: absolute;
+      margin-right: -220px;
+  }
+  /*-------------------------------*/
+  /*     Sidebar nav styles        */
+  /*-------------------------------*/
+
+  .sidebar-nav {
+      position: absolute;
+      top: 0;
+      width: 220px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+  }
+
+  .sidebar-nav li {
+      position: relative;
+      line-height: 20px;
+      display: inline-block;
+      width: 100%;
+  }
+
+  .sidebar-nav li:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      height: 100%;
+      width: 3px;
+      background-color: #1c1c1c;
+      -webkit-transition: width .2s ease-in;
+      -moz-transition: width .2s ease-in;
+      -ms-transition: width .2s ease-in;
+      transition: width .2s ease-in;
+  }
+
+  .sidebar-nav li:first-child a {
+      color: #fff;
+      background-color: #7d5d81;
+  }
+
+  .sidebar-nav li:nth-child(2):before {
+      background-color: #ec1b5a;
+  }
+
+  .sidebar-nav li:nth-child(3):before {
+      background-color: #79aefe;
+  }
+
+  .sidebar-nav li:nth-child(4):before {
+      background-color: #314190;
+  }
+
+  .sidebar-nav li:nth-child(5):before {
+      background-color: #279636;
+  }
+
+  .sidebar-nav li:hover:before,
+  .sidebar-nav li.open:hover:before {
+      width: 100%;
+      -webkit-transition: width .2s ease-in;
+      -moz-transition: width .2s ease-in;
+      -ms-transition: width .2s ease-in;
+      transition: width .2s ease-in;
+  }
+
+  .sidebar-nav li a {
+      display: block;
+      color: #ddd;
+      text-decoration: none;
+      padding: 10px 15px 10px 30px;
+  }
+
+  .sidebar-nav li a:hover,
+  .sidebar-nav li a:active,
+  .sidebar-nav li a:focus,
+  .sidebar-nav li.open a:hover,
+  .sidebar-nav li.open a:active,
+  .sidebar-nav li.open a:focus {
+      color: #fff;
+      text-decoration: none;
+      background-color: transparent;
+  }
+
+  .sidebar-nav>.sidebar-brand {
+      height: 65px;
+      font-size: 20px;
+      line-height: 44px;
+  }
+
+  .sidebar-nav .dropdown-menu {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      border: none;
+      background-color: #222;
+      box-shadow: none;
+  }
+  /*-------------------------------*/
+  /*       Hamburger-Cross         */
+  /*-------------------------------*/
+
+  .hamburger {
+      position: fixed;
+      top: 20px;
+      z-index: 999;
+      display: block;
+      width: 32px;
+      height: 32px;
+      margin-left: 15px;
+      background: transparent;
+      border: none;
+  }
+
+  .hamburger:hover,
+  .hamburger:focus,
+  .hamburger:active {
+      outline: none;
+  }
+
+  .hamburger.is-closed:before {
+      content: '';
+      display: block;
+      width: 100px;
+      font-size: 14px;
+      color: #fff;
+      line-height: 32px;
+      text-align: center;
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+      -webkit-transition: all .35s ease-in-out;
+  }
+
+  .hamburger.is-closed:hover:before {
+      opacity: 1;
+      display: block;
+      -webkit-transform: translate3d(-100px, 0, 0);
+      -webkit-transition: all .35s ease-in-out;
+  }
+
+  .hamburger.is-closed .hamb-top,
+  .hamburger.is-closed .hamb-middle,
+  .hamburger.is-closed .hamb-bottom,
+  .hamburger.is-open .hamb-top,
+  .hamburger.is-open .hamb-middle,
+  .hamburger.is-open .hamb-bottom {
+      position: absolute;
+      left: 0;
+      height: 4px;
+      width: 100%;
+  }
+
+  .hamburger.is-closed .hamb-top,
+  .hamburger.is-closed .hamb-middle,
+  .hamburger.is-closed .hamb-bottom {
+      background-color: #1a1a1a;
+  }
+
+  .hamburger.is-closed .hamb-top {
+      top: 5px;
+      -webkit-transition: all .35s ease-in-out;
+  }
+
+  .hamburger.is-closed .hamb-middle {
+      top: 50%;
+      margin-top: -2px;
+  }
+
+  .hamburger.is-closed .hamb-bottom {
+      bottom: 5px;
+      -webkit-transition: all .35s ease-in-out;
+  }
+
+  .hamburger.is-closed:hover .hamb-top {
+      top: 0;
+      -webkit-transition: all .35s ease-in-out;
+  }
+
+  .hamburger.is-closed:hover .hamb-bottom {
+      bottom: 0;
+      -webkit-transition: all .35s ease-in-out;
+  }
+
+  .hamburger.is-open .hamb-top,
+  .hamburger.is-open .hamb-middle,
+  .hamburger.is-open .hamb-bottom {
+      background-color: #1a1a1a;
+  }
+
+  .hamburger.is-open .hamb-top,
+  .hamburger.is-open .hamb-bottom {
+      top: 50%;
+      margin-top: -2px;
+  }
+
+  .hamburger.is-open .hamb-top {
+      -webkit-transform: rotate(45deg);
+      -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
+  }
+
+  .hamburger.is-open .hamb-middle {
+      display: none;
+  }
+
+  .hamburger.is-open .hamb-bottom {
+      -webkit-transform: rotate(-45deg);
+      -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
+  }
+
+  .hamburger.is-open:before {
+      content: '';
+      display: block;
+      width: 100px;
+      font-size: 14px;
+      color: #fff;
+      line-height: 32px;
+      text-align: center;
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+      -webkit-transition: all .35s ease-in-out;
+  }
+
+  .hamburger.is-open:hover:before {
+      opacity: 1;
+      display: block;
+      -webkit-transform: translate3d(-100px, 0, 0);
+      -webkit-transition: all .35s ease-in-out;
+  }
+  /*-------------------------------*/
+  /*            Overlay            */
+  /*-------------------------------*/
+
+  .overlay {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(250, 250, 250, .8);
+      z-index: 1;
+  }
+
+  .log {
+      margin: -40px 35px 0px 0px;
+      font-size: 21px;
+      font-weight: bold;
+      font-style: italic;
+  }
+  /* =============== HEADER ======================*/
+
+  header {
+      margin-bottom: 90px;
+      padding-bottom: 71px;
+      background: #FFFFFF;
+  }
+
+  .p_guide {
+      font-style: italic;
+      margin-top: 15px;
+      font-size: 18px;
+  }
+
+  .container {
+      margin-top: 30px;
+      margin-bottom: 30px;
+  }
+
+  .carousel {
+      margin-top: 50px;
+  }
+
+  .carousel-inner {
+      width: auto;
+      height: 600px;
+      margin-bottom: 70px;
+  }
+
+  .titreIcon {
+      font-family: 'Gloria Hallelujah', cursive;
+  }
+  /* ========== CARTE ================= */
+
+  .card {
+      background: url("../images/fond_3.jpg")no-repeat;
+  }
+
+  .carte {
+      margin: 0 auto;
+      margin-top: 40px;
+      width: 100%;
+      background: white;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: inset 0 0 9px #D4D4D4;
+      padding-bottom: 20px;
+  }
+
+  .carte img {
+      width: 106%;
+      margin: 0 auto;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      z-index: 4;
+      margin-top: 9px;
+      height: 300px;
+      margin-left: -10px;
+      margin-top: -10px;
+      box-shadow: inset 0 0 9px #302E2E;
+  }
+
+  @media all and (max-width:890px) {
+      .carte {
+          width: 80%;
+          padding-bottom: 50px;
+
+      }
+      .carte img {
+          width: 107%;
+      }
+      .carousel {
+          display: none;
+      }
+      
+  }
+
+  .details p {
+      height: 100px;
+      overflow-x: scroll;
+      font-size: 24px;
+      width: 100%;
+      margin: auto;
+      font-family: 'Asap Condensed', sans-serif;
+  }
+
+  .date h3 {
+      color: orange;
+      letter-spacing: 2px;
+  }
+
+  .date p {
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+  }
+
+  .btn-warning {
+      height: 40px;
+      text-transform: uppercase;
+      width: 120px;
+      margin-top: 60px;
+      padding: 5px;
+      background: #E0A031;
+      border: none;
+      margin-left: 10px;
+  }
+
+  .btn-danger {
+      padding: 5px;
+      height: 40px;
+      text-transform: uppercase;
+      margin-top: 60px;
+      background: #5B87D3;
+      border: none;
+      margin-right: 30px;
+  }
+  @media all and (max-width:890px){
+    .btn-danger, .btn-warning {
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+   
+  }
+  .card-text {
+      width: 150px;
+      margin: 0 auto;
+  }
+
+  .voyageTitre {
+      margin-bottom: 60px;
+      font-family: 'Gloria Hallelujah', cursive;
+      font-size: 35px;
+      padding-top: 30px;
+  }
+  /* =======Itineraire=========*/
+
+  .itineraire-img img {
+      height: 500px;
+  }
+
+  .personnalisable {
+      background: #E69B2B;
+      color: white;
+      height: 500px;
+      padding-top: 18px;
+      padding-left: 15px;
+  }
+
+  .personnalisable p {
+      font-size: 21px;
+      margin-right: 15px;
+  }
+
+  .personnalisable img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 50px;
+      margin-top: 20px;
+  }
+
+  .descriptif {
+      margin-top: -1px;
+      background: white;
+      border: 0.5px solid #E2DDDD;
+      padding: 30px;
+      color: #3D3939;
+      letter-spacing: 0.5px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 19px;
+  }
+
+  .descriptif img {
+      margin-top: 10px;
+  }
+
+  .descriptif h3 {
+      color: #000000;
+      margin-bottom: 20px;
+      margin-top: 30px;
+  }
+
+  .VerticalSeparator {
+      border-left: 1.0px solid #93979C;
+      /* Border on the left */
+      width: 0.5px;
+      /* Width instead of height */
+      height: 200px;
+  }
+
+  @media all and (max-width:890px) {
+      .VerticalSeparator {
+          display: none;
+      }
+  }
+  /* =======FOOTER ============*/
+
+  footer {
+      margin-top: 50px;
+      background: #407CE8;
+      
+  }
+
+  footer a {
+      color: #fff;
+  }
+
+  .copyright,
+  .mleg,
+  .icons {
+    margin-top: 40px;
+      color: #fff;
+  }
+
+  .icons i {
+      text-align:right;
+      margin-left: 10px;
+      color: #fff;
+  }
+  /* === dashbord === */
+  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+
+  .row.content {
+      height: 1500px
+  }
+  /* Set gray background color and 100% height */
+
+  .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+<<<<<<< HEAD
+    }
+    .carteSupp
+    {
+        padding: 20px;
+        border-radius:10px;
+        background: #C5C5D3;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .carteSupp .btn-danger
+    {
+        background: #CF3030;
+        padding: 5px;
+    }
+    /* Set black background color, white text and some padding */
+    footer {
+=======
+  }
+  /* Set black background color, white text and some padding */
+
+  footer {
+>>>>>>> e381bca3292aa3e63a1f16633cceb9aded659e49
+      background-color: #555;
+      color: white;
+      padding: 15px;
+  }
+  /* On small screens, set height to 'auto' for sidenav and grid */
+
+  @media screen and (max-width: 767px) {
+      .sidenav {
+          height: auto;
+          padding: 15px;
+      }
+      .row.content {
+          height: auto;
+      }
+  }
+  
+/* ========= Contact ================ */
+
+form {
+    margin-left: 500px;
+
+}
