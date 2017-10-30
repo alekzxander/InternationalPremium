@@ -20,13 +20,23 @@ let voyage = require('./models/voyage')
             res.render('card.ejs',{cartes : carte});
         });
     });
-  
+
     app.get('/dashbord/dashItineraire', permissions.can('access admin page'), (req, res) => {
         res.render('dashItineraire.ejs')
     })
-
+    
+    // create card
     // process the card form
-    /*app.post('/dashbord/card')*/
+    app.post('/dashbord/card', permissions.can('access admin page'), (req,res) => {
+            let myData = new voyage(req.body);
+            myData.save()
+            .then(item => {
+                res.redirect("/dashbord/card");
+            })
+            .catch(err => {
+                res.status(400).send("Impossible de sauvegarder dans la db");
+            });
+        });
 
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
