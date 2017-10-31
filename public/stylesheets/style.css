@@ -490,9 +490,14 @@ header {
     font-family: 'Roboto', sans-serif;
     font-size: 19px;
 }
-
+.descriptif:hover {
+    box-shadow: 0px 3px 5px rgba(32, 32, 32, 0.15);
+    transform: scale(1.01)
+}
 .descriptif img {
     margin-top: 10px;
+    height: 180px;
+    width: 310px;
 }
 
 .descriptif h3 {

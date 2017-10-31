@@ -24,36 +24,36 @@
                     <div class="carte">
                         <form action="/dashbord/card" method="post">
                             <div class="imgVide">
-                                <input type="file" class='btn btn-primary' placeholder="">
+                                <input type="file" name="img" class='btn btn-primary' placeholder="">
                             </div>
                             <div class="ville">
                                 <div class="form-group">
                                     <label>Titre</label>
-                                    <input type="text" class="form-control" name="titre" placeholder="Pays a visiter">
+                                    <input type="text" class="form-control" name="name" placeholder="Pays a visiter">
                                 </div>
                             </div>
                             <div class="row">
 
                                 <div class="form-group col-md-6">
                                     <label>date aller</label>
-                                    <input type="text" class="form-control" name="date aller" placeholder="ex: 12 janvier 2018">
+                                    <input type="text" class="form-control" name="dateA" placeholder="ex: 12 janvier 2018">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>date retour</label>
-                                    <input type="text" class="form-control" name="date retour" placeholder="ex: 30 janvier 2018">
+                                    <input type="text" class="form-control" name="dateR" placeholder="ex: 30 janvier 2018">
                                 </div>
 
                             </div>
 
                             <div class="form-group">
                                 <label>nombre de jour</label>
-                                <input type="text" class="form-control" name="nombre de jour" placeholder="ex: 23 jours">
+                                <input type="text" class="form-control" name="sejour" placeholder="ex: 23 jours">
                             </div>
 
                             <div class="form-group">
                                 <label for="descriptif">descriptif de la carte</label>
-                                <textarea class="form-control" rows="5" id="comment" placeholder="leger desciptif. 140 caract max"></textarea>
+                                <textarea class="form-control" rows="5" name="preview" id="comment" placeholder="leger desciptif. 140 caract max"></textarea>
                             </div>
                             <button type="submit" class="btn btn-warning btn-lg">Confirmer</button>
                         </form>

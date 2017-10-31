@@ -27,16 +27,23 @@ let voyage = require('./models/voyage')
     
     // create card
     // process the card form
-    app.post('/dashbord/card', permissions.can('access admin page'), (req,res) => {
-            let myData = new voyage(req.body);
-            myData.save()
+    app.post('/dashbord/card', permissions.can('access admin page'), (req, res) => {
+        let myData = new voyage({
+            name: req.body.name,
+            dateA: req.body.dateA,
+            dateR: req.body.dateR,
+            sejour: req.body.sejour,
+            preview: req.body.preview,
+            img : req.body.img
+        });
+        myData.save()
             .then(item => {
                 res.redirect("/dashbord/card");
             })
             .catch(err => {
                 res.status(400).send("Impossible de sauvegarder dans la db");
             });
-        });
+    });
 
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
