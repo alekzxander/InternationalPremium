@@ -9,28 +9,28 @@ module.exports = function (app, passport) {
 
 
     // normal routes ===============================================================
-    app.get('/dashbord', (req, res) => {
+    app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         res.render('dashbord.ejs')
 
     })
     //TODO : renommer pour card/:id/delete
-    app.get('/cardSupp/:id', (req, res) => {
+    app.get('/cardSupp/:id',permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
         })
     })
-    app.get('/dashbord/card', (req, res) => {
+    app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
             res.render('card.ejs', { cartes: carte });
         });
     });
 
-    app.get('/dashbord/dashItineraire/', (req, res) => {
+    app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('dashItineraire.ejs', { voyages: voyages })
         });
     })
-    app.get('/ajoutLieux/:id', (req, res) => {
+    app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux.ejs', {
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
@@ -39,7 +39,7 @@ module.exports = function (app, passport) {
             })
         });
     })
-    app.post('/ajoutLieux/:id', (req, res) => {
+    app.post('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.findByIdAndUpdate(req.params.id, { $addToSet: { lieux: req.body.lieux } }, { new: true }, (err, voyages) => {
             voyages.save()
                 .then(item => {
@@ -55,7 +55,7 @@ module.exports = function (app, passport) {
 
     // create card
     // process the card form
-    app.post('/dashbord/card', upload.single('img'), (req, res) => {
+    app.post('/dashbord/card',permissions.can('access admin page') ,upload.single('img'), (req, res) => {
         /** The original name of the uploaded file
          stored in the variable "originalname". **/
         var fileToUpload = req.file;
@@ -99,7 +99,7 @@ module.exports = function (app, passport) {
     });
 
     /* update card */
-    app.get('/updatecard/:id', (req, res) => {
+    app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
 
         voyage.find((err, voyages) => {
             res.render("updatecard.ejs", {
@@ -110,7 +110,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/updatecard/:id', (req, res) => {
+    app.post('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,
