@@ -1,40 +1,40 @@
 const permissions = require('../config/permissions');
 
-module.exports = function (app , passport) {
-let voyage = require('./models/voyage')
+module.exports = function (app, passport) {
+    let voyage = require('./models/voyage')
 
 
     // normal routes ===============================================================
-    app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord', (req, res) => {
         res.render('dashbord.ejs')
 
     })
     //TODO : renommer pour card/:id/delete
-    app.get('/cardSupp/:id', permissions.can('access admin page'), (req, res)=>{
-        voyage.remove({_id : req.params.id}, (err, delData)=>{
+    app.get('/cardSupp/:id', (req, res) => {
+        voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
         })
     })
-    app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
-        voyage.find((err, carte)=>{
-            res.render('card.ejs',{cartes : carte});
+    app.get('/dashbord/card', (req, res) => {
+        voyage.find((err, carte) => {
+            res.render('card.ejs', { cartes: carte });
         });
     });
 
-    app.get('/dashbord/dashItineraire', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord/dashItineraire', (req, res) => {
         res.render('dashItineraire.ejs')
     })
-    
+
     // create card
     // process the card form
-    app.post('/dashbord/card', permissions.can('access admin page'), (req, res) => {
+    app.post('/dashbord/card', (req, res) => {
         let myData = new voyage({
             name: req.body.name,
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
             preview: req.body.preview,
-            img : req.body.img
+            img: req.body.img
         });
         myData.save()
             .then(item => {
@@ -45,10 +45,49 @@ let voyage = require('./models/voyage')
             });
     });
 
+    //update 
+    app.get('/updatecard/:id', (req, res) => {
+
+        voyage.find((err, voyages) => {
+            res.render("updatecard.ejs", {
+                voyage: req.params.id, card: voyages.filter((voyage) => {
+                    return voyage.id == req.params.id
+                })[0]
+            })
+        })
+    })
+
+    app.put('/updatecard/:id', (req, res) => {
+        var id = req.params.id;
+        voyage.findById(id,(err,voyage)=>{
+            if(err) {
+                res.status(404).end()
+            }
+            voyage.name= req.body.name;
+            voyage.dateA =req.body.dateA;
+            voyage.dateR  =req.body.dateR;
+            voyage.sejour  =req.body.sejour;
+            voyage.preview =req.body.preview;
+            voyage.text  =req.body.text;
+            
+            voyage.save((err)=>{
+                if(err) {
+                    console.log('not ok')
+                }
+                res.redirect('/dashbord/card')
+            })
+        })
+    });
+
+
+
+
+
+
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
-            res.render('index.ejs', {mesVoyages: voyages});
+            res.render('index.ejs', { mesVoyages: voyages });
         });
     });
     app.get('/voyage/:id', ((req, res) => {
@@ -64,7 +103,7 @@ let voyage = require('./models/voyage')
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function (req, res) {
-        res.render('profile.ejs', {user: req.user});
+        res.render('profile.ejs', { user: req.user });
     });
 
     // LOGOUT ==============================
@@ -151,8 +190,8 @@ let voyage = require('./models/voyage')
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) 
+    if (req.isAuthenticated())
         return next();
-    
+
     res.redirect('/');
 }
