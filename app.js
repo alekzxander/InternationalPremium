@@ -2,6 +2,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const app = express();
+var multer  = require('multer');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -16,6 +17,7 @@ const passportConfig =require('./config/passport')(passport); // pass passport f
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
 const methodOverride = require('method-override')
+
 
 
 // configuration de mongoose

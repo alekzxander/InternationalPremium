@@ -8,7 +8,7 @@ let voyageSchema = new mongoose.Schema ({
     preview : String,
     text : String,
     img : String,
-    lieuxTableau : Array,
+    lieux : Array,
 })
 let voyage = mongoose.model('voyages', voyageSchema)
 module.exports = voyage;
