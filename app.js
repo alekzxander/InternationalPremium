@@ -17,6 +17,7 @@ const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
 
 
+
 // configuration de mongoose
 mongoose.connect(configDB.url, { useMongoClient: true }); // connection database | TODO : mettre dans une variable d'environnement
 mongoose.Promise = global.Promise;

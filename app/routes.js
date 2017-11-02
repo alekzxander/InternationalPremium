@@ -2,39 +2,66 @@ const permissions = require('../config/permissions');
 
 module.exports = function (app , passport) {
 let voyage = require('./models/voyage')
+const findOrCreate = require('mongoose-findorcreate')
 
 
     // normal routes ===============================================================
-    app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord', (req, res) => {
         res.render('dashbord.ejs')
 
     })
     //TODO : renommer pour card/:id/delete
-    app.get('/cardSupp/:id', permissions.can('access admin page'), (req, res)=>{
+    app.get('/cardSupp/:id',  (req, res)=>{
         voyage.remove({_id : req.params.id}, (err, delData)=>{
             res.render("validation.ejs");
         })
     })
-    app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord/card', (req, res) => {
         voyage.find((err, carte)=>{
             res.render('card.ejs',{cartes : carte});
         });
     });
 
-    app.get('/dashbord/dashItineraire', permissions.can('access admin page'), (req, res) => {
-        res.render('dashItineraire.ejs')
+    app.get('/dashbord/dashItineraire/', (req, res) => {
+        voyage.find((err, voyages)=>{
+        res.render('dashItineraire.ejs',{voyages : voyages})
+        });
+    })
+    app.get('/ajoutLieux/:id', (req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('ajoutLieux.ejs', {
+                id: req.params.id, mesVoyages: voyages.filter((voyage) => {
+                  return(voyage.id == req.params.id)
+                })[0]
+            })
+        });
+    }) 
+    app.post('/ajoutLieux/:id', (req, res) => { 
+        voyage.findByIdAndUpdate(req.params.id,{ $set :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
+            voyages.save()
+            .then(item => {
+                res.redirect("/dashbord/dashItineraire");
+            })
+            .catch(err => {
+                res.status(400).send("Impossible de sauvegarder dans la db");
+            });
+        })
+       
     })
     
+
     // create card
     // process the card form
-    app.post('/dashbord/card', permissions.can('access admin page'), (req, res) => {
+    app.post('/dashbord/card', (req, res) => {
         let myData = new voyage({
             name: req.body.name,
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
             preview: req.body.preview,
-            img : req.body.img
+            img : req.body.img,
+            text : req.body.text,
+            
         });
         myData.save()
             .then(item => {
@@ -44,7 +71,6 @@ let voyage = require('./models/voyage')
                 res.status(400).send("Impossible de sauvegarder dans la db");
             });
     });
-
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {

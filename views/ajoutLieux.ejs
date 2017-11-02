@@ -1,0 +1,16 @@
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<div class="container">
+        <h1><%= mesVoyages.name %></h1>
+    <form action="/ajoutLieux/<%= mesVoyages._id %>" method="post">
+        <% mesVoyages.lieux.forEach((obj)=>{ %>
+            <h1><%= obj.titre %></h1>
+       <% })%>
+        <input type="text" class="form-control" name="lieux[titre]" placeholder="ex: 23 jours">        
+        <textarea class="form-control" rows="5" name="lieux[text]" id="comment" placeholder="leger desciptif. 140 caract max"></textarea>
+        <p class="text-left"> <button type="submit" class="btn btn-warning btn-lg">Confirmer</button></p>        
+    </form>
+</div>
