@@ -551,10 +551,18 @@ footer a {
     border: 1px dashed blue;
     padding-top: 110px;
 }
+.imgVide1
+{
+    height: 120px;
+    width: 200px;
+    border: 1px dashed blue;
+    margin-top: 85px;
+}
 .imgVide input
 {
   margin-left: 20px;
 }
+
 .titre input 
 {
   width: 120px;
@@ -562,6 +570,11 @@ footer a {
 .row.content {
     height: 1500px
 }
+.form-textarea
+{
+    margin-top: 50px;
+}
+
 /* Set gray background color and 100% height */
 
 .sidenav {

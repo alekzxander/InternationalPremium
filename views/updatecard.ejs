@@ -14,14 +14,14 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="carte">
-                    <form action="/updatecard/<%= card._id%>" method="put">
+                    <form action="/updatecard/<%= card._id%>" method="POST">
                         <div class="imgVide">
                             <input type="file" name="img" class='btn btn-primary' value="<%= card.img %>">
                         </div>
                         <div class="ville">
                             <div class="form-group">
                                 <label>Titre</label>
-                                <input type="text" class="form-control" name="name" value="<%= card.name %>">
+                                <input type="put" class="form-control" name="name" value="<%= card.name %>">
                             </div>
                         </div>
                         <div class="row">

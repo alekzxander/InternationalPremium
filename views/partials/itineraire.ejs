@@ -25,24 +25,23 @@
         </p>
     </div>
     <h1>Lieux a visité</h1>
-    <% console.log(mesVoyages.lieuxTableau.length) %>
-        <% mesVoyages.lieuxTableau.forEach((obj)=>{ %>
+        <% mesVoyages.lieux.forEach((obj)=>{ %>
             <div class="descriptif">
 
                 <div class="row">
                     <div class="col-md-7">
                         <h3>
-                            <%= obj.lieuxAVisiterTitre %>
+                            <%= obj.titre %>
                         </h3>
                         <p>
-                            <%= obj.lieuxAVisiter %>
+                            <%= obj.text %>
                         </p>
                     </div>
                     <div class="col-md-1">
                         <div class="VerticalSeparator"></div>
                     </div>
                     <div class="col-md-4">
-                        <img src="/images/<%= obj.lieuxAVisiterImg %>" class="img-responsive separator" alt="">
+                        <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
                     </div>
                 </div>
 

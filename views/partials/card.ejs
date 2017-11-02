@@ -17,12 +17,13 @@
         <div class="col-sm-9">
             <h4 class="text-center"><small>Dashbord</small></h4>
             <hr>
-            <h4 class="text-center">Contenu des Cartes</h4>
+            <h4 class="text-center">Ajouter un voyage</h4>
             <div class="row">
-                <div class="col-md-4"></div>
                 <div class="col-md-4">
+                    <h4>Contenu de la carte</h4>
                     <div class="carte">
-                        <form action="/dashbord/card" method="post">
+
+                        <form action="/dashbord/card" enctype="multipart/form-data" method="post">
                             <div class="imgVide">
                                 <input type="file" name="img" class='btn btn-primary' placeholder="">
                             </div>
@@ -55,10 +56,15 @@
                                 <label for="descriptif">descriptif de la carte</label>
                                 <textarea class="form-control" rows="5" name="preview" id="comment" placeholder="leger desciptif. 140 caract max"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-warning btn-lg">Confirmer</button>
-                        </form>
                     </div>
                 </div>
+                <div class="col-md-7">
+                    <h4>Resumé du voyage</h4>
+                    <textarea class="form-control form-textarea" rows="10" name="text" id="comment"></textarea>
+                    </div>
+                <div class="col-md-1"></div>
+            <p class="text-left"> <button type="submit" class="btn btn-warning btn-lg">Confirmer</button></p>
+                </form>
             </div>
             <div class="col-md-4"></div>
         
@@ -92,12 +98,6 @@
                             <a class="btn btn-danger btn-lg" href="/cardSupp/<%= carte._id %>">Supprimer</a>
                             <a class="btn btn-warning btn-lg" href="/updatecard/<%=carte.id%>">Modifier</a>
                         </div>
-
-
                     </div>
-                </div>
-                <% })%>
-        </div>
-
-
-
+                    <% })%>
+            </div>
