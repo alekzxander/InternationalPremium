@@ -1,8 +1,11 @@
 const permissions = require('../config/permissions');
+const multer = require('multer');
+var fs = require('fs');
 
 module.exports = function (app , passport) {
 let voyage = require('./models/voyage')
 const findOrCreate = require('mongoose-findorcreate')
+var upload = multer({ dest: 'public/images/' })
 
 
     // normal routes ===============================================================
@@ -31,7 +34,7 @@ const findOrCreate = require('mongoose-findorcreate')
         voyage.find((err, voyages) => {
             res.render('ajoutLieux.ejs', {
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
-                  return(voyage.id == req.params.id)
+                return(voyage.id == req.params.id)
                 })[0]
             })
         });
@@ -46,29 +49,52 @@ const findOrCreate = require('mongoose-findorcreate')
                 res.status(400).send("Impossible de sauvegarder dans la db");
             });
         })
-       
+    
     })
     
 
     // create card
     // process the card form
-    app.post('/dashbord/card', (req, res) => {
+    app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+        /** The original name of the uploaded file
+         stored in the variable "originalname". **/
+        var fileToUpload = req.file;
+        var target_path = 'public/images/' + fileToUpload.originalname;
+
+        /** When using the "single"
+             data come in "req.file" regardless of the attribute "name". **/ 
+            var tmp_path = fileToUpload.path;
+        
         let myData = new voyage({
             name: req.body.name,
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
             preview: req.body.preview,
-            img : req.body.img,
+            img : fileToUpload.originalname,
             text : req.body.text,
             
         });
-        myData.save()
+        
+            
+        myData
+            .save()
             .then(item => {
-                res.redirect("/dashbord/card");
+                //Upload image 
+                /** A better way to copy the uploaded file. **/
+                var src = fs.createReadStream(tmp_path);
+                var dest = fs.createWriteStream(target_path);
+                src.pipe(dest);
+                //delete temp file
+                fs.unlink(tmp_path);
+                src.on('end', function() { res.redirect("/dashbord/card"); });
+                src.on('error', function(err) { res.render('error'); });
+
             })
             .catch(err => {
-                res.status(400).send("Impossible de sauvegarder dans la db");
+                res
+                    .status(400)
+                    .send("Impossible de sauvegarder dans la db");
             });
     });
     // show the home page (will also have our login links)

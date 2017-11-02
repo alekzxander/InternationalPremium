@@ -23,7 +23,7 @@
                     <h4>Contenu de la carte</h4>
                     <div class="carte">
 
-                        <form action="/dashbord/card" method="post">
+                        <form action="/dashbord/card" enctype="multipart/form-data" method="post">
                             <div class="imgVide">
                                 <input type="file" name="img" class='btn btn-primary' placeholder="">
                             </div>
@@ -72,7 +72,7 @@
 
                     <div class="col-md-4">
                         <div class="carte">
-                            <img src="../../images/<%= carte.img %>" alt="">
+                            <img src="/images/<%= carte.img %>" alt="">
                             <div class="ville">
                                 <h1>
                                     <%= carte.name %>
