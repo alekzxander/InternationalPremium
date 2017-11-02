@@ -66,34 +66,37 @@
             <p class="text-left"> <button type="submit" class="btn btn-warning btn-lg">Confirmer</button></p>
                 </form>
             </div>
-            <h1>Supprimer une carte</h1>
-            <div class="row">
-                <% cartes.forEach((carte)=>{ %>
+            <div class="col-md-4"></div>
+        
 
-                    <div class="col-md-4">
-                        <div class="carte">
-                            <img src="/images/<%= carte.img %>" alt="">
-                            <div class="ville">
-                                <h1>
-                                    <%= carte.name %>
-                                </h1>
-                            </div>
-                            <div class="date">
-                                <h3>Voyage de
-                                    <%= carte.sejour %> !</h3>
-                                <p>
-                                    <%= carte.dateA %> au
-                                        <%= carte.dateR %>
-                                </p>
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <%= carte.preview %>
-                                </p>
-                            </div>
-                            <div class="row">
-                                <a class="btn btn-danger btn-lg" href="/cardSupp/<%= carte._id %>">Supprimer</a>
-                            </div>
+        <h1>Supprimer ou modifier une carte</h1>
+        <div class="row">
+            <% cartes.forEach((carte)=>{ %>
+
+                <div class="col-md-4">
+                    <div class="carte">
+                        <img src="../../images/<%= carte.img %>" alt="">
+                        <div class="ville">
+                            <h1>
+                                <%= carte.name %>
+                            </h1>
+                        </div>
+                        <div class="date">
+                            <h3>Voyage de
+                                <%= carte.sejour %> !</h3>
+                            <p>
+                                <%= carte.dateA %> au
+                                    <%= carte.dateR %>
+                            </p>
+                        </div>
+                        <div class="details">
+                            <p>
+                                <%= carte.preview %>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-danger btn-lg" href="/cardSupp/<%= carte._id %>">Supprimer</a>
+                            <a class="btn btn-warning btn-lg" href="/updatecard/<%=carte.id%>">Modifier</a>
                         </div>
                     </div>
                     <% })%>

@@ -16,6 +16,7 @@ const configDB = require('./config/database.js');
 const passportConfig =require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
+const methodOverride = require('method-override')
 
 
 
@@ -28,6 +29,7 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(permissions.middleware());
@@ -48,6 +50,7 @@ routes(app, passport); // load our routes and pass in our app and fully configur
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
+
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
 

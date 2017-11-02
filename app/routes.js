@@ -2,10 +2,10 @@ const permissions = require('../config/permissions');
 const multer = require('multer');
 var fs = require('fs');
 
-module.exports = function (app , passport) {
-let voyage = require('./models/voyage')
-const findOrCreate = require('mongoose-findorcreate')
-var upload = multer({ dest: 'public/images/' })
+module.exports = function (app, passport) {
+    let voyage = require('./models/voyage')
+    const findOrCreate = require('mongoose-findorcreate')
+    var upload = multer({ dest: 'public/images/' })
 
 
     // normal routes ===============================================================
@@ -14,27 +14,27 @@ var upload = multer({ dest: 'public/images/' })
 
     })
     //TODO : renommer pour card/:id/delete
-    app.get('/cardSupp/:id',  (req, res)=>{
-        voyage.remove({_id : req.params.id}, (err, delData)=>{
+    app.get('/cardSupp/:id', (req, res) => {
+        voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
         })
     })
     app.get('/dashbord/card', (req, res) => {
-        voyage.find((err, carte)=>{
-            res.render('card.ejs',{cartes : carte});
+        voyage.find((err, carte) => {
+            res.render('card.ejs', { cartes: carte });
         });
     });
 
     app.get('/dashbord/dashItineraire/', (req, res) => {
-        voyage.find((err, voyages)=>{
-        res.render('dashItineraire.ejs',{voyages : voyages})
+        voyage.find((err, voyages) => {
+            res.render('dashItineraire.ejs', { voyages: voyages })
         });
     })
     app.get('/ajoutLieux/:id', (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux.ejs', {
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
-                return(voyage.id == req.params.id)
+                    return (voyage.id == req.params.id)
                 })[0]
             })
         });
@@ -42,16 +42,16 @@ var upload = multer({ dest: 'public/images/' })
     app.post('/ajoutLieux/:id', (req, res) => { 
         voyage.findByIdAndUpdate(req.params.id,{ $addToSet :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
             voyages.save()
-            .then(item => {
-                res.redirect("/dashbord/dashItineraire");
-            })
-            .catch(err => {
-                res.status(400).send("Impossible de sauvegarder dans la db");
-            });
+                .then(item => {
+                    res.redirect("/dashbord/dashItineraire");
+                })
+                .catch(err => {
+                    res.status(400).send("Impossible de sauvegarder dans la db");
+                });
         })
-    
+
     })
-    
+
 
     // create card
     // process the card form
@@ -62,21 +62,21 @@ var upload = multer({ dest: 'public/images/' })
         var target_path = 'public/images/' + fileToUpload.originalname;
 
         /** When using the "single"
-             data come in "req.file" regardless of the attribute "name". **/ 
-            var tmp_path = fileToUpload.path;
-        
+             data come in "req.file" regardless of the attribute "name". **/
+        var tmp_path = fileToUpload.path;
+
         let myData = new voyage({
             name: req.body.name,
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
             preview: req.body.preview,
-            img : fileToUpload.originalname,
-            text : req.body.text,
-            
+            img: fileToUpload.originalname,
+            text: req.body.text,
+
         });
-        
-            
+
+
         myData
             .save()
             .then(item => {
@@ -87,8 +87,8 @@ var upload = multer({ dest: 'public/images/' })
                 src.pipe(dest);
                 //delete temp file
                 fs.unlink(tmp_path);
-                src.on('end', function() { res.redirect("/dashbord/card"); });
-                src.on('error', function(err) { res.render('error'); });
+                src.on('end', function () { res.redirect("/dashbord/card"); });
+                src.on('error', function (err) { res.render('error'); });
 
             })
             .catch(err => {
@@ -97,10 +97,51 @@ var upload = multer({ dest: 'public/images/' })
                     .send("Impossible de sauvegarder dans la db");
             });
     });
+
+    update
+    app.get('/updatecard/:id', (req, res) => {
+
+        voyage.find((err, voyages) => {
+            res.render("updatecard.ejs", {
+                voyage: req.params.id, card: voyages.filter((voyage) => {
+                    return voyage.id == req.params.id
+                })[0]
+            })
+        })
+    })
+
+    app.post('/updatecard/:id', (req, res) => {
+        voyage.findByIdAndUpdate(req.params.id, {
+            $set: {
+                name: req.body.name,
+                dateA: req.body.dateA,
+                dateR: req.body.dateR,
+                sejour: req.body.sejour,
+                preview: req.body.preview,
+                text: req.body.text
+            }
+        },
+            { new: true },
+            (err, voyages) => {
+                voyages.save()
+                    .then(item => {
+                        res.redirect("/dashbord/card");
+                    })
+                    .catch(err => {
+                        res.status(400).send("Maj non possible");
+                    });
+            })
+
+    })
+
+
+
+
+
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
-            res.render('index.ejs', {mesVoyages: voyages});
+            res.render('index.ejs', { mesVoyages: voyages });
         });
     });
     app.get('/voyage/:id', ((req, res) => {
@@ -116,7 +157,7 @@ var upload = multer({ dest: 'public/images/' })
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function (req, res) {
-        res.render('profile.ejs', {user: req.user});
+        res.render('profile.ejs', { user: req.user });
     });
 
     // LOGOUT ==============================
@@ -203,8 +244,8 @@ var upload = multer({ dest: 'public/images/' })
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) 
+    if (req.isAuthenticated())
         return next();
-    
+
     res.redirect('/');
 }
