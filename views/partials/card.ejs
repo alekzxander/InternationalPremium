@@ -63,7 +63,7 @@
             <div class="col-md-4"></div>
         
 
-        <h1>Supprimer une carte</h1>
+        <h1>Supprimer ou modifier une carte</h1>
         <div class="row">
             <% cartes.forEach((carte)=>{ %>
 
@@ -90,7 +90,7 @@
                         </div>
                         <div class="row">
                             <a class="btn btn-danger btn-lg" href="/cardSupp/<%= carte._id %>">Supprimer</a>
-
+                            <a class="btn btn-warning btn-lg" href="/updatecard/<%=carte.id%>">Modifier</a>
                         </div>
 
 
