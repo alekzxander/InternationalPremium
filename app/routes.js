@@ -40,7 +40,7 @@ var upload = multer({ dest: 'public/images/' })
         });
     }) 
     app.post('/ajoutLieux/:id', (req, res) => { 
-        voyage.findByIdAndUpdate(req.params.id,{ $set :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
+        voyage.findByIdAndUpdate(req.params.id,{ $addToSet :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
             voyages.save()
             .then(item => {
                 res.redirect("/dashbord/dashItineraire");
