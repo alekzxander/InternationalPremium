@@ -352,9 +352,6 @@ header {
 }
 /* ========== CARTE ================= */
 
-.card {
-    background: url("../images/fond_3.jpg")no-repeat;
-}
 
 .carte {
     margin: 0 auto;
