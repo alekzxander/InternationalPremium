@@ -324,12 +324,6 @@ html {
 }
 /* =============== HEADER ======================*/
 
-header {
-    margin-bottom: 90px;
-    padding-bottom: 71px;
-    background: #FFFFFF;
-}
-
 .p_guide {
     font-style: italic;
     margin-top: 15px;
@@ -350,12 +344,22 @@ header {
     height: 600px;
     margin-bottom: 70px;
 }
+.carousel-inner>.item>img {
+    height: 800px;
+    width: 100%;
+}
 
 .titreIcon {
     font-family: 'Gloria Hallelujah', cursive;
 }
 /* ========== CARTE ================= */
-
+#myIcon {
+    background: white;
+    padding: 90px;
+}
+.card {
+    background: url("../images/fond_3.jpg")no-repeat;
+}
 
 .carte {
     margin: 0 auto;
@@ -399,8 +403,7 @@ header {
 
 .details p {
     height: 100px;
-    overflow-x: scroll;
-    font-size: 24px;
+    font-size: 22px;
     width: 100%;
     margin: auto;
     font-family: 'Asap Condensed', sans-serif;
@@ -522,11 +525,7 @@ header {
 }
 /* =======FOOTER ============*/
 
-footer {
-    margin-top: 50px;
-    background: #407CE8;
-    
-}
+
 
 footer a {
     color: #fff;
@@ -540,7 +539,7 @@ footer a {
 }
 
 .icons i {
-    text-align:right;
+    
     margin-left: 10px;
     color: #fff;
 }
@@ -584,7 +583,7 @@ footer a {
   }
   /* Set black background color, white text and some padding */
   footer {
-    background-color: #06162D;
+    background-color: #06162B;
     color: white;
     padding: 15px;
 }
