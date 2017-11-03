@@ -5,9 +5,18 @@
 
 <div class="container">
         <h1><%= mesVoyages.name %></h1>
+    <div class="row"> 
+        <div class="col-md-8">
     <form action="/ajoutLieux/<%= mesVoyages._id %>" method="post">
-        <input type="text" class="form-control" name="lieux[titre]" placeholder="ex: 23 jours">        
-        <textarea class="form-control" rows="5" name="lieux[text]" id="comment" placeholder="leger desciptif. 140 caract max"></textarea>
+        <input type="text" class="form-control" name="lieux[titre]" placeholder="Titre">        
+        <textarea class="form-control" rows="8" name="lieux[text]" id="comment" placeholder="Descriptif du lieu a visiter"></textarea>
+    </div>
+    <div class="col-md-4">
+            <div class="imgVide">
+                    <input type="file" name="lieux[img]" class='btn btn-primary' placeholder="">
+                </div>
+    </div>           
         <p class="text-left"> <button type="submit" class="btn btn-warning btn-lg">Confirmer</button></p>        
     </form>
+    </div>
 </div>
