@@ -1,7 +1,7 @@
 /* 1 */
 {
     "_id" : ObjectId("59e6e07142c9e1942b62c295"),
-    "name" : "Etats Unis d'Amerique",
+    "name" : "USA",
     "dateA" : "13 Janvier 2018",
     "dateR" : "29 janvier 2018",
     "sejour" : "16 jours",
@@ -12,7 +12,7 @@
         {
             "lieuxAVisiterImg" : "californie.jpeg",
             "lieuxAVisiterTitre" : "l'Univeritéde Californie,Los Angele",
-            "lieuxAVisiter" : "Une des vingt premiere université de l'Amerique, UCLA est la mère de l'internet lorque en 1969, une transmition APRANET est envoyée du campus à San Francisco Menlon Park."
+            "lieuxAVisiter" : "Une des vingt premiere université de l'Amerique, UCLA est la mère de l'internet lorque en 1969, une transmition APRdrANET est envoyée du campus à San Francisco Menlon Park."
         }, 
         {
             "lieuxAVisiterImg" : "yorkUniv.jpeg",
