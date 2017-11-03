@@ -15,6 +15,7 @@
 
         <div class="pull-right">
             <a href="/">Retour vers l'accueil</a>
+            <a href="/logout">Logout</a>
           </div>
 
         <div class="col-sm-9">
@@ -27,7 +28,7 @@
                     <div class="carte">
                         <form action="/dashbord/card" enctype="multipart/form-data" method="post">
                             <div class="imgVide">
-                                <input type="file" name="img" class='btn btn-primary' placeholder="">
+                                <input type="file" name="img" class='btn btn-primary'>
                             </div>
                             <div class="ville">
                                 <div class="form-group">
@@ -55,14 +56,16 @@
                             </div>
                     </div>
                 </div>
+                
                 <div class="col-md-7">
                     <h4>Résumé du voyage</h4>
                     <textarea class="form-control form-textarea" rows="10" name="text" id="comment"></textarea>
                     </div>
                 <div class="col-md-1"></div>
-            <p class="text-left"> <button type="submit" class="btn btn-warning btn-lg">Confirmer</button></p>
+            <p class="text-left"> <button type="submit" class="btn btn-success btn-lg">Confirmer</button></p>
                 </form>
             </div>
+
             <h1>Supprimer une carte</h1>
             <div class="row">
                 <% cartes.forEach((carte)=>{ %>

@@ -412,15 +412,25 @@ header {
     margin-bottom: 20px;
 }
 
-.btn-warning {
+.btn-details {
+    padding: 5px;
     height: 40px;
     text-transform: uppercase;
-    width: 120px;
+    background: #1661B2;
+    color :#fff;
     margin-top: 60px;
+    border: none;
+    margin-right: 30px;
+}
+
+.btn-warning {
     padding: 5px;
+    height: 40px;
+    text-transform: uppercase;
+    margin-top: 60px;
     background: #E0A031;
     border: none;
-    margin-left: 10px;
+    margin-right: 30px;
 }
 
 .btn-danger {
@@ -428,9 +438,16 @@ header {
     height: 40px;
     text-transform: uppercase;
     margin-top: 60px;
-    background: #5B87D3;
     border: none;
     margin-right: 30px;
+}
+.btn-success  {
+    padding: 5px;
+    height: 40px;
+    text-transform: uppercase;
+    margin-top: 60px;
+    border: none;
+    margin-right: 1px;
 }
 @media all and (max-width:890px){
   .btn-danger, .btn-warning {
@@ -608,7 +625,5 @@ footer a {
         height: auto;
     }
 }
-
-/* ========= Contact ================ */
 
 
