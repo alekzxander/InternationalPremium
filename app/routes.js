@@ -37,16 +37,15 @@ const findOrCreate = require('mongoose-findorcreate')
         });
     }) 
     app.post('/ajoutLieux/:id', (req, res) => { 
-        voyage.findByIdAndUpdate(req.params.id,{ $set :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
+        voyage.findByIdAndUpdate(req.params.id,{ $push :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
             voyages.save()
             .then(item => {
                 res.redirect("/dashbord/dashItineraire");
             })
             .catch(err => {
-                res.status(400).send("Impossible de sauvegarder dans la db");
+                res.status(400);
             });
         })
-       
     })
     
 
