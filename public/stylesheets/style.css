@@ -28,10 +28,12 @@ html {
     transition: all 0.5s ease;
     margin: 0 auto;
     padding: 0 auto;
+   
 }
 
 #wrapper.toggled {
     padding-left: 220px;
+   
 }
 
 #sidebar-wrapper {
@@ -60,11 +62,13 @@ html {
 #page-content-wrapper {
     width: 100%;
     padding-top: 70px;
+    
 }
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -220px;
+   
 }
 /*-------------------------------*/
 /*     Sidebar nav styles        */
@@ -528,7 +532,7 @@ footer {
 }
 
 footer a {
-    color: #06162D;
+    color: #fff;
 }
 
 .copyright,
@@ -583,7 +587,7 @@ footer a {
   }
   /* Set black background color, white text and some padding */
   footer {
-    background-color: #555;
+    background-color: #06162D;
     color: white;
     padding: 15px;
 }

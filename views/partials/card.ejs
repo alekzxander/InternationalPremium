@@ -2,7 +2,6 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-
 <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-3 sidenav">
@@ -13,16 +12,15 @@
                 <li><a class="text-center" href="/dashbord/dashItineraire">Itinéraires</a></li>
             </ul><br>
         </div>
-
         <div class="col-sm-9">
             <h4 class="text-center"><small>Dashbord</small></h4>
             <hr>
-            <h4 class="text-center">Contenu des Cartes</h4>
+            <h4 class="text-center">Ajouter un voyage</h4>
             <div class="row">
-                <div class="col-md-4"></div>
                 <div class="col-md-4">
+                    <h4>Contenu de la carte</h4>
                     <div class="carte">
-                        <form action="/dashbord/card" method="post">
+                        <form action="/dashbord/card" enctype="multipart/form-data" method="post">
                             <div class="imgVide">
                                 <input type="file" name="img" class='btn btn-primary' placeholder="">
                             </div>
@@ -33,71 +31,65 @@
                                 </div>
                             </div>
                             <div class="row">
-
                                 <div class="form-group col-md-6">
                                     <label>date aller</label>
                                     <input type="text" class="form-control" name="dateA" placeholder="ex: 12 janvier 2018">
                                 </div>
-
                                 <div class="form-group col-md-6">
                                     <label>date retour</label>
                                     <input type="text" class="form-control" name="dateR" placeholder="ex: 30 janvier 2018">
                                 </div>
-
                             </div>
-
                             <div class="form-group">
                                 <label>nombre de jour</label>
                                 <input type="text" class="form-control" name="sejour" placeholder="ex: 23 jours">
                             </div>
-
                             <div class="form-group">
                                 <label for="descriptif">descriptif de la carte</label>
                                 <textarea class="form-control" rows="5" name="preview" id="comment" placeholder="leger desciptif. 140 caract max"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-warning btn-lg">Confirmer</button>
-                        </form>
                     </div>
                 </div>
+                <div class="col-md-7">
+                    <h4>Resumé du voyage</h4>
+                    <textarea class="form-control form-textarea" rows="10" name="text" id="comment"></textarea>
+                    </div>
+                <div class="col-md-1"></div>
+            <p class="text-left"> <button type="submit" class="btn btn-warning btn-lg">Confirmer</button></p>
+                </form>
             </div>
-            <div class="col-md-4"></div>
-        
-
-        <h1>Supprimer une carte</h1>
-        <div class="row">
-            <% cartes.forEach((carte)=>{ %>
-
-                <div class="col-md-4">
-                    <div class="carte">
-                        <img src="../../images/<%= carte.img %>" alt="">
-                        <div class="ville">
-                            <h1>
-                                <%= carte.name %>
-                            </h1>
+            <h1>Supprimer une carte</h1>
+            <div class="row">
+                <% cartes.forEach((carte)=>{ %>
+                    <div class="col-md-4">
+                        <div class="carte">
+                            <img src="/images/<%= carte.img %>" alt="">
+                            <div class="ville">
+                                <h1>
+                                    <%= carte.name %>
+                                </h1>
+                            </div>
+                            <div class="date">
+                                <h3>Voyage de
+                                    <%= carte.sejour %> !</h3>
+                                <p>
+                                    <%= carte.dateA %> au
+                                        <%= carte.dateR %>
+                                </p>
+                            </div>
+                            <div class="details">
+                                <p>
+                                    <%= carte.preview %>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <a class="btn btn-danger btn-lg" href="/cardSupp/<%= carte._id %>">Supprimer</a>
+                                <a class="btn btn-warning btn-lg" href="/updatecard/<%=carte.id%>">Modifier</a>
+                            </div>
                         </div>
-                        <div class="date">
-                            <h3>Voyage de
-                                <%= carte.sejour %> !</h3>
-                            <p>
-                                <%= carte.dateA %> au
-                                    <%= carte.dateR %>
-                            </p>
-                        </div>
-                        <div class="details">
-                            <p>
-                                <%= carte.preview %>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <a class="btn btn-danger btn-lg" href="/cardSupp/<%= carte._id %>">Supprimer</a>
-
-                        </div>
-
-
                     </div>
-                </div>
-                <% })%>
-        </div>
+                    <% })%>
+            </div>
 
 
-
+            
