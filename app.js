@@ -2,6 +2,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const app = express();
+var multer  = require('multer');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -18,6 +19,7 @@ const routes = require('./app/routes.js');
 
 
 
+
 // configuration de mongoose
 mongoose.connect(configDB.url, { useMongoClient: true }); // connection database | TODO : mettre dans une variable d'environnement
 mongoose.Promise = global.Promise;
@@ -27,6 +29,7 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({extended: true}));
+
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(permissions.middleware());
@@ -47,6 +50,7 @@ routes(app, passport); // load our routes and pass in our app and fully configur
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
+
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
 
