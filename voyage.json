@@ -1,7 +1,7 @@
 /* 1 */
 {
     "_id" : ObjectId("59e6e07142c9e1942b62c295"),
-    "name" : "USA",
+    "name" : "U.S.A",
     "dateA" : "13 Janvier 2018",
     "dateR" : "29 janvier 2018",
     "sejour" : "16 jours",
@@ -133,7 +133,7 @@
     "preview" : "Pays aux mille facette et terre de contraste et d'aventure c'est la destination idéale pour les amoureux de la nature et des animaux... Sagéographie est tout simplement execptionelle. Entre les grand espaces, montagnes déserts, parcs nationaux, réserve naturelles et plage de rêve, l'Afrique du Sud offre une grande diversité de paysage d'une beauté sans pareille",
     "text" : "Pays aux mille facette et terre de contraste et d'aventure,c'est la destination idéale pour les amoureux de la nature et des animaux... Sagéographie est tout simplement execptionelle. Entre les grand espaces, montagnes déserts, parcs nationaux, réserve naturelles et plage de rêve, l'Afrique du Sud offre une grande diversité de paysage d'une beauté sans pareille",
     "img" : "africa.jpg",
-    "lieuxTableau" : [ 
+    "lieux" : [ 
         {
             "img" : "cap.jpeg",
             "titre" : "l'Université du Cap",

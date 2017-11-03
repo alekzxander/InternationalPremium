@@ -45,7 +45,7 @@
 
                         <div class="form-group">
                             <label for="descriptif">Descriptif de la Carte</label>
-                            <textarea class="form-control" rows="5" name="preview" id="comment" value="<%= card.preview%>"></textarea>
+                            <textarea class="form-control" rows="5" maxlength="200" name="preview" id="comment" placeholder="<%= card.preview%>"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-success btn-lg" >Confirmer</button>

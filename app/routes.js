@@ -38,21 +38,18 @@ module.exports = function (app, passport) {
                 })[0]
             })
         });
-    })
-    app.post('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
-        voyage.findByIdAndUpdate(req.params.id, { $addToSet: { lieux: req.body.lieux } }, { new: true }, (err, voyages) => {
+    }) 
+    app.post('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => { 
+        voyage.findByIdAndUpdate(req.params.id,{ $push :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
             voyages.save()
-                .then(item => {
-                    res.redirect("/dashbord/dashItineraire");
-                })
-                .catch(err => {
-                    res.status(400).send("Impossible de sauvegarder dans la db");
-                });
+            .then(item => {
+                res.redirect("/dashbord/dashItineraire");
+            })
+            .catch(err => {
+                res.status(400);
+            });
         })
-
     })
-
-
     // create card
     // process the card form
     app.post('/dashbord/card',permissions.can('access admin page') ,upload.single('img'), (req, res) => {
