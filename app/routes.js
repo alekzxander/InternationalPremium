@@ -13,8 +13,7 @@ module.exports = function (app, passport) {
         res.render('dashbord.ejs')
 
     })
-    //TODO : renommer pour card/:id/delete
-    app.get('/cardSupp/:id',permissions.can('access admin page'), (req, res) => {
+    app.get('/card/:id/delete',permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
         })
@@ -50,6 +49,7 @@ module.exports = function (app, passport) {
             });
         })
     })
+
     // create card
     // process the card form
     app.post('/dashbord/card',permissions.can('access admin page') ,upload.single('img'), (req, res) => {
@@ -130,11 +130,6 @@ module.exports = function (app, passport) {
             })
 
     })
-
-
-
-
-
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
@@ -151,18 +146,15 @@ module.exports = function (app, passport) {
             })
         })
     }))
-
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function (req, res) {
         res.render('profile.ejs', { user: req.user });
     });
-
     // LOGOUT ==============================
     app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
     });
-
     app.get('/mentionslegales', (req, res) => {
         res.render('mentions.ejs')
     })
@@ -177,14 +169,12 @@ module.exports = function (app, passport) {
             message: req.flash('loginMessage')
         });
     });
-
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/', // redirect to the secure profile section
         failureRedirect: '/login', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
-
     // SIGNUP ================================= show the signup form
     app.get('/signup', function (req, res) {
         res.render('signup.ejs', {
@@ -236,7 +226,6 @@ module.exports = function (app, passport) {
     app.get('/contact', (req, res) => {
         res.render('contact.ejs')
     })
-
 }
 
 // route middleware to ensure user is logged in

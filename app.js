@@ -2,7 +2,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const app = express();
-var multer  = require('multer');
+const multer  = require('multer');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -16,14 +16,19 @@ const configDB = require('./config/database.js');
 const passportConfig =require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
+const uristring =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+'mongodb://localhost:27017/voyage';
 
 
-
-
-// configuration de mongoose
-mongoose.connect(configDB.url, { useMongoClient: true }); // connection database | TODO : mettre dans une variable d'environnement
-mongoose.Promise = global.Promise;
-
+mongoose.connect(uristring, function (err, res) {
+    if (err) {
+    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+    } else {
+    console.log ('Succeeded connected to: ' + uristring);
+    }
+  });
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
