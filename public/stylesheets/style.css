@@ -33,6 +33,7 @@ html {
 
 #wrapper.toggled {
     padding-left: 220px;
+    
    
 }
 
@@ -53,15 +54,18 @@ html {
 
 #sidebar-wrapper::-webkit-scrollbar {
     display: none;
+
 }
 
 #wrapper.toggled #sidebar-wrapper {
     width: 220px;
+    
 }
 
 #page-content-wrapper {
     width: 100%;
     padding-top: 70px;
+   
     
 }
 
@@ -324,6 +328,8 @@ html {
 }
 /* =============== HEADER ======================*/
 
+
+
 .p_guide {
     font-style: italic;
     margin-top: 15px;
@@ -333,6 +339,9 @@ html {
 .container {
     margin-top: 30px;
     margin-bottom: 30px;
+}
+.container h2{
+    color:#06162D;
 }
 
 .carousel {
