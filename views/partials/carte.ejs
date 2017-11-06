@@ -1,63 +1,75 @@
+<h2 class="text-center sys "> Système de fonctionnement </h2>
 
+<div id="myIcon">
+    <div class="row">
 
-      <div id="myIcon">
-        <div class="row">
-          <div class="text-center col-lg-4">
-            
+        <div class="text-center col-lg-4">
             <img src="/images/earth.png " alt=" earth" />
-            <h3 class="titreIcon"> Choisissez votre  voyage </h3>
-            <p class="p_guide">Une garantie d'un <br /> voyage réussi</p>
-          </div>
-          <div class="text-center col-lg-4">
-           
-            <img src="/images/itie.png " alt=" itineraire" />
-             <h3 class="titreIcon"> Définissez votre itinéraire </h3>
-            <p class="p_guide">Un voyage personnalisé <br /> rien que pour vous !</p>
-          </div>
-          <div class=" text-center col-lg-4">
-           
-            <img src="/images/billet.png " alt=" ticket" />
-             <h3 class="titreIcon"> Réservez vos places </h3>
-            <p class="p_guide">Contacter nous pour <br /> réservez vos places</p>
-          </div>
+            <h3 class="titreIcon"> Choisissez votre voyage </h3>
+            <p class="p_guide">Une garantie d'un
+                <br /> voyage réussi</p>
         </div>
-      </div>
-      <div class="container">
-<hr> <h2 class="text-center voyageTitre">Voyages à la carte</h2><hr>
+
+        <div class="text-center col-lg-4">
+            <img src="/images/itie.png " alt=" itineraire" />
+            <h3 class="titreIcon"> Définissez votre itinéraire </h3>
+            <p class="p_guide">Un voyage personnalisé
+                <br /> rien que pour vous !</p>
+        </div>
+
+        <div class=" text-center col-lg-4">
+            <img src="/images/billet.png " alt=" ticket" />
+            <h3 class="titreIcon"> Réservez vos places </h3>
+            <p class="p_guide">Contactez nous pour
+                <br /> réservez vos places</p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <hr>
+    <h2 class="text-center voyageTitre">Voyages à la carte</h2>
+    <hr>
     <div class="row">
         <% mesVoyages.forEach((voyages)=>{ %>
 
 
-        <div class="col-md-4">
-            <div class="carte">
-                <img src="images/<%= voyages.img %>" alt="">
-                <div class="ville">
-                    <h1><%= voyages.name %></h1>
-                </div>
-                <div class="date">
-                    <h3>Voyage de <%= voyages.sejour %> !</h3>
-                    <p><%= voyages.dateA %> au <%= voyages.dateR %></p>
-                </div>
-                <div class="details">
-                    <p><%= voyages.preview %></p>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="voyage/<%= voyages.id %>"><button class="btn btn-details btn-lg text-center">Détails</button></a>
+            <div class="col-md-4">
+                <div class="carte">
+                    <img src="images/<%= voyages.img %>" alt="">
+                    <div class="ville">
+                        <h1>
+                            <%= voyages.name %>
+                        </h1>
                     </div>
-                    <div class="col-md-6">
-                        <a href="/contact"><button class="btn btn-warning text-center">Contactez-nous</button></a>
+                    <div class="date">
+                        <h3>Voyage de
+                            <%= voyages.sejour %> !</h3>
+                        <p>
+                            <%= voyages.dateA %> au
+                                <%= voyages.dateR %>
+                        </p>
                     </div>
+                    <div class="details">
+                        <p>
+                            <%= voyages.preview %>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="voyage/<%= voyages.id %>">
+                                <button class="btn btn-details  text-center">Détails</button>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/contact">
+                                <button class="btn btn-warning text-center">Contactez-nous</button>
+                            </a>
+                        </div>
+                    </div>
+
+
                 </div>
-            
-                
             </div>
-        </div>
-    <%  }); %>
+            <%  }); %>
     </div>
 </div>
-                
-            
-                
-      
-

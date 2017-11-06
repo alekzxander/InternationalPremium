@@ -354,10 +354,14 @@ html {
 }
 /* ========== CARTE ================= */
 #myIcon {
-    background: white;
-    padding: 90px;
+
+ margin-top: 50px;
 }
 
+.sys {
+ font-style: italic;
+ font-family: 'Gloria Hallelujah', cursive;
+}
 
 .carte {
     margin: 0 auto;
@@ -425,7 +429,8 @@ html {
     color :#fff;
     margin-top: 60px;
     border: none;
-    margin-right: 30px;
+    margin-left: 10px;
+    width: 150px;
 }
 
 .btn-warning {
