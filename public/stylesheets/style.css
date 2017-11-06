@@ -30,6 +30,7 @@ html {
 
 #wrapper.toggled {
     padding-left: 220px;
+    
    
 }
 
@@ -50,15 +51,18 @@ html {
 
 #sidebar-wrapper::-webkit-scrollbar {
     display: none;
+
 }
 
 #wrapper.toggled #sidebar-wrapper {
     width: 220px;
+    
 }
 
 #page-content-wrapper {
     width: 100%;
     padding-top: 70px;
+   
     
 }
 
@@ -321,6 +325,8 @@ html {
 }
 /* =============== HEADER ======================*/
 
+
+
 .p_guide {
     font-style: italic;
     margin-top: 15px;
@@ -330,6 +336,9 @@ html {
 .container {
     margin-top: 30px;
     margin-bottom: 30px;
+}
+.container h2{
+    color:#06162D;
 }
 
 .carousel {
@@ -351,13 +360,15 @@ html {
 }
 /* ========== CARTE ================= */
 #myIcon {
-    padding: 90px;
+
+ margin-top: 50px;
 }
-@media all and (max-width:890px){
-    #myIcon{
-        padding: 0px;
-    }
+
+.sys {
+ font-style: italic;
+ font-family: 'Gloria Hallelujah', cursive;
 }
+
 .carte {
     margin: 0 auto;
     margin-top: 40px;
@@ -369,7 +380,7 @@ html {
     padding-bottom: 20px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    border: 0.5px solid #DAD8D8;
+    border: 0.7px solid #E0DEDE;
 }
 
 .carte img {
@@ -426,11 +437,12 @@ html {
     padding: 5px;
     height: 40px;
     text-transform: uppercase;
-    background: #1661B2;
+    background: #65A2E4;
     color :#fff;
     margin-top: 60px;
     border: none;
-    margin-right: 30px;
+    margin-left: 10px;
+    width: 150px;
 }
 
 .btn-warning {
@@ -438,7 +450,7 @@ html {
     height: 40px;
     text-transform: uppercase;
     margin-top: 60px;
-    background: #E0A031;
+    background: #F1B244;
     border: none;
     margin-right: 30px;
 }

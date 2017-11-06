@@ -23,7 +23,8 @@
             <hr>
             <h4 class="text-center">Ajouter un voyage</h4>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <h4>Contenu de la carte</h4>
                     <div class="carte">
                         <form action="/dashbord/card" enctype="multipart/form-data" method="post">
@@ -33,7 +34,7 @@
                             <div class="ville">
                                 <div class="form-group">
                                     <label>Titre</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Pays a visiter">
+                                    <input type="text" class="form-control" name="name" placeholder="Pays à visiter">
                                 </div>
                             </div>
                             <div class="row">
@@ -53,19 +54,15 @@
                             <div class="form-group">
                                 <label for="descriptif">Descriptif de la carte</label>
                                 <textarea class="form-control" rows="5" name="preview" id="comment" placeholder="leger descriptif. 140 caract max"></textarea>
+                                <h4>Résumé du voyage</h4>
+                                <textarea class="form-control form-textarea" rows="10" name="text" id="comment-right"></textarea>
+                                <p class="text-left"> <button type="submit" class="btn btn-success btn-lg">Confirmer</button></p>
                             </div>
                     </div>
                 </div>
-                
-                <div class="col-md-7">
-                    <h4>Résumé du voyage</h4>
-                    <textarea class="form-control form-textarea" rows="10" name="text" id="comment-right"></textarea>
-                    </div>
-                <div class="col-md-1"></div>
-            <p class="text-left"> <button type="submit" class="btn btn-success btn-lg">Confirmer</button></p>
-                </form>
+                <div class="col-md-3"></div>
             </div>
-
+            </form>
             <h1>Supprimer une carte</h1>
             <div class="row">
                 <% cartes.forEach((carte)=>{ %>
@@ -98,6 +95,9 @@
                     </div>
                     <% })%>
             </div>
+        </div>
+
+            
 
 
             
