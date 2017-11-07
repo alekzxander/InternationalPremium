@@ -1,0 +1,1 @@
+{"_id":{"$oid":"59fab5b89086a94a53d125ff"},"local":{"password":"$2a$08$wV/Mi6N9v.bNin.WVD3SvOqhgml9kfrao/XO9oJIsq99tKYuHKJ3i","email":"admin@admin.admin","date":{"$date":"1111-11-11T00:00:00.000Z"},"prenom":"test","nom":"test","telephone":1.11111111111e+11,"isAdmin":false,"role":"admin"},"__v":0}
