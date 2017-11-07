@@ -188,25 +188,7 @@ html {
 {
     padding: 20px;
 }
-@media all and (max-width:890px) {
-    .carte {
-        width: 100%;
-        padding-bottom: 50px;
 
-    }
-    .carte img {
-        width: 103%;
-    }
-    .carousel {
-        display: none;
-    }
-    
-}
-@media all and (max-width:560px) {
-    .carte img {
-        width: 106%;
-    }
-}    
 .details p {
     height: 100px;
     font-size: 22px;
@@ -263,14 +245,7 @@ html {
     border: none;
     margin-right: 1px;
 }
-@media all and (max-width:890px){
-  .btn-danger, .btn-warning {
-      margin-right: 0px;
-      margin-left: 0px;
-      margin-top: 15px;
-  }
- 
-}
+
 .card-text {
     width: 150px;
     margin: 0 auto;
@@ -345,14 +320,59 @@ html {
     height: 200px;
 }
 
-@media all and (max-width:890px) {
-    .VerticalSeparator {
-        display: none;
-    }
-    footer p {
-        text-align: center;
-    }
+
+
+
+
+/* QUI SOMMES NOUS */ 
+
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    margin-top : 50px;
+    margin-bottom: 50px;
+   }
+
+.title {
+    color: grey;
+    font-size: 18px;
 }
+
+.btnform {
+    text-align: center;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.partenaires a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+.btnform:hover, .partenaires a:hover {
+    opacity: 0.7;
+}
+
+
+/*=============== Admin Card ===================*/
+
+#comment-right{
+    margin-top: 45px;
+}
+
 /* =======FOOTER ============*/
 
 
@@ -411,6 +431,13 @@ footer a {
       background: #CF3030;
       padding: 5px;
   }
+
+
+
+
+
+
+
   /* Set black background color, white text and some padding */
   footer {
     background-color: #06162B;
@@ -418,6 +445,37 @@ footer a {
     padding: 15px;
 }
 /* On small screens, set height to 'auto' for sidenav and grid */
+
+@media all and (max-width:890px) {
+    .carte {
+        width: 100%;
+        padding-bottom: 50px;
+
+    }
+    .carte img {
+        width: 103%;
+    }
+    .carousel {
+        display: none;
+    }
+    
+}
+@media all and (max-width:560px) {
+    .carte img {
+        width: 106%;
+    }
+}    
+
+
+@media all and (max-width:890px){
+    .btn-danger, .btn-warning {
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+   
+  }
+
 
 @media screen and (max-width: 767px) {
     .sidenav {
@@ -429,10 +487,11 @@ footer a {
     }
 }
 
-
-
-/*=============== Admin Card ===================*/
-
-#comment-right{
-    margin-top: 45px;
+@media all and (max-width:890px) {
+    .VerticalSeparator {
+        display: none;
+    }
+    footer p {
+        text-align: center;
+    }
 }

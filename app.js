@@ -12,23 +12,15 @@ const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const configDB = require('./config/database.js');
+// const configDB = require('./config/database.js');
 const passportConfig =require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
-const uristring =
-process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
-'mongodb://localhost:27017/voyage';
+const configUrl = "mongodb://admin:admin@ds149855.mlab.com:49855/ipa"
 
+mongoose.connect(configUrl,{useMongoClient : true});
+mongoose.Promise = global.Promise
 
-mongoose.connect(uristring, function (err, res) {
-    if (err) {
-    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-    } else {
-    console.log ('Succeeded connected to: ' + uristring);
-    }
-  });
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)

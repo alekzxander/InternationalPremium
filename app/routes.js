@@ -13,7 +13,7 @@ module.exports = function (app, passport) {
         res.render('dashbord.ejs')
 
     })
-    app.get('/card/:id/delete',permissions.can('access admin page'), (req, res) => {
+    app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
         })
@@ -37,7 +37,7 @@ module.exports = function (app, passport) {
                 })[0]
             })
         });
-    }) 
+    })
     app.post('/ajoutLieux/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         let fileToUpload = req.file;
         let target_path = 'public/images/' + fileToUpload.originalname;
@@ -45,7 +45,7 @@ module.exports = function (app, passport) {
         voyage.findByIdAndUpdate(req.params.id, {
             $push: {
                 lieux: req.body.lieux,
-                lieux : fileToUpload.originalname
+                lieux: fileToUpload.originalname
             }
         },
             { new: true }, (err, voyages) => {
@@ -71,7 +71,7 @@ module.exports = function (app, passport) {
 
     // create card
     // process the card form
-    app.post('/dashbord/card',permissions.can('access admin page') ,upload.single('img'), (req, res) => {
+    app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         /** The original name of the uploaded file
          stored in the variable "originalname". **/
         var fileToUpload = req.file;
@@ -121,11 +121,11 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/updatecard/:id', permissions.can('access admin page'),upload.single('img'), (req, res) => {
+    app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         var fileToUpload = req.file;
         var target_path = 'public/images/' + fileToUpload.originalname;
         var tmp_path = fileToUpload.path;
-        
+
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,
@@ -134,7 +134,7 @@ module.exports = function (app, passport) {
                 sejour: req.body.sejour,
                 preview: req.body.preview,
                 text: req.body.text,
-                 img: fileToUpload.originalname
+                img: fileToUpload.originalname
             }
         },
             { new: true },
@@ -148,7 +148,7 @@ module.exports = function (app, passport) {
                         fs.unlink(tmp_path);
                         src.on('end', function () { res.redirect("/dashbord/card"); });
                         src.on('error', function (err) { res.render('error'); });
-        
+
                     })
                     .catch(err => {
                         res.status(400).send("Maj non possible");
@@ -248,9 +248,15 @@ module.exports = function (app, passport) {
         });
     });
 
-    // ============ Formulaire de Contact ======================
+    // ============ Formulaire de Contact ====================== //
     app.get('/contact', (req, res) => {
         res.render('contact.ejs')
+    })
+    
+    // ================= Qui sommes Nous ========================= //
+    
+    app.get('/quisommesnous', (req, res) => {
+        res.render("quisommesnous.ejs")
     })
 }
 
