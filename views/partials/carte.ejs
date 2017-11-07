@@ -1,72 +1,100 @@
-<h2 class="text-center sys "> Système de fonctionnement </h2>
+<div class="container">
+    <div id="intro">
+        <h1>Des sejours linguistique dans des lieux d'exception</h1>
+        <br>
+        <p>Internationnal <strong>Premium</strong> accompagnement vise à developper votre potentiel en vous accompagnants
+        dans vos parcours éducatifs et professionnels. Cela est fait en procurant des opportunités précieuces pour ces parcours.</p>
+        <br>
+        <h2>Booster vos compétences</h2>
+        <p>Vous avez toutes les chances de booster vos compétences en langue et carrière tout en immergeant dans différentes
+         nouvelles culture que vous soyez jeune étudiant, collégien ou bachelier.</p>
+         <p>Pour les bacheliers, vous avez des sejours linguistiques ainsi que des immersions dans les entreprises
+             de renoms ainsi que des stages qui affineront vos connaissances professionnelles ainsi qu'ouvrir votre
+             esprit sur le monde professionnel.
+        
+            </p>
+         <br>   
+         <h2>Partenariats important avec de grandes écoles.</h2>   
+         <p>Des partenariats important avec de grandes écoles, des entreprises de renoms ainsi que différents organismes.
+             Nous pourvoyons des séjours linguistiques et ludique, stage et immersions à nos clients grâce à nos connexions
+            international. </p>
+         <p>Les étudiants auront d'abords des cours d'anglais, différentes heures dépendamment de leur niveau,
+             avec d'avoir leur séjour car c'est la langue marternelle ou officiel de plus de 67 pays et vous
+             permettra de mieux vous intégrer dans les locaux ainsi que mieux comprendre leur culture.
+             </p>   
+        
+        <div id="myIcon">
+            <div class="row">
 
-<div id="myIcon">
-    <div class="row">
+                <div class="text-center col-lg-4">
+                    <img src="/images/earth.png " alt=" earth" />
+                    <h3 class="titreIcon"> Choisissez votre voyage </h3>
+                    <p class="p_guide">Une garantie d'un
+                        <br /> voyage réussi</p>
+                </div>
 
-        <div class="text-center col-lg-4">
-            <img src="/images/earth.png " alt=" earth" />
-            <h3 class="titreIcon"> Choisissez votre voyage </h3>
-            <p class="p_guide">Une garantie d'un
-                <br /> voyage réussi</p>
-        </div>
+                <div class="text-center col-lg-4">
+                    <img src="/images/itie.png " alt=" itineraire" />
+                    <h3 class="titreIcon"> Définissez votre itinéraire </h3>
+                    <p class="p_guide">Un voyage personnalisé
+                        <br /> rien que pour vous !</p>
+                </div>
 
-        <div class="text-center col-lg-4">
-            <img src="/images/itie.png " alt=" itineraire" />
-            <h3 class="titreIcon"> Définissez votre itinéraire </h3>
-            <p class="p_guide">Un voyage personnalisé
-                <br /> rien que pour vous !</p>
-        </div>
-
-        <div class=" text-center col-lg-4">
-            <img src="/images/billet.png " alt=" ticket" />
-            <h3 class="titreIcon"> Réservez vos places </h3>
-            <p class="p_guide">Contactez nous pour
-                <br /> réservez vos places</p>
-        </div>
-      </div>
-      <div class="container d-none d-lg-block d-xl-none">
-<hr> <h2 class="text-center voyageTitre">Voyages à la carte</h2><hr>
-    <div class="row">
-        <% mesVoyages.forEach((voyages)=>{ %>
-
-
-            <div class="col-md-4">
-                <div class="carte">
-                    <img src="images/<%= voyages.img %>" alt="">
-                    <div class="ville">
-                        <h1>
-                            <%= voyages.name %>
-                        </h1>
-                    </div>
-                    <div class="date">
-                        <h3>Voyage de
-                            <%= voyages.sejour %> !</h3>
-                        <p>
-                            <%= voyages.dateA %> au
-                                <%= voyages.dateR %>
-                        </p>
-                    </div>
-                    <div class="details">
-                        <p>
-                            <%= voyages.preview %>
-                        </p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="voyage/<%= voyages.id %>">
-                                <button class="btn btn-details  text-center">Détails</button>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="/contact">
-                                <button class="btn btn-warning text-center">Contactez-nous</button>
-                            </a>
-                        </div>
-                    </div>
-
-
+                <div class=" text-center col-lg-4">
+                    <img src="/images/billet.png " alt=" ticket" />
+                    <h3 class="titreIcon"> Réservez vos places </h3>
+                    <p class="p_guide">Contactez nous pour
+                        <br /> réservez vos places</p>
                 </div>
             </div>
-            <%  }); %>
+        </div>
+        <div class="container d-none d-lg-block d-xl-none">
+            <div class="card-content">
+                <hr>
+                <h2 class="text-center voyageTitre">Voyages à la carte</h2>
+                <hr>
+                <div class="row">
+                    <% mesVoyages.forEach((voyages)=>{ %>
+                        <div class="col-md-4">
+                            <div class="carte">
+                                <img src="images/<%= voyages.img %>" alt="">
+                                <div class="ville">
+                                    <h1>
+                                        <%= voyages.name %>
+                                    </h1>
+                                </div>
+                                <div class="date">
+                                    <h3>Voyage de
+                                        <%= voyages.sejour %> !</h3>
+                                    <p>
+                                        <%= voyages.dateA %> au
+                                            <%= voyages.dateR %>
+                                    </p>
+                                </div>
+                                <div class="details">
+                                    <p>
+                                        <%= voyages.preview %>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="voyage/<%= voyages.id %>">
+                                <button class="btn btn-details  text-center">Détails</button>
+                            </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="/contact">
+                                <button class="btn btn-warning text-center">Contactez-nous</button>
+                            </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <%  }); %>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>

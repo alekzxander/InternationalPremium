@@ -38,16 +38,35 @@ module.exports = function (app, passport) {
             })
         });
     }) 
-    app.post('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => { 
-        voyage.findByIdAndUpdate(req.params.id,{ $push :{ lieux : req.body.lieux }}, {new : true },(err, voyages)=>{
-            voyages.save()
-            .then(item => {
-                res.redirect("/dashbord/dashItineraire");
+    app.post('/ajoutLieux/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+        let fileToUpload = req.file;
+        let target_path = 'public/images/' + fileToUpload.originalname;
+        let tmp_path = fileToUpload.path;
+        voyage.findByIdAndUpdate(req.params.id, {
+            $push: {
+                lieux: req.body.lieux,
+                lieux : fileToUpload.originalname
+            }
+        },
+            { new: true }, (err, voyages) => {
+                voyages.save()
+                    .then(item => {
+                        var src = fs.createReadStream(tmp_path);
+                        var dest = fs.createWriteStream(target_path);
+                        src.pipe(dest);
+                        fs.unlink(tmp_path);
+                        src.on('end', function () {
+                            res.redirect("/dashbord/dashItineraire");
+                        })
+                        src.on('error', function (err) {
+                            res.render('error');
+                        })
+
+                    })
+                    .catch(err => {
+                        res.status(400);
+                    });
             })
-            .catch(err => {
-                res.status(400);
-            });
-        })
     })
 
     // create card
@@ -70,10 +89,7 @@ module.exports = function (app, passport) {
             preview: req.body.preview,
             img: fileToUpload.originalname,
             text: req.body.text,
-
         });
-
-
         myData
             .save()
             .then(item => {
@@ -91,13 +107,11 @@ module.exports = function (app, passport) {
             .catch(err => {
                 res
                     .status(400)
-                    .send("Impossible de sauvegarder dans la db");
             });
     });
 
     /* update card */
     app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
-
         voyage.find((err, voyages) => {
             res.render("updatecard.ejs", {
                 voyage: req.params.id, card: voyages.filter((voyage) => {
@@ -107,7 +121,11 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
+    app.post('/updatecard/:id', permissions.can('access admin page'),upload.single('img'), (req, res) => {
+        var fileToUpload = req.file;
+        var target_path = 'public/images/' + fileToUpload.originalname;
+        var tmp_path = fileToUpload.path;
+        
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,
@@ -115,14 +133,22 @@ module.exports = function (app, passport) {
                 dateR: req.body.dateR,
                 sejour: req.body.sejour,
                 preview: req.body.preview,
-                text: req.body.text
+                text: req.body.text,
+                 img: fileToUpload.originalname
             }
         },
             { new: true },
             (err, voyage) => {
                 voyage.save()
                     .then(item => {
+                        var src = fs.createReadStream(tmp_path);
+                        var dest = fs.createWriteStream(target_path);
+                        src.pipe(dest);
                         res.redirect("/dashbord/card");
+                        fs.unlink(tmp_path);
+                        src.on('end', function () { res.redirect("/dashbord/card"); });
+                        src.on('error', function (err) { res.render('error'); });
+        
                     })
                     .catch(err => {
                         res.status(400).send("Maj non possible");
