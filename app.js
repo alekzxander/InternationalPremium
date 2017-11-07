@@ -12,13 +12,13 @@ const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-// const configDB = require('./config/database.js');
+const configDB = require('./config/database.js');
 const passportConfig =require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
-const configUrl = "mongodb://admin:admin@ds149855.mlab.com:49855/ipa"
+// const configUrl = "mongodb://admin:admin@ds149855.mlab.com:49855/ipa"
 
-mongoose.connect(configUrl,{useMongoClient : true});
+mongoose.connect(configDB,{useMongoClient : true});
 mongoose.Promise = global.Promise
 
 // set up our express application

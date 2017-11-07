@@ -1,4 +1,4 @@
 // config/database.js
 module.exports = {
-    'url' : 'mongodb://localhost:27017/voyage' 
+    'url' : 'mongodb://admin:admin@ds149855.mlab.com:49855/intpremacc' 
 };
