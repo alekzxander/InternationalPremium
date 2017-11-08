@@ -28,8 +28,8 @@ html {
 /*-------------------------------*/
 .navbar-default .navbar-nav>li>a {
     color: #FFFFFF;
-    font-size: 19px;
-    text-shadow: 2px 2px 2px black;
+    font-size: 16px;
+    text-transform: uppercase;
 }
 .navbar-default .navbar-nav>li>a:hover {
     color: orange;
