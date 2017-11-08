@@ -7,23 +7,16 @@
         <div class="col-sm-3 sidenav">
             <h4 class="text-center">Admin</h4>
             <ul class="nav nav-pills nav-stacked">
-                <li>
-                    <a class="text-center" href="/dashbord/">Home</a>
-                </li>
-                <li class="active">
-                    <a class="text-center" href="/dashbord/card">Card</a>
-                </li>
-                <li>
-                    <a class="text-center" href="/dashbord/dashItineraire">Itinéraires</a>
-                </li>
-            </ul>
-            <br>
+                <li><a class="text-center" href="/dashbord/">Home</a></li>
+                <li class="active"><a class="text-center" href="/dashbord/card">Card</a></li>
+                <li><a class="text-center" href="/dashbord/dashItineraire">Itinéraires</a></li>
+            </ul><br>
         </div>
 
         <div class="pull-right">
-            <a href="/">Retour vers le site /</a>
+            <a href="/">Retour vers le site </a>
             <a href="/logout">Logout</a>
-        </div>
+          </div>
 
         <div class="col-sm-9">
             <h4 class="text-center">Ajouter un voyage</h4>
@@ -31,10 +24,10 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <div class="carte">
+                    <div class="carte-vide">
                         <form action="/dashbord/card" enctype="multipart/form-data" method="post">
                             <div class="imgVide">
-                                <input type="file" name="img" class="btn btn-primary">
+                                <input type="file" name="img" class='btn btn-primary'>
                             </div>
                             <div class="ville">
                                 <div class="form-group">
@@ -61,47 +54,44 @@
                                 <textarea class="form-control" rows="5" name="preview" id="comment" placeholder="leger descriptif. 140 caract max"></textarea>
                                 <h4>Résumé du voyage</h4>
                                 <textarea class="form-control form-textarea" rows="10" name="text" id="comment-right"></textarea>
-                                <p class="text-center">
-                                    <button type="submit" class="btn btn-success btn-lg">Confirmer</button>
-                                </p>
+                                <p class="text-center"> <button type="submit" class="btn btn-success btn-lg">Confirmer</button></p>
                             </div>
-
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-3"></div>
             </div>
-            </form>
-            <h4 class="text-center">Supprimer une carte</h1>
-                <hr class="trait">
-                <div class="row">
-                    <% cartes.forEach((carte)=>{ %>
-                        <div class="col-md-4">
-                            <div class="carte">
-                                <img src="/images/<%= carte.img %>" alt="">
-                                <div class="ville">
-                                    <h1>
-                                        <%= carte.name %>
-                                    </h1>
-                                </div>
-                                <div class="date">
-                                    <h3>Voyage de
-                                        <%= carte.sejour %> !</h3>
-                                    <p>
-                                        <%= carte.dateA %> au
-                                            <%= carte.dateR %>
-                                    </p>
-                                </div>
-                                <div class="details">
-                                    <p>
-                                        <%= carte.preview %>
-                                    </p>
-                                </div>
-                                <div class="row">
-                                    <a class="btn btn-danger btn-lg" href="/card/<%= carte._id %>/delete">Supprimer</a>
-                                    <a class="btn btn-warning btn-lg" href="/updatecard/<%=carte.id%>">Modifier</a>
-                                </div>
+            
+            <h1>Supprimer une carte</h1>
+            <div class="row">
+                <% cartes.forEach((carte)=>{ %>
+                    <div class="col-md-4">
+                        <div class="carte">
+                            <img src="/images/<%= carte.img %>" alt="">
+                            <div class="ville">
+                                <h1>
+                                    <%= carte.name %>
+                                </h1>
+                            </div>
+                            <div class="date">
+                                <h3>Voyage de
+                                    <%= carte.sejour %> !</h3>
+                                <p>
+                                    <%= carte.dateA %> au
+                                        <%= carte.dateR %>
+                                </p>
+                            </div>
+                            <div class="details">
+                                <p>
+                                    <%= carte.preview %>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <a class="btn btn-danger btn-lg" href="/card/<%= carte._id %>/delete">Supprimer</a>
+                                <a class="btn btn-warning btn-lg" href="/updatecard/<%=carte.id%>">Modifier</a>
                             </div>
                         </div>
-                        <% })%>
-                </div>
+                    </div>
+                    <% })%>
+            </div>
         </div>

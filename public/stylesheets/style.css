@@ -39,7 +39,8 @@ html {
     z-index: 100;
     border: none;
 }
-.navbar .navbar-nav {
+
+  .navbar .navbar-nav {
     display: inline-block;
     float: none;
     vertical-align: top;
@@ -48,11 +49,15 @@ html {
   .navbar .navbar-collapse {
     text-align: center;
   }
-
-
 /*-------------------------------*/
 /*           carousel             */
 /*-------------------------------*/
+.bg-01
+{
+    background-image: url('../images/logo-mieux.png');
+    width:50%;
+    height:50%;
+}
 .sh-carousel {
     width: 100%;
     height: 100vh;
@@ -96,6 +101,7 @@ html {
     font-weight: bold;
     text-align: center;
     color: #fff;
+    margin-top: 6em;
     text-shadow:1px 4px 2px #413b3b;
   }
   /*-------------------------------*/
@@ -180,6 +186,18 @@ html {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+.carte-vide {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
 @media all and (max-width:560px) {
 
 }
@@ -220,7 +238,7 @@ html {
 }
 
 .date p {
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     margin-bottom: 20px;
 }
 
@@ -405,8 +423,24 @@ html {
 /*=============== Admin Card ===================*/
 
 #comment-right{
-    margin-top: 45px;
+    /* margin-top: 45px; */
+
 }
+
+.trait {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+    background: #47A2DB;
+    height: 4px;
+    width: 100px;
+}
+
+a {
+    padding-right: 15px;
+  }
+
 
 /* =======FOOTER ============*/
 
@@ -432,13 +466,14 @@ footer a {
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .imgVide 
 {
+    
     height: 250px;
     border: 1px dashed blue;
     padding-top: 110px;
 }
 .imgVide input
 {
-  margin-left: 20px;
+  margin:0 auto;
 }
 .titre input 
 {
@@ -523,11 +558,10 @@ footer a {
 }
 
 @media all and (max-width:890px) {
-      .VerticalSeparator {
+    .VerticalSeparator {
         display: none;
     }
     footer p {
         text-align: center;
-        
     }
 }
