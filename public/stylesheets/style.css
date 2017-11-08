@@ -523,10 +523,11 @@ footer a {
 }
 
 @media all and (max-width:890px) {
-    .VerticalSeparator {
+      .VerticalSeparator {
         display: none;
     }
     footer p {
         text-align: center;
+        
     }
 }
