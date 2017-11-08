@@ -424,7 +424,23 @@ html {
 
 #comment-right{
     /* margin-top: 45px; */
+
 }
+
+.trait {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+    background: #47A2DB;
+    height: 4px;
+    width: 100px;
+}
+
+a {
+    padding-right: 15px;
+  }
+
 
 /* =======FOOTER ============*/
 
@@ -450,13 +466,14 @@ footer a {
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .imgVide 
 {
+    
     height: 250px;
     border: 1px dashed blue;
     padding-top: 110px;
 }
 .imgVide input
 {
-  margin-left: 20px;
+  margin:0 auto;
 }
 .titre input 
 {
