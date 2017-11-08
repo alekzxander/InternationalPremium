@@ -15,6 +15,13 @@ html {
     height: 100%;
 }
 
+a{
+    color: #fff
+}
+a:hover {
+    text-decoration : none;
+    color : orange
+}
 .logo 
 {
     width: 170px;
@@ -127,9 +134,6 @@ html {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-.container h2{
-    color: black;
-}
 
 .carousel {
     margin-top: -130px;
@@ -148,8 +152,8 @@ html {
     width: 100%;
 }
 
-#box-item h2, p {
-    /* color:#000; */
+.box-item h2,p   {
+    color:#000;
 }
 
 /* ========== CARTE ================= */
@@ -235,8 +239,8 @@ html {
 }
 
 .details p {
-    height: 100px;
-    font-size: 22px;
+    height: 140px;
+    font-size: 19px;
     width: 100%;
     margin: auto;
     font-family: 'Roboto', sans-serif;

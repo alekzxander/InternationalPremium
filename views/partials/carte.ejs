@@ -53,6 +53,7 @@
 
 <div id="coupure">
 </div>
+
 <div class="container">
     <div id="myIcon">
         <div class="row">
@@ -109,21 +110,24 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a href="voyage/<%= voyages.id %>">
-                                        <button class="btn btn-details  text-center">Détails</button>
-                                    </a>
+
+                                    <button class="btn btn-details  text-center">
+                                        <a href="voyage/<%= voyages.id %>">Détails</a>
+                                    </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="/contact">
-                                        <button class="btn btn-warning text-center">Contactez-nous</button>
-                                    </a>
+                                    <button class="btn btn-warning text-center">
+                                        <a href="/contact">Contactez-nous</a>
+                                    </button>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-                    <%  }); %>
+
+
+            
+        
+        <%  }); %>
             </div>
-        </div>
     </div>
+</div>
