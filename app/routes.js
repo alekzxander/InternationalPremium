@@ -122,9 +122,9 @@ module.exports = function (app, passport) {
     })
 
     app.post('/updatecard/:id', upload.single('img'), (req, res) => {
-        // var fileToUpload = req.file;
-        // var target_path = 'public/images/' + fileToUpload.originalname;
-        // var tmp_path = fileToUpload.path;
+        var fileToUpload = req.file;
+        var target_path = 'public/images/' + fileToUpload.originalname;
+        var tmp_path = fileToUpload.path;
 
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
@@ -134,20 +134,20 @@ module.exports = function (app, passport) {
                 sejour: req.body.sejour,
                 preview: req.body.preview,
                 text: req.body.text,
-                // img: fileToUpload.originalname
+                img: fileToUpload.originalname
             }
         },
             { new: true },
             (err, voyage) => {
                 voyage.save()
                     .then(item => {
-                        // var src = fs.createReadStream(tmp_path);
-                        // var dest = fs.createWriteStream(target_path);
-                        // src.pipe(dest);
+                        var src = fs.createReadStream(tmp_path);
+                        var dest = fs.createWriteStream(target_path);
+                        src.pipe(dest);
                         res.redirect("/dashbord/card");
-                        // fs.unlink(tmp_path);
-                        // src.on('end', function () { res.redirect("/dashbord/card"); });
-                        // src.on('error', function (err) { res.render('error'); });
+                        fs.unlink(tmp_path);
+                        src.on('end', function () { res.redirect("/dashbord/card"); });
+                        src.on('error', function (err) { res.render('error'); });
 
                     })
                     .catch(err => {
