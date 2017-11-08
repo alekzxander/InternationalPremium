@@ -2,8 +2,9 @@
   body {
     position: relative;
     overflow-x: hidden;
-    background: #FAF9F8;
+    background: #06162D;
     font-family: 'Roboto', sans-serif;
+    color: #fff;
 }
 header 
 {
@@ -119,6 +120,7 @@ html {
     font-style: italic;
     margin-top: 15px;
     font-size: 18px;
+    color : white;
 }
 
 .container {
@@ -126,16 +128,14 @@ html {
     margin-bottom: 30px;
 }
 .container h2{
-    color:#06162D;
+    color: black;
 }
 
 .carousel {
     margin-top: -130px;
 
 }
-.carousel h1 {
 
-}
 .carousel strong {
     color: #eea903;
 }
@@ -148,16 +148,24 @@ html {
     width: 100%;
 }
 
+#box-item h2, p {
+    color:#000;
+}
+
 /* ========== CARTE ================= */
 #intro strong {
-    color: black
-   ;
+    color: orange;
 }
 #intro {
     margin-top: 110px;
 }
 #intro h1  {
-    color: #2B2727;
+    color: #fff;
+}
+
+#intro span {
+    color : #fff;
+    font-size: 19px;
 }
 #intro p {
     font-size: 19px;
@@ -186,6 +194,7 @@ html {
     padding-bottom: 20px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    color: black;
 }
 .carte-vide {
     margin: 0 auto;
@@ -231,6 +240,7 @@ html {
     width: 100%;
     margin: auto;
     font-family: 'Roboto', sans-serif;
+    color: black;
 }
 
 .date h3 {
@@ -292,7 +302,9 @@ html {
     font-family: 'Robot', sans-serif;
     font-size: 35px;
     padding-top: 30px;
-}
+  }
+
+ 
 /* =======Itineraire=========*/
 .back 
 {
@@ -504,16 +516,14 @@ footer a {
   }
 
 
-
-
-
-
-
   /* Set black background color, white text and some padding */
   footer {
     background-color: #06162B;
     color: white;
     padding: 15px;
+}
+.copyright {
+    color: #fff;
 }
 /* On small screens, set height to 'auto' for sidenav and grid */
 
