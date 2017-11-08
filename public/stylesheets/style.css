@@ -3,6 +3,7 @@
     position: relative;
     overflow-x: hidden;
     background: #FAF9F8;
+    font-family: 'Roboto', sans-serif;
 }
 header 
 {
@@ -22,7 +23,9 @@ html {
     /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
     margin-top: -110px;
 }
-
+/*-------------------------------*/
+/*           Menu nav-bar        */
+/*-------------------------------*/
 .navbar-default .navbar-nav>li>a {
     color: #FFFFFF;
     font-size: 19px;
@@ -36,6 +39,17 @@ html {
     z-index: 100;
     border: none;
 }
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+  }
+  
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
+
+
 /*-------------------------------*/
 /*           carousel             */
 /*-------------------------------*/
@@ -117,7 +131,7 @@ html {
 
 }
 .carousel strong {
-    color: orange;
+    color: #eea903;
 }
 .carousel-inner {
     width: auto;
@@ -128,9 +142,6 @@ html {
     width: 100%;
 }
 
-.titreIcon {
-    font-family: 'Roboto', sans-serif;
-}
 /* ========== CARTE ================= */
 #intro strong {
     color: orange;
@@ -168,6 +179,9 @@ html {
     padding-bottom: 20px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+}
+@media all and (max-width:560px) {
+
 }
 
 .carte img {
@@ -263,14 +277,15 @@ html {
 /* =======Itineraire=========*/
 .back 
 {
-    width: 90px;
-    height: 90px;
-    border-radius: 120px;
+    width: 60px;
+    height: 60px;
+    border-radius: 54;
     background: #65A2E4;
     margin-left: 50px;
     margin-top: 50px;
-    padding-left: 25px;
-    padding-top: 22px;
+    padding-left: 8px;
+    padding-top: 9px;
+    border-radius: 7px;
 }
 .back i 
 {
