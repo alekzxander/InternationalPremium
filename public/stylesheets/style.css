@@ -44,8 +44,8 @@ a:hover {
 } 
 .navbar-default {
     background: transparent;
-    z-index: 100;
     border: none;
+    z-index: 100;
 }
 
   .navbar .navbar-nav {
@@ -155,6 +155,11 @@ a:hover {
 .box-item h2,p   {
     color:#000;
 }
+
+.dropdown-menu {
+    color :#000;
+}
+
 
 /* ========== CARTE ================= */
 #intro strong {
@@ -527,6 +532,10 @@ footer a {
     padding: 15px;
 }
 .copyright {
+    color: #fff;
+}
+.hrfooter {
+    width: 100%;
     color: #fff;
 }
 /* On small screens, set height to 'auto' for sidenav and grid */

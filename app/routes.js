@@ -76,7 +76,7 @@ module.exports = function (app, passport) {
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         var fileToUpload = req.file;
-        var target_path = 'public/images/' + fileToUpload.originalname;    
+        var target_path = upload + fileToUpload.originalname;    
         var tmp_path = fileToUpload.path;
 
         let myData = new voyage({
@@ -121,7 +121,7 @@ module.exports = function (app, passport) {
 
     app.post('/updatecard/:id', permissions.can('access admin page'),upload.single('img'),  (req, res) => {
         // var fileToUpload = req.file;
-        // var target_path = 'public/images/' + fileToUpload.originalname;    
+        // var target_path = upload  + fileToUpload;    
         // var tmp_path = fileToUpload.path;
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
@@ -130,19 +130,19 @@ module.exports = function (app, passport) {
                 dateR: req.body.dateR,
                 sejour: req.body.sejour,
                 preview: req.body.preview,
-                text: req.body.text
-                // img: fileToUpload.originalname
+                text: req.body.text,
+                // img: fileToUpload
             }
         },
             { new: true },
             (err, voyage) => {
                 voyage.save()
                     .then(item => {
-                        // var src = fs.createReadStream(tmp_path);
-                        // var dest = fs.createWriteStream(target_path);
-                        // src.pipe(dest);
+                        var src = fs.createReadStream(tmp_path);
+                        var dest = fs.createWriteStream(target_path);
+                        src.pipe(dest);
                         //delete temp file
-                        // fs.unlink(tmp_path);
+                        fs.unlink(tmp_path);
                         res.redirect("/dashbord/card");
                     })
                     .catch(err => {
@@ -155,6 +155,11 @@ module.exports = function (app, passport) {
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
             res.render('index.ejs', { mesVoyages: voyages });
+        });
+    });
+    app.get('/listvoyages',(req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('listVoyages.ejs', { mesVoyages: voyages });
         });
     });
     app.get('/voyage/:id', ((req, res) => {
