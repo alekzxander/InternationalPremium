@@ -9,27 +9,27 @@ module.exports = function (app, passport) {
 
 
     // normal routes ===============================================================
-    app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord', permissions.can('access admin page'),(req, res) => {
         res.render('dashbord.ejs')
 
     })
-    app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
+    app.get('/card/:id/delete',permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
         })
     })
-    app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord/card', permissions.can('access admin page'),(req, res) => {
         voyage.find((err, carte) => {
             res.render('card.ejs', { cartes: carte });
         });
     });
 
-    app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord/dashItineraire/',permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('dashItineraire.ejs', { voyages: voyages })
         });
     })
-    app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
+    app.get('/ajoutLieux/:id',permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux.ejs', {
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
@@ -38,14 +38,17 @@ module.exports = function (app, passport) {
             })
         });
     })
-    app.post('/ajoutLieux/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+    app.post('/ajoutLieux/:id', upload.single('img'), (req, res) => {
         let fileToUpload = req.file;
         let target_path = 'public/images/' + fileToUpload.originalname;
         let tmp_path = fileToUpload.path;
         voyage.findByIdAndUpdate(req.params.id, {
             $push: {
-                lieux: req.body.lieux,
-                lieux: fileToUpload.originalname
+                lieux: {
+                    titre : req.body.titre,
+                    text : req.body.text,
+                    img : fileToUpload.originalname
+                }
             }
         },
             { new: true }, (err, voyages) => {
@@ -72,13 +75,8 @@ module.exports = function (app, passport) {
     // create card
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
-        /** The original name of the uploaded file
-         stored in the variable "originalname". **/
         var fileToUpload = req.file;
-        var target_path = 'public/images/' + fileToUpload.originalname;
-
-        /** When using the "single"
-             data come in "req.file" regardless of the attribute "name". **/
+        var target_path = 'public/images/' + fileToUpload.originalname;    
         var tmp_path = fileToUpload.path;
 
         let myData = new voyage({
@@ -111,7 +109,7 @@ module.exports = function (app, passport) {
     });
 
     /* update card */
-    app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
+    app.get('/updatecard/:id',permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render("updatecard.ejs", {
                 voyage: req.params.id, card: voyages.filter((voyage) => {
@@ -121,11 +119,10 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+    app.post('/updatecard/:id', permissions.can('access admin page'),upload.single('img'),  (req, res) => {
         var fileToUpload = req.file;
-        var target_path = 'public/images/' + fileToUpload.originalname;
+        var target_path = 'public/images/' + fileToUpload.originalname;    
         var tmp_path = fileToUpload.path;
-
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,
@@ -144,14 +141,12 @@ module.exports = function (app, passport) {
                         var src = fs.createReadStream(tmp_path);
                         var dest = fs.createWriteStream(target_path);
                         src.pipe(dest);
-                        res.redirect("/dashbord/card");
+                        //delete temp file
                         fs.unlink(tmp_path);
-                        src.on('end', function () { res.redirect("/dashbord/card"); });
-                        src.on('error', function (err) { res.render('error'); });
-
+                        res.redirect("/dashbord/card");
                     })
                     .catch(err => {
-                        res.status(400).send("Maj non possible");
+                        res.status(400);
                     });
             })
 
