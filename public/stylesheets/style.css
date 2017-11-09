@@ -228,10 +228,9 @@
 
 
 body {
-     background: #06162D;
+    background: #06162D;
     position: relative;
     overflow-x: hidden;
-    background: #FAF9F8;
     font-family: 'Roboto', sans-serif;
     color: #fff;
 }
