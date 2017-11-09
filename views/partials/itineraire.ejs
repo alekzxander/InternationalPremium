@@ -1,7 +1,14 @@
+<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     
+</head>
+
 <a href="/">
-    <div class="back">
+      <div class="back">
             <i class="fa fa-arrow-left fa-3x"> </i> 
     </div></a>
+
 <div class="container">
     <h1>
         <%= mesVoyages.name %>
@@ -48,8 +55,13 @@
                         <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
                     </div>
                 </div>
-
             </div>
-
+       
+          
+         
             <% }) %>
 </div>
+
+<span class='Top'><i class='fa fa-chevron-up'></i></span>
+
+<script src="../javascripts/scroll.js"></script>
