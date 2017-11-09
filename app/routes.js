@@ -154,7 +154,7 @@ module.exports = function (app, passport) {
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
-            res.render('index.ejs', { mesVoyages: voyages },{ cartes: carte });
+            res.render('index.ejs',{ mesVoyages: voyages });
         });
     });
 
