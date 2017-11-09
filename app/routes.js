@@ -10,7 +10,7 @@ module.exports = function (app, passport) {
 
     // normal routes ===============================================================
     app.get('/dashbord', permissions.can('access admin page'),(req, res) => {
-        res.render('dashbord.ejs')
+        res.redirect('/dashbord/card')
 
     })
     app.get('/card/:id/delete',permissions.can('access admin page'), (req, res) => {
@@ -154,14 +154,20 @@ module.exports = function (app, passport) {
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
-            res.render('index.ejs', { mesVoyages: voyages });
+            res.render('index.ejs', { mesVoyages: voyages },{ cartes: carte });
         });
     });
+
+
+    
     app.get('/listvoyages',(req, res) => {
         voyage.find((err, voyages) => {
-            res.render('listVoyages.ejs', { mesVoyages: voyages });
+            res.render('listvoyages.ejs', { mesVoyages: voyages });
         });
     });
+
+
+
     app.get('/voyage/:id', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
