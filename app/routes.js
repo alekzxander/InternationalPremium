@@ -268,8 +268,8 @@ module.exports = function (app, passport) {
 
     // ================= Qui sommes Nous ========================= //
 
-    app.get('/quisommesnous', (req, res) => {
-        res.render("quisommesnous.ejs")
+    app.get('/partenaires', (req, res) => {
+        res.render("partenaires.ejs")
     })
 }
 
