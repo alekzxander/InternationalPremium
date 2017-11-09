@@ -1,6 +1,6 @@
    /* nav dash*/
 
-   .navbar {
+  .navbar {
     margin-bottom: 0px;
     position: none;
 }

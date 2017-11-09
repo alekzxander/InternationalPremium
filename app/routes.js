@@ -9,27 +9,27 @@ module.exports = function (app, passport) {
 
 
     // normal routes ===============================================================
-    app.get('/dashbord', permissions.can('access admin page'),(req, res) => {
+    app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         res.redirect('/dashbord/card')
 
     })
-    app.get('/card/:id/delete',permissions.can('access admin page'), (req, res) => {
+    app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
         })
     })
-    app.get('/dashbord/card', permissions.can('access admin page'),(req, res) => {
+    app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
             res.render('card.ejs', { cartes: carte });
         });
     });
 
-    app.get('/dashbord/dashItineraire/',permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('dashItineraire.ejs', { voyages: voyages })
         });
     })
-    app.get('/ajoutLieux/:id',permissions.can('access admin page'), (req, res) => {
+    app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux.ejs', {
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
@@ -45,9 +45,9 @@ module.exports = function (app, passport) {
         voyage.findByIdAndUpdate(req.params.id, {
             $push: {
                 lieux: {
-                    titre : req.body.titre,
-                    text : req.body.text,
-                    img : fileToUpload.originalname
+                    titre: req.body.titre,
+                    text: req.body.text,
+                    img: fileToUpload.originalname
                 }
             }
         },
@@ -76,7 +76,7 @@ module.exports = function (app, passport) {
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         var fileToUpload = req.file;
-        var target_path = upload + fileToUpload.originalname;    
+        var target_path = upload + fileToUpload.originalname;
         var tmp_path = fileToUpload.path;
 
         let myData = new voyage({
@@ -109,7 +109,7 @@ module.exports = function (app, passport) {
     });
 
     /* update card */
-    app.get('/updatecard/:id',permissions.can('access admin page'), (req, res) => {
+    app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render("updatecard.ejs", {
                 voyage: req.params.id, card: voyages.filter((voyage) => {
@@ -119,7 +119,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/updatecard/:id', permissions.can('access admin page'),upload.single('img'),  (req, res) => {
+    app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         // var fileToUpload = req.file;
         // var target_path = upload  + fileToUpload;    
         // var tmp_path = fileToUpload.path;
@@ -153,14 +153,21 @@ module.exports = function (app, passport) {
     })
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
-        voyage.find((err, voyages) => {
-            res.render('index.ejs',{ mesVoyages: voyages });
+        voyage.find((err,voyages) => {
+            res.render('index.ejs', { mesVoyages: voyages });
+
+        });
+    });
+
+    app.post('/',(req,res)=>{
+        let id = "59e6e3e3616911883064eb5a"
+        voyage.findById({_id:id},(err,voyages)=> {
+            res.render('carte.ejs',{mesVoyages:voyages});
         });
     });
 
 
-    
-    app.get('/listvoyages',(req, res) => {
+    app.get('/listvoyages', (req, res) => {
         voyage.find((err, voyages) => {
             res.render('listvoyages.ejs', { mesVoyages: voyages });
         });
@@ -258,9 +265,9 @@ module.exports = function (app, passport) {
     app.get('/contact', (req, res) => {
         res.render('contact.ejs')
     })
-    
+
     // ================= Qui sommes Nous ========================= //
-    
+
     app.get('/quisommesnous', (req, res) => {
         res.render("quisommesnous.ejs")
     })
