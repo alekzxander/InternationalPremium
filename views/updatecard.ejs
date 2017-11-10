@@ -14,9 +14,9 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="carte">
-                    <form action="/updatecard/<%= card._id%>" method="POST">
+                    <form action="/updatecard/<%= card._id%>" enctype="multipart/form-data"  method="POST">
                         <div class="imgVide">
-                            <input type="file" name="img" class='btn btn-primary' value="<%= card.img %>">
+                            <input type="file" name="img" class='btn btn-primary'>
                         </div>
                         <div class="ville">
                             <div class="form-group">

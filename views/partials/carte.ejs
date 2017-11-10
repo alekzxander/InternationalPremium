@@ -3,8 +3,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h1>Des séjours linguistiques dans des lieux d'exceptions</h1>
-                <br>
-                <span>Internationnal
+                <br>Internationnal
                     <strong>Premium</strong> accompagnement vise à développer votre potentiel en vous accompagnant dans vos parcours
                     éducatifs et professionnels. Cela est fait en vous procurant des opportunités précieuces pour ces parcours.</span>
                 <br>
@@ -17,7 +16,7 @@
         <div class="box-item">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="/images/student-box.jpg" style="height : 282px;" class="img-responsive" alt="">
+                    <img src="/images/student-box.jpg" class="img-responsive" alt="">
                 </div>
                 <div class="col-md-8">
                     <h2>Booster vos compétences</h2>
@@ -33,7 +32,7 @@
         <div class="box-item">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="/images/student-box2.jpg" style="height : 308px;" class="img-responsive" alt="">
+                    <img src="/images/student-box2.jpg" class="img-responsive" alt="">
                 </div>
                 <div class="col-md-8">
                     <h2>Partenariats important avec de grandes écoles.</h2>
@@ -90,16 +89,16 @@
 </div>
 
 
-<div class="container d-none d-lg-block d-xl-none">
+<div class="container-fluid d-none d-lg-block d-xl-none">
     <div class="card-content">
-        <hr>
+
         <h2 class="text-center voyageTitre">Notre sélection du moment</h2>
-        <hr>
-        <div class="row">
+   
+        <div class="row carteVoyage">
             <% mesVoyages.forEach((voyages)=>{ %>
                 <div class="col-md-4">
                     <div class="carte">
-                        <img src="images/<%= voyages.img %>" alt="">
+                        <img src="images/<%= voyages.img %>" class="img-responsive" alt="">
                         <div class="ville">
                             <h1>
                                 <%= voyages.name %>

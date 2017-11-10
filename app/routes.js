@@ -78,15 +78,15 @@ module.exports = function (app, passport) {
         var fileToUpload = req.file;
         var target_path = upload + fileToUpload.originalname;
         var tmp_path = fileToUpload.path;
-
+        
         let myData = new voyage({
             name: req.body.name,
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
             preview: req.body.preview,
-            img: fileToUpload.originalname,
             text: req.body.text,
+            img : fileToUpload.originalname
         });
         myData
             .save()
@@ -120,9 +120,13 @@ module.exports = function (app, passport) {
     })
 
     app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
-        // var fileToUpload = req.file;
-        // var target_path = upload  + fileToUpload;    
-        // var tmp_path = fileToUpload.path;
+       
+        var fileToUpload = req.file;
+        console.log(fileToUpload)
+        var target_path = upload + fileToUpload; 
+        var tmp_path = fileToUpload.path;
+    
+      
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,
@@ -131,7 +135,7 @@ module.exports = function (app, passport) {
                 sejour: req.body.sejour,
                 preview: req.body.preview,
                 text: req.body.text,
-                // img: fileToUpload
+                img: fileToUpload.originalname       
             }
         },
             { new: true },
@@ -143,13 +147,13 @@ module.exports = function (app, passport) {
                         src.pipe(dest);
                         //delete temp file
                         fs.unlink(tmp_path);
-                        res.redirect("/dashbord/card");
+                        src.on('end', function () { res.redirect("/dashbord/card"); });
+                        src.on('error', function (err) { res.render('error'); });
                     })
                     .catch(err => {
                         res.status(400);
                     });
             })
-
     })
     // show the home page (will also have our login links)
     app.get('/', function (req, res) {
