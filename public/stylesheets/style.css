@@ -458,7 +458,9 @@ a:hover {
     margin-top: 50px;
     border: 1px solid #D8D6D6;
 }   
-
+.box-item img {
+    height: 340px;
+}
 .box-item p 
 {
     line-height: 32px;
