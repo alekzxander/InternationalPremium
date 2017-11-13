@@ -162,20 +162,6 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.post('/',(req,res)=>{
-        let id = "59e6e3e3616911883064eb5a"
-        voyage.findById({_id:id},(err,voyages)=> {
-            res.render('carte.ejs',{mesVoyages:voyages});
-        });
-    });
-
-
-    app.get('/listvoyages', (req, res) => {
-        voyage.find((err, voyages) => {
-            res.render('listvoyages.ejs', { mesVoyages: voyages });
-        });
-    });
-
 
 
     app.get('/voyage/:id', ((req, res) => {
