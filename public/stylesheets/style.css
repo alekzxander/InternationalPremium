@@ -1,6 +1,9 @@
   /* ==================== MENU =================== */
   /* nav dash*/
-
+strong 
+{
+    color: orange;
+}
   .navbar {
     margin-bottom: 0px;
     position: none;
@@ -270,6 +273,7 @@ a:hover {
 
 .navbar-default .navbar-nav>li>a:hover {
     color: orange;
+    
 }
 
 .navbar-default {
@@ -458,7 +462,7 @@ a:hover {
     /* border-radius: 12px; */
     text-align: center;
     /* padding-bottom: 49px; */
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 15px rgb(195, 188, 188);
     height: 800px;
 }
 
@@ -492,9 +496,9 @@ a:hover {
 }
 
 .box-item {
-    background: #F7F2F2;
+    background: #FAF8F8;
     margin-top: 50px;
-    border: 1px solid #D8D6D6;
+
 }   
 .box-item img {
     height: 280px;
@@ -511,8 +515,8 @@ a:hover {
 }
 .intro-text 
 {
-    background: #fbf9f8;
-    border: 1px solid #D8D6D6;
+    background: #FAF8F8;
+
 }
 .intro-text p 
 {
@@ -542,11 +546,12 @@ a:hover {
     height: 40px;
     text-transform: uppercase;
     background: #04152b;
-    color: #fff;
-    /* margin-top: 60px; */
     border: none;
     margin-left: 10px;
     width: 150px;
+}
+.btn-details a:hover {
+ color: orange;
 }
 
 .btn-warning {
@@ -584,6 +589,37 @@ a:hover {
 }
 /* =======Itineraire=========*/
 
+
+#banniere-img
+{
+    height: 550px;
+    margin-bottom: 170px;
+    margin-top: -56px;
+}
+.box-inside-head
+{
+    height: auto;
+    padding: 10px;
+    background: white;
+    margin-top: 483px;
+    text-align:center;
+    border: 0.5px solid #E2DDDD;
+    letter-spacing: 0.5px;
+    font-family: 'Roboto', sans-serif;
+
+}
+.box-inside-head h1 {
+
+    color: #04152b;
+}
+.box-inside-head p 
+{
+    font-size: 19px;
+}
+.box-inside-head a
+{
+    color: white;
+}
 .back {
     width: 60px;
     height: 60px;
@@ -604,27 +640,6 @@ a:hover {
 .itineraire-img img {
     height: 500px;
 }
-
-.personnalisable {
-    background: #E69B2B;
-    color: white;
-    height: 500px;
-    padding-top: 18px;
-    padding-left: 15px;
-}
-
-.personnalisable p {
-    font-size: 21px;
-    margin-right: 15px;
-}
-
-.personnalisable img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 50px;
-    margin-top: 20px;
-}
-
 .descriptif {
     margin-top: -1px;
     background: white;
@@ -634,8 +649,18 @@ a:hover {
     letter-spacing: 0.5px;
     font-family: 'Roboto', sans-serif;
     font-size: 19px;
+    line-height: 39px;
 }
 
+.descriptif h4 {
+    color: #A8A0A0;
+    text-align:center;
+    font-size: 21px;
+    margin-bottom: 30px;
+}
+.descriptif h3{
+    color: #04152b;
+}
 .descriptif:hover {
     box-shadow: 0px 3px 5px rgba(32, 32, 32, 0.15);
     transform: scale(1.01)
@@ -654,7 +679,11 @@ a:hover {
     font-weight: bold;
     font-family: helvetica;
 }
-
+.lieux-visite {
+    color: #353333;
+    margin-bottom: 4;
+    margin: 4% 0 2%
+}
 .VerticalSeparator {
     border-left: 1.0px solid #93979C;
     /* Border on the left */
@@ -818,6 +847,7 @@ footer a {
     width: 100%;
     margin: auto;
     font-family: 'Roboto', sans-serif;
+    padding-top: 19px;
 }
 
 .date h3 {
@@ -837,19 +867,22 @@ footer a {
     /* background: #65A2E4; */
     color: #fff;
     /* margin-top: 60px; */
-    border: none;
+    border-radius: 0px;
     /* margin-left: 10px; */
     width: 163px;
+    
 }
 
 .btn-warning {
-    padding: 5px;
+    padding: 10px;
     height: 54px;
     text-transform: uppercase;
     /* margin-top: 60px; */
     background: #F1B244;
     border: none;
     margin-right: 30px;
+    border-radius:0px;
+    
 }
 
 .btn-danger {
@@ -943,11 +976,10 @@ footer a {
 .descriptif img {
     margin-top: 10px;
     height: 180px;
-    width: 310px;
 }
 
 .descriptif h3 {
-    color: #000000;
+    color: #04152b;
     margin-bottom: 20px;
     margin-top: 30px;
     font-weight: bold;

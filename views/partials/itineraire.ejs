@@ -1,65 +1,60 @@
-<head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     
-</head>
-
-<a href="/">
-      <div class="back">
-            <i class="fa fa-arrow-left fa-3x"> </i> 
-    </div></a>
-
-<div class="container">
-    <h1>
-        <%= mesVoyages.name %>
-    </h1>
-
-
-    <div class="row">
-        <div class="col-md-8 itineraire-img">
-            <figure>
-                <img src="/images/<%= mesVoyages.img %>" class="img-responsive" alt="">
-            </figure>
-        </div>
-        <div class="col-xs-12 col-md-4">
-            <div class="personnalisable">
-                <figure class="text-center"><img src="/images/premium-badge.png" alt=""></figure>
-                <p>Nos voyages sont <br> 100% personnalisable !</p>
-                <p>Personnaliser votre voyage selon vos besoins et ressources </p>
+<div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
+    <div class="container">
+        <!-- <a href="/">
+            <div class="back">
+                <i class="fa fa-arrow-left fa-3x"> </i>
             </div>
+        </a> -->
+        <div class="box-inside-head">
+            <h1>
+                <%= mesVoyages.name %>
+            </h1>
+       
+            <p>  <i class="fa fa-calendar fa-2x"></i> Départ le <strong><%= mesVoyages.dateA %> </strong> retour le <strong><%= mesVoyages.dateR %> </strong> </p>
+            <p>Vous souhaitez avoir plus de renseignements sur ce voyage ? cliquez ici <button class="btn btn-details  text-center">
+                    <a href="/contact">Contact</a>
+                </button></p>
         </div>
     </div>
+</div>
+<div class="container-fluid">
     <div class="descriptif" style="margin-top:30px;">
-        <h3>Resumé du voyage</h3>
+        <h4>Vous découvrirez...</h4>
         <p>
             <%= mesVoyages.text %>
         </p>
     </div>
-    <h1>Lieux à visiter</h1>
-        <% mesVoyages.lieux.forEach((obj)=>{ %>
-            <div class="descriptif">
+    <div class="container">
+            <h1 class="lieux-visite">Nos lieux à visiter - pack classique</h1>
+    </div>
+   
+    <% mesVoyages.lieux.forEach((obj)=>{ %>
+        <div class="descriptif">
 
-                <div class="row">
-                    <div class="col-xs-12 col-md-7">
-                        <h3>
-                            <%= obj.titre %>
-                        </h3>
-                        <p>
-                            <%= obj.text %>
-                        </p>
-                    </div>
-                    <div class="col-xs-12 col-md-1">
-                        <div class="VerticalSeparator"></div>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
-                    </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-7">
+                    <h3>
+                        <%= obj.titre %>
+                    </h3>
+                    <p>
+                        <%= obj.text %>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-1">
+                    <div class="VerticalSeparator"></div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
                 </div>
             </div>
+        </div>
        
-          
-         
-            <% }) %>
+
+
+        <% }) %>
+        <div class="container">
+        <h1 class="lieux-visite">Nos lieux à visiter - pack  <strong>premium</strong> </h1>
+        </div>
 </div>
 
 <span class='Top'><i class='fa fa-chevron-up'></i></span>

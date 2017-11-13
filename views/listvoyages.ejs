@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container d-none d-lg-block d-xl-none">
+    <div class="container-fluid d-none d-lg-block d-xl-none">
         <div class="card-content">
             <hr>
             <h2 class="text-center voyageTitre">Voyages à la carte</h2>
@@ -24,7 +24,7 @@
                     <% mesVoyages.forEach((voyages)=>{ %>
                 <div class="col-md-4">
                     <div class="carte">
-                        <img src="images/<%= voyages.img %>" alt="">
+                        <img src="images/<%= voyages.img %>" class="img-responsive" alt="">
                         <div class="ville">
                             <h1>
                                 <%= voyages.name %>
@@ -37,6 +37,8 @@
                                 <%= voyages.dateA %> au
                                     <%= voyages.dateR %>
                             </p>
+                            <br>
+                            <i class="fa fa-calendar fa-2x"></i>
                         </div>
                         <div class="details">
                             <p>
