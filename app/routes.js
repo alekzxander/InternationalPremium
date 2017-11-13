@@ -126,7 +126,6 @@ module.exports = function (app, passport) {
         var target_path = upload + fileToUpload; 
         var tmp_path = fileToUpload.path;
     
-      
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,

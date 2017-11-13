@@ -291,10 +291,18 @@ a:hover {
 /*           carousel             */
 /*-------------------------------*/
 
-.bg-01 {
-    background-image: url('../images/logo-mieux.png');
-    width: 50%;
-    height: 50%;
+.bg-02 {
+    background: url('../images/africa-head.jpg')
+
+}
+.bg-03 {
+    background: url('../images/usa-head.jpg')
+}
+.bg-04{
+    background: url('../images/austra-head.jpg')
+}
+.bg-05 {
+    background: url('../images/student3.jpg')
 }
 
 .sh-carousel {
@@ -363,7 +371,8 @@ a:hover {
 }
 
 .container h2 {
-    color: #06162D;
+    color: #2a4164;
+    font-weight: bold;
 }
 
 .carousel {
@@ -396,7 +405,8 @@ a:hover {
 }
 
 #intro h1 {
-    color: #04152b;
+    color: #294064;
+    font-weight: bold;
 }
 
 #intro p {
@@ -404,11 +414,39 @@ a:hover {
 }
 
 #coupure {
-    height: 500px;
     background: url(../images/australia.jpg) no-repeat fixed;
     background-size: cover;
+    transform:translate(0%, 2.25212%) translate3d(0px, 0px, 0px);
+    color: white;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
-
+#coupure h1 {
+    /* margin-top: 10%; */
+}
+#coupure li {
+    font-size: 20px;
+    margin-top: 5px;
+    /* color: #03152b; */
+}
+#coupure li:nth-child(1)
+{
+    margin-top: 40px;
+}
+#coupure p 
+{
+    font-size: 30px;
+    margin-top: 25px;
+}ƒ
+#coupure .contact-coupure
+{
+    margin-top: 6%;
+}
+.titleIconList
+{
+    margin-bottom: 70px;
+    font-size: 34px;
+}
 #myIcon {
     margin-top: 50px;
 }
@@ -419,9 +457,9 @@ a:hover {
     background: #faf9f8;
     /* border-radius: 12px; */
     text-align: center;
-    padding-bottom: 20px;
+    /* padding-bottom: 49px; */
     box-shadow: 0 14px 28px rgba(0,0,0,0.25);
-    height: 708px;
+    height: 800px;
 }
 
 .carte-vide {
@@ -443,7 +481,7 @@ a:hover {
 
 @media all and (max-width:560px) {
     .carte {
-        height: 800px;
+        height:auto;
     }
 }
 
@@ -459,11 +497,26 @@ a:hover {
     border: 1px solid #D8D6D6;
 }   
 .box-item img {
-    height: 340px;
+    height: 280px;
 }
 .box-item p 
 {
     line-height: 32px;
+    text-align: justify;
+    margin: 0 6%;
+}
+.box-item h2 {
+    margin:0 6%;
+    margin-bottom: 37px;
+}
+.intro-text 
+{
+    background: #fbf9f8;
+    border: 1px solid #D8D6D6;
+}
+.intro-text p 
+{
+    margin: 20px 20%;
 }
 .details p {
     /* height: 100px; */
@@ -746,6 +799,7 @@ footer a {
     /* margin-left: -10px; */
     margin-top: -10px;
     box-shadow: inset 0 0 9px #302E2E;
+    height: 346px;
 }
 
 .box-item {
@@ -759,7 +813,7 @@ footer a {
 }
 
 .details p {
-    height: 100px;
+    height: 206px;
     font-size: 22px;
     width: 100%;
     margin: auto;
@@ -777,22 +831,22 @@ footer a {
 }
 
 .btn-details {
-    padding: 5px;
-    height: 40px;
+    padding: 0px;
+    height: 54px;
     text-transform: uppercase;
     /* background: #65A2E4; */
     color: #fff;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     border: none;
-    margin-left: 10px;
-    width: 150px;
+    /* margin-left: 10px; */
+    width: 163px;
 }
 
 .btn-warning {
     padding: 5px;
-    height: 40px;
+    height: 54px;
     text-transform: uppercase;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     background: #F1B244;
     border: none;
     margin-right: 30px;
@@ -960,7 +1014,8 @@ footer a {
 
 a {
     color: white;
-    padding-right: 15px;
+    padding-right: 0px;
+    font-size: 19px;
 }
 /* =======FOOTER ============*/
 
