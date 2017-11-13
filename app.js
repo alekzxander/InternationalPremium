@@ -1,4 +1,5 @@
 // set up get all the tools we need
+
 const express = require('express');
 const ejs = require('ejs');
 const app = express();
@@ -41,8 +42,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+
 // routes
 routes(app, passport); // load our routes and pass in our app and fully configured passport
+
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
