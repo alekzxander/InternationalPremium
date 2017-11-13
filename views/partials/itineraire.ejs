@@ -1,13 +1,14 @@
 <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <a href="/">
-      <div class="back">
-            <i class="fa fa-arrow-left fa-3x"> </i> 
-    </div></a>
+    <div class="back">
+        <i class="fa fa-arrow-left fa-3x"> </i>
+    </div>
+</a>
 
 <div class="container">
     <h1>
@@ -23,8 +24,11 @@
         </div>
         <div class="col-xs-12 col-md-4">
             <div class="personnalisable">
-                <figure class="text-center"><img src="/images/premium-badge.png" alt=""></figure>
-                <p>Nos voyages sont <br> 100% personnalisable !</p>
+                <figure class="text-center">
+                    <img src="/images/premium-badge.png" alt="">
+                </figure>
+                <p>Nos voyages sont
+                    <br> 100% personnalisable !</p>
                 <p>Personnaliser votre voyage selon vos besoins et ressources </p>
             </div>
         </div>
@@ -36,32 +40,34 @@
         </p>
     </div>
     <h1>Lieux à visiter</h1>
-        <% mesVoyages.lieux.forEach((obj)=>{ %>
-            <div class="descriptif">
+    <% mesVoyages.lieux.forEach((obj)=>{ %>
+        <div class="descriptif">
 
-                <div class="row">
-                    <div class="col-xs-12 col-md-7">
-                        <h3>
-                            <%= obj.titre %>
-                        </h3>
-                        <p>
-                            <%= obj.text %>
-                        </p>
-                    </div>
-                    <div class="col-xs-12 col-md-1">
-                        <div class="VerticalSeparator"></div>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
-                    </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-7">
+                    <h3>
+                        <%= obj.titre %>
+                    </h3>
+                    <p>
+                        <%= obj.text %>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-1">
+                    <div class="VerticalSeparator"></div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
                 </div>
             </div>
-       
-          
-         
-            <% }) %>
+        </div>
+
+
+
+        <% }) %>
 </div>
 
-<span class='Top'><i class='fa fa-chevron-up'></i></span>
+<span class='Top'>
+    <i class='fa fa-chevron-up'></i>
+</span>
 
 <script src="../javascripts/scroll.js"></script>

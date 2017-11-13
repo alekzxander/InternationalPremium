@@ -162,23 +162,7 @@ module.exports = function (app, passport) {
 
         });
     });
-
-    app.post('/',(req,res)=>{
-        let id = "59e6e3e3616911883064eb5a"
-        voyage.findById({_id:id},(err,voyages)=> {
-            res.render('carte.ejs',{mesVoyages:voyages});
-        });
-    });
-
-
-    app.get('/listvoyages', (req, res) => {
-        voyage.find((err, voyages) => {
-            res.render('listvoyages.ejs', { mesVoyages: voyages });
-        });
-    });
-
-
-
+   
     app.get('/voyage/:id', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
@@ -270,10 +254,10 @@ module.exports = function (app, passport) {
         res.render('contact.ejs')
     })
 
-    // ================= Qui sommes Nous ========================= //
+    // ================= Partenaires ========================= //
 
-    app.get('/quisommesnous', (req, res) => {
-        res.render("quisommesnous.ejs")
+    app.get('/partenaires', (req, res) => {
+        res.render("partenaires.ejs")
     })
 }
 
