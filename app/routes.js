@@ -85,172 +85,159 @@ module.exports = function (app, passport) {
         });
     });
 
-        // normal routes ===============================================================
-        app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
-            res.redirect('/dashbord/card')
-    
+    // normal routes ===============================================================
+    app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
+        res.redirect('/dashbord/card')
+
+    })
+    app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
+        voyage.remove({ _id: req.params.id }, (err, delData) => {
+            res.render("validation.ejs");
         })
-        app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
-            voyage.remove({ _id: req.params.id }, (err, delData) => {
-                res.render("validation.ejs");
-            })
-        })
-        app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
-            voyage.find((err, carte) => {
-                res.render('card.ejs', { cartes: carte });
-            });
+    })
+    app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
+        voyage.find((err, carte) => {
+            res.render('card.ejs', { cartes: carte });
         });
-    
-        app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
-            voyage.find((err, voyages) => {
-                res.render('dashItineraire.ejs', { voyages: voyages })
-            });
-        })
-        app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
-            voyage.find((err, voyages) => {
-                res.render('ajoutLieux.ejs', {
-                    id: req.params.id, mesVoyages: voyages.filter((voyage) => {
-                        return (voyage.id == req.params.id)
-                    })[0]
-                })
-            });
-        })
-        app.post('/ajoutLieux/:id', upload.single('img'), (req, res) => {
-            let fileToUpload = req.file;
-            let target_path = 'public/images/' + fileToUpload.originalname;
-            let tmp_path = fileToUpload.path;
-            voyage.findByIdAndUpdate(req.params.id, {
-                $push: {
-                    lieux: {
-                        titre: req.body.titre,
-                        text: req.body.text,
-                        img: fileToUpload.originalname
-                    }
-                }
-            },
-                { new: true }, (err, voyages) => {
-                    voyages.save()
-                        .then(item => {
-                            var src = fs.createReadStream(tmp_path);
-                            var dest = fs.createWriteStream(target_path);
-                            src.pipe(dest);
-                            fs.unlink(tmp_path);
-                            src.on('end', function () {
-                                res.redirect("/dashbord/dashItineraire");
-                            })
-                            src.on('error', function (err) {
-                                res.render('error');
-                            })
-    
-                        })
-                        .catch(err => {
-                            res.status(400);
-                        });
-                })
-        })
-    
-        // create card
-        // process the card form
-        app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
-            var fileToUpload = req.file;
-            var target_path = upload + fileToUpload.originalname;
-            var tmp_path = fileToUpload.path;
-    
-            let myData = new voyage({
-                name: req.body.name,
-                dateA: req.body.dateA,
-                dateR: req.body.dateR,
-                sejour: req.body.sejour,
-                preview: req.body.preview,
-                text: req.body.text,
-                img: fileToUpload.originalname
-            });
-            myData
-                .save()
-                .then(item => {
-                    //Upload image 
-                    /** A better way to copy the uploaded file. **/
-                    var src = fs.createReadStream(tmp_path);
-                    var dest = fs.createWriteStream(target_path);
-                    src.pipe(dest);
-                    //delete temp file
-                    fs.unlink(tmp_path);
-                    src.on('end', function () { res.redirect("/dashbord/card"); });
-                    src.on('error', function (err) { res.render('error'); });
-    
-                })
-                .catch(err => {
-                    res
-                        .status(400)
-                });
+    });
+
+    app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('dashItineraire.ejs', { voyages: voyages })
         });
-    
-        /* update card */
-        app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
-            voyage.find((err, voyages) => {
-                res.render("updatecard.ejs", {
-                    voyage: req.params.id, card: voyages.filter((voyage) => {
-                        return voyage.id == req.params.id
-                    })[0]
-                })
+    })
+    app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('ajoutLieux.ejs', {
+                id: req.params.id, mesVoyages: voyages.filter((voyage) => {
+                    return (voyage.id == req.params.id)
+                })[0]
             })
-        })
-    
-        app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
-    
-            var fileToUpload = req.file;
-            console.log(fileToUpload)
-            var target_path = upload + fileToUpload;
-            var tmp_path = fileToUpload.path;
-    
-            voyage.findByIdAndUpdate(req.params.id, {
-                $set: {
-                    name: req.body.name,
-                    dateA: req.body.dateA,
-                    dateR: req.body.dateR,
-                    sejour: req.body.sejour,
-                    preview: req.body.preview,
+        });
+    })
+    app.post('/ajoutLieux/:id', upload.single('img'), (req, res) => {
+        let fileToUpload = req.file;
+        let target_path = 'public/images/' + fileToUpload.originalname;
+        let tmp_path = fileToUpload.path;
+        voyage.findByIdAndUpdate(req.params.id, {
+            $push: {
+                lieux: {
+                    titre: req.body.titre,
                     text: req.body.text,
                     img: fileToUpload.originalname
                 }
-            },
-                { new: true },
-                (err, voyage) => {
-                    voyage.save()
-                        .then(item => {
-                            var src = fs.createReadStream(tmp_path);
-                            var dest = fs.createWriteStream(target_path);
-                            src.pipe(dest);
-                            //delete temp file
-                            fs.unlink(tmp_path);
-                            src.on('end', function () { res.redirect("/dashbord/card"); });
-                            src.on('error', function (err) { res.render('error'); });
+            }
+        },
+            { new: true }, (err, voyages) => {
+                voyages.save()
+                    .then(item => {
+                        var src = fs.createReadStream(tmp_path);
+                        var dest = fs.createWriteStream(target_path);
+                        src.pipe(dest);
+                        fs.unlink(tmp_path);
+                        src.on('end', function () {
+                            res.redirect("/dashbord/dashItineraire");
                         })
-                        .catch(err => {
-                            res.status(400);
-                        });
-                })
-        })
-        // show the home page (will also have our login links)
-        app.get('/', function (req, res) {
-            voyage.find((err, voyages) => {
-                res.render('index.ejs', { mesVoyages: voyages });
-    
-            });
-        });
-    
-        
-    
-        app.get('/voyage/:id', ((req, res) => {
-            voyage.find((err, voyages) => {
-                res.render('voyage.ejs', {
-                    voyage: req.params.id,
-                    mesVoyages: voyages.filter((voyage) => {
-                        return voyage.id == req.params.id
-                    })[0]
-                })
+                        src.on('error', function (err) {
+                            res.render('error');
+                        })
+
+                    })
+                    .catch(err => {
+                        res.status(400);
+                    });
             })
-        }))
+    })
+
+    // create card
+    // process the card form
+    app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+        var fileToUpload = req.file;
+        var target_path = upload + fileToUpload.originalname;
+        var tmp_path = fileToUpload.path;
+
+        let myData = new voyage({
+            name: req.body.name,
+            dateA: req.body.dateA,
+            dateR: req.body.dateR,
+            sejour: req.body.sejour,
+            preview: req.body.preview,
+            text: req.body.text,
+            img: fileToUpload.originalname
+        });
+        myData
+            .save()
+            .then(item => {
+                //Upload image 
+                /** A better way to copy the uploaded file. **/
+                var src = fs.createReadStream(tmp_path);
+                var dest = fs.createWriteStream(target_path);
+                src.pipe(dest);
+                //delete temp file
+                fs.unlink(tmp_path);
+                src.on('end', function () { res.redirect("/dashbord/card"); });
+                src.on('error', function (err) { res.render('error'); });
+
+            })
+            .catch(err => {
+                res
+                    .status(400)
+            });
+    });
+
+    /* update card */
+    app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
+        voyage.find((err, voyages) => {
+            res.render("updatecard.ejs", {
+                voyage: req.params.id, card: voyages.filter((voyage) => {
+                    return voyage.id == req.params.id
+                })[0]
+            })
+        })
+    })
+
+    app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+
+        var fileToUpload = req.file;
+        console.log(fileToUpload)
+        var target_path = upload + fileToUpload;
+        var tmp_path = fileToUpload.path;
+
+        voyage.findByIdAndUpdate(req.params.id, {$set: {name: req.body.name,dateA: req.body.dateA,dateR: req.body.dateR,sejour: req.body.sejour,preview:req.body.preview,text: req.body.text,img: fileToUpload.originalname}},{ new: true },(err, voyage) => {
+                voyage.save().then(item => {
+                        var src = fs.createReadStream(tmp_path);
+                        var dest = fs.createWriteStream(target_path);
+                        src.pipe(dest);
+                        //delete temp file
+                        fs.unlink(tmp_path);
+                        src.on('end', function () { res.redirect("/dashbord/card"); });
+                        src.on('error', function (err) { res.render('error'); });
+                    })
+                    .catch(err => {
+                        res.status(400);
+                    });
+            })
+    })
+    // show the home page (will also have our login links)
+
+    app.get('/', function (req, res) {
+        voyage.find((err, voyages) => {
+            res.render('index.ejs', { mesVoyages: voyages });
+
+        });
+    });
+
+
+    app.get('/voyage/:id', ((req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('voyage.ejs', {
+                voyage: req.params.id,
+                mesVoyages: voyages.filter((voyage) => {
+                    return voyage.id == req.params.id
+                })[0]
+            })
+        })
+    }))
 
     // ============ Formulaire de Contact ====================== //
     app.get('/contact', (req, res) => {
@@ -261,7 +248,7 @@ module.exports = function (app, passport) {
 
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('partenaires.ejs', { mesVoyages: voyages } )
+            res.render('partenaires.ejs', { mesVoyages: voyages })
         })
     })
 
