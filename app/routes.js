@@ -227,7 +227,7 @@ module.exports = function (app, passport) {
 
     app.use( function(req, res, next){
         voyage.find({}, (err, voyagesMenu )=>{
-            req.voyageMenu = voyagesMenu
+            req.voyagesMenu = voyagesMenu
         })
         next();
     })
@@ -235,7 +235,7 @@ module.exports = function (app, passport) {
     app.get('/voyage/:id', (( req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
-                voyageMenu : req.voyagesMenu,
+                voyagesMenu : req.voyagesMenu,
                 voyage: req.params.id,
                 mesVoyages: voyages.filter((voyage) => {
                     return voyage.id == req.params.id

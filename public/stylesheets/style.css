@@ -2,7 +2,7 @@
   /* nav dash*/
 strong 
 {
-    color: orange;
+    color: #ff9c00;
 }
   .navbar {
     margin-bottom: 0px;
@@ -401,7 +401,7 @@ a:hover {
 /* ========== CARTE ================= */
 
 #intro strong {
-    color: orange;
+    color: black;
 }
 
 #intro {
@@ -492,7 +492,6 @@ a:hover {
 .carte img {
     margin: 0 auto;
     z-index: 4;
-    margin-top: -10px;
 }
 
 .box-item {
@@ -598,7 +597,7 @@ a:hover {
 }
 .box-inside-head
 {
-    height: auto;
+    height: 331px;
     padding: 10px;
     background: white;
     margin-top: 483px;
@@ -606,7 +605,6 @@ a:hover {
     border: 0.5px solid #E2DDDD;
     letter-spacing: 0.5px;
     font-family: 'Roboto', sans-serif;
-
 }
 .box-inside-head h1 {
 
@@ -818,17 +816,12 @@ footer a {
 @media all and (max-width:560px) {}
 
 .carte img {
-    /* width: 100%; */
     margin: 0 auto;
-    /* border-top-left-radius: 12px; */
-    /* border-top-right-radius: 12px; */
     z-index: 4;
     margin-top: 9px;
-    /* height: 300px; */
-    /* margin-left: -10px; */
     margin-top: -10px;
     box-shadow: inset 0 0 9px #302E2E;
-    height: 346px;
+    height: auto;
 }
 
 .box-item {
@@ -993,6 +986,24 @@ footer a {
     /* Width instead of height */
     height: 200px;
 }
+.premium 
+{
+    display: flex;
+    margin-top: 40px;
+}
+.premium p 
+{
+    color: #7A7575;
+}
+.premium img
+{
+    margin-right: 20px;
+}
+.premium h5
+{
+    font-size: 18px;
+    color: #0B2038;
+}
 /* QUI SOMMES NOUS */
 
 .card {
@@ -1006,31 +1017,29 @@ footer a {
     margin-left: 40px;
     margin-right: 23px;
 }
-
 .title {
-    color: grey;
+ 
     font-size: 18px;
 }
 
 .btnform {
-    text-align: center;
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
+  text-align: center;
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
 }
 
 .partenaires a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
+  text-decoration: none;
+  font-size: 22px;
+  color: white;
 }
-
 .btnform:hover,
 .partenaires a:hover {
     opacity: 0.7;
@@ -1142,22 +1151,273 @@ footer {
     }
 }
 
-@media screen and (max-width: 767px) {
-    .sidenav {
-        height: auto;
-        padding: 15px;
+.btn-success {
+    padding: 5px;
+    height: 40px;
+    text-transform: uppercase;
+    margin-top: 60px;
+    border: none;
+    margin-right: 1px;
+}
+
+.card-text {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.voyageTitre {
+    margin-bottom: 60px;
+    font-family: 'Robot', sans-serif;
+    font-size: 35px;
+    padding-top: 30px;
+}
+/* =======Itineraire=========*/
+
+.back {
+    width: 60px;
+    height: 60px;
+    border-radius: 54;
+    background: #65A2E4;
+    margin-left: 50px;
+    margin-top: 50px;
+    padding-left: 8px;
+    padding-top: 9px;
+    border-radius: 7px;
+}
+
+.back i {
+    color: white;
+    right: 1em;
+}
+
+.itineraire-img img {
+    height: 500px;
+}
+
+.personnalisable {
+    background: #E69B2B;
+    color: white;
+    height: 500px;
+    padding-top: 18px;
+    padding-left: 15px;
+}
+
+.personnalisable p {
+    font-size: 21px;
+    margin-right: 15px;
+}
+
+.personnalisable img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.descriptif {
+    margin-top: -1px;
+    background: white;
+    border: 0.5px solid #E2DDDD;
+    padding: 30px;
+    color: #4B4545;
+    letter-spacing: 0.5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+}
+
+.descriptif:hover {
+    box-shadow: 0px 3px 5px rgba(32, 32, 32, 0.15);
+    transform: scale(1.01)
+}
+
+.descriptif img {
+    margin-top: 10px;
+    height: 180px;
+    width: 310px;
+}
+
+.descriptif h3 {
+    color: #000000;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    font-weight: bold;
+    font-family: helvetica;
+}
+
+.VerticalSeparator {
+    border-left: 1.0px solid #93979C;
+    width: 0.5px;
+    height: 200px;
+}
+@media all and (max-width:560px) {
+    .VerticalSeparator{
+        display: none;
     }
-    .row.content {
-        height: auto;
+}
+.banniere-premium
+{
+    background: url(../images/monaco.jpg)no-repeat fixed;
+    background-size: cover;
+}
+/* QUI SOMMES NOUS */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 40px;
+    margin-right: 23px;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.btnform {
+    text-align: center;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.partenaires a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+.btnform:hover,
+.partenaires a:hover {
+    opacity: 0.7;
+}
+/* dashbord */
+/*=============== Admin Card ===================*/
+
+#comment-right {
+    /* margin-top: 45px; */
+}
+
+
+
+a {
+    padding-right: 15px;
+}
+/* =======FOOTER ============*/
+
+
+footer {
+    background-color: #06162B;
+    color: white;
+    padding: 15px;
+}
+
+footer a {
+    color: #fff;
+}
+
+.copyright,
+.mleg,
+.icons {
+    margin-top: 40px;
+    color: #fff;
+}
+
+.icons i {
+    margin-left: 10px;
+    color: #fff;
+}
+/* === dashbord === */
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+
+.imgVide {
+    height: 250px;
+    border: 1px dashed blue;
+    padding-top: 110px;
+}
+
+.imgVide input {
+    margin: 0 auto;
+}
+
+.titre input {
+    width: 120px;
+}
+
+.row.content {
+    height: 1500px
+}
+/* Set gray background color and 100% height */
+
+.sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+.carteSupp {
+    padding: 20px;
+    border-radius: 10px;
+    background: #C5C5D3;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.carteSupp .btn-danger {
+    background: #CF3030;
+    padding: 5px;
+}
+/* Set black background color, white text and some padding */
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+
+
+@media (max-width: 1024px) {
+    .carte-vide, .carte, .remove {
+    margin-left: 140px;
+    }
+    .title {
+        margin-left: 244px;
     }
 }
 
-@media all and (max-width:890px) {
-    .VerticalSeparator {
-        display: none;
+@media (max-width:414px) {
+    .title,.carte {
+        margin-left: -2px;
     }
-    footer p {
-        text-align: center;
+}
+
+
+
+@media all and (max-width:560px) {}
+
+.carte img {
+    width: 106%;
+    margin: 0 auto;
+    /* border-top-left-radius: 12px; */
+    /* border-top-right-radius: 12px; */
+    z-index: 4;
+    /* margin-top: 9px; */
+    height: 300px;
+    /* margin-left: -10px; */
+    /* margin-top: -10px; */
+    /* box-shadow: inset 0 0 9px #302E2E; */
+}
+
+
+@media all and (max-width:560px) {
+    .carte {
+        /* height: 800px; */
     }
 }
 

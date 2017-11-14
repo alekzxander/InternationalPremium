@@ -3,29 +3,30 @@
 const express = require('express');
 const ejs = require('ejs');
 const app = express();
-const multer  = require('multer');
+const multer = require('multer');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const passport = require('passport');
-const flash    = require('connect-flash');
+const flash = require('connect-flash');
 const permissions = require('./config/permissions');
-const morgan       = require('morgan');
+const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const bodyParsera = require('body-parser');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const configDB = require('./config/database.js');
-const passportConfig =require('./config/passport')(passport); // pass passport for configuration
+const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
+const menuVoyage = require('./views//partials/menu.ejs')
 
-mongoose.connect(configDB.url,{useMongoClient : true});
+mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.set('view engine', 'ejs'); // set up ejs for templating
@@ -42,6 +43,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+
+app.use(function(req,res,next){
+    menuVoyage
+    next();
+})
 
 // routes
 routes(app, passport); // load our routes and pass in our app and fully configured passport
