@@ -11,7 +11,7 @@ const flash    = require('connect-flash');
 const permissions = require('./config/permissions');
 const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+const bodyParsera = require('body-parser');
 const session = require('express-session');
 const configDB = require('./config/database.js');
 const passportConfig =require('./config/passport')(passport); // pass passport for configuration
@@ -46,14 +46,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes
 routes(app, passport); // load our routes and pass in our app and fully configured passport
 
-
-
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
-
-
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
-
 app.use(express.static(__dirname + '/public'));
 
 module.exports = app;
