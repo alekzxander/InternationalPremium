@@ -17,7 +17,9 @@ const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
-const menuVoyage = require('./views//partials/menu.ejs')
+const menuVoyage = require('./views/partials/menu.ejs');
+const index = require('./views/index');
+const voyage = require('./views/voyage');
 
 mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise
@@ -44,10 +46,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-app.use(function(req,res,next){
-    menuVoyage
-    next();
-})
+
 
 // routes
 routes(app, passport); // load our routes and pass in our app and fully configured passport
