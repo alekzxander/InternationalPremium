@@ -4,7 +4,6 @@ var fs = require('fs');
 
 module.exports = function (app, passport) {
     let voyage = require('./models/voyage')
-    const findOrCreate = require('mongoose-findorcreate')
     var upload = multer({ dest: 'public/images/' })
 
 
@@ -153,7 +152,7 @@ module.exports = function (app, passport) {
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         var fileToUpload = req.file;
-        var target_path = upload + fileToUpload.originalname;
+        var target_path = 'public/images/' + fileToUpload.originalname;
         var tmp_path = fileToUpload.path;
 
         let myData = new voyage({
@@ -218,25 +217,30 @@ module.exports = function (app, passport) {
                     });
             })
     })
-    // show the home page (will also have our login links)
 
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
-            res.render('index.ejs', { mesVoyages: voyages });
+            res.render('index.ejs', { mesVoyages: voyages, voyagesMenu : voyages});
 
         });
     });
 
+    app.use( function(req, res, next){
+        voyage.find({}, (err, voyagesMenu )=>{
+            req.voyagesMenu = voyagesMenu
+        })
+        next();
+    })
 
-    app.get('/voyage/:id', ((req, res) => {
+    app.get('/voyage/:id', (( req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
+                voyagesMenu : req.voyagesMenu,
                 voyage: req.params.id,
                 mesVoyages: voyages.filter((voyage) => {
                     return voyage.id == req.params.id
                 })[0]
             })
-        
         })
     }))
 

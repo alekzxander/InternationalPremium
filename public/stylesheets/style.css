@@ -5,7 +5,7 @@
 =======
 strong 
 {
-    color: orange;
+    color: #ff9c00;
 }
 >>>>>>> bed2136bdb2bbfec3ac5b9ff80543c9d7f86250e
   .navbar {
@@ -496,7 +496,6 @@ a:hover {
 .carte img {
     margin: 0 auto;
     z-index: 4;
-    margin-top: -10px;
 }
 
 .box-item {
@@ -602,7 +601,7 @@ a:hover {
 }
 .box-inside-head
 {
-    height: auto;
+    height: 331px;
     padding: 10px;
     background: white;
     margin-top: 483px;
@@ -610,7 +609,6 @@ a:hover {
     border: 0.5px solid #E2DDDD;
     letter-spacing: 0.5px;
     font-family: 'Roboto', sans-serif;
-
 }
 .box-inside-head h1 {
 
@@ -822,17 +820,12 @@ footer a {
 @media all and (max-width:560px) {}
 
 .carte img {
-    /* width: 100%; */
     margin: 0 auto;
-    /* border-top-left-radius: 12px; */
-    /* border-top-right-radius: 12px; */
     z-index: 4;
     margin-top: 9px;
-    /* height: 300px; */
-    /* margin-left: -10px; */
     margin-top: -10px;
     box-shadow: inset 0 0 9px #302E2E;
-    height: 346px;
+    height: auto;
 }
 
 .box-item {
@@ -996,6 +989,24 @@ footer a {
     width: 0.5px;
     /* Width instead of height */
     height: 200px;
+}
+.premium 
+{
+    display: flex;
+    margin-top: 40px;
+}
+.premium p 
+{
+    color: #7A7575;
+}
+.premium img
+{
+    margin-right: 20px;
+}
+.premium h5
+{
+    font-size: 18px;
+    color: #0B2038;
 }
 /* QUI SOMMES NOUS */
 
@@ -1239,10 +1250,18 @@ footer {
 
 .VerticalSeparator {
     border-left: 1.0px solid #93979C;
-    /* Border on the left */
     width: 0.5px;
-    /* Width instead of height */
     height: 200px;
+}
+@media all and (max-width:560px) {
+    .VerticalSeparator{
+        display: none;
+    }
+}
+.banniere-premium
+{
+    background: url(../images/monaco.jpg)no-repeat fixed;
+    background-size: cover;
 }
 /* QUI SOMMES NOUS */
 
@@ -1389,20 +1408,14 @@ footer a {
 .carte img {
     width: 106%;
     margin: 0 auto;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
     z-index: 4;
-    margin-top: 9px;
     height: 300px;
-    margin-left: -10px;
-    margin-top: -10px;
-    box-shadow: inset 0 0 9px #302E2E;
 }
 
 
 @media all and (max-width:560px) {
     .carte {
-        height: 800px;
+        height: auto;
     }
 }
 
