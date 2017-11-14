@@ -52,14 +52,9 @@ app.use(function(req,res,next){
 // routes
 routes(app, passport); // load our routes and pass in our app and fully configured passport
 
-
-
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
-
-
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
-
 app.use(express.static(__dirname + '/public'));
 
 module.exports = app;
