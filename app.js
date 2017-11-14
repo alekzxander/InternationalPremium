@@ -17,9 +17,7 @@ const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
-const menuVoyage = require('./views/partials/menu.ejs');
-const index = require('./views/index');
-const voyage = require('./views/voyage');
+
 
 mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise
