@@ -1,13 +1,9 @@
   /* ==================== MENU =================== */
   /* nav dash*/
-<<<<<<< HEAD
-
-=======
 strong 
 {
     color: #ff9c00;
 }
->>>>>>> bed2136bdb2bbfec3ac5b9ff80543c9d7f86250e
   .navbar {
     margin-bottom: 0px;
     position: none;
@@ -379,8 +375,9 @@ a:hover {
 }
 
 .container h2 {
-    color: #2a4164;
+    color: #06162D;
     font-weight: bold;
+    
 }
 
 .carousel {
@@ -577,12 +574,20 @@ a:hover {
     margin-right: 30px;
 }
 
-
+.card 
+{
+        height: 600px;
+}
 
 .card-text {
-    width: 150px;
+    width: 150 px;
     margin: 0 auto;
 }
+.card img{
+        height:297px;
+
+}
+
 
 .voyageTitre {
     margin-bottom: 60px;

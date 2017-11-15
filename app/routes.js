@@ -252,8 +252,8 @@ module.exports = function (app, passport) {
     // ================= Qui sommes Nous ========================= //
 
     app.get('/partenaires', (req, res) => {
-        voyage.find((err, voyages) => {
-            res.render('partenaires.ejs', { mesVoyages: voyages })
+        voyage.find((err, voyagesMenu) => {
+            res.render('partenaires.ejs',{voyagesMenu : req.voyagesMenu})
         })
     })
 
