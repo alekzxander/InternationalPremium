@@ -1,23 +1,18 @@
-<% include menu %>
-
 <div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
-  <% include menu %>
+   
+    <% include menu %>
+
     <div class="container">
-        <!-- <a href="/">
-            <div class="back">
-                <i class="fa fa-arrow-left fa-3x"> </i>
-            </div>
-        </a> -->
         <div class="box-inside-head">
             <h1>
                 <%= mesVoyages.name %>
             </h1>
-       
+            
             <p>  <i class="fa fa-calendar fa-2x"></i> Départ le <strong><%= mesVoyages.dateA %> </strong> retour le <strong><%= mesVoyages.dateR %> </strong> </p>
             <p>Vous souhaitez avoir plus de renseignements sur ce voyage ? cliquez ici <button class="btn btn-details  text-center">
                     <a href="/contact">Contact</a>
                 </button></p>
-        </div>
+            </div>  
     </div>
 </div>
 <div class="container-fluid">

@@ -202,47 +202,50 @@ module.exports = function (app, passport) {
         var target_path = upload + fileToUpload;
         var tmp_path = fileToUpload.path;
 
-        voyage.findByIdAndUpdate(req.params.id, {$set: {name: req.body.name,dateA: req.body.dateA,dateR: req.body.dateR,sejour: req.body.sejour,preview:req.body.preview,text: req.body.text,img: fileToUpload.originalname}},{ new: true },(err, voyage) => {
-                voyage.save().then(item => {
-                        var src = fs.createReadStream(tmp_path);
-                        var dest = fs.createWriteStream(target_path);
-                        src.pipe(dest);
-                        //delete temp file
-                        fs.unlink(tmp_path);
-                        src.on('end', function () { res.redirect("/dashbord/card"); });
-                        src.on('error', function (err) { res.render('error'); });
-                    })
-                    .catch(err => {
-                        res.status(400);
-                    });
+        voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: fileToUpload.originalname } }, { new: true }, (err, voyage) => {
+            voyage.save().then(item => {
+                var src = fs.createReadStream(tmp_path);
+                var dest = fs.createWriteStream(target_path);
+                src.pipe(dest);
+                //delete temp file
+                fs.unlink(tmp_path);
+                src.on('end', function () { res.redirect("/dashbord/card"); });
+                src.on('error', function (err) { res.render('error'); });
             })
+                .catch(err => {
+                    res.status(400);
+                });
+        })
     })
 
-    app.get('/', function (req, res) {
+   
+ 
+    app.get('/', (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('index.ejs', { mesVoyages: voyages, voyagesMenu : voyages});
+            res.render('index.ejs', { mesVoyages: voyages, voyagesMenu: voyages });
 
         });
     });
-
-    app.use( function(req, res, next){
-        voyage.find({}, (err, voyagesMenu )=>{
+    app.use((req, res, next) =>{
+        voyage.find((err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu
         })
         next();
-    })
-
-    app.get('/voyage/:id', (( req, res) => {
+    });
+ 
+    app.get('/voyage/:id', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
-                voyagesMenu : req.voyagesMenu,
+                voyagesMenu: req.voyagesMenu,
                 voyage: req.params.id,
                 mesVoyages: voyages.filter((voyage) => {
                     return voyage.id == req.params.id
-                })[0]
+                })[0] 
             })
-        })
+        }) 
     }))
+    
+
 
     // ============ Formulaire de Contact ====================== //
     app.get('/contact', (req, res) => {
@@ -252,8 +255,8 @@ module.exports = function (app, passport) {
     // ================= Qui sommes Nous ========================= //
 
     app.get('/partenaires', (req, res) => {
-        voyage.find((err, voyages) => {
-            res.render('partenaires.ejs', { mesVoyages: voyages })
+        voyage.find((err, voyagesMenu) => {
+            res.render('partenaires.ejs', { voyagesMenu: req.voyagesMenu })
         })
     })
 
