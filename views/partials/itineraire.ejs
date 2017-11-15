@@ -1,35 +1,25 @@
 <div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
-  <% include menu %>
+
     <div class="container">
-        <!-- <a href="/">
-            <div class="back">
-                <i class="fa fa-arrow-left fa-3x"> </i>
-            </div>
-        </a> -->
         <div class="box-inside-head">
             <h1>
                 <%= mesVoyages.name %>
             </h1>
        
             <p>  <i class="fa fa-calendar fa-2x"></i> Départ le <strong><%= mesVoyages.dateA %> </strong> retour le <strong><%= mesVoyages.dateR %> </strong> </p>
-            <p>Vous souhaitez avoir plus de renseignements sur ce voyage ? cliquez ici <button class="btn btn-details  text-center">
-                    <a href="/contact">Contact</a>
-                </button></p>
+            <h4>Vous découvrirez...</h4>
+            <p> <%= mesVoyages.text %> </p>
+            <p>Vous souhaitez avoir plus de renseignements sur ce voyage ?</p> 
+            <a href="/contact" class="btn btn-details btn-lg">Se renseigner</a><a href="/contact" class="btn btn-warning btn-lg">Je veux y aller</a>
         </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="descriptif" style="margin-top:30px;">
-        <h4>Vous découvrirez...</h4>
-        <p>
-            <%= mesVoyages.text %>
-        </p>
-    </div>
-
-            <h1 class="lieux-visite">Nos lieux à visiter - pack classique</h1>
+ 
+        <h1 class="lieux-visite text-center">Nos lieux à visiter - pack classique</h1>
 
    
     <% mesVoyages.lieux.forEach((obj)=>{ %>
+      <div class="container-fluid">
         <div class="descriptif">
 
             <div class="row">
@@ -49,7 +39,7 @@
                 </div>
             </div>
         </div>
-       
+</div>
 
 
         <% }) %>
@@ -84,15 +74,14 @@
                         </div>
                     </div>
                 </div>
-             
-            </div>
         </div>
      </div>
-
-        <h1 class="lieux-visite">Nos lieux à visiter - pack <strong>premium</strong></h1>
-
-        
 </div>
+    <div class="container-fluid">
+        <h1 class="lieux-visite">Nos lieux à visiter - pack <strong>premium</strong></h1>
+    </div>
+        
+
 
 <span class='Top'><i class='fa fa-chevron-up'></i></span>
 

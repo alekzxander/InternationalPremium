@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $(window).scroll(function(){
-  if ( $(this).scrollTop() >= 200 ) {
+  if ( $(this).scrollTop() >= 1300 ) {
       $(".Top").fadeIn();
   }
   else {
