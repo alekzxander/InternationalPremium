@@ -18,6 +18,9 @@ header {
     background: white;
 }
 
+a {
+    color: white;
+}
 /*-------------------------------*/
 /*           Menu nav-bar        */
 /*-------------------------------*/
@@ -124,11 +127,6 @@ header {
 
 /* =============== HEADER ======================*/
 
-.p_guide {
-    font-style: italic;
-    margin-top: 15px;
-    font-size: 18px;
-}
 
 .container {
     margin-top: 30px;
@@ -158,10 +156,8 @@ header {
     height: 800px;
     width: 100%;
 }
-/* ========== CARTE ================= */
-a {
-    color: white;
-}
+
+
 #intro strong {
     color: #eea903;
 }
@@ -179,6 +175,17 @@ a {
     font-size: 19px;
     font-family: 'Barlow', sans-serif;
 }
+
+.intro-text 
+{
+    background: #FAF8F8;
+
+}
+.intro-text p 
+{
+    margin: 20px 20%;
+}
+
 
 #coupure {
     background: url(../images/jay-ma-6290.jpg) no-repeat fixed;
@@ -208,6 +215,13 @@ a {
 {
     margin-top: 6%;
 }
+
+
+.p_guide {
+    font-style: italic;
+    margin-top: 15px;
+    font-size: 18px;
+}
 .titleIconList
 {
     margin-bottom: 70px;
@@ -217,6 +231,7 @@ a {
     margin-top: 50px;
 }
 
+/* ========== CARTE ================= */
 .carte {
     margin: 0 auto;
     margin-top: 40px;
@@ -225,19 +240,11 @@ a {
     box-shadow: 0 6px 15px rgb(195, 188, 188);
     height: 800px;
 }
-.details p {
-    font-family: 'roboto', sans-serif;
-    font-size: 19px;
-    height: 200px;
-    padding: 0 2% 0 2%;
-    margin-top: 20px;
-}
 
 .carteVoyage
 {
     margin-bottom: 60px;
 }
-
 
 
 .carte img {
@@ -263,15 +270,6 @@ a {
     margin:0 6%;
     margin-bottom: 37px;
 }
-.intro-text 
-{
-    background: #FAF8F8;
-
-}
-.intro-text p 
-{
-    margin: 20px 20%;
-}
 
 .date h3 {
     color: orange;
@@ -283,6 +281,15 @@ a {
     margin-bottom: 20px;
 }
 
+.details p {
+    font-family: 'roboto', sans-serif;
+    font-size: 19px;
+    height: 200px;
+    padding: 0 2% 0 2%;
+    margin-top: 20px;
+}
+
+
 .btn-details {
     text-transform: uppercase;
     background: #04152b;
@@ -291,14 +298,6 @@ a {
 }
 .btn-details a:hover {
  color: orange;
-}
-.card-text {
-    width: 150 px;
-    margin: 0 auto;
-}
-.card img{
-        height:297px;
-
 }
 
 
@@ -372,6 +371,15 @@ a {
     margin-bottom: 50px;
     margin-left: 40px;
     margin-right: 23px;
+}
+
+.card-text {
+    width: 150 px;
+    margin: 0 auto;
+}
+.card img{
+        height:297px;
+
 }
 
 .title {
