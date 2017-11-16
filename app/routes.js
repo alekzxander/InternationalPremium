@@ -290,7 +290,7 @@ module.exports = function (app, passport) {
 
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('partenaires.ejs', { voyagesMenu: req.voyagesMenu })
+            res.render('partenaires.ejs', { voyagesMenu: voyagesMenu })
         })
     })
 
