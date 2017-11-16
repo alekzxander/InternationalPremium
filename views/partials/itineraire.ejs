@@ -1,11 +1,12 @@
-<div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
 
+    <% include menu %>
+<div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
     <div class="container">
         <div class="box-inside-head">
             <h1>
                 <%= mesVoyages.name %>
             </h1>
-       
+            
             <p>  <i class="fa fa-calendar fa-2x"></i> Départ le <strong><%= mesVoyages.dateA %> </strong> retour le <strong><%= mesVoyages.dateR %> </strong> </p>
             <h4>Vous découvrirez...</h4>
             <p> <%= mesVoyages.text %> </p>
@@ -17,7 +18,6 @@
  
         <h1 class="lieux-visite text-center">Nos lieux à visiter - pack classique</h1>
 
-   
     <% mesVoyages.lieux.forEach((obj)=>{ %>
       <div class="container-fluid">
         <div class="descriptif">
