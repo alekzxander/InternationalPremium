@@ -1,8 +1,9 @@
 const permissions = require('../config/permissions');
 const multer = require('multer');
 var fs = require('fs');
-
 module.exports = function (app, passport) {
+
+    const nodemailer = require("nodemailer");
     let voyage = require('./models/voyage')
     var upload = multer({ dest: 'public/images/' })
 
@@ -226,7 +227,7 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.use('/voyage/:id',function (req, res, next) {
+    app.use('/voyage/:id', function (req, res, next) {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu
         })
@@ -249,14 +250,47 @@ module.exports = function (app, passport) {
 
     // ============ Formulaire de Contact ====================== //
     app.get('/contact', (req, res) => {
-        res.render('contact.ejs')
+
+        res.render('contact.ejs');
     })
+
+    app.post('/email',(req,res)=> {
+        let transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            host : 'smtp.gmail.com',
+            secure : true,
+            port : 465,
+            auth: {
+                user: 'laurent.gregoire974@gmail.com',
+                pass: "Bit97coin4" 
+            } 
+        });
+
+        let mail = {
+            from: req.body.name  + req.body.email,
+            to: 'laurent.gregoire974@gmail.com' ,
+            subject: req.body.subject,
+            html: req.body.message
+        }
+
+        transporter.sendMail(mail, function(error, response){
+            if(error){
+                console.log("Mail non envoyé");
+               res.redirect('/contact')
+            }else{
+                console.log("Mail envoyé avec succès!")
+                res.redirect('/')
+            }
+            transporter.close();
+        });
+    })
+
 
     // ================= Qui sommes Nous ========================= //
 
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('partenaires.ejs',{voyagesMenu : req.voyagesMenu})
+            res.render('partenaires.ejs', { voyagesMenu: req.voyagesMenu })
         })
     })
 
