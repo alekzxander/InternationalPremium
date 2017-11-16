@@ -1,6 +1,9 @@
   /* ==================== MENU =================== */
   /* nav dash*/
+<<<<<<< HEAD
+=======
 
+>>>>>>> 48a8798397596b0f5cf73d3df9e2bae4063b3f99
 strong 
 {
     color: #ff9c00;
@@ -355,8 +358,9 @@ header {
 }
 
 .container h2 {
-    color: #2a4164;
+    color: #06162D;
     font-weight: bold;
+    
 }
 
 .carousel {
@@ -518,9 +522,14 @@ a {
  color: orange;
 }
 .card-text {
-    width: 150px;
+    width: 150 px;
     margin: 0 auto;
 }
+.card img{
+        height:297px;
+
+}
+
 
 /* =======Itineraire=========*/
 .btn-group-lg>.btn, .btn-lg {
