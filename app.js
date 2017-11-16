@@ -1,6 +1,7 @@
 // set up get all the tools we need
 
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 const ejs = require('ejs');
 const app = express();
 const multer = require('multer');
@@ -19,8 +20,13 @@ const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
 
 
+
 mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise
+
+app.set('view engine', 'ejs'); // set up ejs for templating
+app.set('views', __dirname + '/views');
+
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -28,8 +34,6 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(permissions.middleware());
 
 // required for passport
@@ -45,13 +49,12 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
+app.use(express.static(__dirname + '/public'));
+
 
 // routes
 routes(app, passport); // load our routes and pass in our app and fully configured passport
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs')
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
-app.use(express.static(__dirname + '/public'));
 
 module.exports = app;

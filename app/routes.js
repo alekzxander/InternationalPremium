@@ -218,21 +218,21 @@ module.exports = function (app, passport) {
         })
     })
 
-   
- 
-    app.get('/', (req, res) => {
+
+
+    app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
             res.render('index.ejs', { mesVoyages: voyages, voyagesMenu: voyages });
-
         });
     });
-    app.use((req, res, next) =>{
-        voyage.find((err, voyagesMenu) => {
+
+    app.use('/voyage/:id',function (req, res, next) {
+        voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu
         })
         next();
-    });
- 
+    })
+
     app.get('/voyage/:id', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
@@ -240,11 +240,11 @@ module.exports = function (app, passport) {
                 voyage: req.params.id,
                 mesVoyages: voyages.filter((voyage) => {
                     return voyage.id == req.params.id
-                })[0] 
+                })[0]
             })
-        }) 
+        })
     }))
-    
+
 
 
     // ============ Formulaire de Contact ====================== //
