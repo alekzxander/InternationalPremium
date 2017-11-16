@@ -5,8 +5,7 @@ var fs = require('fs');
 module.exports = function (app, passport) {
     let voyage = require('./models/voyage')
     var upload = multer({ dest: 'public/images/' })
-
-
+    let users = require('./models/user')
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function (req, res) {
@@ -219,9 +218,11 @@ module.exports = function (app, passport) {
     })
 
     app.get('/', function (req, res) {
+        
         voyage.find((err, voyages) => {
-            res.render('index.ejs', { mesVoyages: voyages, voyagesMenu : voyages});
-
+            users.find((err, users)=>{
+                res.render('index.ejs', { mesVoyages: voyages, voyagesMenu : voyages, users : users});
+            });
         });
     });
 
@@ -260,8 +261,17 @@ module.exports = function (app, passport) {
 }
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
+    if (req.isAuthenticated()){
+        res.redirect('/');
+    }else if(req.isAuthenticated() && req.user.local.role === 'admin'){
+      
+        res.redirect('/contact')
+    }next()
 }
+// function getLoggedUser(req, res, next){
+//     if(req.isAuthenticated() && req.user.local.role === 'admin'){ 
+        
+//         res.redirect('/dashbord'),permissions.can('access admin page');
+//     }
+//     next()
+// }

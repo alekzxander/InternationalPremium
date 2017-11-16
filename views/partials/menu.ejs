@@ -35,21 +35,27 @@
                 <li>
                     <a href="/partenaires">Nos Partenaires</a>
                 </li>
-                <li>
-                    <a href="/signup">Inscription</a>
-                </li>
-                <li>
-                    <a href="/login">Me Connecter</a>
-                </li>
-                <li>
-                    <a href="/logout">Deconnection</a>
-                </li>
-                <li>
-                    <a href="/dashbord">Admin</a>
-                </li>
+               
                 <li>
                     <a href="/contact">Nous Contacter</a>
                 </li>
+                    <% if (!isAuthenticated()) { %>
+                 <li>
+                        <a href="/login" >Me Connecter</a>
+                   </li>
+                    <li>
+                    <a href="/signup">Inscription</a>
+                </li>
+                <% } else { %>
+                    <li>
+                    <a href="/logout">Deconnection</a>
+                    </li>
+                <% } %>
+               <%/* <li>
+                    <a href="/dashbord">Admin</a>
+                </li>
+                */%>
+                
 
             </ul>
 

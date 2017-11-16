@@ -270,6 +270,7 @@ header {
 
 .navbar .navbar-collapse {
     text-align: center;
+    padding-top: 50px;
 }
 /*-------------------------------*/
 /*           carousel             */
@@ -401,7 +402,7 @@ a {
 }
 
 #coupure {
-    background: url(../images/australia.jpg) no-repeat fixed;
+    background: url(../images/jay-ma-6290.jpg) no-repeat fixed;
     background-size: cover;
     transform:translate(0%, 2.25212%) translate3d(0px, 0px, 0px);
     color: white;
@@ -745,7 +746,7 @@ height: 380px;
     font-weight: normal;
     font-family: helvetica;
 }
-.descriptif .col-md-7
+.descriptif .col-md-8
 {
     padding: 2% 0 0 6%;
     line-height: 37px;
