@@ -229,8 +229,8 @@ module.exports = function (app, passport) {
     app.use('/voyage/:id', function (req, res, next) {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu
+            next();
         })
-        next();
     })
 
     app.get('/voyage/:id', ((req, res) => {
@@ -245,12 +245,12 @@ module.exports = function (app, passport) {
         })
     }))
 
-
-
     // ============ Formulaire de Contact ====================== //
     app.get('/contact', (req, res) => {
-
-        res.render('contact.ejs');
+        voyage.find((err,voyagesMenu)=>{
+            res.render('contact.ejs',{voyagesMenu:voyagesMenu});
+        })
+       
     })
 
     app.post('/email',(req,res)=> {
@@ -260,13 +260,13 @@ module.exports = function (app, passport) {
             secure : true,
             port : 465,
             auth: {
-                user: 'laurent.gregoire974@gmail.com',
-                pass: "Bit97coin4" 
+                user: '',
+                pass: "" 
             } 
         });
 
         let mail = {
-            from: req.body.name  + req.body.email,
+            from:req.body.name+req.body.email,
             to: 'laurent.gregoire974@gmail.com' ,
             subject: req.body.subject,
             html: req.body.message
@@ -303,10 +303,4 @@ function isLoggedIn(req, res, next) {
         res.redirect('/contact')
     }next()
 }
-// function getLoggedUser(req, res, next){
-//     if(req.isAuthenticated() && req.user.local.role === 'admin'){ 
-        
-//         res.redirect('/dashbord'),permissions.can('access admin page');
-//     }
-//     next()
-// }
+

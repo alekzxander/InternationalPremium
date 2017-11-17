@@ -28,6 +28,7 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.set('views', __dirname + '/views');
 
 
+
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)

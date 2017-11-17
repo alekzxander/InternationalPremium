@@ -248,8 +248,10 @@ a {
 
 
 .carte img {
+    width: 106%;
     margin: 0 auto;
     z-index: 4;
+    height: 300px;
 }
 
 .box-item {
@@ -282,7 +284,7 @@ a {
 }
 
 .details p {
-    font-family: 'roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 19px;
     height: 200px;
     padding: 0 2% 0 2%;
@@ -603,11 +605,7 @@ footer a {
     }
 }
 
-@media (min-width: 768px) {
-    .navbar-default .navbar-nav>li>a {
-        /* color: #0B2038; */
-    }
-}
+
 
 @media (max-width: 768px) {
     .navbar-fixed-side {
@@ -745,6 +743,8 @@ footer a {
 }
 
 @media (min-width: 768px) {
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     .navbar-fixed-side .navbar-nav>li>a:hover,
     .navbar-fixed-side .navbar-nav>li>a:focus,
     .navbar-fixed-side .navbar-nav .dropdown-menu>li>a:hover,
@@ -815,7 +815,7 @@ footer a {
         background-color: #2f2f2f;
         color: black;}
         .navbar-default .navbar-nav>li>a {
-        color: #06162B;
+        color: #fff;
     }
 }
 
