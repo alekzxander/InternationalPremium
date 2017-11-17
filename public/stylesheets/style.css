@@ -585,7 +585,6 @@ a:hover {
 }
 .card img{
         height:297px;
-
 }
 
 
@@ -729,11 +728,12 @@ a:hover {
     width: 100%;
     font-size: 18px;
 }
-
-.partenaires a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
+.partenaires i {
+    color:#06162D;
+}
+.partenaires i:hover {
+    
+    color:#F1B244 ;
 }
 
 .btnform:hover,
