@@ -1,6 +1,7 @@
 // set up get all the tools we need
 
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 const ejs = require('ejs');
 const app = express();
 const multer = require('multer');
@@ -18,7 +19,7 @@ const passportConfig = require('./config/passport')(passport); // pass passport 
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
 const menuVoyage = require('./views/partials/menu.ejs')
-const expressLayouts = require('express-ejs-layouts');
+
 
 mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise

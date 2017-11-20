@@ -116,7 +116,6 @@ a {
     line-height: 1.32;
     margin: 0 auto;
     padding: 0px 28px;
-    /* position: absolute; */
     font-size: 3.4em;
     font-weight: bold;
     text-align: center;
@@ -744,6 +743,8 @@ footer a {
 }
 
 @media (min-width: 768px) {
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     .navbar-fixed-side .navbar-nav>li>a:hover,
     .navbar-fixed-side .navbar-nav>li>a:focus,
     .navbar-fixed-side .navbar-nav .dropdown-menu>li>a:hover,
