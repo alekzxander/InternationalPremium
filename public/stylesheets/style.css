@@ -115,7 +115,6 @@ header {
     line-height: 1.32;
     margin: 0 auto;
     padding: 0px 28px;
-    /* position: absolute; */
     font-size: 3.4em;
     font-weight: bold;
     text-align: center;
@@ -304,8 +303,10 @@ header {
 
 /* =======Itineraire=========*/
 .btn-group-lg>.btn, .btn-lg {
+
     border-radius: 0px;
 }
+
 .lieux-visite {
     padding-top: 19px;
     padding-bottom: 35px;
@@ -314,17 +315,16 @@ header {
 #banniere-img
 {
     height: 550px;
-    /* margin-bottom: 262px; */
-    margin-top: -31px;
+    margin-bottom: 261px;
+    margin-top: -164px;
     z-index: 232;
-    margin-bottom: 300px;
 }
 .box-inside-head
 {
     /* height: 322px; */
     padding: 10px;
-    background: white;
-    margin-top: -367px;
+    background: #F5F2F2;
+    margin-top: 480px;
     text-align:center;
     border: 0.5px solid #E2DDDD;
     letter-spacing: 0.5px;
@@ -476,15 +476,19 @@ header {
 
 .descriptif {
     margin-top: -1px;
-    background: white;
-    border: 0.5px solid #E2DDDD;
+    background: #F5F2F2;
     color: #4B4545;
     letter-spacing: 0.5px;
     font-family: 'Roboto', sans-serif;
     font-size: 19px;
-    margin-top: 20px;
+    margin-top: 80px;
 }
-
+@media all and (max-width:560px) {
+    #banniere-img{
+        margin-top: 0px;
+        margin-bottom: 389px;
+    }
+}
 .descriptif:hover {
     box-shadow: 0px 3px 5px rgba(32, 32, 32, 0.15);
     transform: scale(1.01)
@@ -507,6 +511,7 @@ height: 380px;
 {
     padding: 2% 0 0 6%;
     line-height: 37px;
+    /* background: grey; */
 }
 
 .banniere-premium
@@ -745,6 +750,8 @@ footer a {
 }
 
 @media (min-width: 768px) {
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     .navbar-fixed-side .navbar-nav>li>a:hover,
     .navbar-fixed-side .navbar-nav>li>a:focus,
     .navbar-fixed-side .navbar-nav .dropdown-menu>li>a:hover,
@@ -859,6 +866,4 @@ footer a {
     }
     .title {
         margin-left: 244px;
-    }
-}
-
+   

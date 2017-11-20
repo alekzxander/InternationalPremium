@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
     // locally -------------------------------- LOGIN
     // =============================== show the login form
     app.get('/login', function (req, res) {
-        res.render('login.ejs', { layout:'layoutlogin',
+        res.render('layoutLogin.ejs',{ layout:'layoutLogin',
             message: req.flash('loginMessage')
         });
     });
@@ -52,7 +52,7 @@ module.exports = function (app, passport) {
     });
     // SIGNUP ================================= show the signup form
     app.get('/signup', function (req, res) {
-        res.render('signup.ejs', { layout:'layoutSignup',
+        res.render('layoutSignup.ejs',{ layout:'layoutSignup',
             message: req.flash('signupMessage')
         });
     });
@@ -246,7 +246,7 @@ module.exports = function (app, passport) {
 
     app.get('/contact', (req, res) => {
         voyage.find((err,voyagesMenu)=>{
-            res.render('contact.ejs',{voyagesMenu:voyagesMenu});
+            res.render('layoutContact.ejs',{voyagesMenu:voyagesMenu , layout:'layoutContact'});
         })
        
     })
