@@ -232,7 +232,7 @@ module.exports = function (app, passport) {
 
     app.get('/voyage/:id', ((req, res) => {
         voyage.find((err, voyages) => {
-            res.render('voyage.ejs', {
+            res.render('layoutVoyage.ejs', {layout:'layoutVoyage',
                 voyagesMenu: req.voyagesMenu,
                 voyage: req.params.id,
                 mesVoyages: voyages.filter((voyage) => {
