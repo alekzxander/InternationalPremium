@@ -1,76 +1,85 @@
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/contact.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Great+Vibes|Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
+<body>
+    <header>
+        <nav class="navbar navbar-default" role="navigation">
 
-<header>
-    <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header navbar-left">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
-        <div class="navbar-header navbar-left">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/">Accueil</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listes des voyages
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <% voyagesMenu.forEach((voyages)=>{ %>
-                            <li>
-                                <a href="/voyage/<%= voyages.id %>">
-                                    <%= voyages.name %>
-                                </a>
-                            </li>
-                            <%  }); %>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/partenaires">Nos Partenaires</a>
-                </li>
-
-                <li>
-                    <a href="/contact">Nous Contacter</a>
-                </li>
-                <% if (!isAuthenticated()) { %>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
                     <li>
-                        <a href="/login">Me Connecter</a>
+                        <a href="/">Accueil</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listes des voyages
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <% voyagesMenu.forEach((voyages)=>{ %>
+                                <li>
+                                    <a href="/voyage/<%= voyages.id %>">
+                                        <%= voyages.name %>
+                                    </a>
+                                </li>
+                                <%  }); %>
+                        </ul>
                     </li>
                     <li>
-                        <a href="/signup">Inscription</a>
+                        <a href="/partenaires">Nos Partenaires</a>
                     </li>
-                    <% } else { %>
+
+                    <li>
+                        <a href="/contact">Nous Contacter</a>
+                    </li>
+                    <% if (!isAuthenticated()) { %>
                         <li>
-                            <a href="/logout">Deconnection</a>
+                            <a href="/login">Me Connecter</a>
                         </li>
-                        <% } %>
+                        <li>
+                            <a href="/signup">Inscription</a>
+                        </li>
+                        <% } else { %>
+                            <li>
+                                <a href="/logout">Deconnection</a>
+                            </li>
+                            <% } %>
 
-            </ul>
-        </div>
-    </nav>
 
-</header>
 
-<div class="container">
-    <div class="row">
-        <div class="signup-wrapper xycenter">
-            <header>
-                <div class="xycenter">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="signup-wrapper xycenter">
+                <header>
+                    <div class="xycenter">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </header>
+
                 <h2>Vous souhaitez obtenir plus d'informations ?</h2>
                 <p>Envoyez moi un mail pour avec des renseignements </p>
 
@@ -105,7 +114,10 @@
                     <input type="submit" id="submit" value="Envoyez" />
                 </form>
 
-        </div>
+            </div>
 
+        </div>
     </div>
-</div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+

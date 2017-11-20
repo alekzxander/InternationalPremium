@@ -2,16 +2,46 @@
 
 * { box-sizing: border-box; font-family: 'Roboto' }
 
+.navbar {
+    margin-bottom: 0px;
+    position: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #2a4164;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: orange;
+}
+
+.navbar-default {
+    background: transparent;
+    z-index: 100;
+    border: none;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+.navbar .navbar-collapse {
+    text-align: center;
+    padding-top: 81px;
+}
 input:focus {
 	outline: none;
 }
-/* 
+
 .container {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	
-} */
+}
 
 .xycenter {
 	position: absolute;
