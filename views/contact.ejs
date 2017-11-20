@@ -1,44 +1,53 @@
-<%- contentFor('contact') %>
-<%- include partials/header %>
-<head>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
-</head>
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
-<form class="form-vertical" role="form" method="post" action="https://script.google.com/macros/s/AKfycbxnaBNuLVdoDqZTZaIiJY83OvwKZIT1EPAQ5pjR_rqdzujYyEo/exec">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center ">
+<%-contentFor('contact')%>
 
-                <div class="form-group">
-                   <label for="mail">Nom et prénom</label>
-                    <input class="form-control input-lg" name="name" id="name" type="name" value="" required placeholder="Entrer votre nom et prénom">
+ <div class="container">
+     <div class="row">
+        <div class="signup-wrapper xycenter">
+            <header>
+                <div class="xycenter">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
                 </div>
-               
-
-                <div class="form-group">                   
-                    <label for="mail">Mail</label>
-                    <input class="form-control input-lg" name="email" id="email" type="email" value="" required placeholder="Entrer votre mail">
-                   
+            </header>
+            
+            <h2>Vous souhaitez obtenir plus d'informations ?</h2>
+            <p>Envoyez moi un mail pour avec des renseignements </p>
+        
+            <form class="cool-form" role="form" method="post" action="/email">
+                <div>
+                    <input type="text" name="name" id="name" placeholder=" " required />
+                    <label for="name">Nom Prenom</label>
+                </div>
+                
+        
+                     
+                <div>
+                    <input type="email" name="email" id="email" placeholder=" " required />
+                    <label for="email">Email</label>
+                    <div class="requirements">
+                        Adresse email non valide
+                    </div>
                 </div>
 
-                <div class="form-group">                   
+
+              <div>
+                    <input type="text" name="subject" id="subject" placeholder=" " required />
                     <label for="subject">Sujet</label>
-                    <input class="form-control input-lg" name="subject" id="subject" type="text" value="" required placeholder="Entrer l'objet de mail">
-                   
                 </div>
+                
+            
+                   <textarea name="message" rows="8" id="" placeholder="Ajoutez vos message ici..">
 
-                <div class="form-group">                   
-                    <label for="message">Message</label>
-                    <textarea class="form-control input-lg" name="message" id="message" rows="5" value="" required placeholder="Entrer votre message"></textarea>
-                </div>
-               
-                <button class="btn btn-success " type="submit" id="submit">Envoyez</button>
-               
+                       </textarea> 
+         
+        
+                <input type="submit" id="submit" value="Envoyez"/>
+            </form>
+            
             </div>
+        
         </div>
-    </div>
-</form>
+     </div>
 
-<div class="col-md-5"></div>
-<a href="/">Retour vers l'accueil</a>
+
