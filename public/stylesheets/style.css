@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background: white;
+    background: transparent;
 }
 @media all and (max-width: 780px){
 
@@ -532,6 +532,7 @@ height: 380px;
     background: #CF3030;
     padding: 5px;
 }
+
 
 /* =======FOOTER ============*/
 

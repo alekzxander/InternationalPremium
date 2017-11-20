@@ -1,0 +1,117 @@
+<%- contentFor('voyage') %>
+
+        <title> Voyage</title>
+
+
+        <body>
+                <div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
+                        <div class="container">
+                                <div class="box-inside-head">
+                                        <h1>
+                                                <%= mesVoyages.name %>
+                                        </h1>
+
+                                        <p>
+                                                <i class="fa fa-calendar fa-2x"></i> Départ le
+                                                <strong>
+                                                        <%= mesVoyages.dateA %>
+                                                </strong> retour le
+                                                <strong>
+                                                        <%= mesVoyages.dateR %>
+                                                </strong>
+                                        </p>
+                                        <h4>Vous découvrirez...</h4>
+                                        <p>
+                                                <%= mesVoyages.text %>
+                                        </p>
+                                        <p>Vous souhaitez avoir plus de renseignements sur ce voyage ?</p>
+                                        <a href="/contact" class="btn btn-details btn-lg">Se renseigner</a>
+                                        <a href="/contact" class="btn btn-warning btn-lg">Je veux y aller</a>
+                                </div>
+                        </div>
+                </div>
+
+                <h1 class="lieux-visite text-center">Nos lieux à visiter - pack classique</h1>
+
+                <% mesVoyages.lieux.forEach((obj)=>{ %>
+                        <div class="container-fluid">
+                                <div class="descriptif">
+
+                                        <div class="row">
+                                                <div class="col-xs-12 col-md-8 col-lg-8 ">
+                                                        <h3>
+                                                                <%= obj.titre %>
+                                                        </h3>
+                                                        <p>
+                                                                <%= obj.text %>
+                                                        </p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-4 col-lg-4">
+                                                        <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+
+                        <% }) %>
+                                <div class="banniere-premium">
+                                        <div class="container">
+                                                <div class="row">
+                                                        <div class="col-md-6">
+                                                                <h3>Les avantages
+                                                                        <strong>premium</strong>
+                                                                </h3>
+
+                                                                <div class="premium">
+                                                                        <p>
+                                                                                <img src="/images/star.png" class="icon-premium" alt=""> </p>
+                                                                        <div>
+                                                                                <h5>Rencontrer des célèbrités</h5>
+                                                                                <p>Partez a la rencontre de célèbrités réunionnaise
+                                                                                        qui ont percé dans la vie !</p>
+                                                                        </div>
+
+                                                                </div>
+                                                                <div class="premium">
+                                                                        <p>
+                                                                                <img src="/images/capitol-building.png" class="icon-premium" alt="">
+                                                                        </p>
+                                                                        <div>
+                                                                                <h5>Visiter des endroits célèbres</h5>
+                                                                                <p>Vous allez avoir la chances de visiter des
+                                                                                        structures comme IBM et GOOGLE</p>
+                                                                        </div>
+
+                                                                </div>
+
+                                                                <div class="premium">
+                                                                        <p>
+                                                                                <img src="/images/team.png" class="icon-premium" alt="">
+                                                                        </p>
+                                                                        <div>
+                                                                                <h5>Vous serez encadré tout le long du sejour</h5>
+                                                                                <p>Tout le long du voyage vous serez encadré
+                                                                                        par des proféssionnelle qui seront
+                                                                                        a votre écoute.</p>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="container-fluid">
+                                        <h1 class="lieux-visite">Nos lieux à visiter - pack
+                                                <strong>premium</strong>
+                                        </h1>
+                                </div>
+
+
+
+                                <span class='Top'>
+                                        <i class='fa fa-chevron-up'></i>
+                                </span>
+
+        </body>
+
+        </html>
