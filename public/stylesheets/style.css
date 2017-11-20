@@ -76,7 +76,10 @@ strong
         float: none;
     }
 }
-
+    
+    .navbar-collapse.collapse {
+        background: transparent;
+    }
 @media (min-width: 768px) {
     .navbar-fixed-side .navbar-nav>li>a {
         padding-top: 10px;
@@ -189,7 +192,7 @@ strong
     }
 }
 
-@media (min-width: 768px) {
+@media all and(min-width: 768px) {
     .navbar-fixed-side.navbar-inverse .divider {
         background-color: #363636;
     }
@@ -213,12 +216,13 @@ strong
     .navbar-fixed-side.navbar-inverse .navbar-nav>li:not(.active)>a:focus,
     .navbar-fixed-side.navbar-inverse .navbar-nav .dropdown-menu>li:not(.active)>a:hover,
     .navbar-fixed-side.navbar-inverse .navbar-nav .dropdown-menu>li:not(.active)>a:focus {
-        background-color: #2f2f2f;
+        background-color: #FFFFFF;
         color: black;}
         .navbar-default .navbar-nav>li>a {
         color: #06162B;
     }
 }
+
 
 @media (min-width: 768px) {
     .navbar-fixed-side.navbar-inverse .dropdown>.dropdown-toggle {
@@ -235,20 +239,24 @@ body {
 header {
     background: white;
 }
+@media all and (max-width: 780px){
 
+    .lieux-visite{
+        padding-top:130px;
+    }
+}
 /*-------------------------------*/
 /*           Menu nav-bar        */
 /*-------------------------------*/
 
 .navbar-default .navbar-nav>li>a {
-    color: white;
+    color: #2a4164;
     font-size: 16px;
     text-transform: uppercase;
-    
 }
 @media (min-width: 768px) {
     .navbar-default .navbar-nav>li>a {
-        /* color: #0B2038; */
+        color: white;
     }
 }
 
@@ -267,10 +275,9 @@ header {
     float: none;
     vertical-align: top;
 }
-
 .navbar .navbar-collapse {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 81px;
 }
 /*-------------------------------*/
 /*           carousel             */
@@ -364,9 +371,6 @@ header {
 .carousel {
     margin-top: -130px;
 }
-
-.carousel h1 {}
-
 .carousel strong {
     color: #eea903;
 }
@@ -452,7 +456,7 @@ a {
     font-family: 'roboto', sans-serif;
     font-size: 19px;
     height: 200px;
-    padding: 0 2% 0 2%;
+    padding: 20px 5% 0 7%;
     margin-top: 20px;
 }
 
@@ -466,12 +470,6 @@ a {
         height:auto;
     }
 }
-
-.carte img {
-    margin: 0 auto;
-    z-index: 4;
-}
-
 .box-item {
     background: #FAF8F8;
     margin-top: 50px;
@@ -534,27 +532,29 @@ a {
     border-radius: 0px;
 }
 .lieux-visite {
-    padding-top: 45px;
+    padding-top: 19px;
     padding-bottom: 35px;
     color: #06162B;
 }
 #banniere-img
 {
     height: 550px;
-    margin-bottom: 262px;
-    margin-top: -56px;
+    /* margin-bottom: 262px; */
+    margin-top: -31px;
+    z-index: 232;
+    margin-bottom: 300px;
 }
 .box-inside-head
 {
     /* height: 322px; */
     padding: 10px;
     background: white;
-    margin-top: 483px;
+    margin-top: -367px;
     text-align:center;
     border: 0.5px solid #E2DDDD;
     letter-spacing: 0.5px;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 60px;
+    margin-bottom: 64px;
     padding-bottom: 30px;
 }
 .box-inside-head h1 {
@@ -591,14 +591,15 @@ a {
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    /* max-width: 300px; */
     margin: auto;
     text-align: center;
-    display: inline-block;
+    /* display: inline-block; */
     margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 40px;
+    /* margin-bottom: 50px; */
+    /* margin-left: 40px; */
     margin-right: 23px;
+    width: auto;
 }
 
 .title {
@@ -873,9 +874,7 @@ span.dot.active {
 textarea 
 {
     width: 100%;
-    /* border-radius: 12px; */
     margin-top: 51px;
- 
     border: solid 2px #D6D4D4;
 }
 
@@ -1015,10 +1014,6 @@ footer a {
         margin-left: -2px;
     }
 }
-
-
-
-@media all and (max-width:560px) {}
 
 .carte img {
     width: 106%;

@@ -4,14 +4,9 @@ var fs = require('fs');
 module.exports = function (app, passport) {
 
     const nodemailer = require("nodemailer");
-    let voyage = require('./models/voyage')
-    var upload = multer({ dest: 'public/images/' })
-    let users = require('./models/user')
+    const voyage = require('./models/voyage')
+    const upload = multer({ dest: 'public/images/' })
 
-    // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function (req, res) {
-        res.render('profile.ejs', { user: req.user });
-    });
     // LOGOUT ==============================
     app.get('/logout', function (req, res) {
         req.logout();
@@ -31,12 +26,30 @@ module.exports = function (app, passport) {
             message: req.flash('loginMessage')
         });
     });
+    
     // process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/', // redirect to the secure profile section
-        failureRedirect: '/login', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
+    app.post('/login', function(req,res){
+        //Redirect user according to role
+        passport.authenticate('local-login', function(err, user, info){
+            if (err) {
+                return res.redirect('/login');
+            }
+            if (!user) {
+                return res.redirect('/login');
+            }
+            //Log in the user
+            req.logIn(user, function(err) {
+                if (err) { return next(err); }
+
+                //redirect the user to dashboard when it's an admin
+                if(user.local.role==='admin'){
+                    return res.redirect('/dashbord');
+                }
+                //redirect user to the homepage for no admin user
+                return res.redirect('/');
+              });
+        })(req, res); //<-- give access to req and res for the callback of authenticate
+    });
     // SIGNUP ================================= show the signup form
     app.get('/signup', function (req, res) {
         res.render('signup.ejs', {
@@ -196,7 +209,7 @@ module.exports = function (app, passport) {
     })
 
     app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
-
+        // Create Var for img
         var fileToUpload = req.file;
         console.log(fileToUpload)
         var target_path = upload + fileToUpload;
@@ -221,7 +234,6 @@ module.exports = function (app, passport) {
 
 
     app.get('/', function (req, res) {
-        
         voyage.find((err, voyages) => {
             res.render('index.ejs', { mesVoyages: voyages, voyagesMenu: voyages });
         });
@@ -230,8 +242,8 @@ module.exports = function (app, passport) {
     app.use('/voyage/:id', function (req, res, next) {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu
+            next();
         })
-        next();
     })
 
     app.get('/voyage/:id', ((req, res) => {
@@ -249,11 +261,13 @@ module.exports = function (app, passport) {
 
 
     // ============ Formulaire de Contact ====================== //
+
     app.get('/contact', (req, res) => {
+voyage.find((err,voyagesMenu)=>{
+    res.render('contact.ejs',{voyagesMenu:voyagesMenu});
 
-        res.render('contact.ejs');
+})
     })
-
     app.post('/email',(req,res)=> {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -267,8 +281,8 @@ module.exports = function (app, passport) {
         });
 
         let mail = {
-            from: req.body.name  + req.body.email,
-            to: 'laurent.gregoire974@gmail.com' ,
+            from: req.body.name+req.body.email,
+            to: 'alekzxand@gmail.com' ,
             subject: req.body.subject,
             html: req.body.message
         }
@@ -284,30 +298,21 @@ module.exports = function (app, passport) {
             transporter.close();
         });
     })
-
-
     // ================= Qui sommes Nous ========================= //
-
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('partenaires.ejs', { voyagesMenu: voyagesMenu })
         })
     })
-
 }
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()){
-        res.redirect('/');
-    }else if(req.isAuthenticated() && req.user.local.role === 'admin'){
-      
-        res.redirect('/contact')
-    }next()
+    if (isAuthenticated()){
+    }
 }
-// function getLoggedUser(req, res, next){
-//     if(req.isAuthenticated() && req.user.local.role === 'admin'){ 
-        
-//         res.redirect('/dashbord'),permissions.can('access admin page');
-//     }
-//     next()
-// }
+function getLoggedUser(req, res, next){
+    if(req.isAuthenticated() && req.user.local.role === 'admin'){       
+        res.redirect('/dashbord'),permissions.can('access admin page')
+    }next()
+  
+}
