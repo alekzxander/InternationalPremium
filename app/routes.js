@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
     // locally -------------------------------- LOGIN
     // =============================== show the login form
     app.get('/login', function (req, res) {
-        res.render('login.ejs', {
+        res.render('login.ejs', { layout:'layoutlogin',
             message: req.flash('loginMessage')
         });
     });
@@ -52,7 +52,7 @@ module.exports = function (app, passport) {
     });
     // SIGNUP ================================= show the signup form
     app.get('/signup', function (req, res) {
-        res.render('signup.ejs', {
+        res.render('signup.ejs', { layout:'layoutSignup',
             message: req.flash('signupMessage')
         });
     });
@@ -81,27 +81,12 @@ module.exports = function (app, passport) {
         failureFlash: true // allow flash messages
     }));
 
-    // =============================================================================
-    // UNLINK ACCOUNTS
-    // =============================================================
-    // =============================================================================
-    // used to unlink accounts. for social accounts, just remove the token for local
-    // account, remove email and password user account will stay active in case they
-    // want to reconnect in the future local -----------------------------------
-    app.get('/unlink/local', isLoggedIn, function (req, res) {
-        let user = req.user;
-        user.local.email = undefined;
-        user.local.password = undefined;
-        user.save(function (err) {
-            res.redirect('/profile');
-        });
-    });
-
     // normal routes ===============================================================
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
-        res.redirect('/dashbord/card')
+            res.render('dashbord',{layout:'layoutAdmin'})
+            
 
-    })
+    });
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.render("validation.ejs");
@@ -127,6 +112,7 @@ module.exports = function (app, passport) {
             })
         });
     })
+
     app.post('/ajoutLieux/:id', upload.single('img'), (req, res) => {
         let fileToUpload = req.file;
         let target_path = 'public/images/' + fileToUpload.originalname;
@@ -231,11 +217,9 @@ module.exports = function (app, passport) {
         })
     })
 
-
-
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
-            res.render('index.ejs', { mesVoyages: voyages, voyagesMenu: voyages });
+            res.render('index', { mesVoyages: voyages, voyagesMenu : voyages});
         });
     });
 
@@ -258,15 +242,13 @@ module.exports = function (app, passport) {
         })
     }))
 
-
-
     // ============ Formulaire de Contact ====================== //
 
     app.get('/contact', (req, res) => {
-voyage.find((err,voyagesMenu)=>{
-    res.render('contact.ejs',{voyagesMenu:voyagesMenu});
-
-})
+        voyage.find((err,voyagesMenu)=>{
+            res.render('contact.ejs',{voyagesMenu:voyagesMenu});
+        })
+       
     })
     app.post('/email',(req,res)=> {
         let transporter = nodemailer.createTransport({
@@ -275,14 +257,14 @@ voyage.find((err,voyagesMenu)=>{
             secure : true,
             port : 465,
             auth: {
-                user: 'laurent.gregoire974@gmail.com',
-                pass: "Bit97coin4" 
+                user: '',
+                pass: "" 
             } 
         });
 
         let mail = {
-            from: req.body.name+req.body.email,
-            to: 'alekzxand@gmail.com' ,
+            from:req.body.name+req.body.email,
+            to: 'laurent.gregoire974@gmail.com' ,
             subject: req.body.subject,
             html: req.body.message
         }
@@ -301,7 +283,7 @@ voyage.find((err,voyagesMenu)=>{
     // ================= Qui sommes Nous ========================= //
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('partenaires.ejs', { voyagesMenu: voyagesMenu })
+            res.render('partenaires.ejs',{voyagesMenu : voyagesMenu})
         })
     })
 }
