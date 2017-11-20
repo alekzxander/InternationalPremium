@@ -1,38 +1,24 @@
-<!DOCTYPE html>
-<html lang="fr">
+<%- contentFor('carou') %>
+<%- include partials/header %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Great+Vibes|Satisfy" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Shadows+Into+Light" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <title>Nos Partenaires</title>
 
-    <body>
-
-        <header>
-            <% include partials/header.ejs %>
-        </header>
-
-    <div class="container"> 
+    <div class="container">
         <div class="partenaires">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h2 class="text-center"> NOS PARTENAIRES</h2>
             </div>
 
             <div class="row">
-                <div class="col-xs-12 col-xs-12 col-sm-4 col-md-4 col-lg-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="card">
-                        <img src="images/toni&guy.png"class="img-responsive" alt="Partenaire 1" style="width:100%">
+                        <img src="images/toni&guy.png" class="img-responsive" alt="Partenaire 1" style="width:100%">
                         <h1>Sylvestre Finold</h1>
                         <p class="title">Toni & Guy </p>
-                        <p>Directeur Artistique du salon de coiffure Toni&Guy en Angleterre</p><br>
+                        <p>Directeur Artistique du salon de coiffure Toni&Guy en Angleterre</p>
+                        <br>
                         <a href="https://twitter.com/sylvestre974?lang=fr">
                             <i class="fa fa-twitter"></i>
                         </a>
@@ -45,8 +31,8 @@
                         <a href="http://www.toniandguy.fr/">
                             <i class="fa fa-internet-explorer" aria-hidden="true"></i>
                         </a>
-                        
-                            
+
+
                         </a>
                     </div>
                 </div>
@@ -70,7 +56,7 @@
                         <a href="http://www.broadwaydancecenter.com/faculty/yvonne-marie-sain">
                             <i class="fa fa-internet-explorer" aria-hidden="true"></i>
                         </a>
-                    </a>                    
+                        </a>
                     </div>
                 </div>
 
@@ -79,7 +65,9 @@
                         <img src="images/alanrobert.jpg" class="img-responsive" alt="Partenaire 3" style="width:100%">
                         <h1>Alan Robert</h1>
                         <p class="title">Danseur Professionel à New-York</p>
-                        <p>Danseur Professionel<br>dans la troupe du Soleil</p><br>
+                        <p>Danseur Professionel
+                            <br>dans la troupe du Soleil</p>
+                        <br>
                         <a href="#">
                             <i class="fa fa-twitter"></i>
                         </a>
@@ -90,16 +78,15 @@
                             <i class="fa fa-facebook"></i>
                         </a>
                         <a href="http://www.reunionnaisdumonde.com/spip.php?article7797">
-                            <i class="fa fa-internet-explorer" aria-hidden="true"></i>                        
+                            <i class="fa fa-internet-explorer" aria-hidden="true"></i>
                         </a>
-                                            
                     </div>
                 </div>
 
 
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="card">
-                        <img src="images/oxford.jpg" alt="Partenaire 4"class="img-responsive" style="width:100%">
+                        <img src="images/oxford.jpg" alt="Partenaire 4" class="img-responsive" style="width:100%">
                         <h1>Université d'Oxford</h1>
                         <p class="title">Une des plus grandes université d'Angleterre </p>
                         <p>Lorem Ipsum</p>
@@ -114,7 +101,6 @@
                         </a>
                         <a href="http://www.ox.ac.uk/">
                             <i class="fa fa-internet-explorer" aria-hidden="true"></i>
-                                                                       
                         </a>
                     </div>
                 </div>
@@ -122,10 +108,12 @@
 
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="card">
-                        <img src="images/athena.jpeg" alt="Partenaire 5"class="img-responsive" style="width:100%">
+                        <img src="images/athena.jpeg" alt="Partenaire 5" class="img-responsive" style="width:100%">
                         <h1>Athena Training</h1>
                         <p class="title">Ecole de soutien scolaire </p>
-                        <p>Centre de soutien scolaire et de formation professionnelle continue</p><br><br>
+                        <p>Centre de soutien scolaire et de formation professionnelle continue</p>
+                        <br>
+                        <br>
                         <a href="https://twitter.com/athenatraining">
                             <i class="fa fa-twitter"></i>
                         </a>
@@ -138,20 +126,11 @@
                         <a href="http://athenatraining.re/">
                             <i class="fa fa-internet-explorer" aria-hidden="true"></i>
                         </a>
-                    </a>                          
-                        
+                        </a>
+
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-
-            <footer>
-                <% include partials/footer%> 
-            </footer>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-            <script src="javascripts/script.js"></script>
-    </body>
-
-</html>
