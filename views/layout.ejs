@@ -11,115 +11,104 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <title>International Premium Accompagnement </title>
 </head>
-
 <body>
-  <header>  
-  <nav class="navbar navbar-default" role="navigation">
 
-    <div class="navbar-header navbar-left">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
+    <header>
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/">Accueil</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listes des voyages
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <% voyagesMenu.forEach((voyages)=>{ %>
-                            <li>
-                                <a href="/voyage/<%= voyages.id %>">
-                                    <%= voyages.name %>
-                                </a>
-                            </li>
-                            <%  }); %>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/partenaires">Nos Partenaires</a>
-                </li>
-               
-                <li>
-                    <a href="/contact">Nous Contacter</a>
-                </li>
-                    <% if (!isAuthenticated()) { %>
-                 <li>
-                        <a href="/login" >Me Connecter</a>
-                   </li>
+        <nav class="navbar navbar-default" role="navigation">
+
+
+            <div class="navbar-header navbar-left">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
                     <li>
-                    <a href="/signup">Inscription</a>
-                </li>
-                <% } else { %>
-                    <li>
-                    <a href="/logout">Deconnection</a>
+                        <a href="/">Accueil</a>
                     </li>
-                <% } %>
-               <%/* <li>
-                    <a href="/dashbord">Admin</a>
-                </li>
-                */%>
-                
+       
+                    <li>
+                        <a href="/partenaires">Nos Partenaires</a>
+                    </li>
+                    <li>
+                        <a href="/signup">Inscription</a>
+                    </li>
+                    <li>
+                        <a href="/login">Me Connecter</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Deconnection</a>
+                    </li>
+                    <li>
+                        <a href="/dashbord">Admin</a>
+                    </li>
+                    <li>
+                        <a href="/contact">Nous Contacter</a>
+                    </li>
 
-            </ul>
-        </div>
-  </nav>
-  </header>
-<%-defineContent('index')%>
-<%-defineContent('partenaires')%>
-<%-defineContent('contact')%>
+                </ul>
 
-  <footer>
-   
-<div class="container">
-    <div class="row">
-        <div class=" col-xs-12 col-sm-4 col-md-4">
-            <p class="copyright">&copy; Simplon 2017</p>
-            <p class="text-left">
-                    <a href="/mentionslegales">Mentions Légales </a>
-                </p>
-        </div>
-
-        <div class="mleg col-xs-12 col-sm-4 col-md-4">
-         
-        </div>
-
-        <div class="icons col-xs-12 col-sm-4 col-md-4">
-
-            <p class="text-center">
-                <a href="#">
-                    <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
-                </a>
-            </p>
-
-        </div>
-
-  </footer>
-
-        <span class='Top'>
-            <i class='fa fa-chevron-up'></i>
-        </span>
+            </div>
 
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="javascripts/scroll.js"></script>
-        <script src="javascripts/script.js"></script>
+        </nav>
+    </header>
+    
+    <%- defineContent('content') %>
+    <%- defineContent('carou') %>
+    <%- defineContent('contact') %>
+    
+
+    <footer>
+
+        <div class="container">
+            <div class="row">
+                <div class=" col-xs-12 col-sm-4 col-md-4">
+                    <p class="copyright">&copy; Simplon 2017</p>
+                    <p class="text-left">
+                        <a href="/mentionslegales">Mentions Légales </a>
+                    </p>
+                </div>
+
+                <div class="mleg col-xs-12 col-sm-4 col-md-4">
+
+                </div>
+
+                <div class="icons col-xs-12 col-sm-4 col-md-4">
+
+                    <p class="text-center">
+                        <a href="#">
+                            <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
+                        </a>
+                    </p>
+
+                </div>
+    </footer>
+
+    <span class='Top'>
+        <i class='fa fa-chevron-up'></i>
+    </span>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="javascripts/scroll.js"></script>
+    <script src="javascripts/script.js"></script>
 </body>
-</html>

@@ -116,6 +116,7 @@ a {
     line-height: 1.32;
     margin: 0 auto;
     padding: 0px 28px;
+    /* position: absolute; */
     font-size: 3.4em;
     font-weight: bold;
     text-align: center;
