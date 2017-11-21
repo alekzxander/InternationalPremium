@@ -142,7 +142,9 @@ strong {
 body {
   color: #66615b;
   font-size: 14px;
-  font-family: 'Muli', Arial, sans-serif; }
+  font-family: 'Muli', Arial, sans-serif;
+  /* background: white; */
+  }
   body .wrapper {
     min-height: 100vh;
     position: relative; }
@@ -419,7 +421,9 @@ hr {
   transition-duration: .2s,.2s;
   -webkit-transition-timing-function: linear,linear;
   transition-timing-function: linear,linear;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  background: white;
+  }
 
 .btn,
 .navbar .navbar-nav > li > a.btn {

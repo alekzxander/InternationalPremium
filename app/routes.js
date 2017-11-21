@@ -99,15 +99,15 @@ module.exports = function (app, passport) {
 
     app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('dashItineraire.ejs', { voyages: voyages })
+            res.render('dashItineraire', { voyages: voyages, layout:'layoutAdmin' })
         });
     })
     app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('ajoutLieux.ejs', {
+            res.render('ajoutLieux', { 
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
                     return (voyage.id == req.params.id)
-                })[0]
+                })[0], layout : 'layoutAdmin'
             })
         });
     })
