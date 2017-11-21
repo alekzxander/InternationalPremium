@@ -34,7 +34,7 @@ header {
 
 
 .navbar-default .navbar-nav>li>a {
-    color: #2a4164;
+    color: #fff;
     font-size: 16px;
     text-transform: uppercase;
 }
@@ -814,6 +814,7 @@ footer a {
     }
 }
 
+<<<<<<< HEAD
 @media (min-width: 768px) {
     .navbar-fixed-side.navbar-inverse .navbar-nav>li:not(.active)>a:hover,
     .navbar-fixed-side.navbar-inverse .navbar-nav>li:not(.active)>a:focus,
@@ -827,6 +828,8 @@ footer a {
         padding: 20px;
     }
 }
+=======
+>>>>>>> 1b0bea1f50eef6f8d78ee5998e5b77420a826ed1
 
 @media (min-width: 768px) {
     .navbar-fixed-side.navbar-inverse .dropdown>.dropdown-toggle {
