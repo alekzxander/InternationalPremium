@@ -1,1 +1,46 @@
 <%- contentFor('menu')%>
+
+<head>
+        <link rel="stylesheet" href="/stylesheets/heroku.css">
+    </head>
+    <div id="demo">
+        <!-- Responsive table starts here -->
+        <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+        <div class="table-responsive-vertical shadow-z-1">
+            <!-- Table starts here -->
+            <table id="table" class="table table-hover table-mc-light-blue">
+                <thead>
+                    <tr>
+                        <th>carte</th>
+                        <th>voyage</th>
+                        <th>supprimer</th>
+                        <th>modifier</th>
+    
+                    </tr>
+                </thead>
+                <tbody>
+                    <% voyages.forEach((carte)=>{ %>
+                        <tr>
+                            <td data-title="carte">
+                                <%=carte.dateA%>
+                            </td>
+                            <td data-title="nom">
+                                <%=carte.name%>
+                            </td>
+                            <td data-title="link">
+                                <a href="/card/<%= carte._id%>/delete" class="btn btn-warning btn-lg">supprimer</a>
+                            </td>
+                            <td data-title="link">
+                                <a href="/updatecard/<%=carte._id%>" class="btn btn-warning btn-lg">modifier</a>
+                            </td>
+                        </tr>
+    
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    
+        <div style="width: 45%; display: inline-block; vertical-align: top; margin-left: 30px;">
+        </div>
+    </div>
+    

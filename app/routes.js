@@ -66,9 +66,10 @@ module.exports = function (app, passport) {
 
     // normal routes ===============================================================
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
-            res.render('dashbord',{layout:'layoutAdmin'})
+        voyage.find((err, carte) => {
+            res.render('dashbord',{voyages:carte, layout:'layoutAdmin'})
             
-
+        })
     });
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
@@ -76,9 +77,7 @@ module.exports = function (app, passport) {
         })
     })
     app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
-        voyage.find((err, carte) => {
-            res.render('card.ejs', { cartes: carte });
-        });
+            res.render('card', { layout:'layoutAdmin' });
     });
 
     app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
