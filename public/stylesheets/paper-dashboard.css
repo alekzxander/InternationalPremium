@@ -67,7 +67,9 @@ h6, .h6 {
 
 p {
   font-size: 16px;
-  line-height: 1.4em; }
+  line-height: 1.4em;
+  margin-top: 70px;
+  }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
   color: #9A9A9A;
@@ -2789,7 +2791,7 @@ textarea.form-control {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  text-align: left;
+  text-align: center;
   padding: 1.6rem;
   vertical-align: middle;
   border-top: 0;
