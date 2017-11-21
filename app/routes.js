@@ -2,7 +2,7 @@ const permissions = require('../config/permissions');
 const multer = require('multer');
 var fs = require('fs');
 module.exports = function (app, passport) {
-
+    const dotEnv = require('dotenv').load();
     const nodemailer = require("nodemailer");
     const voyage = require('./models/voyage')
     const upload = multer({ dest: 'public/images/' })
@@ -257,16 +257,16 @@ module.exports = function (app, passport) {
             secure : true,
             port : 465,
             auth: {
-                user: '',
-                pass: "" 
+                user: process.env.EMAIL,
+                pass: process.env.PASS
             } 
         });
 
         let mail = {
-            from:req.body.name+req.body.email,
-            to: 'laurent.gregoire974@gmail.com' ,
+            from:req.body.email,
+            to: process.env.EMAIL ,
             subject: req.body.subject,
-            html: req.body.message
+            html: req.body.name.toUpperCase() + req.body.email  + req.body.message 
         }
 
         transporter.sendMail(mail, function(error, response){

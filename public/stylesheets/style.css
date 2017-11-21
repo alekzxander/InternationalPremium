@@ -316,7 +316,7 @@ header {
 {
     height: 550px;
     margin-bottom: 261px;
-    margin-top: -164px;
+    margin-top: -171px;
     z-index: 232;
 }
 .box-inside-head
@@ -823,6 +823,8 @@ footer a {
         color: black;}
         .navbar-default .navbar-nav>li>a {
         color: #fff;
+        /* background: #03152b; */
+        padding: 20px;
     }
 }
 
