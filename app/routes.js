@@ -2,11 +2,10 @@ const permissions = require('../config/permissions');
 const multer = require('multer');
 var fs = require('fs');
 module.exports = function (app, passport) {
-
+    const dotEnv = require('dotenv').load();
     const nodemailer = require("nodemailer");
-    let voyage = require('./models/voyage')
-    var upload = multer({ dest: 'public/images/' })
-
+    const voyage = require('./models/voyage')
+    const upload = multer({ dest: 'public/images/' })
 
     // LOGOUT ==============================
     app.get('/logout', function (req, res) {
@@ -23,19 +22,37 @@ module.exports = function (app, passport) {
     // locally -------------------------------- LOGIN
     // =============================== show the login form
     app.get('/login', function (req, res) {
-        res.render('login.ejs', { layout:'layoutlogin',
+        res.render('layoutLogin.ejs',{ layout:'layoutLogin',
             message: req.flash('loginMessage')
         });
     });
+    
     // process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/', // redirect to the secure profile section
-        failureRedirect: '/login', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
+    app.post('/login', function(req,res){
+        //Redirect user according to role
+        passport.authenticate('local-login', function(err, user, info){
+            if (err) {
+                return res.redirect('/login');
+            }
+            if (!user) {
+                return res.redirect('/login');
+            }
+            //Log in the user
+            req.logIn(user, function(err) {
+                if (err) { return next(err); }
+
+                //redirect the user to dashboard when it's an admin
+                if(user.local.role==='admin'){
+                    return res.redirect('/dashbord');
+                }
+                //redirect user to the homepage for no admin user
+                return res.redirect('/');
+              });
+        })(req, res); //<-- give access to req and res for the callback of authenticate
+    });
     // SIGNUP ================================= show the signup form
     app.get('/signup', function (req, res) {
-        res.render('signup.ejs', { layout:'layoutSignup',
+        res.render('layoutSignup.ejs',{ layout:'layoutSignup',
             message: req.flash('signupMessage')
         });
     });
@@ -177,7 +194,7 @@ module.exports = function (app, passport) {
     })
 
     app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
-
+        // Create Var for img
         var fileToUpload = req.file;
         console.log(fileToUpload)
         var target_path = upload + fileToUpload;
@@ -225,13 +242,13 @@ module.exports = function (app, passport) {
     }))
 
     // ============ Formulaire de Contact ====================== //
+
     app.get('/contact', (req, res) => {
         voyage.find((err,voyagesMenu)=>{
-            res.render('contact.ejs',{voyagesMenu:voyagesMenu});
+            res.render('layoutContact.ejs',{voyagesMenu:voyagesMenu , layout:'layoutContact'});
         })
        
     })
-
     app.post('/email',(req,res)=> {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -239,16 +256,16 @@ module.exports = function (app, passport) {
             secure : true,
             port : 465,
             auth: {
-                user: '',
-                pass: "" 
+                user: process.env.EMAIL,
+                pass: process.env.PASS
             } 
         });
 
         let mail = {
-            from:req.body.name+req.body.email,
-            to: 'laurent.gregoire974@gmail.com' ,
+            from:req.body.email,
+            to: process.env.EMAIL ,
             subject: req.body.subject,
-            html: req.body.message
+            html: req.body.name.toUpperCase() + req.body.email  + req.body.message 
         }
 
         transporter.sendMail(mail, function(error, response){
@@ -262,24 +279,21 @@ module.exports = function (app, passport) {
             transporter.close();
         });
     })
-
-
     // ================= Qui sommes Nous ========================= //
-
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('partenaires.ejs',{voyagesMenu : voyagesMenu})
         })
     })
-
 }
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()){
-        res.redirect('/');
-    }else if(req.isAuthenticated() && req.user.local.role === 'admin'){
-      
-        res.redirect('/contact')
-    }next()
+    if (isAuthenticated()){
+    }
 }
-
+function getLoggedUser(req, res, next){
+    if(req.isAuthenticated() && req.user.local.role === 'admin'){       
+        res.redirect('/dashbord'),permissions.can('access admin page')
+    }next()
+  
+}

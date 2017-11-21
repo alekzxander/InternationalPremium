@@ -15,11 +15,13 @@ body {
 }
 
 header {
-    background: white;
+    background: transparent;
 }
+@media all and (max-width: 780px){
 
-a {
-    color: white;
+    .lieux-visite{
+        padding-top:130px;
+    }
 }
 /*-------------------------------*/
 /*           Menu nav-bar        */
@@ -32,12 +34,10 @@ a {
 
 
 .navbar-default .navbar-nav>li>a {
-    color: white;
+    color: #fff;
     font-size: 16px;
     text-transform: uppercase;
-    
 }
-
 
 .navbar-default .navbar-nav>li>a:hover {
     color: orange;
@@ -54,10 +54,9 @@ a {
     float: none;
     vertical-align: top;
 }
-
 .navbar .navbar-collapse {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 81px;
 }
 /*-------------------------------*/
 /*           carousel             */
@@ -116,7 +115,6 @@ a {
     line-height: 1.32;
     margin: 0 auto;
     padding: 0px 28px;
-    /* position: absolute; */
     font-size: 3.4em;
     font-weight: bold;
     text-align: center;
@@ -143,7 +141,6 @@ a {
 .carousel {
     margin-top: -130px;
 }
-
 .carousel strong {
     color: #eea903;
 }
@@ -306,30 +303,33 @@ a {
 
 /* =======Itineraire=========*/
 .btn-group-lg>.btn, .btn-lg {
+
     border-radius: 0px;
 }
+
 .lieux-visite {
-    padding-top: 45px;
+    padding-top: 19px;
     padding-bottom: 35px;
     color: #06162B;
 }
 #banniere-img
 {
     height: 550px;
-    margin-bottom: 262px;
-    margin-top: -56px;
+    margin-bottom: 261px;
+    margin-top: -171px;
+    z-index: 232;
 }
 .box-inside-head
 {
     /* height: 322px; */
     padding: 10px;
-    background: white;
-    margin-top: 483px;
+    background: #F5F2F2;
+    margin-top: 480px;
     text-align:center;
     border: 0.5px solid #E2DDDD;
     letter-spacing: 0.5px;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 60px;
+    margin-bottom: 64px;
     padding-bottom: 30px;
 }
 .box-inside-head h1 {
@@ -366,14 +366,15 @@ a {
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    /* max-width: 300px; */
     margin: auto;
     text-align: center;
-    display: inline-block;
+    /* display: inline-block; */
     margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 40px;
+    /* margin-bottom: 50px; */
+    /* margin-left: 40px; */
     margin-right: 23px;
+    width: auto;
 }
 
 .card-text {
@@ -475,15 +476,19 @@ a {
 
 .descriptif {
     margin-top: -1px;
-    background: white;
-    border: 0.5px solid #E2DDDD;
+    background: #F5F2F2;
     color: #4B4545;
     letter-spacing: 0.5px;
     font-family: 'Roboto', sans-serif;
     font-size: 19px;
-    margin-top: 20px;
+    margin-top: 80px;
 }
-
+@media all and (max-width:560px) {
+    #banniere-img{
+        margin-top: 0px;
+        margin-bottom: 389px;
+    }
+}
 .descriptif:hover {
     box-shadow: 0px 3px 5px rgba(32, 32, 32, 0.15);
     transform: scale(1.01)
@@ -506,6 +511,7 @@ height: 380px;
 {
     padding: 2% 0 0 6%;
     line-height: 37px;
+    /* background: grey; */
 }
 
 .banniere-premium
@@ -532,6 +538,7 @@ height: 380px;
     background: #CF3030;
     padding: 5px;
 }
+
 
 /* =======FOOTER ============*/
 
@@ -744,6 +751,7 @@ footer a {
 }
 
 @media (min-width: 768px) {
+ 
     .navbar-fixed-side .navbar-nav>li>a:hover,
     .navbar-fixed-side .navbar-nav>li>a:focus,
     .navbar-fixed-side .navbar-nav .dropdown-menu>li>a:hover,
@@ -806,6 +814,7 @@ footer a {
     }
 }
 
+<<<<<<< HEAD
 @media (min-width: 768px) {
     .navbar-fixed-side.navbar-inverse .navbar-nav>li:not(.active)>a:hover,
     .navbar-fixed-side.navbar-inverse .navbar-nav>li:not(.active)>a:focus,
@@ -815,8 +824,12 @@ footer a {
         color: black;}
         .navbar-default .navbar-nav>li>a {
         color: #fff;
+        /* background: #03152b; */
+        padding: 20px;
     }
 }
+=======
+>>>>>>> 1b0bea1f50eef6f8d78ee5998e5b77420a826ed1
 
 @media (min-width: 768px) {
     .navbar-fixed-side.navbar-inverse .dropdown>.dropdown-toggle {
@@ -860,4 +873,3 @@ footer a {
         margin-left: 244px;
     }
 }
-
