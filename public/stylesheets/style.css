@@ -362,7 +362,15 @@ header {
     height: 500px;
 }
 
-/* ========== QUI SOMMES NOUS ============ */
+/* ========== Partenaires ============ */
+
+.banniere-partenaire
+{
+    height: 260px;
+    margin-bottom: 261px;
+    margin-top: -164px;
+    z-index: 232;
+}
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -609,7 +617,7 @@ footer a {
 
 @media all and (max-width:560px) {
     .carte {
-        height: auto;
+        height: auto;partenaires
     }
 }
 
