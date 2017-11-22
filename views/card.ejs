@@ -1,4 +1,37 @@
-<main>
-    <% include partials/menudash %>
-    <% include partials/card %>
-</main>
+<%- contentFor('content') %>
+    <%- contentFor('menu') %>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form action="/dashbord/card" enctype="multipart/form-data" method="post">
+                        <div class="form-group">
+                            <input class="form-control input-sm" type="file" name="img" placeholder="Image Upload">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-lg" type="text" name="name" placeholder="Titre">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-lg" type="date" name="dateA" placeholder="Date aller">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-lg" type="date" name="dateR" placeholder="Date retour">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-lg" type="text" name="sejour" placeholder="Nombre de jours">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-lg" type="text" name="preview" placeholder="Descriptif du voyage">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-lg" type="text" name="text" placeholder="Résumé du voyage">
+                        </div>
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-warning btn-lg">confirmez</button>
+                        </p>
+                    </form>
+
+                </div>
+
+            </div>

@@ -14,7 +14,6 @@ body {
     overflow-x: hidden;
     background: #fff;
 }
-
 header {
     background: transparent;
 }
@@ -49,7 +48,9 @@ header {
     z-index: 100;
     border: none;
 }
-
+a {
+    color: white;
+}
 .navbar .navbar-nav {
     display: inline-block;
     float: none;
@@ -126,28 +127,43 @@ header {
 
 /*================ SIGNUP ======================*/
 
-.signup {
-    padding-top: 80px;
-    background: #0b0f19;
+.signup  {
+    padding-top: 77px;
+    padding-bottom: 9%;
+    background: #06162D;
 }
 
-.signup h1,label,p {
+.signup h1 {
     color: #f1b244;
 }
 
+.signup label {
+    color: #f1b244;
+}
+
+.signup p {
+    color: #f1b244;
+}
 
 /* =============== LOGIN  ======================*/
 
 .login {
-    padding-top: 80px;
-    background: #0b0f19;
-    height: 100%;
+    padding-top: 161px;
+    padding-bottom: 20%;
+    background: #06162D;
 }
 
-.login p,h1 {
+.login p {
     color :#f1b244;
 }
 
+.login h1 {
+    color :#f1b244;
+}
+
+.login label {
+    color :#f1b244;
+}
 
 /* =============== HEADER ======================*/
 
@@ -341,7 +357,7 @@ header {
 {
     height: 550px;
     margin-bottom: 261px;
-    margin-top: -164px;
+    margin-top: -171px;
     z-index: 232;
 }
 .box-inside-head
