@@ -59,6 +59,19 @@ a {
     text-align: center;
     padding-top: 81px;
 }
+.navbar-brand img 
+{
+    width: 100px;
+    transition: 1s;
+    margin-top: -25px;
+    margin-left: -78px;
+   
+} 
+.navbar-brand img:hover 
+{
+    transform : scale(1.1)
+}  
+
 /*-------------------------------*/
 /*           carousel             */
 /*-------------------------------*/
@@ -143,7 +156,7 @@ a {
     margin-top: -130px;
 }
 .carousel strong {
-    color: #eea903;
+    color: #fffcfc;
 }
 
 .carousel-inner {
@@ -256,10 +269,10 @@ a {
 .box-item {
     background: #FAF8F8;
     margin-top: 50px;
-
+    /* padding-top: 30px; */
 }   
 .box-item img {
-    height: 280px;
+    height: 284px;
 }
 .box-item p 
 {
@@ -268,7 +281,7 @@ a {
     margin: 0 6%;
 }
 .box-item h2 {
-    margin:0 6%;
+    margin: 4% 6%;
     margin-bottom: 37px;
 }
 
@@ -310,13 +323,13 @@ a {
 
 .lieux-visite {
     padding-top: 19px;
-    padding-bottom: 35px;
+    padding-bottom: 51px;
     color: #06162B;
 }
 #banniere-img
 {
     height: 550px;
-    margin-bottom: 261px;
+    margin-bottom: 301px;
     margin-top: -171px;
     z-index: 232;
 }
@@ -487,7 +500,7 @@ a {
 @media all and (max-width:560px) {
     #banniere-img{
         margin-top: 0px;
-        margin-bottom: 389px;
+        margin-bottom: 577px;
     }
 }
 .descriptif:hover {
@@ -835,26 +848,5 @@ footer a {
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 15px;
-    }
-}
-
-
-
-@media (max-width: 1024px) {
-    .carte-vide, .carte, .remove {
-    margin-left: 140px;
-    }
-    .title {
-        margin-left: 244px;
-    }
-}
-
-
-@media (max-width: 1024px) {
-    .carte-vide, .carte, .remove {
-    margin-left: 140px;
-    }
-    .title {
-        margin-left: 244px;
     }
 }

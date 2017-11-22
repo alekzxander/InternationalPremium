@@ -90,7 +90,7 @@ module.exports = function (app, passport) {
     });
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
-            res.render("validation.ejs");
+            res.redirect("/dashbord");
         })
     })
     app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {

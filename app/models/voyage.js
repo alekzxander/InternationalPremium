@@ -8,7 +8,11 @@ let voyageSchema = new mongoose.Schema ({
     preview : String,
     text : String,
     img : String,
-    lieux : Array,
+    lieux : [{_id: false,
+            titre : {type : String},
+            text : {type : String},
+            img : {type : String}
+            }]
 })
 let voyage = mongoose.model('voyages', voyageSchema)
 module.exports = voyage;
