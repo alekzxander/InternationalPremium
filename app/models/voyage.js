@@ -1,4 +1,6 @@
 let mongoose = require('mongoose');
+const slug = require('mongoose-slug-generator');
+mongoose.plugin(slug);
 
 let voyageSchema = new mongoose.Schema ({
     name : String,
@@ -10,5 +12,6 @@ let voyageSchema = new mongoose.Schema ({
     img : String,
     lieux : Array,
 })
+
 let voyage = mongoose.model('voyages', voyageSchema)
-module.exports = voyage;
+module.exports = voyage;    
