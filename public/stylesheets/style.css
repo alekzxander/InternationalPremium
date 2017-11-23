@@ -157,7 +157,7 @@
     }
 
     .signup hr {
-        margin-top: 50px;
+        margin-top: 35px;
         padding-top: 5px;
     }
 
@@ -183,6 +183,12 @@
     .login label {
         color: #f1b244;
     }
+
+    .login hr {
+        margin-top: 30px;
+        padding-top: 5px;
+    }
+
     /* =============== HEADER ======================*/
 
     .container {
