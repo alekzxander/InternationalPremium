@@ -1,11 +1,12 @@
 const permissions = require('../config/permissions');
 const multer = require('multer');
 var fs = require('fs');
+const dotEnv = require('dotenv').load();
+const nodemailer = require("nodemailer");
+const voyage = require('./models/voyage')
+const upload = multer({ dest: 'public/images/' })
+
 module.exports = function (app, passport) {
-    const dotEnv = require('dotenv').load();
-    const nodemailer = require("nodemailer");
-    const voyage = require('./models/voyage')
-    const upload = multer({ dest: 'public/images/' })
 
     // LOGOUT ==============================
     app.get('/logout', function (req, res) {

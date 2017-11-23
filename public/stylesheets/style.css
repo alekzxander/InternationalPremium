@@ -149,10 +149,18 @@
     .signup label {
         color: #f1b244;
     }
-
-    .signup p {
+    .signup a {
         color: #f1b244;
     }
+    .signup p {
+        color: #fff;
+    }
+
+    .signup hr {
+        margin-top: 50px;
+        padding-top: 5px;
+    }
+
     /* =============== LOGIN  ======================*/
 
     .login {
@@ -161,8 +169,11 @@
         background: #06162D;
     }
 
-    .login p {
+    .login a {
         color: #f1b244;
+    }
+    .login p {
+        color: #fff;
     }
 
     .login h1 {
@@ -408,6 +419,7 @@
         margin-bottom: 261px;
         margin-top: -164px;
         z-index: 232;
+        background: #06162D;
     }
 
     .card {
@@ -424,7 +436,7 @@
     }
 
     .card-text {
-        width: 150 px;
+        width: 150px;
         margin: 0 auto;
     }
 
