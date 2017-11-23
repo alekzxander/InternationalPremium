@@ -611,7 +611,7 @@
         position: fixed;
         bottom: 30px;
         right: 41px;
-        background: rgb(3, 21, 43);
+        background: #06162D;
         padding: 6px 11px;
         width: 69px;
         height: 69px;
@@ -620,7 +620,7 @@
         border-radius: 100%;
         color: #ffffff;
         cursor: pointer;
-        border: 5px solid #03152b;
+        border: 5px solid #06162D;
         z-index: 10;
         display: none;
     }
@@ -653,6 +653,14 @@
             margin-top: -55px;
             margin-left: 65px;
         }
+        .Top {
+            width:40px;
+            height: 40px;
+            right: 1px;
+            font-size: 30px;
+            padding: 1px 1px ;
+        }
+        
     }
 
     @media (min-width: 768px) {
