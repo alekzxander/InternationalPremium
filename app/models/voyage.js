@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 let voyageSchema = new mongoose.Schema ({
-    name : String,
+    name : String,  
     dateA : String,
     dateR : String,
     sejour : String,
@@ -9,11 +9,14 @@ let voyageSchema = new mongoose.Schema ({
     text : String,
     img : String,
     lieux : [{
-             ofObjectId: [mongoose.Schema.Types.ObjectId],
+            // ofObjectId: [mongoose.Schema.Types.ObjectId],
             titre : {type : String},
             text : {type : String},
             img : {type : String}
-            }]
+            }],
+
 })
+
+
 let voyage = mongoose.model('voyages', voyageSchema)
 module.exports = voyage;

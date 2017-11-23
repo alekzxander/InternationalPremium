@@ -7,6 +7,7 @@ module.exports = function (app, passport) {
     const voyage = require('./models/voyage')
     const upload = multer({ dest: 'public/images/' })
 
+
     // LOGOUT ==============================
     app.get('/logout', function (req, res) {
         req.logout();
@@ -145,7 +146,7 @@ module.exports = function (app, passport) {
                     });
             })
     })
-    app.get('/suppLieux/:id', permissions.can('access admin page'), (req, res) => {
+    app.get('/suppLieux/:id', permissions.can('access admin page'),(req, res) => {
         voyage.find((err, voyages) => {
             res.render('suppLieux', { 
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
@@ -155,16 +156,21 @@ module.exports = function (app, passport) {
         });
     })
     
-    app.get('/suppLieux/:id/delete', permissions.can('access admin page'), (req, res) => {
-        voyage.findByIdAndUpdate({},{ $pull: { ObjectId: req.params.id } }, (err, delData) => {  
+    app.get('/suppLieux/:id/delete',permissions.can('access admin page'), (req, res) => {
+        console.log(req.params.id)
+        voyage.update({}, 
+            {
+                $pull : {
+                    lieux : { _id: req.params.id}
+                }
+            }, 
+            {multi:true},
+            (err, delData) => {  
+                console.log(delData)
             res.redirect("/dashbord/dashitineraire");
         })
     })
-    // app.get('/suppLieux/:id/delete', permissions.can('access admin page'), (req, res) => {
-    //     voyage.findByIdAndRemove({ _id: req.params.id }, (err, delData) => {  
-    //         res.redirect("/dashbord/dashitineraire");
-    //     })
-    // })
+  
     // create card
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
@@ -241,20 +247,20 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.use('/voyage/:id', function (req, res, next) {
+    app.use('/voyage/:name',function (req, res, next) {
         voyage.find({}, (err, voyagesMenu) => {
-            req.voyagesMenu = voyagesMenu
+            req.voyagesMenu = voyagesMenu;
             next();
         })
     })
 
-    app.get('/voyage/:id', ((req, res) => {
+    app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
                 voyagesMenu: req.voyagesMenu,
-                voyage: req.params.id,
+                voyage: req.params.name,
                 mesVoyages: voyages.filter((voyage) => {
-                    return voyage.id == req.params.id
+                    return voyage.name == req.params.name
                 })[0]
             })
         })
