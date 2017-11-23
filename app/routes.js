@@ -223,20 +223,20 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.use('/voyage/:id', function (req, res, next) {
+    app.use('/voyage/:name',function (req, res, next) {
         voyage.find({}, (err, voyagesMenu) => {
-            req.voyagesMenu = voyagesMenu
+            req.voyagesMenu = voyagesMenu;
             next();
         })
     })
 
-    app.get('/voyage/:id', ((req, res) => {
+    app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
                 voyagesMenu: req.voyagesMenu,
-                voyage: req.params.id,
+                voyage: req.params.name,
                 mesVoyages: voyages.filter((voyage) => {
-                    return voyage.id == req.params.id
+                    return voyage.name == req.params.name
                 })[0]
             })
         })
