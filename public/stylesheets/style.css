@@ -17,11 +17,7 @@
         background: transparent;
     }
 
-    @media all and (max-width: 780px) {
-        .lieux-visite {
-            padding-top: 130px;
-        }
-    }
+   
     /*-------------------------------*/
     /*           Menu nav-bar        */
     /*-------------------------------*/
@@ -307,7 +303,7 @@
     }
 
     .box-item h2 {
-        margin: 0 6%;
+        margin: 31px 6%;
         margin-bottom: 37px;
     }
 
@@ -347,9 +343,11 @@
     }
 
     .lieux-visite {
-        padding-top: 19px;
-        padding-bottom: 35px;
+        padding-top: 30px;
+        padding-bottom: 30px;
         color: #06162B;
+        position: relative;
+        top: 47px;
     }
 
     #banniere-img {
@@ -370,6 +368,7 @@
         font-family: 'Roboto', sans-serif;
         margin-bottom: 64px;
         padding-bottom: 30px;
+        position:;
     }
 
     .box-inside-head h1 {
@@ -541,11 +540,8 @@
 
     .descriptif img {
         height: 380px;
-        /* width: 310px; */
+       
     }
-<<<<<<< HEAD
-}
-=======
 
     .descriptif h3 {
         color: #000000;
@@ -557,7 +553,7 @@
 
     .descriptif .col-md-8 {
         padding: 2% 0 0 6%;
-        line-height: 37px;
+        /* line-height: 37px; */
         /* background: grey; */
     }
 
@@ -629,6 +625,7 @@
     /* On small screens, set height to 'auto' for sidenav and grid */
 
     @media (max-width:414px) {
+        
         .title,
         .carte {
             margin-left: -2px;
@@ -645,6 +642,11 @@
             z-index: 4;
             height: 300px;
         }
+        .lieux-visite {
+            padding-top: 46px;
+            padding-bottom: 49px;
+            top: 109px;
+        }
         .carte {
             height: auto;
         }
@@ -652,9 +654,16 @@
             color: #06162D;
         }
     }
+    .descriptif .col-md-8 {
+        padding: 2% 16px 0 7%;
+       text-align:justify;
+        line-height: 35px;
+    }
 
 
     @media (min-width: 768px) {
+      
+       
         .navbar-fixed-side {
             margin-left: -15px;
             margin-right: -15px;
@@ -793,4 +802,3 @@
             margin-top: 15px;
         }
     }
->>>>>>> fee0fa9536d5c9351c267d0ea751812ed8ad19c8

@@ -119,7 +119,6 @@ module.exports = function (app, passport) {
         voyage.findByIdAndUpdate(req.params.id, {
             $push: {
                 lieux: {
-                    id : req.body._id,
                     titre: req.body.titre,
                     text: req.body.text,
                     img: fileToUpload.originalname
@@ -146,7 +145,26 @@ module.exports = function (app, passport) {
                     });
             })
     })
-
+    app.get('/suppLieux/:id', permissions.can('access admin page'), (req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('suppLieux', { 
+                id: req.params.id, mesVoyages: voyages.filter((voyage) => {
+                    return (voyage.id == req.params.id)
+                })[0], layout : 'layoutAdmin'
+            })
+        });
+    })
+    
+    app.get('/suppLieux/:id/delete', permissions.can('access admin page'), (req, res) => {
+        voyage.findByIdAndUpdate({},{ $pull: { ObjectId: req.params.id } }, (err, delData) => {  
+            res.redirect("/dashbord/dashitineraire");
+        })
+    })
+    // app.get('/suppLieux/:id/delete', permissions.can('access admin page'), (req, res) => {
+    //     voyage.findByIdAndRemove({ _id: req.params.id }, (err, delData) => {  
+    //         res.redirect("/dashbord/dashitineraire");
+    //     })
+    // })
     // create card
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
@@ -250,6 +268,7 @@ module.exports = function (app, passport) {
         })
        
     })
+    
     app.post('/email',(req,res)=> {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -261,14 +280,12 @@ module.exports = function (app, passport) {
                 pass: process.env.PASS
             } 
         });
-
         let mail = {
             from:req.body.email,
             to: process.env.EMAIL ,
             subject: req.body.subject,
             html: req.body.name.toUpperCase() + req.body.email  + req.body.message 
         }
-
         transporter.sendMail(mail, function(error, response){
             if(error){
                 console.log("Mail non envoyé");
