@@ -7,29 +7,23 @@
             <table id="table" class="table table-hover table-mc-light-blue">
                 <thead>
                     <tr>
-                        <th>carte</th>
-                        <th>voyage</th>
-                        <th>Ajouter lieux</th>
+                        <th>Lieux</th>
+                    
                         <th>Supprimer un lieux</th>
                         
     
                     </tr>
                 </thead>
                 <tbody>
-                    <% voyages.forEach((carte)=>{ %>
+                    <% mesVoyages.lieux.forEach((obj)=>{ %>
                         <tr>
                             <td data-title="carte">
-                                <%=carte.dateA%>
-                            </td>
-                            <td data-title="nom">
-                                <%=carte.name%>
+                                <%=obj.titre%>
                             </td>
                            
+                    
                             <td data-title="link">
-                                <a href="/ajoutLieux/<%= carte._id %>" class="btn btn-warning btn-lg">Ajouter un lieux</a>
-                            </td>
-                            <td data-title="link">
-                                    <a href="/suppLieux/<%= carte.id %>" class="btn btn-warning btn-lg">Supprimer un lieux</a>
+                                    <a href="/suppLieux/<%= obj._id %>/delete" class="btn btn-warning btn-lg">Supprimer ce lieux</a>
                                 </td>
                         </tr>
     
@@ -41,4 +35,3 @@
         <div style="width: 45%; display: inline-block; vertical-align: top; margin-left: 30px;">
         </div>
     </div>
-    

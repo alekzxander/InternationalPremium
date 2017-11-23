@@ -8,7 +8,8 @@ let voyageSchema = new mongoose.Schema ({
     preview : String,
     text : String,
     img : String,
-    lieux : [{_id: false,
+    lieux : [{
+            // ofObjectId: [mongoose.Schema.Types.ObjectId],
             titre : {type : String},
             text : {type : String},
             img : {type : String}
