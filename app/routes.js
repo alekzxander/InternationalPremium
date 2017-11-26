@@ -1,12 +1,12 @@
 const permissions = require('../config/permissions');
 const multer = require('multer');
 var fs = require('fs');
-
 module.exports = function (app, passport) {
+
+    const nodemailer = require("nodemailer");
     let voyage = require('./models/voyage')
     var upload = multer({ dest: 'public/images/' })
-
-
+    let users = require('./models/user')
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function (req, res) {
@@ -202,40 +202,41 @@ module.exports = function (app, passport) {
         var target_path = upload + fileToUpload;
         var tmp_path = fileToUpload.path;
 
-        voyage.findByIdAndUpdate(req.params.id, {$set: {name: req.body.name,dateA: req.body.dateA,dateR: req.body.dateR,sejour: req.body.sejour,preview:req.body.preview,text: req.body.text,img: fileToUpload.originalname}},{ new: true },(err, voyage) => {
-                voyage.save().then(item => {
-                        var src = fs.createReadStream(tmp_path);
-                        var dest = fs.createWriteStream(target_path);
-                        src.pipe(dest);
-                        //delete temp file
-                        fs.unlink(tmp_path);
-                        src.on('end', function () { res.redirect("/dashbord/card"); });
-                        src.on('error', function (err) { res.render('error'); });
-                    })
-                    .catch(err => {
-                        res.status(400);
-                    });
+        voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: fileToUpload.originalname } }, { new: true }, (err, voyage) => {
+            voyage.save().then(item => {
+                var src = fs.createReadStream(tmp_path);
+                var dest = fs.createWriteStream(target_path);
+                src.pipe(dest);
+                //delete temp file
+                fs.unlink(tmp_path);
+                src.on('end', function () { res.redirect("/dashbord/card"); });
+                src.on('error', function (err) { res.render('error'); });
             })
+                .catch(err => {
+                    res.status(400);
+                });
+        })
     })
 
-    app.get('/', function (req, res) {
-        voyage.find((err, voyages) => {
-            res.render('index.ejs', { mesVoyages: voyages, voyagesMenu : voyages});
 
+
+    app.get('/', function (req, res) {        
+        voyage.find((err, voyages) => {
+            res.render('index.ejs', { mesVoyages: voyages, voyagesMenu: voyages });
         });
     });
 
-    app.use( function(req, res, next){
-        voyage.find({}, (err, voyagesMenu )=>{
+    app.use('/voyage/:id', function (req, res, next) {
+        voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu
         })
         next();
     })
 
-    app.get('/voyage/:id', (( req, res) => {
+    app.get('/voyage/:id', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
-                voyagesMenu : req.voyagesMenu,
+                voyagesMenu: req.voyagesMenu,
                 voyage: req.params.id,
                 mesVoyages: voyages.filter((voyage) => {
                     return voyage.id == req.params.id
@@ -244,24 +245,68 @@ module.exports = function (app, passport) {
         })
     }))
 
+
+
     // ============ Formulaire de Contact ====================== //
     app.get('/contact', (req, res) => {
-        res.render('contact.ejs')
+
+        res.render('contact.ejs');
     })
+
+    app.post('/email',(req,res)=> {
+        let transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            host : 'smtp.gmail.com',
+            secure : true,
+            port : 465,
+            auth: {
+                user: 'laurent.gregoire974@gmail.com',
+                pass: "Bit97coin4" 
+            } 
+        });
+
+        let mail = {
+            from: req.body.name  + req.body.email,
+            to: 'laurent.gregoire974@gmail.com' ,
+            subject: req.body.subject,
+            html: req.body.message
+        }
+
+        transporter.sendMail(mail, function(error, response){
+            if(error){
+                console.log("Mail non envoyé");
+               res.redirect('/contact')
+            }else{
+                console.log("Mail envoyé avec succès!")
+                res.redirect('/')
+            }
+            transporter.close();
+        });
+    })
+
 
     // ================= Qui sommes Nous ========================= //
 
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('partenaires.ejs',{voyagesMenu : req.voyagesMenu})
+            res.render('partenaires.ejs', { voyagesMenu: voyagesMenu })
         })
     })
 
 }
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
+    if (req.isAuthenticated()){
+        res.redirect('/');
+    }else if(req.isAuthenticated() && req.user.local.role === 'admin'){
+      
+        res.redirect('/contact')
+    }next()
 }
+// function getLoggedUser(req, res, next){
+//     if(req.isAuthenticated() && req.user.local.role === 'admin'){ 
+        
+//         res.redirect('/dashbord'),permissions.can('access admin page');
+//     }
+//     next()
+// }
