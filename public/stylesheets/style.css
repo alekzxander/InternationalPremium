@@ -428,7 +428,7 @@
     }
 
     .card {
-        box-shadow: 0 20px 10px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 17px 10px 0 rgba(0, 0, 0, 0.2);
         margin: auto;
         text-align: center;
         margin-top: 50px;
@@ -447,7 +447,7 @@
     }
 
     .title {
-        color: grey;
+        color:#06162D;
         font-size: 18px;
     }
 
@@ -470,9 +470,8 @@
         color: #06162D;
     }
 
-    .icons-partenaires {
-        width: 20px;
-    }
+   
+    
 
     .btnform:hover,
     .partenaires a:hover {
