@@ -386,7 +386,7 @@
         font-family: 'Roboto', sans-serif;
         margin-bottom: 64px;
         padding-bottom: 30px;
-        position:;
+        position:auto;
     }
 
     .box-inside-head h1 {
@@ -428,12 +428,13 @@
     }
 
     .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 17px 10px 0 rgba(0, 0, 0, 0.2);
         margin: auto;
         text-align: center;
         margin-top: 50px;
         margin-right: 23px;
         width: auto;
+      
     }
 
     .card-text {
@@ -446,7 +447,7 @@
     }
 
     .title {
-        color: grey;
+        color:#06162D;
         font-size: 18px;
     }
 
@@ -466,8 +467,11 @@
     .partenaires a {
         text-decoration: none;
         font-size: 22px;
-        color: black;
+        color: #06162D;
     }
+
+   
+    
 
     .btnform:hover,
     .partenaires a:hover {
