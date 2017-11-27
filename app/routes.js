@@ -87,7 +87,7 @@ module.exports = function (app, passport) {
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
             res.render('dashbord',{voyages:carte, layout:'layoutAdmin'})
-            
+        
         })
     });
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {

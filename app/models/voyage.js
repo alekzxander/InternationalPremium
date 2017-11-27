@@ -9,7 +9,7 @@ let voyageSchema = new mongoose.Schema ({
     text : String,
     img : String,
     lieux : [{
-            // ofObjectId: [mongoose.Schema.Types.ObjectId],
+            
             titre : {type : String},
             text : {type : String},
             img : {type : String}
