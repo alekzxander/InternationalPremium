@@ -10,9 +10,9 @@
 .banniere-contact
 {
 	background: #06162D;
-	height: 220px;
-	margin-bottom: 10px;
-	margin-top: -164px;
+	height: 260px;
+	margin-bottom: 261px;
+	margin-top: -171px;
 	z-index: 232;
 }
 
@@ -48,6 +48,11 @@
 .navbar .navbar-collapse {
 	text-align: center;
 	padding-top: 81px;
+}
+.navbar-brand img {
+	width: 100px;
+	margin-top: -29px;
+	margin-left: -40px;
 }
 
 input:focus {
