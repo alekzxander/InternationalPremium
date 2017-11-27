@@ -1,3 +1,5 @@
+<%- contentFor('titre') %>
+<h4 class="text-center">ITINERAIRES</h4>
 <%- contentFor('menu')%>
 <div id="demo">
         <!-- Responsive table starts here -->
@@ -10,6 +12,7 @@
                         <th>carte</th>
                         <th>voyage</th>
                         <th>Ajouter lieux</th>
+                        <th>Supprimer un lieux</th>
                         
     
                     </tr>
@@ -23,10 +26,13 @@
                             <td data-title="nom">
                                 <%=carte.name%>
                             </td>
+                           
                             <td data-title="link">
                                 <a href="/ajoutLieux/<%= carte._id %>" class="btn btn-warning btn-lg">Ajouter un lieux</a>
                             </td>
-                           
+                            <td data-title="link">
+                                    <a href="/suppLieux/<%= carte.id %>" class="btn btn-warning btn-lg">Supprimer un lieux</a>
+                                </td>
                         </tr>
     
                         <% }) %>

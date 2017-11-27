@@ -1,11 +1,13 @@
 const permissions = require('../config/permissions');
 const multer = require('multer');
 var fs = require('fs');
+const dotEnv = require('dotenv').load();
+const nodemailer = require("nodemailer");
+const voyage = require('./models/voyage')
+const upload = multer({ dest: 'public/images/' })
+
 module.exports = function (app, passport) {
-    const dotEnv = require('dotenv').load();
-    const nodemailer = require("nodemailer");
-    const voyage = require('./models/voyage')
-    const upload = multer({ dest: 'public/images/' })
+
 
     // LOGOUT ==============================
     app.get('/logout', function (req, res) {
@@ -85,7 +87,7 @@ module.exports = function (app, passport) {
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
             res.render('dashbord',{voyages:carte, layout:'layoutAdmin'})
-            
+        
         })
     });
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
@@ -119,7 +121,6 @@ module.exports = function (app, passport) {
         voyage.findByIdAndUpdate(req.params.id, {
             $push: {
                 lieux: {
-                    id : req.body._id,
                     titre: req.body.titre,
                     text: req.body.text,
                     img: fileToUpload.originalname
@@ -146,7 +147,31 @@ module.exports = function (app, passport) {
                     });
             })
     })
-
+    app.get('/suppLieux/:id', permissions.can('access admin page'),(req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('suppLieux', { 
+                id: req.params.id, mesVoyages: voyages.filter((voyage) => {
+                    return (voyage.id == req.params.id)
+                })[0], layout : 'layoutAdmin'
+            })
+        });
+    })
+    
+    app.get('/suppLieux/:id/delete',permissions.can('access admin page'), (req, res) => {
+        console.log(req.params.id)
+        voyage.update({}, 
+            {
+                $pull : {
+                    lieux : { _id: req.params.id}
+                }
+            }, 
+            {multi:true},
+            (err, delData) => {  
+                console.log(delData)
+            res.redirect("/dashbord/dashitineraire");
+        })
+    })
+  
     // create card
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
@@ -251,6 +276,7 @@ module.exports = function (app, passport) {
         })
        
     })
+    
     app.post('/email',(req,res)=> {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -262,14 +288,12 @@ module.exports = function (app, passport) {
                 pass: process.env.PASS
             } 
         });
-
         let mail = {
             from:req.body.email,
             to: process.env.EMAIL ,
             subject: req.body.subject,
             html: req.body.name.toUpperCase() + req.body.email  + req.body.message 
         }
-
         transporter.sendMail(mail, function(error, response){
             if(error){
                 console.log("Mail non envoyé");
