@@ -90,7 +90,7 @@ module.exports = function (app, passport) {
     });
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
-            res.render("validation.ejs");
+            res.redirect("/dashbord");
         })
     })
     app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
@@ -182,6 +182,7 @@ module.exports = function (app, passport) {
                     .status(400)
             });
     });
+    
 
     /* update card */
     app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
@@ -223,20 +224,20 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.use('/voyage/:id', function (req, res, next) {
+    app.use('/voyage/:name',function (req, res, next) {
         voyage.find({}, (err, voyagesMenu) => {
-            req.voyagesMenu = voyagesMenu
+            req.voyagesMenu = voyagesMenu;
             next();
         })
     })
 
-    app.get('/voyage/:id', ((req, res) => {
+    app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
                 voyagesMenu: req.voyagesMenu,
-                voyage: req.params.id,
+                voyage: req.params.name,
                 mesVoyages: voyages.filter((voyage) => {
-                    return voyage.id == req.params.id
+                    return voyage.name == req.params.name
                 })[0]
             })
         })
