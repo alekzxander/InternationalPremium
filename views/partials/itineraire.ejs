@@ -1,5 +1,6 @@
 
-    <% include menu %>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" href="/stylesheets/style.css">
 <div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
     <div class="container">
         <div class="box-inside-head">
@@ -16,7 +17,6 @@
     </div>
 </div>
  
-        <h1 class="lieux-visite text-center">Nos lieux à visiter - pack classique</h1>
 
     <% mesVoyages.lieux.forEach((obj)=>{ %>
       <div class="container-fluid">
@@ -32,7 +32,7 @@
                     </p>
                 </div>
                 <div class="col-xs-12 col-md-4 col-lg-4">
-                    <img src="/images/<%= obj.img %>" class="img-responsive separator" alt="">
+                    <img src="/images/<%= obj.img %>" class="img-responsive" alt="">
                 </div>
             </div>
         </div>
@@ -40,44 +40,7 @@
 
 
         <% }) %>
-      <div class="banniere-premium">  
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Les avantages <strong>premium</strong></h3>
-
-                    <div class="premium">
-                        <p><img src="/images/star.png" class="icon-premium" alt=""> </p>
-                        <div>
-                            <h5>Rencontrer des célèbrités</h5>
-                            <p>Partez a la rencontre de célèbrités réunionnaise qui ont percé dans la vie !</p>
-                        </div>
-
-                    </div>
-                    <div class="premium">
-                        <p><img src="/images/capitol-building.png" class="icon-premium" alt=""></p>
-                        <div>
-                            <h5>Visiter des endroits célèbres</h5>
-                            <p>Vous allez avoir la chances de visiter des structures comme IBM et GOOGLE</p>
-                        </div>
-
-                    </div>
-
-                    <div class="premium">
-                        <p><img src="/images/team.png" class="icon-premium" alt=""></p>
-                        <div>
-                            <h5>Vous serez encadré tout le long du sejour</h5>
-                            <p>Tout le long du voyage vous serez encadré par des proféssionnelle qui seront a votre écoute.</p>
-                        </div>
-                    </div>
-                </div>
-        </div>
-     </div>
-</div>
-    <div class="container-fluid">
-        <h1 class="lieux-visite">Nos lieux à visiter - pack <strong>premium</strong></h1>
-    </div>
-        
+   
 
 
 <span class='Top'><i class='fa fa-chevron-up'></i></span>

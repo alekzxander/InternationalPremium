@@ -1,12 +1,65 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+* {
+	box-sizing: border-box;
+	font-family: 'Roboto'
+}
 
-* { box-sizing: border-box; font-family: 'Roboto' }
+
+/* ================ BANNIERE ================*/
+
+.banniere-contact
+{
+	background: #06162D;
+	height: 260px;
+	margin-bottom: 261px;
+	margin-top: -171px;
+	z-index: 232;
+}
+
+
+/* ================ NAVBAR =================*/ 
+.navbar {
+	margin-bottom: 0px;
+	position: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: orange;
+}
+
+.navbar-default {
+	background: transparent;
+	z-index: 100;
+	border: none;
+}
+
+.navbar .navbar-nav {
+	display: inline-block;
+	float: none;
+	vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+	text-align: center;
+	padding-top: 81px;
+}
+.navbar-brand img {
+	width: 100px;
+	margin-top: -29px;
+	margin-left: -40px;
+}
 
 input:focus {
 	outline: none;
 }
 
-.container {
+.contact {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -24,7 +77,7 @@ input:focus {
 	width: 90%;
 	text-align: center;
 	background-color: white;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 	color: #666;
 }
 
@@ -64,26 +117,25 @@ span.dot.active {
 	color: #aaa;
 }
 
-.cool-form > div {
+.cool-form>div {
 	position: relative;
 	margin-top: 20px;
 }
 
-
-.cool-form > div > label {
+.cool-form>div>label {
 	position: absolute;
 	top: 0px;
 	left: 1px;
 	transition: all 0.3s;
 }
 
-.cool-form > div > .requirements {
+.cool-form>div>.requirements {
 	display: none;
 	font-size: 12px;
 	font-weight: 400;
 }
 
-.cool-form > div > input {
+.cool-form>div>input {
 	width: 100%;
 	padding: 10px;
 	color: #888;
@@ -92,10 +144,11 @@ span.dot.active {
 	transition: all 0.3s;
 }
 
-.cool-form > div > input:focus {
+.cool-form>div>input:focus {
 	border-bottom-color: #06162D;
 }
-.cool-form > div > input:focus + label {
+
+.cool-form>div>input:focus+label {
 	font-size: 10px;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -104,25 +157,30 @@ span.dot.active {
 	color: #06162D;
 }
 
+
 /* Input is valid, not empty */
-.cool-form > div > input:valid:not(:placeholder-shown) {
+
+.cool-form>div>input:valid:not(:placeholder-shown) {
 	border-bottom-color: #ff9c00;
 }
 
-.cool-form > div > input:valid:not(:placeholder-shown) + label {
+.cool-form>div>input:valid:not(:placeholder-shown)+label {
 	font-size: 10px;
 	text-transform: uppercase;
 	font-weight: 700;
 	top: -10px;
 	left: 0;
-	color: #ff9c00;	
+	color: #ff9c00;
 }
+
 
 /* Input is not vald, not in focus, not empty */
-.cool-form > div > input:invalid:not(:focus):not(:placeholder-shown) {
+
+.cool-form>div>input:invalid:not(:focus):not(:placeholder-shown) {
 	border-bottom-color: #FF3319;
 }
-.cool-form > div > input:invalid:not(:focus):not(:placeholder-shown) + label {
+
+.cool-form>div>input:invalid:not(:focus):not(:placeholder-shown)+label {
 	font-size: 10px;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -131,21 +189,26 @@ span.dot.active {
 	color: #FF3319;
 }
 
+
 /* Show Requirements on invalid non-empty forms */
-.cool-form > div > input:invalid:not(:placeholder-shown) ~ .requirements {
+
+.cool-form>div>input:invalid:not(:placeholder-shown)~.requirements {
 	display: block;
 	color: #FF3319;
-} 
+}
+
 
 /* Input is not valid, is in focus, not empty */
-.cool-form > div > input:invalid:focus:not(:placeholder-shown) {
+
+.cool-form>div>input:invalid:focus:not(:placeholder-shown) {
 	border-bottom-color: #F8F8F8;
 }
-.cool-form > div > input:invalid:focus:not(:placeholder-shown) + label{
+
+.cool-form>div>input:invalid:focus:not(:placeholder-shown)+label {
 	font-size: 10px;
 	text-transform: uppercase;
 	font-weight: 700;
-	top: -10	px;
+	top: -10 px;
 	left: 0;
 	color: #df7c7c;
 }
@@ -159,18 +222,43 @@ span.dot.active {
 	text-transform: uppercase;
 	margin: 20px;
 }
+
 .cool-form input[type=submit]:hover {
-	background-color: #ff9c00;	
+	background-color: #ff9c00;
 }
-#contact .navbar-default .navbar-collapse
-{
-    background: #272626;
+
+#contact .navbar-default .navbar-collapse {
+	background: #272626;
 }
-textarea 
-{
-    width: 100%;
-    /* border-radius: 12px; */
-    margin-top: 51px;
- 
-    border: solid 2px #D6D4D4;
+
+textarea {
+	width: 100%;
+	border-radius: 12px;
+	margin-top: 51px;
+	border: solid 2px #D6D4D4;
+}
+
+
+/* =======FOOTER ============*/
+
+footer {
+	background-color: #06162B;
+	color: white;
+	padding: 15px;
+}
+
+footer a {
+	color: #fff;
+}
+
+.copyright,
+.mleg,
+.icons {
+	margin-top: 40px;
+	color: #fff;
+}
+
+.icons i {
+	margin-left: 10px;
+	color: #fff;
 }

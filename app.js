@@ -18,14 +18,14 @@ const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
-
+const dotenv = require('dotenv').load();
 
 
 mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise
 
-app.set('view engine', 'ejs'); // set up ejs for templating
-app.set('views', __dirname + '/views');
+
+// express layout de merde
 
 
 // set up our express application
@@ -34,12 +34,19 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs')
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
+app.use(express.static(__dirname + '/public'));
+
+app.use(expressLayouts);
+
 app.use(permissions.middleware());
 
 // required for passport
 app.use(session({
 
-    secret: 'ilovescotchscotchyscotchscotch', // session secret | TODO: mettre dans une variable d'environnement
+    secret: process.env.SECRET, // session secret 
     resave: true,
     saveUninitialized: true
 }));

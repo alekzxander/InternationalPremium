@@ -1,8 +1,4 @@
-<head>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-
+<%- contentFor('menu')%>
 <div class="container">
         <h1><%= mesVoyages.name %></h1>
     <div class="row"> 
@@ -15,6 +11,8 @@
             <div class="imgVide">
                     <input type="file" name="img" class='btn btn-primary' placeholder="">
                 </div>
+                <br>
+                <br>
     </div>           
         <p class="text-left"> <button type="submit" class="btn sbtn-success btn-lg">Confirmer</button></p>        
     </form>

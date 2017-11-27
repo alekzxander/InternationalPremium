@@ -1,0 +1,176 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/contact.css">
+    <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Great+Vibes|Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Formulaire de Contact </title>
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar navbar-default" role="navigation">
+
+            <div class="navbar-header navbar-left">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="navbar-brand " href="#">
+                            <img src="images/logo.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">Accueil</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nos voyages
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <% voyagesMenu.forEach((voyages)=>{ %>
+                                <li>
+                                    <a href="/voyage/<%= voyages.name %>">
+                                        <%= voyages.name %>
+                                    </a>
+                                </li>
+                                <%  }); %>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/partenaires">Nos Partenaires</a>
+                    </li>
+
+                    <li>
+                        <a href="/contact">Contact</a>
+                    </li>
+                    <% if (!isAuthenticated()) { %>
+                        <li>
+                            <a href="/login">Me Connecter</a>
+                        </li>
+                        <li>
+                            <a href="/signup">Inscription</a>
+                        </li>
+                        <% } else { %>
+                            <li>
+                                <a href="/logout">Deconnection</a>
+                            </li>
+                            <% } %>
+
+
+
+                </ul>
+            </div>
+        </nav>
+        <div class="banniere-contact"> </div>
+    </header>
+
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="signup-wrapper xycenter">
+                    <header>
+                        <div class="xycenter">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </header>
+
+                    <h2>Vous souhaitez obtenir plus d'informations ?</h2>
+                    <p>Envoyez moi un mail pour avec des renseignements </p>
+
+                    <form class="cool-form" role="form" method="post" action="/email">
+                        <div>
+                            <input type="text" name="name" id="name" placeholder=" " required />
+                            <label for="name">Nom Prenom</label>
+                        </div>
+
+
+
+                        <div>
+                            <input type="email" name="email" id="email" placeholder=" " required />
+                            <label for="email">Email</label>
+                            <div class="requirements">
+                                Adresse email non valide
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <input type="text" name="subject" id="subject" placeholder=" " required />
+                            <label for="subject">Sujet</label>
+                        </div>
+
+
+                        <textarea name="message" rows="8" id="" placeholder="Ajoutez vos message ici..">
+
+                        </textarea>
+
+
+                        <input type="submit" id="submit" value="Envoyez" />
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+
+
+        <div class="row">
+            <div class=" col-xs-12 col-sm-4 col-md-4">
+                <p class="copyright">&copy; Simplon 2017</p>
+            </div>
+
+            <div class="mleg col-xs-12 col-sm-4 col-md-4">
+                <p class="text-left">
+                    <a href="/mentionslegales">Mentions Légales </a>
+                </p>
+
+            </div>
+
+            <div class="icons col-xs-12 col-sm-4 col-md-4">
+
+                <p class="text-center">
+                    <a href="#">
+                        <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
+                    </a>
+                </p>
+
+            </div>
+        </div>
+
+    </footer>
+
+    <span class='Top'>
+        <i class='fa fa-chevron-up'></i>
+    </span>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
