@@ -334,8 +334,4 @@ module.exports = function (app, passport) {
         })
     })
 }
-<<<<<<< HEAD
-// route middleware to ensure user is logged in
-=======
->>>>>>> fd03a3f6678d917af2029c86018ba7787b53da92
 
