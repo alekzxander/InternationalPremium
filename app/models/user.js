@@ -1,8 +1,8 @@
-// load the things we need
+// LOAD THE THINGS WE NEED 
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
-// define the schema for our user model
+// DEFINE THE SCHEMA FOR OUR USER MODEL
 var userSchema = mongoose.Schema({
     
     local   :{
@@ -18,12 +18,12 @@ var userSchema = mongoose.Schema({
 
 });
 
-// generating a hash
+// GENERATING A HASH
 userSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-// checking if password is valid
+// CHECKING IF PASSWORD IS VALID 
 userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
@@ -36,5 +36,5 @@ userSchema.methods.isAdmin = function() {
 };
 
 
-// create the model for users and expose it to our app
+// CREATE THE MODEL FOR USERS AND EXPOSE IT TO OUR APP 
 module.exports = mongoose.model('User', userSchema);
