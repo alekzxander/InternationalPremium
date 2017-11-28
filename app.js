@@ -19,7 +19,7 @@ const passportConfig = require('./config/passport')(passport); // pass passport 
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
 const dotenv = require('dotenv').load();
-const slug = require('mongoose-slug-generator');
+
 
 
 mongoose.connect(configDB.url, { useMongoClient: true });

@@ -11,13 +11,8 @@
 {
 	background: #06162D;
 	height: 260px;
-<<<<<<< HEAD
-	margin-bottom: 157px;
-	margin-top: -40px;
-=======
 	margin-bottom: -40px;
 	margin-top: -171px;
->>>>>>> fd03a3f6678d917af2029c86018ba7787b53da92
 	z-index: 232;
 }
 
@@ -269,7 +264,16 @@ footer a {
 }
 .validatonEmail 
 {
-	height: 400px;
-	width: 600px;
 	background: #06162D;
+	height: 400px;
+	margin-top: 35%;
+	box-shadow: 0 6px 15px rgb(195, 188, 188);
+	padding-top: 60px;
+}
+.validatonEmail p
+{
+	text-align:center;
+	color: #D0A548;
+	font-size: 34px;
+	
 }

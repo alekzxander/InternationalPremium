@@ -193,7 +193,6 @@ module.exports = function (app, passport) {
                         src.on('error', function (err) {
                             res.render('error');
                         })
-
                     })
                     .catch(err => {
                         res.status(400);
@@ -251,15 +250,13 @@ module.exports = function (app, passport) {
         console.log('file est defini')
         target_path = 'public/images/' + fileToUpload.originalname;
         tmp_path = fileToUpload.path;
-        img_path = fileToUpload.originalname;
-      
+        img_path = fileToUpload.originalname;   
      }else {
          console.log('pas ok')
          img_path = req.body.img;
      }
         voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: img_path} }, { new: true }, (err, voyage) => {
-            voyage.save().then(item => {
-      
+            voyage.save().then(item => {   
                 // console.log('Ca marche')
                 if(fileToUpload != undefined || fileToUpload != null ){
                     let src = fs.createReadStream(tmp_path);
@@ -269,9 +266,6 @@ module.exports = function (app, passport) {
                     fs.unlink(tmp_path);
                     console.log('Ca marche toujours')
                 }
-             
-                // src.on('end', function () { res.redirect("/dashbord"); });
-                // src.on('error', function (err) { res.render('error'); });
                 res.redirect('/dashbord')
             })
                 .catch(err => {
@@ -290,7 +284,7 @@ module.exports = function (app, passport) {
        
     })
     app.get('/validationEmail', (req, res)=>{
-        res.render('validationEmail.ejs')
+        res.render('validationEmail.ejs',{ layout :'validationEmail'} )
     })
     app.post('/email',(req,res)=> {
         let transporter = nodemailer.createTransport({
@@ -334,8 +328,4 @@ module.exports = function (app, passport) {
         })
     })
 }
-<<<<<<< HEAD
-// route middleware to ensure user is logged in
-=======
->>>>>>> fd03a3f6678d917af2029c86018ba7787b53da92
 
