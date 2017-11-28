@@ -62,5 +62,7 @@ module.exports =  (app, passport) =>{
         req.logout();
         res.redirect('/');
     });
- 
+
+
+
 }
