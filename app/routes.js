@@ -244,24 +244,42 @@ module.exports = function (app, passport) {
 
     app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         // Create Var for img
-        var fileToUpload = req.file;
+        let fileToUpload = req.file;
         console.log(fileToUpload)
-        var target_path = 'public/images/' + fileToUpload.originalname;
-        var tmp_path = fileToUpload.path;
-
-        voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: fileToUpload.originalname } }, { new: true }, (err, voyage) => {
+        let target_path;
+        let tmp_path;
+        let img_path;
+     if(fileToUpload != undefined || fileToUpload != null ){
+        console.log('file est defini')
+        target_path = 'public/images/' + fileToUpload.originalname;
+        tmp_path = fileToUpload.path;
+        img_path = fileToUpload.originalname;
+      
+     }else {
+         console.log('pas ok')
+         img_path = req.body.img;
+     }
+        voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: img_path} }, { new: true }, (err, voyage) => {
             voyage.save().then(item => {
-                var src = fs.createReadStream(tmp_path);
-                var dest = fs.createWriteStream(target_path);
-                src.pipe(dest);
-                //delete temp file
-                fs.unlink(tmp_path);
-                src.on('end', function () { res.redirect("/dashbord"); });
-                src.on('error', function (err) { res.render('error'); });
+      
+                // console.log('Ca marche')
+                if(fileToUpload != undefined || fileToUpload != null ){
+                    let src = fs.createReadStream(tmp_path);
+                    let dest = fs.createWriteStream(target_path);
+                    src.pipe(dest);
+                    //delete temp file
+                    fs.unlink(tmp_path);
+                    console.log('Ca marche toujours')
+                }
+             
+                // src.on('end', function () { res.redirect("/dashbord"); });
+                // src.on('error', function (err) { res.render('error'); });
+                res.redirect('/dashbord')
             })
                 .catch(err => {
                     res.status(400);
                 });
+        
         })
     })
 
@@ -273,8 +291,10 @@ module.exports = function (app, passport) {
         })
 
     })
-
-    app.post('/email', (req, res) => {
+    app.get('/validationEmail', (req, res)=>{
+        res.render('validationEmail.ejs')
+    })
+    app.post('/email',(req,res)=> {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
             host: 'smtp.gmail.com',
@@ -297,7 +317,7 @@ module.exports = function (app, passport) {
                 res.redirect('/contact')
             } else {
                 console.log("Mail envoyé avec succès!")
-                res.redirect('/')
+                res.redirect('/validationEmail')
             }
             transporter.close();
         });
@@ -315,6 +335,14 @@ module.exports = function (app, passport) {
             res.render('partenaires.ejs', { voyagesMenu: voyagesMenu })
         })
     })
+<<<<<<< HEAD
+=======
+}
+<<<<<<< HEAD
+// route middleware to ensure user is logged in
+=======
+>>>>>>> fd03a3f6678d917af2029c86018ba7787b53da92
+>>>>>>> 5c470a9838fb01da195d5170ac7c22aded66cd9f
 
     app.get('/mentionslegales', (req, res) => {
         voyage.find((err, voyagesMenu) => {
