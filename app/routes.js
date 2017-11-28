@@ -18,11 +18,11 @@ module.exports = function (app, passport) {
         res.render('mentions.ejs')
     })
     // =============================================================================
-    // AUTHENTICATE (FIRST LOGIN)
-    // ==================================================
+    // AUTHENTICATE (FIRST LOGIN) ==================================================
     // =============================================================================
-    // locally -------------------------------- LOGIN
-    // =============================== show the login form
+    // =============================================================================
+    // locally -------------------------------- LOGIN ------------------------------
+    // =============================== show the login form =========================
     app.get('/login', function (req, res) {
         res.render('layoutLogin.ejs',{ layout:'layoutLogin',
             message: req.flash('loginMessage')
@@ -66,23 +66,7 @@ module.exports = function (app, passport) {
         failureFlash: true // allow flash messages
     }));
 
-    // =============================================================================
-    // AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT)
-    // =============
-    // =============================================================================
-    // locally --------------------------------
-    app.get('/connect/local', function (req, res) {
-        res.render('connect-local.ejs', {
-            message: req.flash('loginMessage')
-        });
-    });
-
-    app.post('/connect/local', passport.authenticate('local-signup', {
-        successRedirect: '/profile', // redirect to the secure profile section
-        failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
-
+ 
     // normal routes ===============================================================
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
