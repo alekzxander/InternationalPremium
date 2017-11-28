@@ -11,8 +11,8 @@
 {
 	background: #06162D;
 	height: 260px;
-	margin-bottom: 261px;
-	margin-top: -171px;
+	margin-bottom: 157px;
+	margin-top: -40px;
 	z-index: 232;
 }
 
@@ -261,4 +261,10 @@ footer a {
 .icons i {
 	margin-left: 10px;
 	color: #fff;
+}
+.validatonEmail 
+{
+	height: 400px;
+	width: 600px;
+	background: #06162D;
 }
