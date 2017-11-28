@@ -19,7 +19,7 @@ const passportConfig = require('./config/passport')(passport); // pass passport 
 const nodemailer = require("nodemailer");
 const routes = require('./app/routes.js');
 const dotenv = require('dotenv').load();
-
+const methodOverride = require('method-override');
 
 
 mongoose.connect(configDB.url, { useMongoClient: true });
@@ -59,6 +59,12 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
 app.use(express.static(__dirname + '/public'));
+
+
+  
+// app.use(function(req, res, next) {
+//     res.status(404).render('layout404',{layout:'layout404'});
+//   });
 
 
 // routes

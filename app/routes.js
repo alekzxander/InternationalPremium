@@ -1,3 +1,4 @@
+const methodOverride = require('method-override');
 const permissions = require('../config/permissions');
 const multer = require('multer');
 const fs = require('fs');
@@ -8,11 +9,11 @@ const upload = multer({
     dest: 'public/images/'
 })
 
-module.exports =  (app, passport) =>{
+module.exports = (app, passport) => {
 
     // BASIC ROUTE (INDEX)
 
-    app.get('/', (req, res) =>{
+    app.get('/', (req, res) => {
         voyage.find((err, voyages) => {
             res.render('index', {
                 mesVoyages: voyages,
@@ -22,18 +23,16 @@ module.exports =  (app, passport) =>{
     });
 
 
-    app.use('/voyage/:name',(req, res, next) =>{
+    app.use('/voyage/:name', (req, res, next) => {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu;
             next();
         })
     })
 
-    app.use('/voyage/:name',(err,req, res,next) =>{
-       res.render('layout404.ejs')
-      next()
-    });
-
+  
+   
+   
     app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
@@ -46,21 +45,16 @@ module.exports =  (app, passport) =>{
         })
     }))
 
+
     // SIGNUP 
-    
-    app.use('/signup',(err,req, res,next) =>{
-        res.status(404);
-       res.send('layout404.ejs')
-      next()
-    });
-    
-    app.get('/signup',(req, res) =>{
+
+    app.get('/signup', (req, res) => {
         res.render('layoutSignup.ejs', {
             layout: 'layoutSignup',
             message: req.flash('signupMessage')
         });
     });
-    
+
 
     // PROCESS THE SIGNUP FORM 
     app.post('/signup', passport.authenticate('local-signup', {
@@ -72,7 +66,7 @@ module.exports =  (app, passport) =>{
     // LOGIN
 
 
-    app.get('/login',(req, res)=>{
+    app.get('/login', (req, res) => {
         res.render('layoutLogin.ejs', {
             layout: 'layoutLogin',
             message: req.flash('loginMessage')
@@ -81,9 +75,9 @@ module.exports =  (app, passport) =>{
 
 
     // PROCESS THE LOGIN FORM
-    app.post('/login', (req, res)=> {
+    app.post('/login', (req, res) => {
         //Redirect user according to role
-        passport.authenticate('local-login',(err, user, info) =>{
+        passport.authenticate('local-login', (err, user, info) => {
                 if (err) {
                     return res.redirect('/login');
                 }
@@ -91,7 +85,7 @@ module.exports =  (app, passport) =>{
                     return res.redirect('/login');
                 }
                 //Log in the user
-                req.logIn(user, (err) =>{
+                req.logIn(user, (err) => {
                     if (err) {
                         return next(err);
                     }
@@ -108,7 +102,7 @@ module.exports =  (app, passport) =>{
     });
 
     // LOGOUT 
-    app.get('/logout',(req, res) =>{
+    app.get('/logout', (req, res) => {
         req.logout();
         res.redirect('/');
     });
@@ -180,7 +174,7 @@ module.exports =  (app, passport) =>{
                 src.on('end', () => {
                     res.redirect("/dashbord/card");
                 });
-                src.on('error',(err) => {
+                src.on('error', (err) => {
                     res.render('error');
                 });
 
@@ -229,7 +223,7 @@ module.exports =  (app, passport) =>{
                     src.on('end', () => {
                         res.redirect("/dashbord/dashItineraire");
                     })
-                    src.on('error',(err) => {
+                    src.on('error', (err) => {
                         res.render('error');
                     })
 
@@ -288,7 +282,6 @@ module.exports =  (app, passport) =>{
     app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         // Create Var for img
         let fileToUpload = req.file;
-        console.log(fileToUpload)
         let target_path;
         let tmp_path;
         let img_path;
@@ -302,23 +295,35 @@ module.exports =  (app, passport) =>{
             console.log('pas ok')
             img_path = req.body.img;
         }
-        voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: img_path } }, { new: true }, (err, voyage) => {
+        voyage.findByIdAndUpdate(req.params.id, {
+            $set: {
+                name: req.body.name,
+                dateA: req.body.dateA,
+                dateR: req.body.dateR,
+                sejour: req.body.sejour,
+                preview: req.body.preview,
+                text: req.body.text,
+                img: img_path
+            }
+        }, {
+            new: true
+        }, (err, voyage) => {
             voyage.save().then(item => {
 
-                // console.log('Ca marche')
-                if (fileToUpload != undefined || fileToUpload != null) {
-                    let src = fs.createReadStream(tmp_path);
-                    let dest = fs.createWriteStream(target_path);
-                    src.pipe(dest);
-                    //delete temp file
-                    fs.unlink(tmp_path);
-                    console.log('Ca marche toujours')
-                }
+                    // console.log('Ca marche')
+                    if (fileToUpload != undefined || fileToUpload != null) {
+                        let src = fs.createReadStream(tmp_path);
+                        let dest = fs.createWriteStream(target_path);
+                        src.pipe(dest);
+                        //delete temp file
+                        fs.unlink(tmp_path);
+                        console.log('Ca marche toujours')
+                    }
 
-                // src.on('end', function () { res.redirect("/dashbord"); });
-                // src.on('error', function (err) { res.render('error'); });
-                res.redirect('/dashbord')
-            })
+                    // src.on('end', function () { res.redirect("/dashbord"); });
+                    // src.on('error', function (err) { res.render('error'); });
+                    res.redirect('/dashbord')
+                })
                 .catch(err => {
                     res.status(400);
                 });
@@ -327,11 +332,6 @@ module.exports =  (app, passport) =>{
     })
 
     // CONTACT FORM
-    
-    app.use((err, req, res, next) => {
-        res.render("layout404", {layout: "layout404"});
-        next()
-    })
 
     app.get('/contact', (req, res) => {
         voyage.find((err, voyagesMenu) => {
@@ -362,7 +362,7 @@ module.exports =  (app, passport) =>{
             subject: req.body.subject,
             html: req.body.name.toUpperCase() + req.body.email + req.body.message
         }
-        transporter.sendMail(mail,(error, response) =>{
+        transporter.sendMail(mail, (error, response) => {
             if (error) {
                 console.log("Mail non envoyé");
                 res.redirect('/contact')
@@ -377,28 +377,17 @@ module.exports =  (app, passport) =>{
 
     // MENTIONS LEGALS
 
-    app.use('/mentionslegales',(err,req, res,next) =>{
-          res.render('layout404.ejs',{layout: "layout404"})
-      next()
-    })
-
-    app.get('/mentionslegales',(req, res) => {
+    app.get('/mentionslegales', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('mentions.ejs', {
                 voyagesMenu: voyagesMenu
             })
         })
     })
- 
+
     // PARTNERS
 
-    app.use('/partenaires',(err,req, res,next) =>{
-        res.status(404);
-       res.render('layout404.ejs',{layout:'layout404'})
-      next()
-    })
-    
-    
+
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('partenaires.ejs', {
@@ -406,10 +395,16 @@ module.exports =  (app, passport) =>{
             })
         })
     })
-    
-   
 
+    app.use((req, res, next)=>{
+        res.status(404).render('layout404', {layout:'layout404' });
+      });
 
+      app.use((err,req, res, next)=>{
+        res.status(500).render('layout500', {layout:'layout500' });
+      });
 
 
 }
+
+
