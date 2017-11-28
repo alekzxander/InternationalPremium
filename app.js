@@ -17,31 +17,34 @@ const session = require('express-session');
 const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
-const routes = require('./app/routes.js');
 const dotenv = require('dotenv').load();
-const methodOverride = require('method-override');
+const connexion = require ('./app/routes/connexion.js');
+const panelAdmin = require ('./app/routes/panelAdmin.js');
+const index = require ('./app/routes/index');
+const contact = require('./app/routes/contact');
+const mentions = require('./app/routes/mentions');
+const partner = require('./app/routes/partner');
 
+
+//  Use mongoose for connect to database 
 
 mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise
 
 
-// express layout de merde
+// use  your engine template and configure the folder
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs')
 
-// set up our express application
+// Set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs')
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
 app.use(express.static(__dirname + '/public'));
-
 app.use(expressLayouts);
-
 app.use(permissions.middleware());
 
 // required for passport
@@ -54,21 +57,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
-
-
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
-app.use(express.static(__dirname + '/public'));
-
-
-  
-// app.use(function(req, res, next) {
-//     res.status(404).render('layout404',{layout:'layout404'});
-//   });
-
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/')); // expression static for bootstrap ( in node_modules)
+app.use(express.static(__dirname + '/public')); // search img/css/js in public folder  ( a reformuler)
 
 // routes
-routes(app, passport); // load our routes and pass in our app and fully configured passport
+connexion(app, passport);
+panelAdmin(app, passport);
+index(app , passport);
+contact(app, passport);
+mentions(app , passport);
+partner(app, passport);
 
 
 

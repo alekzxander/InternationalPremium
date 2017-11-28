@@ -3,7 +3,6 @@
 <h4 class="text-center"><%= card.name %></h4>
 <%- contentFor('menu')%>
 
-   
                     <form action="/updatecard/<%= card._id%>" enctype="multipart/form-data"  method="POST">
                     
                             <input type="file" name="img" class='btn btn-primary' value="<%= card.img %>">

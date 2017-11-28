@@ -69,30 +69,6 @@
                     </li>
                 </ul>
             </div>
-<<<<<<< HEAD
-        </nav>
-        <%- defineContent('menu')%>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/javascripts/paper-dashboard.js"></script>
-    <script>
-        function del(e) {
-                  if(confirm('Êtes vous sur de vouloir supprimer ce voyage ?')){
-                      console.log('isCheck')
-                      console.log('confirmer')
-                  } else {
-                      console.log('isCheck')
-                      e.preventDefault()
-                      e.stopPropagation()
-                  }
-              }
-                let isCheck = document.querySelectorAll('.checked');
-                console.log(isCheck);
-                for(let i = 0; i < isCheck.length; i++){
-                  isCheck[i].addEventListener('click', del);  
-                }
-                
-          </script>
-=======
         </div>
 
         <div class="main-panel">
@@ -118,6 +94,6 @@
             <%- defineContent('menu')%>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script src="/javascripts/paper-dashboard.js"></script>
->>>>>>> fd03a3f6678d917af2029c86018ba7787b53da92
+                <script src="/javascripts/confirmSup.js"></script>
 
 </body>

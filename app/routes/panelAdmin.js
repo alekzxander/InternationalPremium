@@ -1,114 +1,15 @@
-const methodOverride = require('method-override');
-const permissions = require('../config/permissions');
-const multer = require('multer');
-const fs = require('fs');
-const dotEnv = require('dotenv').load();
-const nodemailer = require("nodemailer");
-const voyage = require('./models/voyage')
-const upload = multer({
-    dest: 'public/images/'
-})
-
-module.exports = (app, passport) => {
-
-    // BASIC ROUTE (INDEX)
-
-    app.get('/', (req, res) => {
-        voyage.find((err, voyages) => {
-            res.render('index', {
-                mesVoyages: voyages,
-                voyagesMenu: voyages
-            });
-        });
-    });
-
-
-    app.use('/voyage/:name', (req, res, next) => {
-        voyage.find({}, (err, voyagesMenu) => {
-            req.voyagesMenu = voyagesMenu;
-            next();
-        })
+    const permissions = require('../../config/permissions');
+    const multer = require('multer');
+    const fs = require('fs');
+    const voyage = require('../models/voyage')
+    const upload = multer({
+        dest: 'public/images/'
     })
-
-  
-   
-   
-    app.get('/voyage/:name', ((req, res) => {
-        voyage.find((err, voyages) => {
-            res.render('voyage.ejs', {
-                voyagesMenu: req.voyagesMenu,
-                voyage: req.params.name,
-                mesVoyages: voyages.filter((voyage) => {
-                    return voyage.name == req.params.name
-                })[0]
-            })
-        })
-    }))
-
-
-    // SIGNUP 
-
-    app.get('/signup', (req, res) => {
-        res.render('layoutSignup.ejs', {
-            layout: 'layoutSignup',
-            message: req.flash('signupMessage')
-        });
-    });
-
-
-    // PROCESS THE SIGNUP FORM 
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/', // redirect to the secure profile section
-        failureRedirect: '/signup', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
-
-    // LOGIN
-
-
-    app.get('/login', (req, res) => {
-        res.render('layoutLogin.ejs', {
-            layout: 'layoutLogin',
-            message: req.flash('loginMessage')
-        });
-    });
-
-
-    // PROCESS THE LOGIN FORM
-    app.post('/login', (req, res) => {
-        //Redirect user according to role
-        passport.authenticate('local-login', (err, user, info) => {
-                if (err) {
-                    return res.redirect('/login');
-                }
-                if (!user) {
-                    return res.redirect('/login');
-                }
-                //Log in the user
-                req.logIn(user, (err) => {
-                    if (err) {
-                        return next(err);
-                    }
-
-                    //redirect the user to dashboard when it's an admin
-                    if (user.local.role === 'admin') {
-                        return res.redirect('/dashbord');
-                    }
-                    //redirect user to the homepage for no admin user
-                    return res.redirect('/');
-                });
-            })
-            (req, res); //<-- give access to req and res for the callback of authenticate
-    });
-
-    // LOGOUT 
-    app.get('/logout', (req, res) => {
-        req.logout();
-        res.redirect('/');
-    });
-
-
-
+    
+    module.exports =  (app, passport) =>{
+    
+    
+    
     // PANEL ADMIN 
 
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
@@ -330,81 +231,5 @@ module.exports = (app, passport) => {
 
         })
     })
-
-    // CONTACT FORM
-
-    app.get('/contact', (req, res) => {
-        voyage.find((err, voyagesMenu) => {
-            res.render('layoutContact.ejs', {
-                voyagesMenu: voyagesMenu,
-                layout: 'layoutContact'
-            });
-        })
-
-    })
-    app.get('/validationEmail', (req, res) => {
-        res.render('validationEmail.ejs')
-    })
-    app.post('/email', (req, res) => {
-        let transporter = nodemailer.createTransport({
-            service: 'Gmail',
-            host: 'smtp.gmail.com',
-            secure: true,
-            port: 465,
-            auth: {
-                user: process.env.EMAIL,
-                pass: process.env.PASS
-            }
-        });
-        let mail = {
-            from: req.body.email,
-            to: process.env.EMAIL,
-            subject: req.body.subject,
-            html: req.body.name.toUpperCase() + req.body.email + req.body.message
-        }
-        transporter.sendMail(mail, (error, response) => {
-            if (error) {
-                console.log("Mail non envoyé");
-                res.redirect('/contact')
-            } else {
-                console.log("Mail envoyé avec succès!")
-                res.redirect('/validationEmail')
-            }
-            transporter.close();
-        });
-    })
-
-
-    // MENTIONS LEGALS
-
-    app.get('/mentionslegales', (req, res) => {
-        voyage.find((err, voyagesMenu) => {
-            res.render('mentions.ejs', {
-                voyagesMenu: voyagesMenu
-            })
-        })
-    })
-
-    // PARTNERS
-
-
-    app.get('/partenaires', (req, res) => {
-        voyage.find((err, voyagesMenu) => {
-            res.render('partenaires.ejs', {
-                voyagesMenu: voyagesMenu
-            })
-        })
-    })
-
-    app.use((req, res, next)=>{
-        res.status(404).render('layout404', {layout:'layout404' });
-      });
-
-      app.use((err,req, res, next)=>{
-        res.status(500).render('layout500', {layout:'layout500' });
-      });
-
-
-}
-
-
+   
+    }
