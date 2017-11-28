@@ -14,9 +14,8 @@ module.exports = function (app, passport) {
         req.logout();
         res.redirect('/');
     });
-    app.get('/mentionslegales', (req, res) => {
-        res.render('mentions.ejs')
-    })
+
+
     // =============================================================================
     // AUTHENTICATE (FIRST LOGIN)
     // ==================================================
@@ -24,15 +23,16 @@ module.exports = function (app, passport) {
     // locally -------------------------------- LOGIN
     // =============================== show the login form
     app.get('/login', function (req, res) {
-        res.render('layoutLogin.ejs',{ layout:'layoutLogin',
+        res.render('layoutLogin.ejs', {
+            layout: 'layoutLogin',
             message: req.flash('loginMessage')
         });
     });
-    
+
     // process the login form
-    app.post('/login', function(req,res){
+    app.post('/login', function (req, res) {
         //Redirect user according to role
-        passport.authenticate('local-login', function(err, user, info){
+        passport.authenticate('local-login', function (err, user, info) {
             if (err) {
                 return res.redirect('/login');
             }
@@ -40,21 +40,22 @@ module.exports = function (app, passport) {
                 return res.redirect('/login');
             }
             //Log in the user
-            req.logIn(user, function(err) {
+            req.logIn(user, function (err) {
                 if (err) { return next(err); }
 
                 //redirect the user to dashboard when it's an admin
-                if(user.local.role==='admin'){
+                if (user.local.role === 'admin') {
                     return res.redirect('/dashbord');
                 }
                 //redirect user to the homepage for no admin user
                 return res.redirect('/');
-              });
+            });
         })(req, res); //<-- give access to req and res for the callback of authenticate
     });
     // SIGNUP ================================= show the signup form
     app.get('/signup', function (req, res) {
-        res.render('layoutSignup.ejs',{ layout:'layoutSignup',
+        res.render('layoutSignup.ejs', {
+            layout: 'layoutSignup',
             message: req.flash('signupMessage')
         });
     });
@@ -86,8 +87,8 @@ module.exports = function (app, passport) {
     // normal routes ===============================================================
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
-            res.render('dashbord',{voyages:carte, layout:'layoutAdmin'})
-        
+            res.render('dashbord', { voyages: carte, layout: 'layoutAdmin' })
+
         })
     });
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
@@ -96,20 +97,20 @@ module.exports = function (app, passport) {
         })
     })
     app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
-            res.render('card', { layout:'layoutAdmin' });
+        res.render('card', { layout: 'layoutAdmin' });
     });
 
     app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('dashItineraire', { voyages: voyages, layout:'layoutAdmin' })
+            res.render('dashItineraire', { voyages: voyages, layout: 'layoutAdmin' })
         });
     })
     app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('ajoutLieux', { 
+            res.render('ajoutLieux', {
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
                     return (voyage.id == req.params.id)
-                })[0], layout : 'layoutAdmin'
+                })[0], layout: 'layoutAdmin'
             })
         });
     })
@@ -147,31 +148,31 @@ module.exports = function (app, passport) {
                     });
             })
     })
-    app.get('/suppLieux/:id', permissions.can('access admin page'),(req, res) => {
+    app.get('/suppLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('suppLieux', { 
+            res.render('suppLieux', {
                 id: req.params.id, mesVoyages: voyages.filter((voyage) => {
                     return (voyage.id == req.params.id)
-                })[0], layout : 'layoutAdmin'
+                })[0], layout: 'layoutAdmin'
             })
         });
     })
-    
-    app.get('/suppLieux/:id/delete',permissions.can('access admin page'), (req, res) => {
+
+    app.get('/suppLieux/:id/delete', permissions.can('access admin page'), (req, res) => {
         console.log(req.params.id)
-        voyage.update({}, 
+        voyage.update({},
             {
-                $pull : {
-                    lieux : { _id: req.params.id}
+                $pull: {
+                    lieux: { _id: req.params.id }
                 }
-            }, 
-            {multi:true},
-            (err, delData) => {  
+            },
+            { multi: true },
+            (err, delData) => {
                 console.log(delData)
-            res.redirect("/dashbord/dashitineraire");
-        })
+                res.redirect("/dashbord/dashitineraire");
+            })
     })
-  
+
     // create card
     // process the card form
     app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
@@ -211,7 +212,8 @@ module.exports = function (app, passport) {
     /* update card */
     app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('updatecard', { layout : 'layoutAdmin',
+            res.render('updatecard', {
+                layout: 'layoutAdmin',
                 voyage: req.params.id, card: voyages.filter((voyage) => {
                     return voyage.id == req.params.id
                 })[0]
@@ -244,11 +246,11 @@ module.exports = function (app, passport) {
 
     app.get('/', function (req, res) {
         voyage.find((err, voyages) => {
-            res.render('index', { mesVoyages: voyages, voyagesMenu : voyages});
+            res.render('index', { mesVoyages: voyages, voyagesMenu: voyages });
         });
     });
 
-    app.use('/voyage/:name',function (req, res, next) {
+    app.use('/voyage/:name', function (req, res, next) {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu;
             next();
@@ -270,34 +272,34 @@ module.exports = function (app, passport) {
     // ============ Formulaire de Contact ====================== //
 
     app.get('/contact', (req, res) => {
-        voyage.find((err,voyagesMenu)=>{
-            res.render('layoutContact.ejs',{voyagesMenu:voyagesMenu , layout:'layoutContact'});
+        voyage.find((err, voyagesMenu) => {
+            res.render('layoutContact.ejs', { voyagesMenu: voyagesMenu, layout: 'layoutContact' });
         })
-       
+
     })
-    
-    app.post('/email',(req,res)=> {
+
+    app.post('/email', (req, res) => {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
-            host : 'smtp.gmail.com',
-            secure : true,
-            port : 465,
+            host: 'smtp.gmail.com',
+            secure: true,
+            port: 465,
             auth: {
                 user: process.env.EMAIL,
                 pass: process.env.PASS
-            } 
+            }
         });
         let mail = {
-            from:req.body.email,
-            to: process.env.EMAIL ,
+            from: req.body.email,
+            to: process.env.EMAIL,
             subject: req.body.subject,
-            html: req.body.name.toUpperCase() + req.body.email  + req.body.message 
+            html: req.body.name.toUpperCase() + req.body.email + req.body.message
         }
-        transporter.sendMail(mail, function(error, response){
-            if(error){
+        transporter.sendMail(mail, function (error, response) {
+            if (error) {
                 console.log("Mail non envoyé");
-               res.redirect('/contact')
-            }else{
+                res.redirect('/contact')
+            } else {
                 console.log("Mail envoyé avec succès!")
                 res.redirect('/')
             }
@@ -307,18 +309,24 @@ module.exports = function (app, passport) {
     // ================= Qui sommes Nous ========================= //
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('partenaires.ejs',{voyagesMenu : voyagesMenu})
+            res.render('partenaires.ejs', { voyagesMenu: voyagesMenu })
+        })
+    })
+
+    app.get('/mentionslegales', (req, res) => {
+        voyage.find((err, voyagesMenu) => {
+            res.render('mentions.ejs', { voyagesMenu: voyagesMenu })
         })
     })
 }
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (isAuthenticated()){
+    if (isAuthenticated()) {
     }
 }
-function getLoggedUser(req, res, next){
-    if(req.isAuthenticated() && req.user.local.role === 'admin'){       
-        res.redirect('/dashbord'),permissions.can('access admin page')
-    }next()
-  
+function getLoggedUser(req, res, next) {
+    if (req.isAuthenticated() && req.user.local.role === 'admin') {
+        res.redirect('/dashbord'), permissions.can('access admin page')
+    } next()
+
 }
