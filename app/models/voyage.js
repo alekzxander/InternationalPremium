@@ -17,6 +17,5 @@ let voyageSchema = new mongoose.Schema ({
 
 })
 
-
 let voyage = mongoose.model('voyages', voyageSchema)
-module.exports = voyage;
+module.exports = voyage;    

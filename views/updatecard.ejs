@@ -6,7 +6,8 @@
    
                     <form action="/updatecard/<%= card._id%>" enctype="multipart/form-data"  method="POST">
                     
-                            <input type="file" name="img" class='btn btn-primary'>
+                            <input type="file" name="img" class='btn btn-primary' value="<%= card.img %>">
+                            <input type="text" name="img" value="<%= card.img %>" readonly >
                 
                         <div class="ville">
                             <div class="form-group">
@@ -26,7 +27,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="descriptif">Descriptif de la Carte</label>
+                               <label for="descriptif">Descriptif de la Carte</label>
                             <input class="form-control" rows="5" maxlength="190" name="preview" value="<%= card.preview%>" id="comment" placeholder="<%= card.preview%>"></textarea>
                         </div>
                         <div class="form-group">
