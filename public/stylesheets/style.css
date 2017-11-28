@@ -16,8 +16,6 @@
     header {
         background: transparent;
     }
-
-   
     /*-------------------------------*/
     /*           Menu nav-bar        */
     /*-------------------------------*/
@@ -145,9 +143,11 @@
     .signup label {
         color: #f1b244;
     }
+
     .signup a {
         color: #f1b244;
     }
+
     .signup p {
         color: #fff;
     }
@@ -156,7 +156,6 @@
         margin-top: 35px;
         padding-top: 5px;
     }
-
     /* =============== LOGIN  ======================*/
 
     .login {
@@ -168,6 +167,7 @@
     .login a {
         color: #f1b244;
     }
+
     .login p {
         color: #fff;
     }
@@ -184,7 +184,6 @@
         margin-top: 30px;
         padding-top: 5px;
     }
-
     /* =============== HEADER ======================*/
 
     .container {
@@ -283,6 +282,14 @@
     #myIcon {
         margin-top: 50px;
     }
+    /* ========== ERROR 404 ================= */
+
+    .error {
+        background: #06162D;
+        color : #eea903;
+
+    }
+
     /* ========== CARTE ================= */
 
     .carte {
@@ -519,7 +526,6 @@
         padding-top: 30px;
     }
 
-
     .descriptif {
         margin-top: -1px;
         background: #F5F2F2;
@@ -544,7 +550,6 @@
 
     .descriptif img {
         height: 380px;
-       
     }
 
     .descriptif h3 {
@@ -561,7 +566,6 @@
         /* background: grey; */
     }
 
- 
     .carteSupp {
         padding: 20px;
         border-radius: 10px;
@@ -599,25 +603,22 @@
     }
     /*=================== Bouton Scroll Top ======================== */
 
-
- .fa-arrow-circle-up {
-    position: fixed;
-    bottom: 30px;
-    right: 41px;
-    background: #06162D;
-    width: 40px;
-    height: 40px;
-    font-size: 40px;
-    border-radius: 100%;
-    color: #ffffff;
-    cursor: pointer;
-    padding: 1px 0px 0px 3px;
- }
-
+    .fa-arrow-circle-up {
+        position: fixed;
+        bottom: 30px;
+        right: 41px;
+        background: #06162D;
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+        border-radius: 100%;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 1px 0px 0px 3px;
+    }
     /* On small screens, set height to 'auto' for sidenav and grid */
 
     @media (max-width:414px) {
-        
         .title,
         .carte {
             margin-left: -2px;
@@ -639,7 +640,6 @@
             padding-bottom: 49px;
             top: 109px;
         }
-        
         .navbar-default .navbar-nav>li>a {
             color: #06162D;
         }
@@ -648,28 +648,27 @@
             margin-left: 65px;
         }
         .Top {
-            width:40px;
+            width: 40px;
             height: 40px;
             right: 1px;
             font-size: 30px;
-            padding: 1px 1px ;
+            padding: 1px 1px;
         }
-        
     }
+
     .descriptif .col-md-8 {
         padding: 2% 16px 0 7%;
-       text-align:justify;
+        text-align: justify;
         line-height: 35px;
     }
+
     @media all and (max-width:780px) {
-      .carte 
-      {
-          height: auto;
-      }
+        .carte {
+            height: auto;
+        }
     }
+
     @media (min-width: 768px) {
-      
-       
         .navbar-fixed-side {
             margin-left: -15px;
             margin-right: -15px;
@@ -810,7 +809,7 @@
         }
     }
 
-    @media (min-width: 1000px) and (max-width: 1024px)  {
+    @media (min-width: 1000px) and (max-width: 1024px) {
         .navbar-brand {
             margin-top: -55px;
             margin-left: 320px;

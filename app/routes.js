@@ -1,27 +1,38 @@
 const permissions = require('../config/permissions');
 const multer = require('multer');
-var fs = require('fs');
+const fs = require('fs');
 const dotEnv = require('dotenv').load();
 const nodemailer = require("nodemailer");
 const voyage = require('./models/voyage')
-const upload = multer({ dest: 'public/images/' })
+const upload = multer({
+    dest: 'public/images/'
+})
 
-module.exports = function (app, passport) {
+module.exports =  (app, passport) =>{
 
     // BASIC ROUTE (INDEX)
 
-    app.get('/', function (req, res) {
+    app.get('/', (req, res) =>{
         voyage.find((err, voyages) => {
-            res.render('index', { mesVoyages: voyages, voyagesMenu: voyages });
+            res.render('index', {
+                mesVoyages: voyages,
+                voyagesMenu: voyages
+            });
         });
     });
 
-    app.use('/voyage/:name', function (req, res, next) {
+
+    app.use('/voyage/:name',(req, res, next) =>{
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu;
             next();
         })
     })
+
+    app.use('/voyage/:name',(err,req, res,next) =>{
+       res.render('layout404.ejs')
+      next()
+    });
 
     app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
@@ -35,15 +46,21 @@ module.exports = function (app, passport) {
         })
     }))
 
-
-
     // SIGNUP 
-    app.get('/signup', function (req, res) {
+    
+    app.use('/signup',(err,req, res,next) =>{
+        res.status(404);
+       res.send('layout404.ejs')
+      next()
+    });
+    
+    app.get('/signup',(req, res) =>{
         res.render('layoutSignup.ejs', {
             layout: 'layoutSignup',
             message: req.flash('signupMessage')
         });
     });
+    
 
     // PROCESS THE SIGNUP FORM 
     app.post('/signup', passport.authenticate('local-signup', {
@@ -52,46 +69,49 @@ module.exports = function (app, passport) {
         failureFlash: true // allow flash messages
     }));
 
-
     // LOGIN
 
-    app.get('/login', function (req, res) {
+
+    app.get('/login',(req, res)=>{
         res.render('layoutLogin.ejs', {
             layout: 'layoutLogin',
             message: req.flash('loginMessage')
         });
     });
 
-    // PROCESS THE LOGIN FORM
-    app.post('/login', function (req, res) {
-        //Redirect user according to role
-        passport.authenticate('local-login', function (err, user, info) {
-            if (err) {
-                return res.redirect('/login');
-            }
-            if (!user) {
-                return res.redirect('/login');
-            }
-            //Log in the user
-            req.logIn(user, function (err) {
-                if (err) { return next(err); }
 
-                //redirect the user to dashboard when it's an admin
-                if (user.local.role === 'admin') {
-                    return res.redirect('/dashbord');
+    // PROCESS THE LOGIN FORM
+    app.post('/login', (req, res)=> {
+        //Redirect user according to role
+        passport.authenticate('local-login',(err, user, info) =>{
+                if (err) {
+                    return res.redirect('/login');
                 }
-                //redirect user to the homepage for no admin user
-                return res.redirect('/');
-            });
-        })(req, res); //<-- give access to req and res for the callback of authenticate
+                if (!user) {
+                    return res.redirect('/login');
+                }
+                //Log in the user
+                req.logIn(user, (err) =>{
+                    if (err) {
+                        return next(err);
+                    }
+
+                    //redirect the user to dashboard when it's an admin
+                    if (user.local.role === 'admin') {
+                        return res.redirect('/dashbord');
+                    }
+                    //redirect user to the homepage for no admin user
+                    return res.redirect('/');
+                });
+            })
+            (req, res); //<-- give access to req and res for the callback of authenticate
     });
 
     // LOGOUT 
-    app.get('/logout', function (req, res) {
+    app.get('/logout',(req, res) =>{
         req.logout();
         res.redirect('/');
     });
-
 
 
 
@@ -99,24 +119,34 @@ module.exports = function (app, passport) {
 
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
-            res.render('dashbord', { voyages: carte, layout: 'layoutAdmin' })
+            res.render('dashbord', {
+                voyages: carte,
+                layout: 'layoutAdmin'
+            })
 
         })
     });
 
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
-        voyage.remove({ _id: req.params.id }, (err, delData) => {
+        voyage.remove({
+            _id: req.params.id
+        }, (err, delData) => {
             res.redirect("/dashbord");
         })
     })
 
     app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
-        res.render('card', { layout: 'layoutAdmin' });
+        res.render('card', {
+            layout: 'layoutAdmin'
+        });
     });
 
     app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
-            res.render('dashItineraire', { voyages: voyages, layout: 'layoutAdmin' })
+            res.render('dashItineraire', {
+                voyages: voyages,
+                layout: 'layoutAdmin'
+            })
         });
     })
 
@@ -147,8 +177,12 @@ module.exports = function (app, passport) {
                 src.pipe(dest);
                 //delete temp file
                 fs.unlink(tmp_path);
-                src.on('end', function () { res.redirect("/dashbord/card"); });
-                src.on('error', function (err) { res.render('error'); });
+                src.on('end', () => {
+                    res.redirect("/dashbord/card");
+                });
+                src.on('error',(err) => {
+                    res.render('error');
+                });
 
             })
             .catch(err => {
@@ -162,9 +196,11 @@ module.exports = function (app, passport) {
     app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux', {
-                id: req.params.id, mesVoyages: voyages.filter((voyage) => {
+                id: req.params.id,
+                mesVoyages: voyages.filter((voyage) => {
                     return (voyage.id == req.params.id)
-                })[0], layout: 'layoutAdmin'
+                })[0],
+                layout: 'layoutAdmin'
             })
         });
     })
@@ -181,26 +217,27 @@ module.exports = function (app, passport) {
                     img: fileToUpload.originalname
                 }
             }
-        },
-            { new: true }, (err, voyages) => {
-                voyages.save()
-                    .then(item => {
-                        var src = fs.createReadStream(tmp_path);
-                        var dest = fs.createWriteStream(target_path);
-                        src.pipe(dest);
-                        fs.unlink(tmp_path);
-                        src.on('end', function () {
-                            res.redirect("/dashbord/dashItineraire");
-                        })
-                        src.on('error', function (err) {
-                            res.render('error');
-                        })
-
+        }, {
+            new: true
+        }, (err, voyages) => {
+            voyages.save()
+                .then(item => {
+                    var src = fs.createReadStream(tmp_path);
+                    var dest = fs.createWriteStream(target_path);
+                    src.pipe(dest);
+                    fs.unlink(tmp_path);
+                    src.on('end', () => {
+                        res.redirect("/dashbord/dashItineraire");
                     })
-                    .catch(err => {
-                        res.status(400);
-                    });
-            })
+                    src.on('error',(err) => {
+                        res.render('error');
+                    })
+
+                })
+                .catch(err => {
+                    res.status(400);
+                });
+        })
     })
 
     // DELETE PLACE PANEL ADMIN 
@@ -208,22 +245,26 @@ module.exports = function (app, passport) {
     app.get('/suppLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('suppLieux', {
-                id: req.params.id, mesVoyages: voyages.filter((voyage) => {
+                id: req.params.id,
+                mesVoyages: voyages.filter((voyage) => {
                     return (voyage.id == req.params.id)
-                })[0], layout: 'layoutAdmin'
+                })[0],
+                layout: 'layoutAdmin'
             })
         });
     })
 
     app.get('/suppLieux/:id/delete', permissions.can('access admin page'), (req, res) => {
         console.log(req.params.id)
-        voyage.update({},
-            {
+        voyage.update({}, {
                 $pull: {
-                    lieux: { _id: req.params.id }
+                    lieux: {
+                        _id: req.params.id
+                    }
                 }
+            }, {
+                multi: true
             },
-            { multi: true },
             (err, delData) => {
                 console.log(delData)
                 res.redirect("/dashbord/dashitineraire");
@@ -236,7 +277,8 @@ module.exports = function (app, passport) {
         voyage.find((err, voyages) => {
             res.render('updatecard', {
                 layout: 'layoutAdmin',
-                voyage: req.params.id, card: voyages.filter((voyage) => {
+                voyage: req.params.id,
+                card: voyages.filter((voyage) => {
                     return voyage.id == req.params.id
                 })[0]
             })
@@ -285,10 +327,18 @@ module.exports = function (app, passport) {
     })
 
     // CONTACT FORM
+    
+    app.use((err, req, res, next) => {
+        res.render("layout404", {layout: "layout404"});
+        next()
+    })
 
     app.get('/contact', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('layoutContact.ejs', { voyagesMenu: voyagesMenu, layout: 'layoutContact' });
+            res.render('layoutContact.ejs', {
+                voyagesMenu: voyagesMenu,
+                layout: 'layoutContact'
+            });
         })
 
     })
@@ -312,7 +362,7 @@ module.exports = function (app, passport) {
             subject: req.body.subject,
             html: req.body.name.toUpperCase() + req.body.email + req.body.message
         }
-        transporter.sendMail(mail, function (error, response) {
+        transporter.sendMail(mail,(error, response) =>{
             if (error) {
                 console.log("Mail non envoyé");
                 res.redirect('/contact')
@@ -326,21 +376,35 @@ module.exports = function (app, passport) {
 
 
     // MENTIONS LEGALS
-    app.get('/mentionslegales', (req, res) => {
-        voyage.find((err, voyagesMenu) => {
-            res.render('mentions.ejs', { voyagesMenu: voyagesMenu })
-        })
+
+    app.use('/mentionslegales',(err,req, res,next) =>{
+          res.render('layout404.ejs',{layout: "layout404"})
+      next()
     })
 
-
+    app.get('/mentionslegales',(req, res) => {
+        voyage.find((err, voyagesMenu) => {
+            res.render('mentions.ejs', {
+                voyagesMenu: voyagesMenu
+            })
+        })
+    })
+ 
     // PARTNERS
+
+    app.use('/partenaires',(err,req, res,next) =>{
+        res.status(404);
+       res.render('layout404.ejs',{layout:'layout404'})
+      next()
+    })
+    
+    
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('partenaires.ejs', { voyagesMenu: voyagesMenu })
+            res.render('partenaires.ejs', {
+                voyagesMenu: voyagesMenu
+            })
         })
     })
-
-    
 }
-
 
