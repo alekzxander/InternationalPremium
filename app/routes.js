@@ -8,28 +8,59 @@ const upload = multer({ dest: 'public/images/' })
 
 module.exports = function (app, passport) {
 
+    // BASIC ROUTE (INDEX)
 
-    // LOGOUT ==============================
-    app.get('/logout', function (req, res) {
-        req.logout();
-        res.redirect('/');
+    app.get('/', function (req, res) {
+        voyage.find((err, voyages) => {
+            res.render('index', { mesVoyages: voyages, voyagesMenu : voyages});
+        });
     });
-    app.get('/mentionslegales', (req, res) => {
-        res.render('mentions.ejs')
+
+    app.use('/voyage/:name',function (req, res, next) {
+        voyage.find({}, (err, voyagesMenu) => {
+            req.voyagesMenu = voyagesMenu;
+            next();
+        })
     })
-    // =============================================================================
-    // AUTHENTICATE (FIRST LOGIN) ==================================================
-    // =============================================================================
-    // =============================================================================
-    // locally -------------------------------- LOGIN ------------------------------
-    // =============================== show the login form =========================
+
+    app.get('/voyage/:name', ((req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('voyage.ejs', {
+                voyagesMenu: req.voyagesMenu,
+                voyage: req.params.name,
+                mesVoyages: voyages.filter((voyage) => {
+                    return voyage.name == req.params.name
+                })[0]
+            })
+        })
+    }))
+
+  
+   
+    // SIGNUP 
+    app.get('/signup', function (req, res) {
+        res.render('layoutSignup.ejs',{ layout:'layoutSignup',
+            message: req.flash('signupMessage')
+        });
+    });
+
+    // PROCESS THE SIGNUP FORM 
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/', // redirect to the secure profile section
+        failureRedirect: '/signup', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
+    }));
+
+
+   // LOGIN
+
     app.get('/login', function (req, res) {
         res.render('layoutLogin.ejs',{ layout:'layoutLogin',
             message: req.flash('loginMessage')
         });
     });
     
-    // process the login form
+    // PROCESS THE LOGIN FORM
     app.post('/login', function(req,res){
         //Redirect user according to role
         passport.authenticate('local-login', function(err, user, info){
@@ -52,33 +83,31 @@ module.exports = function (app, passport) {
               });
         })(req, res); //<-- give access to req and res for the callback of authenticate
     });
-    // SIGNUP ================================= show the signup form
-    app.get('/signup', function (req, res) {
-        res.render('layoutSignup.ejs',{ layout:'layoutSignup',
-            message: req.flash('signupMessage')
-        });
+
+      // LOGOUT 
+      app.get('/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
     });
 
-    // process the signup form
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/', // redirect to the secure profile section
-        failureRedirect: '/signup', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
+
 
  
-    // normal routes ===============================================================
+    // PANEL ADMIN 
+
     app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, carte) => {
             res.render('dashbord',{voyages:carte, layout:'layoutAdmin'})
         
         })
     });
+
     app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
         voyage.remove({ _id: req.params.id }, (err, delData) => {
             res.redirect("/dashbord");
         })
     })
+
     app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
             res.render('card', { layout:'layoutAdmin' });
     });
@@ -88,6 +117,46 @@ module.exports = function (app, passport) {
             res.render('dashItineraire', { voyages: voyages, layout:'layoutAdmin' })
         });
     })
+
+    // CREATE CARD PANEL ADMIN
+
+
+    app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+        var fileToUpload = req.file;
+        var target_path = 'public/images/' + fileToUpload.originalname;
+        var tmp_path = fileToUpload.path;
+
+        let myData = new voyage({
+            name: req.body.name,
+            dateA: req.body.dateA,
+            dateR: req.body.dateR,
+            sejour: req.body.sejour,
+            preview: req.body.preview,
+            text: req.body.text,
+            img: fileToUpload.originalname
+        });
+        myData
+            .save()
+            .then(item => {
+                //Upload image 
+                /** A better way to copy the uploaded file. **/
+                var src = fs.createReadStream(tmp_path);
+                var dest = fs.createWriteStream(target_path);
+                src.pipe(dest);
+                //delete temp file
+                fs.unlink(tmp_path);
+                src.on('end', function () { res.redirect("/dashbord/card"); });
+                src.on('error', function (err) { res.render('error'); });
+
+            })
+            .catch(err => {
+                res
+                    .status(400)
+            });
+    });
+
+    // ADD PLACE PANEL ADMIN 
+
     app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux', { 
@@ -131,6 +200,9 @@ module.exports = function (app, passport) {
                     });
             })
     })
+
+    // DELETE PLACE PANEL ADMIN 
+
     app.get('/suppLieux/:id', permissions.can('access admin page'),(req, res) => {
         voyage.find((err, voyages) => {
             res.render('suppLieux', { 
@@ -154,46 +226,10 @@ module.exports = function (app, passport) {
                 console.log(delData)
             res.redirect("/dashbord/dashitineraire");
         })
-    })
-  
-    // create card
-    // process the card form
-    app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
-        var fileToUpload = req.file;
-        var target_path = 'public/images/' + fileToUpload.originalname;
-        var tmp_path = fileToUpload.path;
+    })    
 
-        let myData = new voyage({
-            name: req.body.name,
-            dateA: req.body.dateA,
-            dateR: req.body.dateR,
-            sejour: req.body.sejour,
-            preview: req.body.preview,
-            text: req.body.text,
-            img: fileToUpload.originalname
-        });
-        myData
-            .save()
-            .then(item => {
-                //Upload image 
-                /** A better way to copy the uploaded file. **/
-                var src = fs.createReadStream(tmp_path);
-                var dest = fs.createWriteStream(target_path);
-                src.pipe(dest);
-                //delete temp file
-                fs.unlink(tmp_path);
-                src.on('end', function () { res.redirect("/dashbord/card"); });
-                src.on('error', function (err) { res.render('error'); });
+    // UPDATE CARD PANEL ADMIN
 
-            })
-            .catch(err => {
-                res
-                    .status(400)
-            });
-    });
-    
-
-    /* update card */
     app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('updatecard', { layout : 'layoutAdmin',
@@ -227,32 +263,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.get('/', function (req, res) {
-        voyage.find((err, voyages) => {
-            res.render('index', { mesVoyages: voyages, voyagesMenu : voyages});
-        });
-    });
-
-    app.use('/voyage/:name',function (req, res, next) {
-        voyage.find({}, (err, voyagesMenu) => {
-            req.voyagesMenu = voyagesMenu;
-            next();
-        })
-    })
-
-    app.get('/voyage/:name', ((req, res) => {
-        voyage.find((err, voyages) => {
-            res.render('voyage.ejs', {
-                voyagesMenu: req.voyagesMenu,
-                voyage: req.params.name,
-                mesVoyages: voyages.filter((voyage) => {
-                    return voyage.name == req.params.name
-                })[0]
-            })
-        })
-    }))
-
-    // ============ Formulaire de Contact ====================== //
+    // CONTACT FORM
 
     app.get('/contact', (req, res) => {
         voyage.find((err,voyagesMenu)=>{
@@ -289,21 +300,18 @@ module.exports = function (app, passport) {
             transporter.close();
         });
     })
-    // ================= Qui sommes Nous ========================= //
+
+
+// MENTIONS LEGALS
+ app.get('/mentionslegales', (req, res) => {
+        res.render('mentions.ejs')
+    })
+
+    // PARTNERS
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('partenaires.ejs',{voyagesMenu : voyagesMenu})
         })
     })
 }
-// route middleware to ensure user is logged in
-function isLoggedIn(req, res, next) {
-    if (isAuthenticated()){
-    }
-}
-function getLoggedUser(req, res, next){
-    if(req.isAuthenticated() && req.user.local.role === 'admin'){       
-        res.redirect('/dashbord'),permissions.can('access admin page')
-    }next()
-  
-}
+

@@ -1,16 +1,17 @@
-// load all the things we need
+// LOAD ALL THE THINGS WE NEED 
 var LocalStrategy = require('passport-local').Strategy;
 
-// load up the user model
+// LOAD UP THE USER MODEL
 var User = require('../app/models/user');
 module.exports = function (passport) {
 
     // =========================================================================
-    // passport session setup ==================================================
+    // PASSPORT SESSION SETUP ==================================================
     // =========================================================================
-    // required for persistent login sessions
+    // required for persistent login sessions ==================================
     // passport needs ability to serialize and unserialize users out of session
 
+    
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
         done(null, user );

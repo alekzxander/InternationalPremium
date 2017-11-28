@@ -1,4 +1,4 @@
-// set up get all the tools we need
+// SET UP GET ALL THE TOOLS WE NEED 
 
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
