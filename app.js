@@ -18,12 +18,12 @@ const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const dotenv = require('dotenv').load();
+const index = require ('./app/routes/index');
 const connexion = require ('./app/routes/connexion');
 const panelAdmin = require ('./app/routes/panelAdmin');
-const index = require ('./app/routes/index');
+const partner = require('./app/routes/partner');
 const contact = require('./app/routes/contact');
 const mentions = require('./app/routes/mentions');
-const partner = require('./app/routes/partner');
 const error404 = require('./app/routes/error404');
 
 //  Use mongoose for connect to database 
@@ -61,12 +61,12 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'))
 app.use(express.static(__dirname + '/public')); // search img/css/js in public folder  ( a reformuler)
 
 // routes
+index(app , passport);
 connexion(app, passport);
 panelAdmin(app, passport);
-index(app , passport);
+partner(app, passport);
 contact(app, passport);
 mentions(app , passport);
-partner(app, passport);
 error404(app,passport);
 
 
