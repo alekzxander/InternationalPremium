@@ -289,38 +289,36 @@ module.exports =  (app, passport) =>{
         // Create Var for img
         let fileToUpload = req.file;
         console.log(fileToUpload)
-        var target_path = 'public/images/' + fileToUpload.originalname;
-        var tmp_path = fileToUpload.path;
+        let target_path;
+        let tmp_path;
+        let img_path;
+        if (fileToUpload != undefined || fileToUpload != null) {
+            console.log('file est defini')
+            target_path = 'public/images/' + fileToUpload.originalname;
+            tmp_path = fileToUpload.path;
+            img_path = fileToUpload.originalname;
 
-        voyage.findByIdAndUpdate(req.params.id, {
-            partenaires$set: {
-                name: req.body.name,
-                dateA: req.body.dateA,
-                dateR: req.body.dateR,
-                sejour: req.body.sejour,
-                preview: req.body.preview,
-                text: req.body.text,
-                img: fileToUpload.originalname
-            }
-        }, {
-            new: true
-        }, (err, voyage) => {
+        } else {
+            console.log('pas ok')
+            img_path = req.body.img;
+        }
+        voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: img_path } }, { new: true }, (err, voyage) => {
             voyage.save().then(item => {
 
-                    // console.log('Ca marche')
-                    if (fileToUpload != undefined || fileToUpload != null) {
-                        let src = fs.createReadStream(tmp_path);
-                        let dest = fs.createWriteStream(target_path);
-                        src.pipe(dest);
-                        //delete temp file
-                        fs.unlink(tmp_path);
-                        console.log('Ca marche toujours')
-                    }
+                // console.log('Ca marche')
+                if (fileToUpload != undefined || fileToUpload != null) {
+                    let src = fs.createReadStream(tmp_path);
+                    let dest = fs.createWriteStream(target_path);
+                    src.pipe(dest);
+                    //delete temp file
+                    fs.unlink(tmp_path);
+                    console.log('Ca marche toujours')
+                }
 
-                    // src.on('end', function () { res.redirect("/dashbord"); });
-                    // src.on('error', function (err) { res.render('error'); });
-                    res.redirect('/dashbord')
-                })
+                // src.on('end', function () { res.redirect("/dashbord"); });
+                // src.on('error', function (err) { res.render('error'); });
+                res.redirect('/dashbord')
+            })
                 .catch(err => {
                     res.status(400);
                 });
@@ -344,10 +342,10 @@ module.exports =  (app, passport) =>{
         })
 
     })
-    app.get('/validationEmail',(req, res) => {
+    app.get('/validationEmail', (req, res) => {
         res.render('validationEmail.ejs')
     })
-    app.post('/email',(req, res) => {
+    app.post('/email', (req, res) => {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
             host: 'smtp.gmail.com',
