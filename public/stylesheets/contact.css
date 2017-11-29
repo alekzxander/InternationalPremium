@@ -50,9 +50,10 @@
 	padding-top: 81px;
 }
 .navbar-brand img {
-	width: 100px;
-	margin-top: -29px;
-	margin-left: -40px;
+	width: 125px;
+	position: absolute;
+	margin-left: -274px;
+	margin-top: -61px;
 }
 
 input:focus {
