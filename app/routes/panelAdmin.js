@@ -210,21 +210,17 @@
             new: true
         }, (err, voyage) => {
             voyage.save().then(item => {
-
-                    // console.log('Ca marche')
-                    if (fileToUpload != undefined || fileToUpload != null) {
-                        let src = fs.createReadStream(tmp_path);
-                        let dest = fs.createWriteStream(target_path);
-                        src.pipe(dest);
-                        //delete temp file
-                        fs.unlink(tmp_path);
-                        console.log('Ca marche toujours')
-                    }
-
-                    // src.on('end', function () { res.redirect("/dashbord"); });
-                    // src.on('error', function (err) { res.render('error'); });
-                    res.redirect('/dashbord')
-                })
+                // console.log('Ca marche')
+                if (fileToUpload != undefined || fileToUpload != null) {
+                    let src = fs.createReadStream(tmp_path);
+                    let dest = fs.createWriteStream(target_path);
+                    src.pipe(dest);
+                    //delete temp file
+                    fs.unlink(tmp_path);
+                    console.log('Ca marche toujours')
+                }
+                res.redirect('/dashbord')
+            })
                 .catch(err => {
                     res.status(400);
                 });

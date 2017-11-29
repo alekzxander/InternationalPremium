@@ -1,7 +1,6 @@
 const dotEnv = require('dotenv').load();
 const nodemailer = require("nodemailer");
 const voyage = require('../models/voyage')
-
 module.exports =  (app, passport) =>{
 
 
@@ -9,7 +8,7 @@ module.exports =  (app, passport) =>{
    
     app.get('/contact', (req, res) => {
         voyage.find((err, voyagesMenu) => {
-            res.render('layoutContact.ejs', {
+            res.render('contact.ejs', {
                 voyagesMenu: voyagesMenu,
                 layout: 'layoutContact'
             });
@@ -17,7 +16,12 @@ module.exports =  (app, passport) =>{
 
     })
     app.get('/validationEmail', (req, res) => {
-        res.render('validationEmail.ejs')
+        voyage.find((err, voyagesMenu)=>{
+            res.render('validationEmail',{
+                voyagesMenu : voyagesMenu,
+                layout : 'layoutContact'
+            })
+        })
     })
     app.post('/email', (req, res) => {
         let transporter = nodemailer.createTransport({
