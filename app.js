@@ -18,6 +18,9 @@ const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const dotenv = require('dotenv').load();
+
+
+// Set up the all routes 
 const index = require ('./app/routes/index');
 const connexion = require ('./app/routes/connexion');
 const panelAdmin = require ('./app/routes/panelAdmin');
@@ -25,6 +28,7 @@ const partner = require('./app/routes/partner');
 const contact = require('./app/routes/contact');
 const mentions = require('./app/routes/mentions');
 const error404 = require('./app/routes/error404');
+
 
 //  Use mongoose for connect to database 
 
@@ -68,6 +72,8 @@ partner(app, passport);
 contact(app, passport);
 mentions(app , passport);
 error404(app,passport);
+
+
 
 
 module.exports = app;

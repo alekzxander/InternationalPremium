@@ -1,5 +1,5 @@
 const voyage = require('../models/voyage')
-
+const slug = require('slug');
 
 module.exports =  (app, passport) =>{
 
@@ -34,5 +34,7 @@ module.exports =  (app, passport) =>{
         })
     }))
 
+  
+ 
    
 }
