@@ -75,7 +75,7 @@
                 src.on('end', () => {
                     res.redirect("/dashbord/card");
                 });
-                src.on('error',(err) => {
+                src.on('error', (err) => {
                     res.render('error');
                 });
 
@@ -124,7 +124,7 @@
                     src.on('end', () => {
                         res.redirect("/dashbord/dashItineraire");
                     })
-                    src.on('error',(err) => {
+                    src.on('error', (err) => {
                         res.render('error');
                     })
 
@@ -183,7 +183,6 @@
     app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
         // Create Var for img
         let fileToUpload = req.file;
-        console.log(fileToUpload)
         let target_path;
         let tmp_path;
         let img_path;
@@ -197,7 +196,19 @@
             console.log('pas ok')
             img_path = req.body.img;
         }
-        voyage.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, dateA: req.body.dateA, dateR: req.body.dateR, sejour: req.body.sejour, preview: req.body.preview, text: req.body.text, img: img_path } }, { new: true }, (err, voyage) => {
+        voyage.findByIdAndUpdate(req.params.id, {
+            $set: {
+                name: req.body.name,
+                dateA: req.body.dateA,
+                dateR: req.body.dateR,
+                sejour: req.body.sejour,
+                preview: req.body.preview,
+                text: req.body.text,
+                img: img_path
+            }
+        }, {
+            new: true
+        }, (err, voyage) => {
             voyage.save().then(item => {
                 // console.log('Ca marche')
                 if (fileToUpload != undefined || fileToUpload != null) {
@@ -216,4 +227,5 @@
 
         })
     })
+   
     }

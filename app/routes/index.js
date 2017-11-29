@@ -22,11 +22,6 @@ module.exports =  (app, passport) =>{
         })
     })
 
-    app.use('/voyage/:name',(err,req, res,next) =>{
-       res.render('layout404.ejs')
-      next()
-    });
-
     app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage.ejs', {
@@ -38,4 +33,6 @@ module.exports =  (app, passport) =>{
             })
         })
     }))
+
+   
 }

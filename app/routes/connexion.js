@@ -1,16 +1,9 @@
 const permissions = require('../../config/permissions');
 
 module.exports =  (app, passport) =>{
-  
 
     // SIGNUP 
-    
-    app.use('/signup',(err,req, res,next) =>{
-        res.status(404);
-       res.send('layout404.ejs')
-      next()
-    });
-    
+
     app.get('/signup',(req, res) =>{
         res.render('layoutSignup.ejs', {
             layout: 'layoutSignup', 
@@ -69,4 +62,7 @@ module.exports =  (app, passport) =>{
         req.logout();
         res.redirect('/');
     });
+
+
+
 }

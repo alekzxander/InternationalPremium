@@ -5,12 +5,7 @@ module.exports =  (app, passport) =>{
 
 
     // CONTACT FORM
-    
-    app.use((err, req, res, next) => {
-        res.render("layout404", {layout: "layout404"});
-        next()
-    })
-
+   
     app.get('/contact', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('contact.ejs', {
@@ -56,4 +51,6 @@ module.exports =  (app, passport) =>{
             transporter.close();
         });
     })
+   
+
 }
