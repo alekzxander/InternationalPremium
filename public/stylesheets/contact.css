@@ -262,15 +262,15 @@ footer a {
 	margin-left: 10px;
 	color: #fff;
 }
-.validatonEmail 
+.validationEmail 
 {
 	background: #06162D;
 	height: 400px;
-	margin-top: 35%;
-	box-shadow: 0 6px 15px rgb(195, 188, 188);
+	border: white 2px solid;
 	padding-top: 60px;
+	margin: 16% 0 10% 0;
 }
-.validatonEmail p
+.validationEmail p
 {
 	text-align:center;
 	color: #D0A548;

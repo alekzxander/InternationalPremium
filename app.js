@@ -17,8 +17,13 @@ const session = require('express-session');
 const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
-const routes = require('./app/routes.js');
 const dotenv = require('dotenv').load();
+const connexion = require ('./app/routes/connexion.js');
+const panelAdmin = require ('./app/routes/panelAdmin.js');
+const index = require ('./app/routes/index');
+const contact = require('./app/routes/contact');
+const mentions = require('./app/routes/mentions');
+const partner = require('./app/routes/partner');
 
 
 
@@ -62,7 +67,13 @@ app.use(express.static(__dirname + '/public'));
 
 
 // routes
-routes(app, passport); // load our routes and pass in our app and fully configured passport
+
+connexion(app, passport);
+panelAdmin(app, passport);
+index(app , passport);
+contact(app, passport);
+mentions(app , passport);
+partner(app, passport);
 
 
 

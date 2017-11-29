@@ -1,3 +1,4 @@
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,59 +80,8 @@
         </nav>
         <div class="banniere-contact"> </div>
     </header>
-
-    <div class="contact">
-        <div class="container">
-            <div class="row">
-                <div class="signup-wrapper xycenter">
-                    <header>
-                        <div class="xycenter">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </header>
-
-                    <h2>Vous souhaitez obtenir plus d'informations ?</h2>
-                    <p>Envoyez moi un mail pour avec des renseignements </p>
-
-                    <form class="cool-form" role="form" method="post" action="/email">
-                        <div>
-                            <input type="text" name="name" id="name" placeholder=" " required />
-                            <label for="name">Nom Prenom</label>
-                        </div>
-
-
-
-                        <div>
-                            <input type="email" name="email" id="email" placeholder=" " required />
-                            <label for="email">Email</label>
-                            <div class="requirements">
-                                Adresse email non valide
-                            </div>
-                        </div>
-
-
-                        <div>
-                            <input type="text" name="subject" id="subject" placeholder=" " required />
-                            <label for="subject">Sujet</label>
-                        </div>
-
-
-                        <textarea name="message" rows="8" id="" placeholder="Ajoutez vos message ici..">
-
-                        </textarea>
-
-
-                        <input type="submit" id="submit" value="Envoyez" />
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+    <%- defineContent('contact') %>
+    <%- defineContent('validation') %>
     <footer>
 
 
@@ -168,4 +118,6 @@
 
     </footer>
 
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </html>
