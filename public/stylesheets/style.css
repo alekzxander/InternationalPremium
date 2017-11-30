@@ -541,7 +541,9 @@
         color: #06162D;
     }
 
-   
+   i{
+       margin:7px; 
+}
     
 
     .btnform:hover,
