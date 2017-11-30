@@ -101,6 +101,7 @@
         min-width: 157.5px;
         border: none;
         border-radius: 0px;
+        text-transform: uppercase;
     }
     .dropdown-menu>li>a
     {
@@ -451,8 +452,9 @@
 
     .box-inside-head h1 {
         color: #04152b;
+        text-transform: uppercase;
     }
-
+  
     .box-inside-head p {
         font-size: 19px;
     }
