@@ -62,8 +62,6 @@
             text: req.body.text,
             img: fileToUpload.originalname
         });
-        var str = "%20";
-        var res = str.replace("%20", "");
         myData
             .save()
             .then(item => {
