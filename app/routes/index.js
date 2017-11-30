@@ -15,26 +15,25 @@ module.exports = (app, passport) => {
     });
 
 
-    app.use('/voyage/:name', (req, res, next) => {
+    app.use('/voyage/:slug', (req, res, next) => {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu;
             next();
         })
     })
-
     
-    app.get('/voyage/:name', ((req, res) => {
+    
+    app.get('/voyage/:slug', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage', {
                 voyagesMenu: req.voyagesMenu,
-                voyage: req.params.name,
+                voyage: req.params.slug,
                 mesVoyages: voyages.filter((voyage) => {
-                    return voyage.name == req.params.name
+                    return voyage.slug == req.params.slug
                 })[0]
             })
         })
     }))
-
 
 
 

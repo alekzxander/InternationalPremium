@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 let voyageSchema = new mongoose.Schema ({
     name : String,  
+    slug :String,
     dateA : String,
     dateR : String,
     sejour : String,
