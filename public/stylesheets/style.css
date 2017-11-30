@@ -20,7 +20,10 @@
     /*           Menu nav-bar        */
     /*-------------------------------*/
     /* nav dash */
-
+    .logo-responsive
+    {
+        display: none;
+    }
     .navbar {
         margin-bottom: 0px;
         position: none;
@@ -102,7 +105,7 @@
        max-width: 157px;
         border: none;
         border-radius: 0px;
-        text-transform: uppercase;
+        
     }
     .dropdown-menu>li>a
     {
@@ -688,6 +691,10 @@
     }
 
     @media all and (max-width:560px) {
+        .logo-responsive{
+            display: block;
+            margin-bottom: -79px;
+        }
         .carte img {
             width: 106%;
             margin: 0 auto;
