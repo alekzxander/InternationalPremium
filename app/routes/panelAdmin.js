@@ -5,6 +5,9 @@
     const upload = multer({
         dest: 'public/images/'
     })
+    const options =  {separator:'-'}
+    const mySlug = require('speakingurl').createSlug(options);
+    
     
     module.exports =  (app, passport) =>{
     
