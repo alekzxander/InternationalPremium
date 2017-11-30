@@ -1,5 +1,5 @@
 const voyage = require('../models/voyage');
-const name = '/voyage:name'
+
 
 module.exports = (app, passport) => {
 
@@ -25,7 +25,7 @@ module.exports = (app, passport) => {
     
     app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
-            res.render('voyage.ejs', {
+            res.render('voyage', {
                 voyagesMenu: req.voyagesMenu,
                 voyage: req.params.name,
                 mesVoyages: voyages.filter((voyage) => {

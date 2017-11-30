@@ -356,8 +356,8 @@
         height: 752px;
     }
 
-    .carteVoyage {
-        margin-bottom: 60px;
+    .carte h1 {
+        text-transform: uppercase;
     }
 
     .carte img {
@@ -366,7 +366,9 @@
         z-index: 4;
         height: 300px;
     }
-
+    .carteVoyage {
+        margin-bottom: 60px;
+    }
     .box-item {
         background: #FAF8F8;
         margin-top: 50px;
