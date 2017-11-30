@@ -58,9 +58,58 @@
     }
 
     .navbar-brand img {
-        width: 100px;
-        margin-top: -29px;
-        margin-left: -40px;
+        width: 125px;
+        position: absolute;
+        margin-left: -274px;
+        margin-top: -61px;
+    }
+    @media all and (max-width:780px){
+        .navbar-brand img {
+            margin-left: -60px;
+            position: sticky;
+            margin-top: -29px;}
+    }
+    @media all and (max-width:1080px){
+        .navbar-brand img {
+            margin-left: -59px;
+            margin-top: -32px;
+        }
+        .btn-warning
+        {
+            font-size: 9px;
+
+        }
+        .btn-details
+        {
+            font-size: 9px;
+        }
+    }
+    @media all and (max-width:520px){
+        .btn-warning
+        {
+            font-size:19px;
+
+        }
+        .btn-details
+        {
+            font-size: 19px;
+        }
+    }
+    .dropdown-menu
+    {
+        background:#06162D;
+        min-width: 157.5px;
+        border: none;
+        border-radius: 0px;
+    }
+    .dropdown-menu>li>a
+    {
+        color: white;
+      
+    }
+    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+        color: #FFFFFF;
+        background-color: #06162D;
     }
     /*-------------------------------*/
     /*           carousel             */
@@ -234,6 +283,7 @@
 
     .intro-text {
         background: #FAF8F8;
+        margin-top: -40;
     }
 
     .intro-text p {
@@ -298,7 +348,7 @@
         background: #faf9f8;
         text-align: center;
         box-shadow: 0 6px 15px rgb(195, 188, 188);
-        height: 800px;
+        height: 752px;
     }
 
     .carteVoyage {
@@ -346,6 +396,7 @@
         font-family: 'Roboto', sans-serif;
         font-size: 19px;
         height: 200px;
+        line-height: 35px;
         padding: 0 2% 0 2%;
         margin-top: 20px;
     }
@@ -355,6 +406,8 @@
         background: #04152b;
         border: none;
         border-radius: 0px;
+        font-size: 17px;
+        width: 184px;
     }
 
     .btn-details a:hover {
@@ -499,6 +552,8 @@
         background: #F1B244;
         border: none;
         border-radius: 0px;
+        /* margin-right: 10px; */
+        font-size: 17px;
     }
 
     .btn-danger {

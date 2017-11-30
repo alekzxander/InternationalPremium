@@ -21,10 +21,6 @@ $(window).scroll( function(){
 });
 
 
-
-
-
-
 //Code stolen from css-tricks for smooth scrolling:
 $(function() {
   $('a[href*=#]:not([href=#])').click(function() {
@@ -34,9 +30,11 @@ $(function() {
       if (target.length) {
         $('html,body').animate({
           scrollTop: target.offset().top
-        }, 1000);
+        }, 3000);
         return false;
       }
     }
   });
 });
+
+
