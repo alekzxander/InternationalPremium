@@ -98,7 +98,8 @@
     .dropdown-menu
     {
         background:#06162D;
-        min-width: 157.5px;
+       min-width: 157px;
+       max-width: 157px;
         border: none;
         border-radius: 0px;
         text-transform: uppercase;
@@ -181,7 +182,7 @@
     /*================ SIGNUP ======================*/
 
     .signup {
-        padding-top: 77px;
+        /* padding-top: 77px; */
         padding-bottom: 9%;
         background: #06162D;
     }
@@ -337,10 +338,13 @@
 
     .error {
         background: #06162D;
-        color : #eea903;
-
+        color : #E1A10D;
+        padding: 23%;
     }
-
+    .error p{
+        font-weight:bold;
+        font-size: 40px;
+    }
     /* ========== CARTE ================= */
 
     .carte {
