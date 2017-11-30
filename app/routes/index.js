@@ -1,11 +1,11 @@
-const voyage = require('../models/voyage')
+const voyage = require('../models/voyage');
 
 
-module.exports =  (app, passport) =>{
+module.exports = (app, passport) => {
 
     // BASIC ROUTE (INDEX)
 
-    app.get('/', (req, res) =>{
+    app.get('/', (req, res) => {
         voyage.find((err, voyages) => {
             res.render('index', {
                 mesVoyages: voyages,
@@ -15,16 +15,17 @@ module.exports =  (app, passport) =>{
     });
 
 
-    app.use('/voyage/:name',(req, res, next) =>{
+    app.use('/voyage/:name', (req, res, next) => {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu;
             next();
         })
     })
 
+    
     app.get('/voyage/:name', ((req, res) => {
         voyage.find((err, voyages) => {
-            res.render('voyage.ejs', {
+            res.render('voyage', {
                 voyagesMenu: req.voyagesMenu,
                 voyage: req.params.name,
                 mesVoyages: voyages.filter((voyage) => {
@@ -34,7 +35,7 @@ module.exports =  (app, passport) =>{
         })
     }))
 
-  
- 
-   
+
+
+
 }

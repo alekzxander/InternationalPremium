@@ -1,14 +1,19 @@
 const permissions = require('../../config/permissions');
+const voyage = require('../models/voyage')
 
 module.exports =  (app, passport) =>{
 
     // SIGNUP 
 
     app.get('/signup',(req, res) =>{
-        res.render('layoutSignup.ejs', {
-            layout: 'layoutSignup', 
-            message: req.flash('signupMessage')
-        });
+        voyage.find((err, voyages)=>{
+            res.render('layoutSignup.ejs', {
+                layout: 'layoutSignup', 
+                message: req.flash('signupMessage'),
+                voyagesMenu : voyages
+            });
+        })
+       
     });
     
 

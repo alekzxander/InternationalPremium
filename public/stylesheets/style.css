@@ -20,7 +20,10 @@
     /*           Menu nav-bar        */
     /*-------------------------------*/
     /* nav dash */
-
+    .logo-responsive
+    {
+        display: none;
+    }
     .navbar {
         margin-bottom: 0px;
         position: none;
@@ -98,9 +101,11 @@
     .dropdown-menu
     {
         background:#06162D;
-        min-width: 157.5px;
+       min-width: 157px;
+       max-width: 157px;
         border: none;
         border-radius: 0px;
+        
     }
     .dropdown-menu>li>a
     {
@@ -180,7 +185,7 @@
     /*================ SIGNUP ======================*/
 
     .signup {
-        padding-top: 77px;
+        /* padding-top: 77px; */
         padding-bottom: 9%;
         background: #06162D;
     }
@@ -336,10 +341,13 @@
 
     .error {
         background: #06162D;
-        color : #eea903;
-
+        color : #E1A10D;
+        padding: 23%;
     }
-
+    .error p{
+        font-weight:bold;
+        font-size: 40px;
+    }
     /* ========== CARTE ================= */
 
     .carte {
@@ -351,8 +359,8 @@
         height: 752px;
     }
 
-    .carteVoyage {
-        margin-bottom: 60px;
+    .carte h1 {
+        text-transform: uppercase;
     }
 
     .carte img {
@@ -361,7 +369,9 @@
         z-index: 4;
         height: 300px;
     }
-
+    .carteVoyage {
+        margin-bottom: 60px;
+    }
     .box-item {
         background: #FAF8F8;
         margin-top: 50px;
@@ -451,8 +461,9 @@
 
     .box-inside-head h1 {
         color: #04152b;
+        text-transform: uppercase;
     }
-
+  
     .box-inside-head p {
         font-size: 19px;
     }
@@ -684,6 +695,10 @@
     }
 
     @media all and (max-width:560px) {
+        .logo-responsive{
+            display: block;
+            margin-bottom: -79px;
+        }
         .carte img {
             width: 106%;
             margin: 0 auto;

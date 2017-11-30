@@ -55,6 +55,26 @@
 	margin-left: -274px;
 	margin-top: -61px;
 }
+.dropdown-menu
+{
+	background:#06162D;
+   min-width: 157px;
+   max-width: 157px;
+	border: none;
+	border-radius: 0px;
+	width: 138px;
+}
+.dropdown-menu>li>a{
+	color: white;
+	text-transform: uppercase;
+	width: 157px;
+}
+.navbar-default .navbar-nav>.open>a
+{
+	background: #06162D;
+	color: white;
+	width: 157px;
+}
 
 input:focus {
 	outline: none;

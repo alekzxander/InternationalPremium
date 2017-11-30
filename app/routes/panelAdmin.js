@@ -54,7 +54,7 @@
         var tmp_path = fileToUpload.path;
 
         let myData = new voyage({
-            name: req.body.name,
+            name: req.body.name.toLowerCase(),
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
