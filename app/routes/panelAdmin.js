@@ -54,7 +54,7 @@
         var tmp_path = fileToUpload.path;
 
         let myData = new voyage({
-            name: req.body.name,
+            name: req.body.name.toLowerCase(),
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
@@ -62,6 +62,8 @@
             text: req.body.text,
             img: fileToUpload.originalname
         });
+        var str = "%20";
+        var res = str.replace("%20", "");
         myData
             .save()
             .then(item => {

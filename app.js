@@ -18,6 +18,9 @@ const configDB = require('./config/database.js');
 const passportConfig = require('./config/passport')(passport); // pass passport for configuration
 const nodemailer = require("nodemailer");
 const dotenv = require('dotenv').load();
+
+
+// Set up the all routes 
 const index = require ('./app/routes/index');
 const connexion = require ('./app/routes/connexion');
 const panelAdmin = require ('./app/routes/panelAdmin');
@@ -25,6 +28,7 @@ const partner = require('./app/routes/partner');
 const contact = require('./app/routes/contact');
 const mentions = require('./app/routes/mentions');
 const error404 = require('./app/routes/error404');
+
 
 //  Use mongoose for connect to database 
 
@@ -38,12 +42,13 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
 
 // Set up our express application
+
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
-app.use(express.static(__dirname + '/public'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/')); // expression static for bootstrap ( in node_modules)
+app.use(express.static(__dirname + '/public'));  // search img/css/js in public folder  ( a reformuler)
 app.use(expressLayouts);
 app.use(permissions.middleware());
 
@@ -57,8 +62,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css/')); // expression static for bootstrap ( in node_modules)
-app.use(express.static(__dirname + '/public')); // search img/css/js in public folder  ( a reformuler)
 
 // routes
 index(app , passport);
@@ -68,6 +71,8 @@ partner(app, passport);
 contact(app, passport);
 mentions(app , passport);
 error404(app,passport);
+
+
 
 
 module.exports = app;
