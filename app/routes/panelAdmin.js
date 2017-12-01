@@ -6,7 +6,7 @@
         dest: 'public/images/'
     })
    
-    module.exports =  (app, passport) =>{
+    module.exports =  (app, passport) => {
     
     
     

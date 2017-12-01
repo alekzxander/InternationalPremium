@@ -387,7 +387,7 @@
         border: none;
         border-radius: 0px;
         font-size: 17px;
-        width: 113px;
+        width: 160px;
     }
 
     .btn-details a:hover {
@@ -653,7 +653,7 @@
     }
     /* On small screens, set height to 'auto' for sidenav and grid */
 
-    @media (max-width:414px) {
+    @media all and (max-width:414px) {
         .title,
         .carte {
             margin-left: -2px;
@@ -661,7 +661,10 @@
         .navbar-default .navbar-nav>li>a {
             color: #06162D;
         }
+     
     }
+
+
     @media all and (max-width:520px) {
         .btn-warning {
             font-size: 19px;
@@ -717,11 +720,18 @@
         {
             margin-top: 17px;
         }
+        .navbar .navbar-collapse {
+            background: #06162D;
+        }
     }
 
     @media all and (max-width:780px) {
         .carte {
             height: auto;
+        }
+        .navbar-default .navbar-nav>li>a {
+            font-size: 12px;
+            color: #fff;
         }
     }
 
@@ -852,12 +862,7 @@
             color: #777777 !important;
         }
     }
-
-    @media all and (max-width: 768px) {
-        .navbar-default .navbar-nav>li>a {
-            color: #06162D;
-        }
-    }
+  
     @media all and (max-width:780px) {
         .navbar-brand img {
             margin-left: -60px;
@@ -871,9 +876,12 @@
             margin-top: -60px;
             margin-left: 330px;
         }
+        .navbar-default {
+            margin-left: 30px;
+        }
     }
 
-    @media all and (max-width:890px) {
+    @media all and (max-width:700px) {
         .carousel {
             display: none;
         }
@@ -901,10 +909,10 @@
     @media all and (min-width: 1000px) and (max-width: 1024px) {
         .navbar-brand {
             margin-top: -55px;
-            margin-left: 320px;
+            margin-left: 520px;
         }
         .navbar-default {
-            margin-left: 150px;
+            margin-left: 100px;
         }
     }
 

@@ -305,19 +305,30 @@ footer a {
 
 @media all and (max-width:500px)
 {
+	.navbar .navbar-collapse {
+		padding-top:0px;
+	}
 	.banniere-contact
 	{
 		height: 308px;
 		margin-top: -250px;
+		margin-bottom: 10px;
 	}
+	
 	.signup-wrapper
 	{
 		margin-top: 60px;
 	}
 	footer
 	{
-		margin-top: 105px;
+		margin-top: 140px;
 		padding-top: 40px;
 		height: 334px;
+	}
+}
+
+@media all and (min-width:768px) and (max-width:1000px) {
+	.navbar-default .navbar-nav>li>a {
+		font-size: 12px;
 	}
 }

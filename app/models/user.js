@@ -19,19 +19,19 @@ var userSchema = mongoose.Schema({
 });
 
 // GENERATING A HASH
-userSchema.methods.generateHash = function(password) {
+userSchema.methods.generateHash = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 // CHECKING IF PASSWORD IS VALID 
-userSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = (password) => {
     return bcrypt.compareSync(password, this.local.password);
 };
 
-userSchema.methods.isMember = function() {
+userSchema.methods.isMember = () => {
     return (this.role === "member");
 };
-userSchema.methods.isAdmin = function() {
+userSchema.methods.isAdmin = () => {
     return (this.role === "admin");
 };
 
