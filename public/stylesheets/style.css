@@ -460,7 +460,6 @@
 
     .box-inside-head h1 {
         color: #04152b;
-        
     }
 
     .box-inside-head p {
@@ -864,26 +863,16 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @media all and (max-width: 768px) {
         .navbar-default .navbar-nav>li>a {
             color: #06162D;
         }
     }
 
-    @media (min-width: 768px) and (max-width: 1000px) {
+    @media all and (min-width: 768px) and (max-width: 1000px) {
         .navbar-brand {
             margin-top: -60px;
             margin-left: 330px;
-        }
-    }
-
-    @media (min-width: 1000px) and (max-width: 1024px) {
-        .navbar-brand {
-            margin-top: -55px;
-            margin-left: 320px;
-        }
-        .navbar-default {
-            margin-left: 150px;
         }
     }
 
@@ -896,5 +885,15 @@
             margin-right: 0px;
             margin-left: 0px;
             margin-top: 15px;
+        }
+    }
+
+    @media all and (min-width: 1000px) and (max-width: 1024px) {
+        .navbar-brand {
+            margin-top: -55px;
+            margin-left: 320px;
+        }
+        .navbar-default {
+            margin-left: 150px;
         }
     }
