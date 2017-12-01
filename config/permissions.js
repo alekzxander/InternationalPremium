@@ -1,25 +1,26 @@
 var ConnectRoles = require('connect-roles');
 var permissions = new ConnectRoles({
-    failureHandler:  (req, res, action) => {
-        // OPTIONAL FUNCTION TO CUSTOMISE CODE THAT RUNS WHEN USER FAILS AUTHORISATION 
+    failureHandler: function (req, res, action) {
+        // optional function to customise code that runs when user fails authorisation
+        var accept = req.headers.accept || '';
         res.status(403);
         if (~ accept.indexOf('html')) {
-            res.render('Accès Refusé', {action: action});
+            res.render('access-denied', {action: action});
         } else {
-            res.send("Accès Refusé- Vous n'avez pas la permission " + action);
+            res.send('Access Denied - You don\'t have permission to: ' + action);
         }
     }
 });
 
 
-permissions.use('Accès page admin',  (req) => {
+permissions.use('access admin page', function (req) {
     if (req.user !== undefined && req.user.local.role === 'admin') {
         return true;
     }
 })
 
-// ADMIN USERS CAN ACCESS ALL PAGES 
-permissions.use((req) => {
+//admin users can access all pages
+permissions.use(function (req) {
     if (req.user !== undefined && req.user.local.role === 'admin') {
         return true;
     }
