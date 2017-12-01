@@ -31,8 +31,12 @@
                                 <a href="/ajoutLieux/<%= carte._id %>" class="btn btn-warning btn-lg">Ajouter un lieux</a>
                             </td>
                             <td data-title="link">
+                                    <a href="/modifLieux/<%= carte._id %>" class="btn btn-warning btn-lg">Modifier le lieux</a>
+                                    </td>  
+                            <td data-title="link">
                                     <a href="/suppLieux/<%= carte.id %>" class="btn btn-warning btn-lg">Supprimer un lieux</a>
                                 </td>
+                             
                         </tr>
     
                         <% }) %>

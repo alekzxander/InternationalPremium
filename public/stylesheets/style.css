@@ -20,10 +20,11 @@
     /*           Menu nav-bar        */
     /*-------------------------------*/
     /* nav dash */
-    .logo-responsive
-    {
+
+    .logo-responsive {
         display: none;
     }
+
     .navbar {
         margin-bottom: 0px;
         position: none;
@@ -66,53 +67,52 @@
         margin-left: -274px;
         margin-top: -61px;
     }
-    @media all and (max-width:780px){
+
+    @media all and (max-width:780px) {
         .navbar-brand img {
             margin-left: -60px;
             position: sticky;
-            margin-top: -29px;}
+            margin-top: -29px;
+        }
     }
-    @media all and (max-width:1080px){
+
+    @media all and (max-width:1080px) {
         .navbar-brand img {
             margin-left: -59px;
             margin-top: -32px;
         }
-        .btn-warning
-        {
+        .btn-warning {
             font-size: 9px;
-
         }
-        .btn-details
-        {
+        .btn-details {
             font-size: 9px;
         }
     }
-    @media all and (max-width:520px){
-        .btn-warning
-        {
-            font-size:19px;
 
+    @media all and (max-width:520px) {
+        .btn-warning {
+            font-size: 19px;
         }
-        .btn-details
-        {
+        .btn-details {
             font-size: 19px;
         }
     }
-    .dropdown-menu
-    {
-        background:#06162D;
-       min-width: 157px;
-       max-width: 157px;
+
+    .dropdown-menu {
+        background: #06162D;
+        min-width: 157px;
+        max-width: 157px;
         border: none;
         border-radius: 0px;
-        
     }
-    .dropdown-menu>li>a
-    {
+
+    .dropdown-menu>li>a {
         color: white;
-      
     }
-    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+
+    .navbar-default .navbar-nav>.open>a,
+    .navbar-default .navbar-nav>.open>a:focus,
+    .navbar-default .navbar-nav>.open>a:hover {
         color: #FFFFFF;
         background-color: #06162D;
     }
@@ -341,11 +341,12 @@
 
     .error {
         background: #06162D;
-        color : #E1A10D;
+        color: #E1A10D;
         padding: 23%;
     }
-    .error p{
-        font-weight:bold;
+
+    .error p {
+        font-weight: bold;
         font-size: 40px;
     }
     /* ========== CARTE ================= */
@@ -359,19 +360,17 @@
         height: 752px;
     }
 
-    .carte h1 {
-        text-transform: uppercase;
-    }
-
     .carte img {
         width: 106%;
         margin: 0 auto;
         z-index: 4;
         height: 300px;
     }
+
     .carteVoyage {
         margin-bottom: 60px;
     }
+
     .box-item {
         background: #FAF8F8;
         margin-top: 50px;
@@ -456,14 +455,14 @@
         font-family: 'Roboto', sans-serif;
         margin-bottom: 64px;
         padding-bottom: 30px;
-        position:auto;
+        position: auto;
     }
 
     .box-inside-head h1 {
         color: #04152b;
-        text-transform: uppercase;
+        
     }
-  
+
     .box-inside-head p {
         font-size: 19px;
     }
@@ -505,7 +504,6 @@
         margin-top: 50px;
         margin-right: 23px;
         width: auto;
-      
     }
 
     .card-text {
@@ -518,7 +516,7 @@
     }
 
     .title {
-        color:#06162D;
+        color: #06162D;
         font-size: 18px;
     }
 
@@ -541,10 +539,9 @@
         color: #06162D;
     }
 
-   i{
-       margin:7px; 
-}
-    
+    i {
+        margin: 7px;
+    }
 
     .btnform:hover,
     .partenaires a:hover {
@@ -695,7 +692,7 @@
     }
 
     @media all and (max-width:560px) {
-        .logo-responsive{
+        .logo-responsive {
             display: block;
             margin-bottom: -79px;
         }
