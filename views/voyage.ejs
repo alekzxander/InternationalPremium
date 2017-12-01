@@ -1,8 +1,48 @@
-<html>
-<body>
 <%- contentFor('voyage') %>
-        <% include partials/itineraire %>
+<body>
+
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" href="/stylesheets/style.css">
+<div id="banniere-img" style="background:url(../images/<%= mesVoyages.img %>); background-size: cover;">
+    <div class="container">
+        <div class="box-inside-head">
+            <h1>
+                <%= mesVoyages.name %>
+            </h1>
+            
+            <p>  <i class="fa fa-calendar fa-2x"></i> Départ le <strong><%= mesVoyages.dateA %> </strong> retour le <strong><%= mesVoyages.dateR %> </strong> </p>
+            <h4>Vous découvrirez...</h4>
+            <p> <%= mesVoyages.text %> </p>
+            <p>Vous souhaitez avoir plus de renseignements sur ce voyage ?</p> 
+            <a href="/contact" class="btn btn-details btn-lg">Se renseigner</a>
+        </div>
+    </div>
+</div>
+ 
+
+    <% mesVoyages.lieux.forEach((obj)=>{ %>
+      <div class="container-fluid">
+        <div class="descriptif">
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-8 ">
+                    <h3>
+                        <%= obj.titre %>
+                    </h3>
+                    <p>
+                        <%= obj.text %>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-4 col-lg-4">
+                    <img src="/images/<%= obj.img %>" class="img-responsive" alt="">
+                </div>
+            </div>
+        </div>
+</div>
+
+
+        <% }) %>
+   
+
    
         </body>
-
-        </html>

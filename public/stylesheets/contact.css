@@ -265,6 +265,10 @@ footer {
 	background-color: #06162B;
 	color: white;
 	padding: 15px;
+	position: relative;
+	margin-top: 69px;
+	height: 224px;
+	padding-top: 65px;
 }
 
 footer a {
@@ -276,6 +280,7 @@ footer a {
 .icons {
 	margin-top: 40px;
 	color: #fff;
+	text-align: center;
 }
 
 .icons i {
@@ -296,4 +301,23 @@ footer a {
 	color: #D0A548;
 	font-size: 34px;
 	
+}
+
+@media all and (max-width:500px)
+{
+	.banniere-contact
+	{
+		height: 308px;
+		margin-top: -250px;
+	}
+	.signup-wrapper
+	{
+		margin-top: 60px;
+	}
+	footer
+	{
+		margin-top: 105px;
+		padding-top: 40px;
+		height: 334px;
+	}
 }
