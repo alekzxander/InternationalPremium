@@ -5,7 +5,7 @@
     const upload = multer({
         dest: 'public/images/'
     })
-    
+   
     module.exports =  (app, passport) =>{
     
     
@@ -54,7 +54,8 @@
         var tmp_path = fileToUpload.path;
 
         let myData = new voyage({
-            name: req.body.name.toLowerCase(),
+            name: req.body.name,
+            url: req.body.url,
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
@@ -62,6 +63,7 @@
             text: req.body.text,
             img: fileToUpload.originalname
         });
+       
         myData
             .save()
             .then(item => {
@@ -249,6 +251,7 @@
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,
+                url: req.body.url, 
                 dateA: req.body.dateA,
                 dateR: req.body.dateR,
                 sejour: req.body.sejour,

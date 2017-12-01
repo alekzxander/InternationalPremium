@@ -4,15 +4,15 @@ var permissions = new ConnectRoles({
         // OPTIONAL FUNCTION TO CUSTOMISE CODE THAT RUNS WHEN USER FAILS AUTHORISATION 
         res.status(403);
         if (~ accept.indexOf('html')) {
-            res.render('access-denied', {action: action});
+            res.render('Accès Refusé', {action: action});
         } else {
-            res.send('Access Denied - You don\'t have permission to: ' + action);
+            res.send("Accès Refusé- Vous n'avez pas la permission " + action);
         }
     }
 });
 
 
-permissions.use('access admin page', function (req) {
+permissions.use('Accès page admin', function (req) {
     if (req.user !== undefined && req.user.local.role === 'admin') {
         return true;
     }
