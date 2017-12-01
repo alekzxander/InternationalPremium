@@ -1,12 +1,12 @@
 const permissions = require('../../config/permissions');
 const voyage = require('../models/voyage')
 
-module.exports =  (app, passport) =>{
+module.exports =  (app, passport) => {
 
     // SIGNUP 
 
-    app.get('/signup',(req, res) =>{
-        voyage.find((err, voyages)=>{
+    app.get('/signup',(req, res) => {
+        voyage.find((err, voyages)=> {
             res.render('layoutSignup.ejs', {
                 layout: 'layoutSignup', 
                 message: req.flash('signupMessage'),
@@ -27,7 +27,7 @@ module.exports =  (app, passport) =>{
     // LOGIN
 
 
-    app.get('/login',(req, res)=>{
+    app.get('/login',(req, res)=> {
         res.render('layoutLogin.ejs', {
             layout: 'layoutLogin',
             message: req.flash('loginMessage')
