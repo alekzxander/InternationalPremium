@@ -13,12 +13,12 @@ module.exports = function (passport) {
 
     
     // used to serialize the user for the session
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser((user, done) => {
         done(null, user );
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function (id, done) {
+    passport.deserializeUser((id, done) => {
         User
             .findById(id, function (err, user) {
                 done(err, user);
@@ -34,13 +34,13 @@ module.exports = function (passport) {
         usernameField: 'email',
         passwordField: 'password',
         passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
-    }, function (req, email, password, done) {
+    }, (req, email, password, done) => {
         if (email) 
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
         
         // asynchronous
         process
-            .nextTick(function () {
+            .nextTick(() => {
                 User
                     .findOne({
                         'local.email': email
@@ -83,7 +83,7 @@ module.exports = function (passport) {
         var prenom = req.body.prenom;
         var date = req.body.date;
         // asynchronous
-        process.nextTick(function () {
+        process.nextTick(() => {
             // if the user is not already logged in:
             if (!req.user) {
                 User.findOne({ 'local.email' :  email }, function(err, user) {

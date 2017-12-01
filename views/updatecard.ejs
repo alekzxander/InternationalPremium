@@ -20,22 +20,24 @@
                         </div>
                         <div class="form-group">
                                 <label>Date Aller</label>
-                                <input type="text" class="form-control" name="dateA" value="<%= card.dateA%>">                         
+                                <input type="date" class="form-control" name="dateA" value="<%= card.dateA%>">                         
                                 <label>Date Retour</label>
-                                <input type="text" class="form-control" name="dateR" value="<%= card.dateR%>">
+                                <input type="date" class="form-control" name="dateR" value="<%= card.dateR%>">
                         </div>                   
                         <div class="form-group">
                             <label>Nombres de Jours</label>
-                            <input type="text" class="form-control" name="sejour" value="<%= card.sejour%>">
+                            <input type="number" class="form-control" name="sejour" value="<%= card.sejour%>">
                         </div>
 
                         <div class="form-group">
                                <label for="descriptif">Descriptif de la Carte</label>
-                            <input class="form-control" rows="5" maxlength="190" name="preview" value="<%= card.preview%>" id="comment" placeholder="<%= card.preview%>"></textarea>
+                               <textarea class="form-control" id="" cols="30" name="preview"  maxlength="190" rows="5"><%= card.preview%></textarea>
+                            
                         </div>
                         <div class="form-group">
                             <label for="descriptif">Résumé du voyage</label>
-                            <input  class="form-control" rows="5" name="text" id="comment" value="<%= card.preview%>" placeholder="<%= card.preview%>"></textarea>
+                            <textarea class="form-control" id="" cols="30" name="text"   rows="5"><%= card.text%></textarea>
+                            
                         </div>
 
                         <button type="submit" class="btn btn-success btn-lg" >Confirmer</button>
