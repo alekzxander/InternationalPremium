@@ -126,8 +126,9 @@
             } 
         }, {
            multi: true
-      
-        }, (err, voyage) => {
+           
+        },
+        (err, voyage) => {
             if (fileToUpload != undefined || fileToUpload != null) {
                 let src = fs.createReadStream(tmp_path);
                 let dest = fs.createWriteStream(target_path);
@@ -136,10 +137,12 @@
                 fs.unlink(tmp_path);
             }
             res.redirect('/dashbord/dashitineraire');
-
+        
         })
     })
-   
+
+    
+
     app.get('/ajoutLieux/:id',permissions.can( 'access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux', {
