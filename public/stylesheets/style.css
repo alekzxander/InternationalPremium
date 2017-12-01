@@ -386,7 +386,7 @@
         border: none;
         border-radius: 0px;
         font-size: 17px;
-        width: 160px;
+        width: 190px;
     }
 
     .btn-details a:hover {
@@ -531,7 +531,7 @@
         border-radius: 0px;
         /* margin-right: 10px; */
         font-size: 17px;
-        width: 160px;
+        width: 190px;
     }
 
     .btn-danger {
@@ -617,7 +617,7 @@
         background-color: #06162B;
         color: white;
         padding: 15px;
-        margin-top: px;
+        margin-top: 80px;
     }
 
     footer a {
