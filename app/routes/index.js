@@ -21,8 +21,8 @@ module.exports = (app, passport) => {
             next();
         })
     })
-    
-    
+
+
     app.get('/voyage/:url', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage', {

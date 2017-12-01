@@ -68,7 +68,6 @@
         margin-top: -17px;
     }
 
-
     .dropdown-menu {
         background: #06162D;
         min-width: 157px;
@@ -387,7 +386,7 @@
         border: none;
         border-radius: 0px;
         font-size: 17px;
-        width: 113px;
+        width: 160px;
     }
 
     .btn-details a:hover {
@@ -467,7 +466,6 @@
         z-index: 232;
         background: #06162D;
     }
- 
 
     .card {
         box-shadow: 0 17px 10px 0 rgba(0, 0, 0, 0.2);
@@ -533,6 +531,7 @@
         border-radius: 0px;
         /* margin-right: 10px; */
         font-size: 17px;
+        width: 160px;
     }
 
     .btn-danger {
@@ -618,7 +617,7 @@
         background-color: #06162B;
         color: white;
         padding: 15px;
-        margin-top: 70px;
+        margin-top: px;
     }
 
     footer a {
@@ -640,11 +639,11 @@
 
     .fa-arrow-circle-up {
         position: fixed;
-        bottom: 30px;
-        right: 41px;
+        bottom: 60px;
+        right: 11px;
         background: #06162D;
         width: 40px;
-        height: 40px;
+        height: 42px;
         font-size: 40px;
         border-radius: 100%;
         color: #ffffff;
@@ -653,7 +652,7 @@
     }
     /* On small screens, set height to 'auto' for sidenav and grid */
 
-    @media (max-width:414px) {
+    @media all and (max-width:414px) {
         .title,
         .carte {
             margin-left: -2px;
@@ -662,6 +661,7 @@
             color: #06162D;
         }
     }
+
     @media all and (max-width:520px) {
         .btn-warning {
             font-size: 19px;
@@ -670,8 +670,6 @@
             font-size: 19px;
         }
     }
-    
-
 
     @media all and (max-width:560px) {
         .logo-responsive {
@@ -711,17 +709,22 @@
         line-height: 35px;
     }
 
-    @media all and (max-width:570px)
-    {
-        .banniere-partenaire
-        {
+    @media all and (max-width:570px) {
+        .banniere-partenaire {
             margin-top: 17px;
+        }
+        .navbar .navbar-collapse {
+            background: #06162D;
         }
     }
 
     @media all and (max-width:780px) {
         .carte {
             height: auto;
+        }
+        .navbar-default .navbar-nav>li>a {
+            font-size: 12px;
+            color: #fff;
         }
     }
 
@@ -853,11 +856,6 @@
         }
     }
 
-    @media all and (max-width: 768px) {
-        .navbar-default .navbar-nav>li>a {
-            color: #06162D;
-        }
-    }
     @media all and (max-width:780px) {
         .navbar-brand img {
             margin-left: -60px;
@@ -871,9 +869,12 @@
             margin-top: -60px;
             margin-left: 330px;
         }
+        .navbar-default {
+            margin-left: 30px;
+        }
     }
 
-    @media all and (max-width:890px) {
+    @media all and (max-width:700px) {
         .carousel {
             display: none;
         }
@@ -884,7 +885,7 @@
             margin-top: 15px;
         }
     }
-    
+
     @media all and (max-width:1080px) {
         .navbar-brand img {
             margin-left: -59px;
@@ -898,15 +899,13 @@
             font-size: 9px;
         }
     }
+
     @media all and (min-width: 1000px) and (max-width: 1024px) {
         .navbar-brand {
             margin-top: -55px;
-            margin-left: 320px;
+            margin-left: 520px;
         }
         .navbar-default {
-            margin-left: 150px;
+            margin-left: 100px;
         }
     }
-
-
-  

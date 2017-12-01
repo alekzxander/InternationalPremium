@@ -1,21 +1,21 @@
 const permissions = require('../../config/permissions');
 const voyage = require('../models/voyage')
 
-module.exports =  (app, passport) => {
+module.exports = (app, passport) => {
 
     // SIGNUP 
 
-    app.get('/signup',(req, res) => {
-        voyage.find((err, voyages)=> {
+    app.get('/signup', (req, res) => {
+        voyage.find((err, voyages) => {
             res.render('layoutSignup.ejs', {
-                layout: 'layoutSignup', 
+                layout: 'layoutSignup',
                 message: req.flash('signupMessage'),
-                voyagesMenu : voyages
+                voyagesMenu: voyages
             });
         })
-       
+
     });
-    
+
 
     // PROCESS THE SIGNUP FORM 
     app.post('/signup', passport.authenticate('local-signup', {
@@ -27,7 +27,7 @@ module.exports =  (app, passport) => {
     // LOGIN
 
 
-    app.get('/login',(req, res)=> {
+    app.get('/login', (req, res) => {
         res.render('layoutLogin.ejs', {
             layout: 'layoutLogin',
             message: req.flash('loginMessage')
@@ -36,9 +36,9 @@ module.exports =  (app, passport) => {
 
 
     // PROCESS THE LOGIN FORM
-    app.post('/login', (req, res)=> {
+    app.post('/login', (req, res) => {
         //Redirect user according to role
-        passport.authenticate('local-login',(err, user, info) =>{
+        passport.authenticate('local-login', (err, user, info) => {
                 if (err) {
                     return res.redirect('/login');
                 }
@@ -46,7 +46,7 @@ module.exports =  (app, passport) => {
                     return res.redirect('/login');
                 }
                 //Log in the user
-                req.logIn(user, (err) =>{
+                req.logIn(user, (err) => {
                     if (err) {
                         return next(err);
                     }
@@ -63,7 +63,7 @@ module.exports =  (app, passport) => {
     });
 
     // LOGOUT 
-    app.get('/logout',(req, res) =>{
+    app.get('/logout', (req, res) => {
         req.logout();
         res.redirect('/');
     });

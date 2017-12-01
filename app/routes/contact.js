@@ -1,11 +1,11 @@
 const dotEnv = require('dotenv').load();
 const nodemailer = require("nodemailer");
 const voyage = require('../models/voyage')
-module.exports =  (app, passport) =>{
+module.exports = (app, passport) => {
 
 
     // CONTACT FORM
-   
+
     app.get('/contact', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('contact.ejs', {
@@ -16,10 +16,10 @@ module.exports =  (app, passport) =>{
 
     })
     app.get('/validationEmail', (req, res) => {
-        voyage.find((err, voyagesMenu)=>{
-            res.render('validationEmail',{
-                voyagesMenu : voyagesMenu,
-                layout : 'layoutContact'
+        voyage.find((err, voyagesMenu) => {
+            res.render('validationEmail', {
+                voyagesMenu: voyagesMenu,
+                layout: 'layoutContact'
             })
         })
     })
@@ -40,7 +40,7 @@ module.exports =  (app, passport) =>{
             subject: req.body.subject,
             html: req.body.name.toUpperCase() + req.body.email + req.body.message
         }
-        transporter.sendMail(mail,(error, response) =>{
+        transporter.sendMail(mail, (error, response) => {
             if (error) {
                 console.log("Mail non envoyé");
                 res.redirect('/contact')
@@ -51,6 +51,6 @@ module.exports =  (app, passport) =>{
             transporter.close();
         });
     })
-   
+
 
 }

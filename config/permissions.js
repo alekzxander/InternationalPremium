@@ -1,11 +1,12 @@
 var ConnectRoles = require('connect-roles');
 var permissions = new ConnectRoles({
-    failureHandler: function (req, res, action) {
-        // optional function to customise code that runs when user fails authorisation
-        var accept = req.headers.accept || '';
+    failureHandler: (req, res, action) => {
+        // OPTIONAL FUNCTION TO CUSTOMISE CODE THAT RUNS WHEN USER FAILS AUTHORISATION 
         res.status(403);
-        if (~ accept.indexOf('html')) {
-            res.render('access-denied', {action: action});
+        if (~accept.indexOf('html')) {
+            res.render('Accès Refusé', {
+                action: action
+            });
         } else {
             res.send('Access Denied - You don\'t have permission to: ' + action);
         }
@@ -13,7 +14,7 @@ var permissions = new ConnectRoles({
 });
 
 
-permissions.use('access admin page', function (req) {
+permissions.use('Accès page admin', (req) => {
     if (req.user !== undefined && req.user.local.role === 'admin') {
         return true;
     }

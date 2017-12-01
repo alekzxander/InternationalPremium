@@ -1,5 +1,5 @@
 <%- contentFor('menu')%>
-<div id="demo">
+    <div id="demo">
         <!-- Responsive table starts here -->
         <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
         <div class="table-responsive-vertical shadow-z-1">
@@ -8,10 +8,10 @@
                 <thead>
                     <tr>
                         <th>Lieux</th>
-                    
+
                         <th>Supprimer un lieux</th>
-                        
-    
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -20,18 +20,18 @@
                             <td data-title="carte">
                                 <%=obj.titre%>
                             </td>
-                           
-                    
+
+
                             <td data-title="link">
-                                    <a href="/suppLieux/<%= obj._id %>/delete" class="btn btn-warning btn-lg checked">Supprimer ce lieux</a>
-                                </td>
+                                <a href="/suppLieux/<%= obj._id %>/delete" class="btn btn-warning btn-lg checked">Supprimer ce lieux</a>
+                            </td>
                         </tr>
-    
+
                         <% }) %>
                 </tbody>
             </table>
         </div>
-    
+
         <div style="width: 45%; display: inline-block; vertical-align: top; margin-left: 30px;">
         </div>
     </div>
