@@ -8,7 +8,7 @@ var permissions = new ConnectRoles({
                 action: action
             });
         } else {
-            res.send("Accès Refusé- Vous n'avez pas la permission " + action);
+            res.send('Access Denied - You don\'t have permission to: ' + action);
         }
     }
 });
@@ -20,8 +20,8 @@ permissions.use('Accès page admin', (req) => {
     }
 })
 
-// ADMIN USERS CAN ACCESS ALL PAGES 
-permissions.use((req) => {
+//admin users can access all pages
+permissions.use(function (req) {
     if (req.user !== undefined && req.user.local.role === 'admin') {
         return true;
     }

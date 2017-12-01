@@ -1,14 +1,14 @@
-// LOAD ALL THE THINGS WE NEED 
+// load all the things we need
 var LocalStrategy = require('passport-local').Strategy;
 
-// LOAD UP THE USER MODEL
+// load up the user model
 var User = require('../app/models/user');
 module.exports = function (passport) {
 
     // =========================================================================
-    // PASSPORT SESSION SETUP ==================================================
+    // passport session setup ==================================================
     // =========================================================================
-    // required for persistent login sessions ==================================
+    // required for persistent login sessions
     // passport needs ability to serialize and unserialize users out of session
 
 
@@ -18,9 +18,9 @@ module.exports = function (passport) {
     });
 
     // used to deserialize the user
-    passport.deserializeUser((id, done) => {
+    passport.deserializeUser(function (id, done) {
         User
-            .findById(id, (err, user) => {
+            .findById(id, function (err, user) {
                 done(err, user);
             });
     });
@@ -40,7 +40,7 @@ module.exports = function (passport) {
 
         // asynchronous
         process
-            .nextTick(() => {
+            .nextTick(function () {
                 User
                     .findOne({
                         'local.email': email
@@ -82,7 +82,7 @@ module.exports = function (passport) {
         var prenom = req.body.prenom;
         var date = req.body.date;
         // asynchronous
-        process.nextTick(() => {
+        process.nextTick(function () {
             // if the user is not already logged in:
             if (!req.user) {
                 User.findOne({
@@ -94,7 +94,7 @@ module.exports = function (passport) {
 
                     // check to see if theres already a user with that email
                     if (user) {
-                        return done(null, false, req.flash('signupMessage', 'Cet email a déjà été utilisé.'));
+                        return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
 
                         // create the user
@@ -109,7 +109,7 @@ module.exports = function (passport) {
                         newUser.local.email = email;
                         newUser.local.password = newUser.generateHash(password);
 
-                        newUser.save((err) => {
+                        newUser.save(function(err) {
                             if (err)
                                 return done(err);
 
@@ -129,13 +129,13 @@ module.exports = function (passport) {
                         return done(err);
 
                     if (user) {
-                        return done(null, false, req.flash('loginMessage', 'Cet email a déjà été utilisé.'));
+                        return done(null, false, req.flash('loginMessage', 'That email is already taken.'));
                         // Using 'loginMessage instead of signupMessage because it's used by /connect/local'
                     } else {
                         var user = req.user;
                         user.local.email = email;
                         user.local.password = user.generateHash(password);
-                        user.save((err) => {
+                        user.save(function (err) {
                             if (err)
                                 return done(err);
 
