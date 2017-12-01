@@ -12,7 +12,7 @@
     
     // PANEL ADMIN 
 
-    app.get('/dashbord', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord',permissions.can( 'access admin page'),  (req, res) => {
         voyage.find((err, carte) => {
             res.render('dashbord', {
                 voyages: carte,
@@ -22,7 +22,7 @@
         })
     });
 
-    app.get('/card/:id/delete', permissions.can('access admin page'), (req, res) => {
+    app.get('/card/:id/delete',permissions.can( 'access admin page'),  (req, res) => {
         voyage.remove({
             _id: req.params.id
         }, (err, delData) => {
@@ -30,13 +30,13 @@
         })
     })
 
-    app.get('/dashbord/card', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord/card',permissions.can( 'access admin page'), (req, res) => {
         res.render('card', {
             layout: 'layoutAdmin'
         });
     });
 
-    app.get('/dashbord/dashItineraire/', permissions.can('access admin page'), (req, res) => {
+    app.get('/dashbord/dashItineraire/',permissions.can( 'access admin page'),(req, res) => {
         voyage.find((err, voyages) => {
             res.render('dashItineraire', {
                 voyages: voyages,
@@ -48,7 +48,7 @@
     // CREATE CARD PANEL ADMIN
 
 
-    app.post('/dashbord/card', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+    app.post('/dashbord/card',permissions.can( 'access admin page'), upload.single('img'), (req, res) => {
         var fileToUpload = req.file;
         var target_path = 'public/images/' + fileToUpload.originalname;
         var tmp_path = fileToUpload.path;
@@ -90,7 +90,57 @@
 
     // ADD PLACE PANEL ADMIN 
 
-    app.get('/ajoutLieux/:id', permissions.can('access admin page'), (req, res) => {
+    app.get('/modifLieux/:id',permissions.can( 'access admin page'), (req, res) => {
+        voyage.find((err, voyages) => {
+            res.render('modifLieux', {
+                id: req.params.id,
+                mesVoyages: voyages.filter((voyage) => {
+                    return (voyage.id == req.params.id)
+                })[0],
+                layout: 'layoutAdmin'
+            })
+        });
+    })
+
+    app.post('/modifLieux/:id',permissions.can( 'access admin page'),upload.single('img'), (req, res) => {
+        // Create Var for img
+        let fileToUpload = req.file;
+        let target_path;
+        let tmp_path;
+        let img_path;
+        if (fileToUpload != undefined || fileToUpload != null) {
+            target_path = 'public/images/' + fileToUpload.originalname;
+            tmp_path = fileToUpload.path;
+            img_path = fileToUpload.originalname;
+        } else {       
+            img_path = req.body.img;
+        }     
+        console.log(req.params.id)
+        voyage.update({ 
+            lieux : { $elemMatch : {_id: req.params.id} }
+        } ,{
+            $set: {              
+                    "lieux.$.titre": req.body.titre,
+                    "lieux.$.text": req.body.text,
+                    "lieux.$.img": img_path               
+            } 
+        }, {
+           multi: true
+      
+        }, (err, voyage) => {
+            if (fileToUpload != undefined || fileToUpload != null) {
+                let src = fs.createReadStream(tmp_path);
+                let dest = fs.createWriteStream(target_path);
+                src.pipe(dest);
+    
+                fs.unlink(tmp_path);
+            }
+            res.redirect('/dashbord/dashitineraire');
+
+        })
+    })
+   
+    app.get('/ajoutLieux/:id',permissions.can( 'access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('ajoutLieux', {
                 id: req.params.id,
@@ -102,7 +152,7 @@
         });
     })
 
-    app.post('/ajoutLieux/:id', upload.single('img'), (req, res) => {
+    app.post('/ajoutLieux/:id',permissions.can( 'access admin page'), upload.single('img'), (req, res) => {
         let fileToUpload = req.file;
         let target_path = 'public/images/' + fileToUpload.originalname;
         let tmp_path = fileToUpload.path;
@@ -139,7 +189,7 @@
 
     // DELETE PLACE PANEL ADMIN 
 
-    app.get('/suppLieux/:id', permissions.can('access admin page'), (req, res) => {
+    app.get('/suppLieux/:id',permissions.can( 'access admin page'), (req, res) => {
         voyage.find((err, voyages) => {
             res.render('suppLieux', {
                 id: req.params.id,
@@ -151,8 +201,8 @@
         });
     })
 
-    app.get('/suppLieux/:id/delete', permissions.can('access admin page'), (req, res) => {
-        console.log(req.params.id)
+    app.get('/suppLieux/:id/delete',permissions.can( 'access admin page') ,(req, res) => {
+       
         voyage.update({}, {
                 $pull: {
                     lieux: {
@@ -170,7 +220,7 @@
 
     // UPDATE CARD PANEL ADMIN
 
-    app.get('/updatecard/:id', permissions.can('access admin page'), (req, res) => {
+    app.get('/updatecard/:id',permissions.can( 'access admin page'),  (req, res) => {
         voyage.find((err, voyages) => {
             res.render('updatecard', {
                 layout: 'layoutAdmin',
@@ -182,7 +232,7 @@
         })
     })
 
-    app.post('/updatecard/:id', permissions.can('access admin page'), upload.single('img'), (req, res) => {
+    app.post('/updatecard/:id',permissions.can( 'access admin page'),  upload.single('img'), (req, res) => {
         // Create Var for img
         let fileToUpload = req.file;
         let target_path;
