@@ -1,47 +1,47 @@
 <head>
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/stylesheets/style.css">
-        <title> Ajouter un lieu de visite</title>
-    </head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title> Ajouter un lieu de visite</title>
+</head>
 
-            <div class="pull-right">
-                <a href="/">Retour vers l'accueil</a>
-                <a href="/logout">Logout</a>
-              </div>
+<div class="pull-right">
+    <a href="/">Retour vers l'accueil</a>
+    <a href="/logout">Logout</a>
+</div>
 
 
 <div class="col-sm-9">
-        <h4 class="text-center">Ajoutez un lieu de visite</h4>
-        <hr class="trait">
-        <div class="row">
-                <% voyages.forEach((carte)=>{ %>
+    <h4 class="text-center">Ajoutez un lieu de visite</h4>
+    <hr class="trait">
+    <div class="row">
+        <% voyages.forEach((carte)=>{ %>
 
-                    <div class="col-md-4">
-                        <div class="carte">
-                            <img src="/images/<%= carte.img %>" alt="">
-                            <div class="ville">
-                                <h1>
-                                    <%= carte.name %>
-                                </h1>
-                            </div>
-                            <div class="date">
-                                <h3>Voyage de
-                                    <%= carte.sejour %> !</h3>
-                                <p>
-                                    <%= carte.dateA %> au
-                                        <%= carte.dateR %>
-                                </p>
-                        </div>
-                            <div class="details">
-                                <p>
-                                    <%= carte.preview %>
-                                </p>
-                            </div>
-                        <div class="row">
-                                <a class="btn btn-success btn-lg" href="/ajoutLieux/<%= carte._id %> ">Ajouter un lieu de visite</a>
-                            </div>
-                        </div>
+            <div class="col-md-4">
+                <div class="carte">
+                    <img src="/images/<%= carte.img %>" alt="">
+                    <div class="ville">
+                        <h1>
+                            <%= carte.name %>
+                        </h1>
                     </div>
-                 <% })%>
+                    <div class="date">
+                        <h3>Voyage de
+                            <%= carte.sejour %> !</h3>
+                        <p>
+                            <%= carte.dateA %> au
+                                <%= carte.dateR %>
+                        </p>
+                    </div>
+                    <div class="details">
+                        <p>
+                            <%= carte.preview %>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <a class="btn btn-success btn-lg" href="/ajoutLieux/<%= carte._id %> ">Ajouter un lieu de visite</a>
+                    </div>
+                </div>
             </div>
+            <% })%>
+    </div>
 </div>

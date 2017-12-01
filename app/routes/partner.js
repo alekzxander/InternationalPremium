@@ -1,10 +1,10 @@
 const voyage = require('../models/voyage')
 
 
-module.exports =  (app, passport) =>{
+module.exports = (app, passport) => {
 
     // PARTNERS   
-    
+
     app.get('/partenaires', (req, res) => {
         voyage.find((err, voyagesMenu) => {
             res.render('partenaires.ejs', {
@@ -13,6 +13,5 @@ module.exports =  (app, passport) =>{
         })
     })
 
- 
-}
 
+}

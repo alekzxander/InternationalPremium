@@ -1,32 +1,38 @@
 <%- contentFor('menu')%>
     <div class="container">
-            <% mesVoyages.lieux.forEach((obj)=>{ %>
-        <div class="row">
-                    <div class="col-md-8">
-                            <h3><%= obj.titre %></h3>
-                
-                        <form action="/modifLieux/<%= obj._id %>" enctype="multipart/form-data" method="post">
-                            <input type="text" class="form-control" name="titre" value="<%= obj.titre %>" placeholder="Titre">
-                           
+        <% mesVoyages.lieux.forEach((obj)=>{ %>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>
+                        <%= obj.titre %>
+                    </h3>
 
-                            <textarea class="form-control" rows="8" name="text" value="<%= obj.text %>" id="comment" placeholder="Descriptif du lieu a visiter"><%= obj.text %></textarea>
+                    <form action="/modifLieux/<%= obj._id %>" enctype="multipart/form-data" method="post">
+                        <input type="text" class="form-control" name="titre" value="<%= obj.titre %>" placeholder="Titre">
+
+
+                        <textarea class="form-control" rows="8" name="text" value="<%= obj.text %>" id="comment" placeholder="Descriptif du lieu a visiter">
+                            <%= obj.text %>
+                        </textarea>
+                </div>
+                <div class="col-md-4">
+                    <div class="imgVide">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <input type="file" name="img" class='btn btn-primary' value="<%= obj.img %>" placeholder="">
+                        <input type="text" name="img" value="<%= obj.img %>" readonly>
                     </div>
-                    <div class="col-md-4">
-                        <div class="imgVide">
-                        <br>
-                        <br>
-                        <br>
-                        <br>    
-                            <input type="file" name="img" class='btn btn-primary' value="<%= obj.img %>" placeholder="">
-                            <input type="text" name="img" value="<%= obj.img %>" readonly>
-                        </div>
-                        <br>
-                        <p class="text-left"> <button type="submit" class="btn sbtn-success btn-lg">Confirmer</button></p>
-                    </div>
-                  
-                    </form>
-                  
-                    
-        </div>
-        <% }) %>
+                    <br>
+                    <p class="text-left">
+                        <button type="submit" class="btn sbtn-success btn-lg">Confirmer</button>
+                    </p>
+                </div>
+
+                </form>
+
+
+            </div>
+            <% }) %>
     </div>

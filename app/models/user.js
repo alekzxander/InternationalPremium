@@ -1,19 +1,25 @@
 // LOAD THE THINGS WE NEED 
 var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt-nodejs');
 
 // DEFINE THE SCHEMA FOR OUR USER MODEL
 var userSchema = mongoose.Schema({
-    
-    local   :{
-        nom : String,
-        prenom : String,
-        date : Date,
-        telephone : Number,
-        email   : String,
-        password : String,
-        role: {type: String, default: "member"},
-        isAdmin : {type : Boolean, default: "false" }
+
+    local: {
+        nom: String,
+        prenom: String,
+        date: Date,
+        telephone: Number,
+        email: String,
+        password: String,
+        role: {
+            type: String,
+            default: "member"
+        },
+        isAdmin: {
+            type: Boolean,
+            default: "false"
+        }
     }
 
 });

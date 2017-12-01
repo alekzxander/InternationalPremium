@@ -7,8 +7,7 @@
 
 /* ================ BANNIERE ================*/
 
-.banniere-contact
-{
+.banniere-contact {
 	background: #06162D;
 	height: 260px;
 	margin-bottom: -40px;
@@ -17,7 +16,8 @@
 }
 
 
-/* ================ NAVBAR =================*/ 
+/* ================ NAVBAR =================*/
+
 .navbar {
 	margin-bottom: 0px;
 	position: none;
@@ -49,27 +49,29 @@
 	text-align: center;
 	padding-top: 81px;
 }
+
 .navbar-brand img {
 	width: 125px;
 	position: absolute;
 	margin-left: -274px;
 	margin-top: -61px;
 }
-.dropdown-menu
-{
-	background:#06162D;
-   min-width: 157px;
-   max-width: 157px;
+
+.dropdown-menu {
+	background: #06162D;
+	min-width: 157px;
+	max-width: 157px;
 	border: none;
 	border-radius: 0px;
 	width: 138px;
 }
-.dropdown-menu>li>a{
+
+.dropdown-menu>li>a {
 	color: white;
 	width: 157px;
 }
-.navbar-default .navbar-nav>.open>a
-{
+
+.navbar-default .navbar-nav>.open>a {
 	background: #06162D;
 	color: white;
 	width: 157px;
@@ -287,40 +289,34 @@ footer a {
 	margin-left: 10px;
 	color: #fff;
 }
-.validationEmail 
-{
+
+.validationEmail {
 	background: #06162D;
 	height: 400px;
 	border: white 2px solid;
 	padding-top: 60px;
 	margin: 16% 0 10% 0;
 }
-.validationEmail p
-{
-	text-align:center;
+
+.validationEmail p {
+	text-align: center;
 	color: #D0A548;
 	font-size: 34px;
-	
 }
 
-@media all and (max-width:500px)
-{
+@media all and (max-width:500px) {
 	.navbar .navbar-collapse {
-		padding-top:0px;
+		padding-top: 0px;
 	}
-	.banniere-contact
-	{
+	.banniere-contact {
 		height: 308px;
 		margin-top: -250px;
 		margin-bottom: 10px;
 	}
-	
-	.signup-wrapper
-	{
+	.signup-wrapper {
 		margin-top: 60px;
 	}
-	footer
-	{
+	footer {
 		margin-top: 140px;
 		padding-top: 40px;
 		height: 334px;
