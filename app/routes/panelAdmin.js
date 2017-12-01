@@ -55,7 +55,7 @@
 
         let myData = new voyage({
             name: req.body.name,
-            slug: req.body.slug,
+            url: req.body.url,
             dateA: req.body.dateA,
             dateR: req.body.dateR,
             sejour: req.body.sejour,
@@ -201,7 +201,7 @@
         voyage.findByIdAndUpdate(req.params.id, {
             $set: {
                 name: req.body.name,
-                slug: req.body.slug,   
+                url: req.body.url, 
                 dateA: req.body.dateA,
                 dateR: req.body.dateR,
                 sejour: req.body.sejour,

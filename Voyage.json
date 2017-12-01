@@ -2,7 +2,8 @@
     "_id": {
         "$oid": "59e6e07142c9e1942b62c295"
     },
-    "name": "etats-unis",
+    "name": "Etats-Unis",
+    "slug": "etats-unis",
     "dateA": "13 Janvier 2018",
     "dateR": "29 janvier 2018",
     "sejour": "16",
@@ -78,7 +79,8 @@
     "_id": {
         "$oid": "59e6e3e3616911883064eb5a"
     },
-    "name": "londres",
+    "name": "Londres",
+    "slug": "londres",
     "dateA": "12 mars 2018",
     "dateR": "28 mars 2018",
     "sejour": "29",
@@ -161,7 +163,8 @@
     "_id": {
         "$oid": "59e6ea8f616911883064ec77"
     },
-    "name": "afrique du sud",
+    "name": "Afrique du Sud",
+    "slug": "afrique-du-sud",
     "dateA": "12 Janvier 2018",
     "dateR": "19 Fevrier 2018",
     "sejour": "25",
@@ -248,7 +251,8 @@
     "_id": {
         "$oid": "5a195f4dd04b3ca9e2a057a4"
     },
-    "name": "nouvelle-zelande",
+    "name": "Nouvelle-Zelande",
+    "slug": "nouvelle-zelande",
     "dateA": "2017-02-02",
     "dateR": "2017-02-28",
     "sejour": "26",

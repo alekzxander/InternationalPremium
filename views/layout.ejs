@@ -43,7 +43,7 @@
                         <ul class="dropdown-menu">
                             <% voyagesMenu.forEach((voyages)=>{ %>
                                 <li>
-                                    <a href="/voyage/<%= voyages.slug %>">
+                                    <a href="/voyage/<%= voyages.url %>">
                                         <%= voyages.name %>
                                     </a>
                                 </li>
@@ -64,9 +64,9 @@
                         <li>
                             <a href="/signup">Inscription</a>
                         </li>
-                        <% } else { %>
+                        <% } else if (isAuthenticated()=="admin") { %>
                             <li>
-                                <a href="/logout">Deconnexion</a>
+                                <a href="/dashbord">dashbord</a>
                             </li>
                             <% } %>
                 </ul>

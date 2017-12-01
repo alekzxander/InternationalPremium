@@ -15,7 +15,7 @@ module.exports = (app, passport) => {
     });
 
 
-    app.use('/voyage/:slug', (req, res, next) => {
+    app.use('/voyage/:url', (req, res, next) => {
         voyage.find({}, (err, voyagesMenu) => {
             req.voyagesMenu = voyagesMenu;
             next();
@@ -23,13 +23,13 @@ module.exports = (app, passport) => {
     })
     
     
-    app.get('/voyage/:slug', ((req, res) => {
+    app.get('/voyage/:url', ((req, res) => {
         voyage.find((err, voyages) => {
             res.render('voyage', {
                 voyagesMenu: req.voyagesMenu,
-                voyage: req.params.slug,
+                voyage: req.params.url,
                 mesVoyages: voyages.filter((voyage) => {
-                    return voyage.slug == req.params.slug
+                    return voyage.url == req.params.url
                 })[0]
             })
         })
