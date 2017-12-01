@@ -491,18 +491,18 @@
 
     .banniere-partenaire {
         height: 260px;
-        margin-bottom: 80px;
-        margin-top: -164px;
+        margin-bottom: 75px;
+        margin-top: -171px;
         z-index: 232;
         background: #06162D;
     }
+ 
 
     .card {
         box-shadow: 0 17px 10px 0 rgba(0, 0, 0, 0.2);
         margin: auto;
         text-align: center;
         margin-top: 50px;
-        margin-right: 23px;
         width: auto;
     }
 
@@ -689,6 +689,13 @@
         }
         .navbar-default .navbar-nav>li>a {
             color: #06162D;
+        }
+    }
+    @media all and (max-width:570px)
+    {
+        .banniere-partenaire
+        {
+            margin-top: 17px;
         }
     }
 
