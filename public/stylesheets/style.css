@@ -58,14 +58,14 @@
 
     .navbar .navbar-collapse {
         text-align: center;
-        padding-top: 81px;
+        padding-top: 20px;
     }
 
     .navbar-brand img {
         width: 125px;
         position: absolute;
-        margin-left: -274px;
-        margin-top: -61px;
+        margin-left: -235px;
+        margin-top: -17px;
     }
 
     @media all and (max-width:780px) {
@@ -80,6 +80,7 @@
         .navbar-brand img {
             margin-left: -59px;
             margin-top: -32px;
+            display: none;
         }
         .btn-warning {
             font-size: 9px;
@@ -477,6 +478,7 @@
 
     .btn-lg {
         margin: 10px;
+        color: white;
     }
 
     .back i {
