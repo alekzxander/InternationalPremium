@@ -4,11 +4,12 @@
         <div class="row">
                     <div class="col-md-8">
                             <h3><%= obj.titre %></h3>
-                            <p><%= obj._id %></p>
+                
                         <form action="/modifLieux/<%= obj._id %>" enctype="multipart/form-data" method="post">
                             <input type="text" class="form-control" name="titre" value="<%= obj.titre %>" placeholder="Titre">
-                            <input type="text" value="<% obj.text %>" readonly placeholder="<%= obj.text %>">
-                            <textarea class="form-control" rows="8" name="text" value="<%= obj.text %>" placeholder="<%= obj.text %>" id="comment" placeholder="Descriptif du lieu a visiter"></textarea>
+                           
+
+                            <textarea class="form-control" rows="8" name="text" value="<%= obj.text %>" id="comment" placeholder="Descriptif du lieu a visiter"><%= obj.text %></textarea>
                     </div>
                     <div class="col-md-4">
                         <div class="imgVide">
@@ -16,8 +17,8 @@
                         <br>
                         <br>
                         <br>    
-                            <input type="file" name="img" class='btn btn-primary' placeholder="">
-                            <input type="text" value="<%= obj.img %>" readonly>
+                            <input type="file" name="img" class='btn btn-primary' value="<%= obj.img %>" placeholder="">
+                            <input type="text" name="img" value="<%= obj.img %>" readonly>
                         </div>
                         <br>
                         <p class="text-left"> <button type="submit" class="btn sbtn-success btn-lg">Confirmer</button></p>
