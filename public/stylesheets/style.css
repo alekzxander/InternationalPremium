@@ -618,7 +618,7 @@
         background-color: #06162B;
         color: white;
         padding: 15px;
-        margin-top: 70px;
+        margin-top: px;
     }
 
     footer a {
@@ -640,11 +640,11 @@
 
     .fa-arrow-circle-up {
         position: fixed;
-        bottom: 30px;
-        right: 41px;
+        bottom: 60px;
+        right: 11px;
         background: #06162D;
         width: 40px;
-        height: 40px;
+        height: 42px;
         font-size: 40px;
         border-radius: 100%;
         color: #ffffff;
